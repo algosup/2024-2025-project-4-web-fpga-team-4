@@ -7,12 +7,12 @@
   - [Document Overview](#document-overview)
   - [Naming Conventions](#naming-conventions)
     - [Branches, Folders \& Files](#branches-folders--files)
-      - [Functions and Methods](#functions-and-methods)
-      - [Variables](#variables)
-      - [Constants](#constants)
-      - [Macros](#macros)
-      - [Classes and Structures](#classes-and-structures)
-      - [Enumerations](#enumerations)
+      - [Functions and Methods in javascript](#functions-and-methods-in-javascript)
+      - [Variables in javascript](#variables-in-javascript)
+      - [Element Names in HTML](#element-names-in-html)
+      - [Close All HTML Elements](#close-all-html-elements)
+      - [Always Quote Attribute Values](#always-quote-attribute-values)
+      - [Comments](#comments)
       - [Indentation \& Spacing](#indentation--spacing)
   - [Commit Naming Convention](#commit-naming-convention)
     - [Commit Types](#commit-types)
@@ -42,7 +42,7 @@ This document guides individuals who wish to contribute to the project. It outli
 
 ---
 
-#### Functions and Methods (javascript)
+#### Functions and Methods in javascript
 
 - **Naming Convention:** camelCase (lowercase the first word and capitalize all the others).
 - Do this:
@@ -52,7 +52,7 @@ This document guides individuals who wish to contribute to the project. It outli
   - `ConvertSDFToJSON()`
   - `Convert-V-To-JSON()`
 
-#### Variables (javascript)
+#### Variables in javascript
 
 - **Naming Convention:** camelCase (first word lowercase, subsequent words capitalized).
 - Do this:
@@ -62,7 +62,7 @@ This document guides individuals who wish to contribute to the project. It outli
   - `input_File`
   - `Temp`
 
-#### Element Names (HTML)
+#### Element Names in HTML
 
 - **Naming Convention:** only use lowercase element names.
 - Do this:
