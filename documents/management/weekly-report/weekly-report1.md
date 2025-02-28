@@ -42,9 +42,13 @@ How would you rate the team's collaboration this week? (1-5)
 
 This is what came out of this survey:
 
-![alt text](./images/kpis-week1.png)
+![alt text](images/kpis-week1.png)
 
 The team mentioned being happy with how the communication was flowing amongst the team, and no issues arose from the feedback the team members gave.
+
+Except for the fact that the team is not focused enough and too noisy at times.
+
+You can find [here](https://docs.google.com/spreadsheets/d/1EJIGbOufF86FP-Pb6Y5z0wuYymK0fEmoFKtg16JfIHg/edit?resourcekey=&gid=322050487#gid=322050487) more details about the satisfaction form.
 
 ## Project Progress
 
