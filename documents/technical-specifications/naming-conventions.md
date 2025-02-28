@@ -66,24 +66,28 @@ This document guides individuals who wish to contribute to the project. It outli
 
 - **Naming Convention:** only use lowercase element names.
 - Do this:
-  - `<body></body>`
-  - `<p></p>`
+  ```html
+    <body></body>
+    <p></p>
+  ```
 - Don't do this:
-  - `<BODY></BODY>`
-  - `<P></P>`
+  ```html
+    <BODY></BODY>
+    <P></P>
+  ```
 
 #### Close All HTML Elements
 
 - In HTML, you technically do not have to close all elements, however, for this project you have to close all HTML elements to make it easier to read the code.
 - Do this:
-  ```
+  ```html
     <section>
       <p>this is a paragraph</p>
     </section>
   ```
 
 - Don't do this:
-  ```
+  ```html
     <section>
       <p>this is a paragraph
     </section>
@@ -91,11 +95,15 @@ This document guides individuals who wish to contribute to the project. It outli
 
 #### Always Quote Attribute Values
 
--HTML allows attribute values without quotes, however, for this project you have to quote all attribute values to make it easier to read the code.
+- HTML allows attribute values without quotes, however, for this project you have to quote all attribute values to make it easier to read the code.
 - Do this:
-  - `<h1 class="big title">`
+  ```html
+    <h1 class="big title">
+  ```
 - Don't do this:
-  - `<h1 class=big title>`
+  ```html
+    <h1 class=big title>
+  ```
 
 #### Comments
 
@@ -117,7 +125,7 @@ test.dataParseFunction();
 
 - In HTML, add blank linkes to seperate large or logical code blocks also, use tab for indentation for everything.
   - Do this:
-  ```
+  ```html
   <body>
 
     <h1>Famous Cities</h1>
@@ -125,10 +133,9 @@ test.dataParseFunction();
   </body>
   ```
 - Ensure consistent spacing around operators and after commas for better readability:
-
-```TypeScript
-c = a + b;
-```
+  ```TypeScript
+    c = a + b;
+  ```
 
 ---
 
@@ -159,7 +166,7 @@ Commit messages should follow a consistent format to make it easier to understan
   - Optional Details: `The class was no longer relevant after refactoring.`
 
 - **DOC**: Use this for modification, creation, or deletion made to document(s).
-  - Example: `DOC: Creation of technicalSpecifications.md`
+  - Example: `DOC: Creation of technical-specifications.md`
   - Optional Details: `Added table of content`
 
 ### Format Guidelines

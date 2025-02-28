@@ -9,26 +9,129 @@
   - [Project Overview](#project-overview)
     - [Project Introduction](#project-introduction)
     - [Document Purpose](#document-purpose)
+  - [System Overview](#system-overview)
+    - [System Architecture](#system-architecture)
   - [Glossary](#glossary)
 
 ## Project Overview
 
 ### Project Introduction
+This project was commissioned by the CNES (Centre National d'Études Spatiales)<sup><a href="#1">[1]</a></sup>. The objective is to develop a web page that assists teachers in explaining how FPGAs (Field Programmable Gate Arrays)<sup><a href="#2">[2]</a></sup> function. The web page will achieve this by visualizing an example or simulation of the internal FPGA processes when specific code is input.
 
-This project was requested by the CNES (Centre national d'études spatiales)<sup><a href="#1">[1]</a></sup> objective of this project is to develop a web page that will help teachers explain how FPGA's (Field Programmable Gate Arrays)<sup><a href="#2">[2]</a></sup> work. It will do so by displaying an example or simulation of what is happening inside the FPGA when certain code is executed. The website will use information stored in sdf files (I don't know yet if we will convert the file to JSON for example or not so i'm leaving this here so I know I have to change it)<sup><a href="#change">[change]</a></sup>. Since the goal of this project is to help teach, we need to focus on UX and UI design as it is paramount to this project's success.
+The website will utilize information stored in SDF (Standard Delay Format) files. The method of handling these files—whether through direct parsing or conversion (e.g., to JSON)—is yet to be determined <sup><a href="#change">[TBD]</a></sup>.
 
-The web page will be developped using HTML and CSS as they are the basic web development programming languages and we will use TypeScript and NodeJS to help making the page more dynamic and easier to use.
+Since the primary goal is education, user experience (UX) and user interface (UI) design are crucial to the project's success.
+
+The programming languages we will use will be HTML and CSS for the structure and styling. To create a dynamic and user-friendly interface, we will use TypeScript and Node.js.
 
 ### Document Purpose
+This document provides detailed technical specifications for the development of the web page, ensuring the correct implementation of the required features. These specifications will be based on the functional specification (link to be added).
 
-The purpose of this document is to detail and explain how to create the web page by implementing the features detailed in the [functional specification (will add link when functional is done)](https://perdu.com).
-The web page we are creating is a tool requested by the CNES, it will be used by teachers to help teach how FPGA's
+This tool is being developed at CNES's request and will serve as an educational resource for teachers to explain FPGA functionality.
 
+## System Overview
 
+### System Architecture
 
+Our GitHub repository will be created following the architecture hereunder:
 
-
-
+```
+Root
+│   .gitignore
+│   CODE_OF_CONDUCT.md
+│   LICENSE
+│   README.md
+│
+├───documents
+│   ├───functional-specifications
+│   │   │   mockups.pdf
+│   │   │   functional-specifications.md
+│   │   │
+│   │   └───img
+|   |       |
+│   │       └───img
+│   │
+│   ├───management
+│   │   │   management-artifacts.md
+│   │   │   project-charter.md
+│   │   │
+│   │   ├───pictures
+│   │   │
+│   │   └───weekly-reports
+│   │           cumulative.md
+│   │           week1.md
+│   │           week2.md
+│   │           week3.md
+│   │           week4.md
+│   │           week5.md
+│   │           week6.md
+│   │
+│   ├───quality-assurance
+│   │       test-cases.md
+│   │       test-plan.md
+│   │
+│   └───technical-specifications
+│       │   technical-specifications.md
+│       │   naming-conventions.md
+|       |
+│       └───img
+│
+└───src
+    │   .gitignore
+    │   README.md
+    │
+    ├───website
+    |   |   will-add-later.html
+    |   |   will-add-later.css
+    |   |   will-add-later.ts
+    |   |
+    |   └───img
+    |
+    ├───file-converter
+    |   |   file-converter.py (TBD)
+    |
+    └───examples
+    |   ├───1ff_VTR
+    |   |       FF1_post_synthesis.sdf
+    |   |       FF1_post_synthesis.v
+    |   |       Readme.md
+    |   |       flipflop.v
+    |   ├───1ff_no_rst_VTR
+    |   |       FF1_norst_post_synthesis.sdf
+    |   |       FF1_norst_post_synthesis.v
+    |   |       Readme.md
+    |   |       flipflop.v
+    |   ├───2ffs_VTR
+    |   |       FF2_post_synthesis.sdf
+    |   |       FF2_post_synthesis.v
+    |   |       Readme.md
+    |   |       flipflop.v
+    |   ├───2ffs_no_rst_VTR
+    |   |       FF2_norst_post_synthesis.sdf
+    |   |       FF2_norst_post_synthesis.v
+    |   |       Readme.md
+    |   |       flipflop.v
+    |   ├───5ffs_VTR
+    |   |       Readme.md
+    |   |       RisingEdge_DFlipFlop_AsyncResetHigh_post_synthesis.sdf
+    |   |       RisingEdge_DFlipFlop_AsyncResetHigh_post_synthesis.v
+    |   |       cascaded.png
+    |   |       flipflop.v
+    |   |       flipflop_tb_vtr.v
+    |   ├───FULLLUT_VTR
+    |   |       FULLLUT_post_synthesis.sdf
+    |   |       FULLLUT_post_synthesis.v
+    |   |       FullLut.v
+    |   |       Readme.md
+    |   ├───LUT_VTR
+    |   |       LUT.v
+    |   |       LUT_post_synthesis.sdf
+    |   |       LUT_post_synthesis.v
+    |   |       Readme.md
+    |   └───NextpnrNX
+    |           routed_POC.v
+    |           routed_POC_worst.sdf
+```
 
 ## Glossary
 
@@ -36,6 +139,8 @@ The web page we are creating is a tool requested by the CNES, it will be used by
 |-----|-----------|-----|
 |<a id="1">[1]</a> CNES|Centre national d'études spatiales (CNES) is the French national space agency. Headquartered in central Paris, the agency comes under the supervision of the ministries of the Armed Forces, Economy and Finance and Higher Education, Research and Innovation.|[Wikipedia](https://en.wikipedia.org/wiki/CNES)|
 |<a id="2">[2]</a> FPGA|A field-programmable gate array (FPGA) is a type of configurable integrated circuit that can be repeatedly programmed after manufacturing.|[Wikipedia](https://en.wikipedia.org/wiki/Field-programmable_gate_array)|
+
+
 
 
 
