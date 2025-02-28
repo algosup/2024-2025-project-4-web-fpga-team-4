@@ -24,6 +24,28 @@ This week marked the first steps of the project. The primary focus was on unders
 
 ## Team Feedback
 
+Here are the two main questions asked to the team:
+
+How satisfied are you with this week? (Rate from 1 to 5)
+1 - Very Unsatisfied
+2 - Unsatisfied
+3 - Neutral
+4 - Satisfied
+5 - Very Satisfied
+
+How would you rate the team's collaboration this week? (1-5)
+1 - Very Poor
+2 - Poor
+3 - Average
+4 - Good
+5 - Excellent
+
+This is what came out of this survey:
+
+![alt text](./images/kpis-week1.png)
+
+The team mentioned being happy with how the communication was flowing amongst the team, and no issues arose from the feedback the team members gave.
+
 ## Project Progress
 
 - **Understanding Project Requirements**
