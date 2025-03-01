@@ -75,17 +75,17 @@ You can find [here](https://docs.google.com/spreadsheets/d/1EJIGbOufF86FP-Pb6Y5z
 - **First Design Prototyping**
 
   - **Design**: Maxime Caron and Clémentine Curel started working on the first design prototype of the web interface.
-  - **Logotyping**: Clémentine Curel began creating logotypes, banners, and UI components for the web interface.
+  - **Logotyping**: Clémentine Curel began creating logos, banners, and UI components for the web interface.
 
 ## Extras
 
 - **Technology Stack Discussions**
 
-  - Laurent Bouquin, Jason Grosso, and Emilien Chinsy prematurely discussed which technologies they plan on using for the project.
-  - They decided to work using HTML, CSS, Typescript and NodeJS.
+  - Laurent Bouquin, Jason Grosso, and Emilien Chinsy discussed which technologies they plan on using for the project.
+  - They decided to work using HTML, CSS, TypeScript, and Node.js.
 
 - **Started Working on Technical Specifications**
-  - Previous discussion mentionned lead to the initilization and to the mention of technologies used in the technical specifications document.
+  - Previous discussions led to the initialization and mention of technologies used in the technical specifications document.
 
 ## Challenges
 
