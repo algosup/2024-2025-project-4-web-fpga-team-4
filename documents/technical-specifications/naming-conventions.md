@@ -3,16 +3,16 @@
 <details>
 <summary> Table Of Content </summary>
 
-- [Naming Conventions Web FPGA Team 4](#naming-conventions-web-fpga-team-4)
+- [Naming Conventions Quickest Path Team 4](#naming-conventions-quickest-path-team-4)
   - [Document Overview](#document-overview)
   - [Naming Conventions](#naming-conventions)
     - [Branches, Folders \& Files](#branches-folders--files)
-      - [Functions and Methods](#functions-and-methods)
-      - [Variables](#variables)
-      - [Constants](#constants)
-      - [Macros](#macros)
-      - [Classes and Structures](#classes-and-structures)
-      - [Enumerations](#enumerations)
+      - [Functions and Methods (javascript)](#functions-and-methods-javascript)
+      - [Variables (javascript)](#variables-javascript)
+      - [Element Names (HTML)](#element-names-html)
+      - [Close All HTML Elements](#close-all-html-elements)
+      - [Always Quote Attribute Values](#always-quote-attribute-values)
+      - [Comments](#comments)
       - [Indentation \& Spacing](#indentation--spacing)
   - [Commit Naming Convention](#commit-naming-convention)
     - [Commit Types](#commit-types)
