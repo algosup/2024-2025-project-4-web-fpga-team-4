@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://kit.fontawesome.com/d57f386eaf.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="client.css">
+	<title>Work Page</title>
+</head>
+
+<body>
+	<div id="description">
+		<div class="data-icon">
+			<div><i class="fa-solid top-bar fa-folder-open "></i></div>
+			<div><i class="fa-solid top-bar fa-upload "></i></div>
+		</div>
+		<div class="control-icon-up">
+			<div><i class="fa-solid top-bar fa-circle-pause "></i></div>
+			<div><i class="fa-solid top-bar fa-circle-play "></i></div>
+			<div class="speed-control">
+				<button disabled>x 1</button>
+				<div><i class="fa-solid fa-plus"></i></div>
+				<div><i class="fa-solid fa-minus"></i></div>
+			</div>
+		</div>
+		<div class="control-icon-down">
+			<div><i class="fa-solid top-bar fa-reply "></i></div>
+			<div><i class="fa-solid top-bar fa-share "></i></div>
+			<div><i class="fa-solid top-bar fa-rotate-left "></i></div>
+		</div>
+		<div class="zoom-icon">
+			<div><i class="fa-solid top-bar fa-magnifying-glass-minus "></i></div>
+			<div><i class="fa-solid top-bar fa-magnifying-glass-plus "></i></div>
+			<div class="zoom-control">
+				<button disabled>100%</button>
+			</div>
+		</div>
+		<div class="display-icon">
+			<div id="data-view-trigger"><i class="fa-solid top-bar fa-bars"></i></div>
+			<div><i class="fa-solid top-bar fa-sun "></i></div>
+			<div><i class="fa-solid top-bar fa-gear "></i></div>
+		</div>
+
+
+
+		<!-- <i class="fa-solid fa-plus"></i>
+		<i class="fa-solid fa-minus"></i>
+		
+		-->
+	</div>
+	<div id="page">
+		<div id="main">
+		</div>
+		<div id="liveData">
+			<div id="liveDataArrowBox">
+				<button id="hideButton"><i class="fa-solid fa-angles-right" id="hnsArrow"></i></button>
+			</div>
+			<div id="liveDataContent">
+			</div>
+		</div>
+	</div>
+
+	<script src="client.js"></script>
+</body>
+
+</html>

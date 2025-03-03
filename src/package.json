@@ -1,0 +1,16 @@
+{
+	"name": "project-4-web-fpga",
+	"version": "0.1.0",
+	"description": "",
+	"license": "ISC",
+	"author": "Me",
+	"type": "commonjs",
+	"main": "index.js",
+	"scripts": {
+		"start-client": "npm i && npx live-server --open=\"code/client/client.html\"",
+		"start-server": "npm i && npx live-server --open=\"code/server/server.html\""
+	},
+	"dependencies": {
+		"live-server": "^1.2.0"
+	}
+}
