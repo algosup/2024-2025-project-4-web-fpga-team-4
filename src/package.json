@@ -8,7 +8,9 @@
 	"main": "index.js",
 	"scripts": {
 		"start-client": "npm i && npx live-server --open=\"code/client/client.html\"",
-		"start-server": "npm i && npx live-server --open=\"code/server/server.html\""
+		"start-client-short": "npx live-server --open=\"code/client/client.html\"",
+		"start-server": "npm i && npx live-server --open=\"code/server/server.html\"",
+		"start-server-short": "npx live-server --open=\"code/client/client.html\""
 	},
 	"dependencies": {
 		"live-server": "^1.2.0"
