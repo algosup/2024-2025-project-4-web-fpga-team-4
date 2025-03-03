@@ -2,13 +2,13 @@
 // It is responsible for handling the client side logic.
 
 // Declare a variable to keep track of whether the data is hidden or not
-let isHidden = false;
+let is_Hidden = false;
 
 // Declare the elements that will be used in the client side code
 
 // File management elements
-const open_folder = document.getElementById('open_folder');
-const upload_file = document.getElementById('upload_file');
+const open_folder = document.getElementById('open-folder');
+const upload_file = document.getElementById('upload-file');
 
 // Control elements
 const pause = document.getElementById('pause');
@@ -17,14 +17,14 @@ const back = document.getElementById('back');
 const forward = document.getElementById('forward');
 const reload = document.getElementById('reload');
 const speed = document.getElementById('speed');
-const speed_plus = document.getElementById('speed_plus');
-const speed_minus = document.getElementById('speed_minus');
+const speed_plus = document.getElementById('speed-plus');
+const speed_minus = document.getElementById('speed-minus');
 
 
 // Zoom elements
-const zoom_in = document.getElementById('zoom_in');
-const zoom_out = document.getElementById('zoom_out');
-const zoom_manual = document.getElementById('zoom_manual');
+const zoom_in = document.getElementById('zoom-in');
+const zoom_out = document.getElementById('zoom-out');
+const zoom_manual = document.getElementById('zoom-manual');
 
 // Data view elements
 const data_view_trigger = document.getElementById('data-view-trigger');
@@ -33,12 +33,13 @@ const settings = document.getElementById('settings');
 
 
 // Main page elements
-const page = document.getElementById('page');
+const page = document.getElementById('visualization-area');
 
 
 // Live data elements
-const liveData = document.getElementById('liveData');
-const hideButton = document.getElementById('hideButton');
+const liveData = document.getElementById('data-display');
+const hideButton = document.getElementById('hide-button');
+
 
 
 
@@ -109,7 +110,7 @@ zoom_manual.addEventListener('click', function () {
 // Display buttons
 
 hideButton.addEventListener('click', function () {
-	isHidden = true;
+	is_Hidden = true;
 	console.log('hide button clicked');
 	liveData.style.display = 'none';
 	hideButton.style.display = 'none';
@@ -118,14 +119,14 @@ hideButton.addEventListener('click', function () {
 
 data_view_trigger.addEventListener('click', function () {
 	console.log('data view trigger clicked');
-	if (isHidden) {
-		isHidden = false;
+	if (is_Hidden) {
+		is_Hidden = false;
 		liveData.style.display = 'block';
 		hideButton.style.display = 'block';
 		page.style.display = 'grid';
 	}
 	else {
-		isHidden = true;
+		is_Hidden = true;
 		liveData.style.display = 'none';
 		hideButton.style.display = 'none';
 		page.style.display = 'block';
@@ -139,3 +140,31 @@ theme.addEventListener('click', function () {
 settings.addEventListener('click', function () {
 	console.log('settings button clicked');
 });
+
+
+
+let status = document.getElementsByClassName('element-state');
+
+for (let i = 0; i < status.length; i++) {
+	if (status[i].textContent === 'ON') {
+		status[i].style.color = 'lime';
+	}
+	else {
+		status[i].style.color = 'red';
+	}
+}
+
+let io = document.getElementsByClassName('io-name');
+
+for (let i = 0; i < io.length; i++) {
+	console.log(io[i].textContent);
+	if (io[i].textContent.startsWith('Button')) {
+		io[i].parentElement.parentElement.style.backgroundColor = 'grey';
+	}
+	else if (io[i].textContent.startsWith('LED')) {
+		io[i].parentElement.parentElement.style.backgroundColor = 'darkOrange';
+	}
+	else{
+		io[i].parentElement.parentElement.style.backgroundColor = 'transparent';
+	}
+}

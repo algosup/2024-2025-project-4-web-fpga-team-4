@@ -5,23 +5,25 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="https://kit.fontawesome.com/d57f386eaf.js" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="client.css">
-	<title>Work Page</title>
+	<link rel="stylesheet" href="./css/tool-bar.css">
+	<link rel="stylesheet" href="./css/data-display.css">
+	<link rel="stylesheet" href="./css/schematics.css">
+	<title>Client Side</title>
 </head>
 
 <body>
 	<div id="description">
 		<div class="data-icon">
-			<div id="open_folder"><i class="fa-solid top-bar fa-folder-open "></i></div>
-			<div id="upload_file"><i class="fa-solid top-bar fa-upload "></i></div>
+			<div id="open-folder"><i class="fa-solid top-bar fa-folder-open "></i></div>
+			<div id="upload-file"><i class="fa-solid top-bar fa-upload "></i></div>
 		</div>
 		<div class="control-icon-up">
 			<div id="pause"><i class="fa-solid top-bar fa-circle-pause "></i></div>
 			<div id="play"><i class="fa-solid top-bar fa-circle-play "></i></div>
 			<div class="speed-control">
 				<button id="speed" disabled>x 1</button>
-				<div id="speed_plus"><i class="fa-solid fa-plus"></i></div>
-				<div id="speed_minus"><i class="fa-solid fa-minus"></i></div>
+				<div id="speed-plus"><i class="fa-solid fa-plus"></i></div>
+				<div id="speed-minus"><i class="fa-solid fa-minus"></i></div>
 			</div>
 		</div>
 		<div class="control-icon-down">
@@ -30,10 +32,10 @@
 			<div id="reload"><i class="fa-solid top-bar fa-rotate-left "></i></div>
 		</div>
 		<div class="zoom-icon">
-			<div id="zoom_out"><i class="fa-solid top-bar fa-magnifying-glass-minus "></i></div>
-			<div id="zoom_in"><i class="fa-solid top-bar fa-magnifying-glass-plus "></i></div>
+			<div id="zoom-out"><i class="fa-solid top-bar fa-magnifying-glass-minus "></i></div>
+			<div id="zoom-in"><i class="fa-solid top-bar fa-magnifying-glass-plus "></i></div>
 			<div class="zoom-control">
-				<button id="zoom_manual" disabled>100%</button>
+				<button id="zoom-manual" disabled>100%</button>
 			</div>
 		</div>
 		<div class="display-icon">
@@ -49,32 +51,138 @@
 		
 		-->
 	</div>
-	<div id="page">
+	<div id="visualization-area">
 		<div id="main">
 			<div id="guidelines">
 				<div>
-					<h3>I/O</h3>
-					<div id="IO"></div>
+					<h3>IO</h3>
+					<div class="back-lines"></div>
+					<div id="io-container">
+						<div class="io-element">
+							<div>
+								<p class="io-name">Button 0</p>
+								<p class="io-out">Out</p>
+								<p>State</p>
+								<p class="element-state">ON</p>
+							</div>
+						</div>
+						<div class="io-element">
+							<div>
+								<p class="io-name">Button 1</p>
+								<p class="io-out">Out</p>
+								<p>State</p>
+								<p class="element-state">OFF</p>
+							</div>
+						</div>
+						<div class="io-element">
+							<div>
+								<p class="io-name">LED 0</p>
+								<p class="io-out">Out</p>
+								<p>State</p>
+								<p class="element-state">OFF</p>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div>
 					<h3>LUT</h3>
-					<div id="lut"></div>
+					<div class="back-lines"></div>
+					<div id="lut-container">
+						<div class="lut-element">
+							<p class="lut-id">LUT 0</p>
+							<p class="lut-in">In[0]</p>
+							<p class="lut-in">In[1]</p>
+							<p class="lut-out">Out</p>
+							<!-- <p class="lut-out-2"></p> -->
+						</div>
+						<div class="lut-element">
+							<p class="lut-id">LUT 1</p>
+							<p class="lut-in">In[0]</p>
+							<p class="lut-in">In[1]</p>
+							<p class="lut-out">Out</p>
+							<!-- <p class="lut-out-2">?</p> -->
+						</div>
+						<div class="lut-element">
+							<p class="lut-id">LUT 2</p>
+							<p class="lut-in">In[0]</p>
+							<p class="lut-in">In[1]</p>
+							<p class="lut-out">Out</p>
+							<!-- <p class="lut-out-2">?</p> -->
+						</div>
+						<div class="lut-element">
+							<p class="lut-id">LUT 3</p>
+							<p class="lut-in">In[0]</p>
+							<p class="lut-in">In[1]</p>
+							<p class="lut-out">Out</p>
+							<!-- <p class="lut-out-2">?</p> -->
+						</div>
+						<div class="lut-element">
+							<p class="lut-id">LUT 4</p>
+							<p class="lut-in">In[0]</p>
+							<p class="lut-in">In[1]</p>
+							<p class="lut-out">Out</p>
+							<!-- <p class="lut-out-2">?</p> -->
+						</div>
+					</div>
 				</div>
 				<div>
 					<h3>Flip-flop</h3>
-					<div id="flip-flop"></div>
+					<div class="back-lines"></div>
+					<div id="ff-container">
+						<div class="ff-element">
+							<p class="ff-id">Flip Flop 0</p>
+							<p class="ff-in">Data</p>
+							<p class="ff-in">Clock</p>
+							<p class="ff-out">Out</p>
+							<!-- <p class="ff-out-2"></p> -->
+						</div>
+						<div class="ff-element">
+							<p class="ff-id">Flip Flop 1</p>
+							<p class="ff-in">Data</p>
+							<p class="ff-in">Clock</p>
+							<p class="ff-out">Out</p>
+							<!-- <p class="ff-out-2">?</p> -->
+						</div>
+						<div class="ff-element">
+							<p class="ff-id">Flip Flop 2</p>
+							<p class="ff-in">Data</p>
+							<p class="ff-in">Clock</p>
+							<p class="ff-out">Out</p>
+							<!-- <p class="ff-out-2">?</p> -->
+						</div>
+						<div class="ff-element">
+							<p class="ff-id">Flip Flop 3</p>
+							<p class="ff-in">Data</p>
+							<p class="ff-in">Clock</p>
+							<p class="ff-out">Out</p>
+							<!-- <p class="ff-out-2">?</p> -->
+						</div>
+						<div class="ff-element">
+							<p class="ff-id">Flip Flop 4</p>
+							<p class="ff-in">Data</p>
+							<p class="ff-in">Clock</p>
+							<p class="ff-out">Out</p>
+							<!-- <p class="ff-out-2">?</p> -->
+						</div>
+					</div>
 				</div>
 				<div>
-					<h3>BRAM</h3>
-					<div id="bram"></div>
+					<h3>Clock</h3>
+					<div class="back-lines"></div>
+					<div id="clock-container">
+						<div class="clock-element">
+							<p class="clock-id">Clock 0</p>
+							<p class="clock-out">Out</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div id="liveData">
-			<div id="liveDataArrowBox">
-				<button id="hideButton"><i class="fa-solid fa-angles-right" id="hnsArrow"></i></button>
+		<div id="data-display">
+			<div id="data-display-arrowBox">
+				<button id="hide-button"><i class="fa-solid fa-angles-right" id="hnsArrow"></i></button>
 			</div>
-			<div id="liveDataContent">
+			<div id="data-display-content">
 			</div>
 		</div>
 	</div>
