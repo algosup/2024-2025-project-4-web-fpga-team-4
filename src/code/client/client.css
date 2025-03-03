@@ -261,6 +261,12 @@ body {
 	display: flex;
 	justify-content: space-evenly;
 	height: 100%;
+
+	div {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+	}
 }
 
 #guidelines h3 {
@@ -268,33 +274,10 @@ body {
 	align-items: center;
 }
 
-#IO {
+#guidelines > div > div {
 	height: 100%;
 	width: 0px;
-	border-left-width: 3px;
-	border-color: gray;
-	border-style: dashed;
-}
-
-#lut {
-	height: 100%;
-	width: 0px;
-	border-left-width: 3px;
-	border-color: gray;
-	border-style: dashed;
-}
-
-#flip-flop {
-	height: 100%;
-	width: 0px;
-	border-left-width: 3px;
-	border-color: gray;
-	border-style: dashed;
-}
-
-#bram {
-	height: 100%;
-	width: 0px;
+	border-width: 0px;
 	border-left-width: 3px;
 	border-color: gray;
 	border-style: dashed;
