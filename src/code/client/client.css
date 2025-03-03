@@ -256,3 +256,46 @@ body {
 	cursor: pointer;
 	color: #fff;
 }
+
+#guidelines {
+	display: flex;
+	justify-content: space-evenly;
+	height: 100%;
+}
+
+#guidelines h3 {
+	color: white;
+	align-items: center;
+}
+
+#IO {
+	height: 100%;
+	width: 0px;
+	border-left-width: 3px;
+	border-color: gray;
+	border-style: dashed;
+}
+
+#lut {
+	height: 100%;
+	width: 0px;
+	border-left-width: 3px;
+	border-color: gray;
+	border-style: dashed;
+}
+
+#flip-flop {
+	height: 100%;
+	width: 0px;
+	border-left-width: 3px;
+	border-color: gray;
+	border-style: dashed;
+}
+
+#bram {
+	height: 100%;
+	width: 0px;
+	border-left-width: 3px;
+	border-color: gray;
+	border-style: dashed;
+}
