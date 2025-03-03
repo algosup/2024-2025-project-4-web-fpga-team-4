@@ -1,4 +1,4 @@
-# Naming Conventions Quickest Path Team 4
+# Naming Conventions Web FPGA Team 4
 
 <details>
 <summary> Table Of Content </summary>
@@ -7,9 +7,9 @@
   - [Document Overview](#document-overview)
   - [Naming Conventions](#naming-conventions)
     - [Branches, Folders \& Files](#branches-folders--files)
-      - [Functions and Methods in javascript](#functions-and-methods-in-javascript)
-      - [Variables in javascript](#variables-in-javascript)
-      - [Element Names in HTML](#element-names-in-html)
+      - [Functions and Methods in TypeScript](#functions-and-methods-in-typescript)
+      - [Variables in TypeScript](#variables-in-typescript)
+      - [Element Names (HTML)](#element-names-html)
       - [Close All HTML Elements](#close-all-html-elements)
       - [Always Quote Attribute Values](#always-quote-attribute-values)
       - [Comments](#comments)
@@ -42,7 +42,7 @@ This document guides individuals who wish to contribute to the project. It outli
 
 ---
 
-#### Functions and Methods in javascript
+#### Functions and Methods in TypeScript
 
 - **Naming Convention:** camelCase (lowercase the first word and capitalize all the others).
 - Do this:
@@ -52,7 +52,7 @@ This document guides individuals who wish to contribute to the project. It outli
   - `ConvertSDFToJSON()`
   - `Convert-V-To-JSON()`
 
-#### Variables in javascript
+#### Variables in TypeScript
 
 - **Naming Convention:** camelCase (first word lowercase, subsequent words capitalized).
 - Do this:
@@ -96,6 +96,7 @@ This document guides individuals who wish to contribute to the project. It outli
   - `<h1 class="big title">`
 - Don't do this:
   - `<h1 class=big title>`
+
 #### Comments
 
 - Use block comments (/**/).
@@ -105,7 +106,7 @@ This document guides individuals who wish to contribute to the project. It outli
 - Ensure all functions and complex code segments are well-documented with comments explaining their purpose.
   - Example:
 
-```javascript
+```TypeScript
 /*
  * This function parses the data from the sdf file:
  */
@@ -125,7 +126,7 @@ test.dataParseFunction();
   ```
 - Ensure consistent spacing around operators and after commas for better readability:
 
-```javascript
+```TypeScript
 c = a + b;
 ```
 
@@ -168,7 +169,7 @@ Commit messages should follow a consistent format to make it easier to understan
 
 2. **Short Description**:
 
-- Must be clear, concise, and written in an imperative mood (e.g., "Fix bug," not "Fixed bug").
+- Must be clear, concise, and written in an imperative mood (e.g, "Fix bug," not "Fixed bug").
 - Limit to 50 characters or fewer if possible.
 
 3. **Optional Details**:
@@ -196,4 +197,5 @@ Commit messages should follow a consistent format to make it easier to understan
   - ❌ CalculateTheDistanceBetweenTwoNodesForPathFinding
   - ✅ CalculateNodeDistance
 
-- Unclear abbreviations: Avoid cryptic abbreviations that are not self-explanatory.
+> [!CAUTION]
+> Unclear abbreviations: Avoid cryptic abbreviations that are not self-explanatory.
