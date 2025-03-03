@@ -1,4 +1,4 @@
-name: Software Bug Report
+name: Server Bug Report
 description: Report an issue related to our server.
 labels: [Bug, Dev]
 title: "Server Bug Report [2024/XX/XX]"
