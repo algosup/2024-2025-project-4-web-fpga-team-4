@@ -159,12 +159,69 @@ let io = document.getElementsByClassName('io-name');
 for (let i = 0; i < io.length; i++) {
 	console.log(io[i].textContent);
 	if (io[i].textContent.startsWith('Button')) {
-		io[i].parentElement.parentElement.style.backgroundColor = 'grey';
+		io[i].parentElement.style.backgroundColor = 'grey';
 	}
 	else if (io[i].textContent.startsWith('LED')) {
-		io[i].parentElement.parentElement.style.backgroundColor = 'darkOrange';
+		io[i].parentElement.style.backgroundColor = 'darkOrange';
 	}
-	else{
-		io[i].parentElement.parentElement.style.backgroundColor = 'transparent';
+	else {
+		io[i].parentElement.style.backgroundColor = 'transparent';
 	}
 }
+
+window.onload = function () {
+
+	let flip_flops = document.getElementsByClassName('ff-element');
+	let luts = document.getElementsByClassName('lut-element');
+
+	if (flip_flops.length > 3 || luts.length > 2) {
+		if ((flip_flops.length / 3 > luts.length / 2)) {
+			let size = 85 + ((flip_flops.length - 3) * 22);
+			document.getElementById('main').style.height = size + "vh";
+			console.log("85svh + " + ((flip_flops.length - 3) * 22).toString() + "vh = " + size.toString() + "vh");
+		}
+		else {
+			let size = 85 + ((luts.length - 2) * 33);
+			document.getElementById('main').style.height = size.toString() + 'vh';
+			console.log("85svh + " + ((luts.length - 2) * 33).toString() + "vh = " + size.toString() + "vh");
+		}
+	}
+};
+
+
+
+function displayClock(frequency) {
+	console.log('displaying clock');
+	let clock_div = document.getElementById('data-display-clock');
+	for (let i = 0; i < 84; i++) {
+		let clock = document.createElement('div');
+		clock.className = 'grid-item';
+		if (i % 14 === 0) {
+			clock.style.borderLeft = 'none';
+		}
+		if (i < 14) {
+			clock.style.borderTop = 'none';
+		}
+		if (i % 14 === 13) {
+			clock.style.borderRight = 'none';
+		}
+		if (i > 69) {
+			clock.style.borderBottom = 'none';
+		}
+
+		if (i / 14 >= 2 && i / 14 < 3) {
+			clock.style.borderBottom = ' 2px solid var(--clock-graph)';
+		}
+		if (i / 14 >= 3 && i / 14 < 4) {
+			clock.style.borderTop = '2px solid var(--clock-graph)';
+		}
+
+
+
+
+
+		clock_div.appendChild(clock);
+	}
+};
+
+displayClock(100);

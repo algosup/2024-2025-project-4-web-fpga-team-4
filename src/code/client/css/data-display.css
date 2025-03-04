@@ -1,25 +1,35 @@
+:root{
+	--primary: #0D1B2A;
+	--secondary: #1B263B;
+	--tertiary: #415A77;
+	--on-primary: #E0E1DD;
+
+	--grid-border: #E1FF00;
+	--clock-graph: #00FF11;
+}
+
 /* Applies Style to the Right Part of the Page */
 
 #data-display {
 	position: fixed;
 	top: 15vh;
 	left: 80vw;
-	background-color: #1B263B;
+	background-color: var(--secondary);
 	width: 100%;
 	height: 81svh;
 	border-radius: 20px 0 0 20px;
 
 	margin-top: 2svh;
 
-	border-top: 2px solid #fff;
-	border-left: 2px solid #fff;
-	border-bottom: 2px solid #fff;
+	border-top: 2px solid var(--on-primary);
+	border-left: 2px solid var(--on-primary);
+	border-bottom: 2px solid var(--on-primary);
 	box-sizing: border-box;
 
 	box-shadow: 1px 5px 10px rgba(255, 255, 255, 0.9);
 
 	#data-display-arrowBox {
-		border-bottom: 2px solid #fff;
+		border-bottom: 2px solid var(--on-primary);
 	}
 }
 
@@ -34,5 +44,30 @@
 	background-color: transparent;
 	border: none;
 	cursor: pointer;
-	color: #fff;
+	color: var(--on-primary);
+}
+
+
+
+
+
+#data-display-clock{
+	margin-top: 5vh;
+	margin-left: 1%;
+	height: 15vh;
+	width: 18%;
+
+	display: grid;
+	grid-template-columns: repeat(14, 1fr);
+	grid-template-rows: repeat(6, 1fr);
+
+
+
+	background-color: black;
+}
+
+.grid-item{
+	background-color: transparent;
+	border-left: 1px solid var(--grid-border);
+	border-bottom: 1px solid var(--grid-border);
 }
