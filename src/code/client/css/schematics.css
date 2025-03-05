@@ -81,6 +81,14 @@
 
 }
 
+.button{
+	background-color: grey;
+}
+
+.led{
+	background-color: darkorange;
+}
+
 .io-data{
 	text-align: center;
 	grid-column: 1/3;

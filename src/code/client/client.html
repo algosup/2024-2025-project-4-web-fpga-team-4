@@ -29,7 +29,8 @@
 		<div class="control-icon-down">
 			<div id="back"><i class="fa-solid top-bar fa-reply "></i></div>
 			<div id="forward"><i class="fa-solid top-bar fa-share "></i></div>
-			<div id="reload"><i class="fa-solid top-bar fa-rotate-left "></i></div>
+			<div id="first"><i class="fa-solid top-bar fa-rotate-left "></i></div>
+			<div id="last"><i class="fa-solid top-bar fa-rotate-right "></i></div>
 		</div>
 		<div class="zoom-icon">
 			<div id="zoom-out"><i class="fa-solid top-bar fa-magnifying-glass-minus "></i></div>
@@ -58,116 +59,24 @@
 					<h3>IO</h3>
 					<div class="back-lines"></div>
 					<div id="io-container">
-						<div class="io-element">
-							<p class="io-name io-data">Button 0</p>
-							<p class="io-out">Out</p>
-							<p class="io-data">State</p>
-							<p class="element-state io-data">ON</p>
-						</div>
-						<div class="io-element">
-							<p class="io-name io-data">Button 1</p>
-							<p class="io-out">Out</p>
-							<p class="io-data">State</p>
-							<p class="element-state io-data">OFF</p>
-						</div>
-						<div class="io-element">
-							<p class="io-name io-data">LED 0</p>
-							<p class="io-out">Out</p>
-							<p class="io-data">State</p>
-							<p class="element-state io-data">OFF</p>
-						</div>
 					</div>
 				</div>
 				<div>
 					<h3>LUT</h3>
 					<div class="back-lines"></div>
 					<div id="lut-container">
-						<div class="lut-element">
-							<p class="lut-id">LUT 0</p>
-							<p class="lut-in">In[0]</p>
-							<p class="lut-in">In[1]</p>
-							<p class="lut-in">In[2]</p>
-							<p class="lut-in">In[3]</p>
-							<p class="lut-out">Out</p>
-						</div>
-						<div class="lut-element">
-							<p class="lut-id">LUT 1</p>
-							<p class="lut-in">In[0]</p>
-							<p class="lut-in">In[1]</p>
-							<p class="lut-in">In[2]</p>
-							<p class="lut-in">In[3]</p>
-							<p class="lut-out">Out</p>
-						</div>
-						<div class="lut-element">
-							<p class="lut-id">LUT 2</p>
-							<p class="lut-in">In[0]</p>
-							<p class="lut-in">In[1]</p>
-							<p class="lut-in">In[2]</p>
-							<p class="lut-in">In[3]</p>
-							<p class="lut-out">Out</p>
-						</div>
-						<div class="lut-element">
-							<p class="lut-id">LUT 3</p>
-							<p class="lut-in">In[0]</p>
-							<p class="lut-in">In[1]</p>
-							<p class="lut-in">In[2]</p>
-							<p class="lut-in">In[3]</p>
-							<p class="lut-out">Out</p>
-						</div>
-						<div class="lut-element">
-							<p class="lut-id">LUT 4</p>
-							<p class="lut-in">In[0]</p>
-							<p class="lut-in">In[1]</p>
-							<p class="lut-in">In[2]</p>
-							<p class="lut-in">In[3]</p>
-							<p class="lut-out">Out</p>
-						</div>
 					</div>
 				</div>
 				<div>
 					<h3>Flip-flop</h3>
 					<div class="back-lines"></div>
 					<div id="ff-container">
-						<div class="ff-element">
-							<p class="ff-id">Flip Flop 0</p>
-							<p class="ff-in">Data</p>
-							<p class="ff-in">Clock</p>
-							<p class="ff-out">Out</p>
-						</div>
-						<div class="ff-element">
-							<p class="ff-id">Flip Flop 1</p>
-							<p class="ff-in">Data</p>
-							<p class="ff-in">Clock</p>
-							<p class="ff-out">Out</p>
-						</div>
-						<div class="ff-element">
-							<p class="ff-id">Flip Flop 2</p>
-							<p class="ff-in">Data</p>
-							<p class="ff-in">Clock</p>
-							<p class="ff-out">Out</p>
-						</div>
-						<div class="ff-element">
-							<p class="ff-id">Flip Flop 3</p>
-							<p class="ff-in">Data</p>
-							<p class="ff-in">Clock</p>
-							<p class="ff-out">Out</p>
-						</div>
-						<div class="ff-element">
-							<p class="ff-id">Flip Flop 4</p>
-							<p class="ff-in">Data</p>
-							<p class="ff-in">Clock</p>
-							<p class="ff-out">Out</p>
-						</div>
 					</div>
 				</div>
 				<div>
 					<h3>Clock</h3>
 					<div class="back-lines"></div>
 					<div id="clock-container">
-						<div class="clock-element">
-							<p class="clock-id">Clock 0</p>
-							<p class="clock-out">Out</p>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -176,11 +85,13 @@
 			<div id="data-display-arrowBox">
 				<button id="hide-button"><i class="fa-solid fa-angles-right" id="hnsArrow"></i></button>
 			</div>
-			<div id="data-display-clock"></div>
 		</div>
 	</div>
 
-	<script src="client.js"></script>
+	<script src="js/variables.js"></script>
+	<script src="js/tool-bar.js"></script>
+	<script src="js/schematics.js"></script>
+	<script src="js/load.js"></script>
 </body>
 
 </html>

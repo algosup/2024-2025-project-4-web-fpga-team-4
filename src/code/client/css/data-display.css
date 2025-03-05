@@ -5,7 +5,7 @@
 	--on-primary: #E0E1DD;
 
 	--grid-border: #E1FF00;
-	--clock-graph: #00FF11;
+	--clock-graph: #00FFF7;
 }
 
 /* Applies Style to the Right Part of the Page */
@@ -49,10 +49,19 @@
 
 
 
+.clock-name{
+	width: 18%;
+	margin-left: 1%;
+	margin-bottom: 0;
+	text-align: center;
+	font-size: 1.5em;
+	color: var(--on-primary);
+    inline-size: fit-content;
+}
 
 
-#data-display-clock{
-	margin-top: 5vh;
+.data-display-clock{
+	margin-top: 1vh;
 	margin-left: 1%;
 	height: 15vh;
 	width: 18%;
