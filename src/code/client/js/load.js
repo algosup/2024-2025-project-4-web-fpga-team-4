@@ -31,3 +31,6 @@ if (flip_flops.length > 3 || luts.length > 2) {
 
 
 zoom_level.textContent = zoom_levels[current_zoom_index];
+
+document.documentElement.setAttribute("data-theme", current_theme);
+theme.firstChild.className = current_theme === 'light' ? 'fa-solid top-bar fa-moon' : 'fa-solid top-bar fa-sun';

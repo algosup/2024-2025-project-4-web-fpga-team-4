@@ -13,6 +13,8 @@ let current_zoom_index = 3;
 let speed_levels = ["x 0.5", "x 1", "x 2", "x 4", "x 8", "x 16", "x 32"];
 let current_speed_index = 2;
 
+let current_theme = "light";
+
 
 // Declare the elements that will be used in the client side code
 

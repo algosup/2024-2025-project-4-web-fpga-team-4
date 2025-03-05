@@ -2,7 +2,7 @@
 // File management buttons
 
 open_folder.addEventListener('click', function () {
-	new FileReader().readAsText('file.txt');
+	// new FileReader().readAsText('file.txt');
 	console.log('open folder button clicked');
 });
 
@@ -114,6 +114,16 @@ data_view_trigger.addEventListener('click', function () {
 
 theme.addEventListener('click', function () {
 	console.log('theme button clicked');
+	if (current_theme === 'light') {
+		current_theme = 'dark';
+		document.documentElement.setAttribute('data-theme', current_theme);
+		theme.firstChild.className = 'fa-solid top-bar fa-sun';
+	}
+	else {
+		current_theme = 'light';
+		document.documentElement.setAttribute('data-theme', current_theme);
+		theme.firstChild.className = 'fa-solid top-bar fa-moon';
+	}
 });
 
 settings.addEventListener('click', function () {

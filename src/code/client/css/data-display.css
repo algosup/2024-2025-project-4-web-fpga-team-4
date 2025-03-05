@@ -1,10 +1,6 @@
 :root{
-	--primary: #0D1B2A;
-	--secondary: #1B263B;
-	--tertiary: #415A77;
-	--on-primary: #E0E1DD;
-
-	--grid-border: #E1FF00;
+	/* --grid-border: #E1FF00; */
+	--grid-border: rgba(225, 255, 0, .6);
 	--clock-graph: #00FFF7;
 }
 
@@ -26,7 +22,7 @@
 	border-bottom: 2px solid var(--on-primary);
 	box-sizing: border-box;
 
-	box-shadow: 1px 5px 10px rgba(255, 255, 255, 0.9);
+	box-shadow: 1px 5px 10px var(--shadow-color);
 
 	#data-display-arrowBox {
 		border-bottom: 2px solid var(--on-primary);
@@ -44,7 +40,7 @@
 	background-color: transparent;
 	border: none;
 	cursor: pointer;
-	color: var(--on-primary);
+	color: var(--icons);
 }
 
 
@@ -55,7 +51,7 @@
 	margin-bottom: 0;
 	text-align: center;
 	font-size: 1.5em;
-	color: var(--on-primary);
+	color: var(--tool-data-text);
     inline-size: fit-content;
 }
 
