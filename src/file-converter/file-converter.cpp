@@ -14,6 +14,14 @@ struct io
 	string id;
 };
 
+struct connection
+{
+	string type;
+	string id;
+	string io;
+	string port;
+};
+
 struct LUT
 {
 	int id;
@@ -31,7 +39,7 @@ struct FlipFlop
 void displayLUT(const LUT &lut);
 void displayLUTs(const vector<LUT> *luts);
 
-void getDefinitions(const string &inputFilePath, vector<string> *modules, vector<string> *wires, vector<string> *assignments)
+void getDefinitions(const string &inputFilePath, vector<string> *modules, vector<string> *wires, vector<string> *assignments, vector<string> *groups)
 {
 	ifstream inputFile(inputFilePath);
 
@@ -59,6 +67,12 @@ void getDefinitions(const string &inputFilePath, vector<string> *modules, vector
 		else if (line.starts_with("    assign"))
 		{
 			assignments->push_back(line.substr(4, line.size() - 4));
+		}
+		else if (line.starts_with("        .datain")){
+			groups->push_back(line.substr(17, line.size() - 20));
+		}
+		else if (line.starts_with("        .dataout")){
+			groups->push_back(line.substr(18, line.size() - 20));
 		}
 		else if (line.starts_with(")"))
 		{
@@ -282,6 +296,81 @@ void getIOFromString(vector<io> *ios, string str)
 	ios->push_back(newIO);
 }
 
+connection getConnectionsFromString(vector<pair<connection, connection>> *elementConnections, string Element){
+	connection ElementFinal;
+	if (Element.starts_with("D")){
+		ElementFinal.type="userInput";
+		ElementFinal.id="0";
+		ElementFinal.io="output";
+		ElementFinal.port="0";
+	} else if (Element.starts_with("Q")){
+		ElementFinal.type="userOutput";
+		ElementFinal.id="0";
+		ElementFinal.io="input";
+		ElementFinal.port="0";
+	} else if (Element.starts_with("clk")){
+		ElementFinal.type="Clock";
+		ElementFinal.id="0";
+		ElementFinal.io="output";
+		ElementFinal.port="0";
+	} else if (Element.starts_with("async")){
+		ElementFinal.type="Async_reset";
+		ElementFinal.id="0";
+		ElementFinal.io="output";
+		ElementFinal.port="0";
+	} else if (Element.starts_with("latch_")){
+		ElementFinal.type="DFF";
+		ElementFinal.id="0";
+		if (Element[6]=='$'){
+			ElementFinal.port=&Element[12]+1;
+			if (Element[18]=='i'){
+				ElementFinal.io="input";
+			}
+			else {
+				ElementFinal.io="output";
+			}
+		}
+		else {
+			ElementFinal.port="0";
+			if (Element[8]=='i'){
+				ElementFinal.io="input";
+			}
+			else if (Element[8]=='o'){
+				ElementFinal.io="output";
+			}
+			else {
+				ElementFinal.io="clock";
+			}
+		}
+	}
+	else if (Element.starts_with("lut")){
+		if (Element[5]=='a'){
+			ElementFinal.type="lut";
+			string id;
+			int i = 32;
+			while (i < Element.size() && isdigit(Element[i])) {  // Check if it's a digit before calling stoi()
+				id += Element[i];  // Append the character directly to the id string
+				i++;
+			}
+			ElementFinal.id=id;
+			if (Element[i+1]=='i'){
+				ElementFinal.io="input";
+				ElementFinal.port=Element[i+9];
+			}
+			else {
+				ElementFinal.io="output";
+				ElementFinal.port=Element[i+10];
+			}
+		} else {
+			ElementFinal.type="lut_gnd";
+			ElementFinal.io="input";
+			ElementFinal.id="0";
+			ElementFinal.port="0";
+		}	
+	}
+	return ElementFinal;
+}
+
 void writeDeclarationsToJson(const string outputFilePath, vector<LUT> *luts, vector<FlipFlop> *flipFlops, vector<io> *ios){
 	ofstream outputFile(outputFilePath);
 	if (!outputFile.is_open())
@@ -391,21 +480,24 @@ int main()
 	vector<string> modules;
 	vector<string> wires;
 	vector<string> assignments;
+	vector<string> groups;
 
-	getDefinitions(inputFilePath, &modules, &wires, &assignments);
+	getDefinitions(inputFilePath, &modules, &wires, &assignments, &groups);
 
 	vector<LUT> luts;
 	vector<FlipFlop> flipFlops;
 	vector<io> ios;
+	vector<pair<connection, connection>> elementConnections;
 
 	for (auto module : modules)
 	{
 		// cout << "Module: " << module << endl;
 		module = removeListCharacter(module, {'(', ')', ';', '\\'});
+		cout << module << endl;
 	}
 	for (auto wire : wires)
 	{
-		// cout << "Wire: " << wire << endl;
+		//cout << "Wire: " << wire << endl;
 		if (wire.starts_with("wire \\lut"))
 		{
 			wire = removeListCharacter(wire, {';', ' '});
@@ -422,9 +514,17 @@ int main()
 			getIOFromString(&ios, wire);
 		}
 	}
-	for (auto assign : assignments)
+	for (int i = 0; i < groups.size()-1; i=i+2)
 	{
-		// cout << "Assign: " << assign << endl;
+		pair<connection, connection> connectionsToAdd;
+		connectionsToAdd.first=getConnectionsFromString(&elementConnections, groups[i]);
+		connectionsToAdd.second=getConnectionsFromString(&elementConnections, groups[i+1]);
+		elementConnections.push_back(connectionsToAdd);
+	}
+	for (auto elements: elementConnections){
+		cout << "source: " << endl << elements.first.type << endl << elements.first.id << endl << elements.first.io << endl << elements.first.port << endl;
+		cout << "destination: " << endl << elements.second.type << endl << elements.second.id << endl << elements.second.io << endl << elements.second.port << endl;
+		cout << "done" << endl;
 	}
 
 
