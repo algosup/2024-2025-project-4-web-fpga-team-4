@@ -8,10 +8,10 @@ let lut_count = 0;
 let flip_flop_count = 0;
 
 let zoom_levels = ["25%", "50%", "75%", "100%", "125%", "150%", "175%", "200%"];
-let current_zoom_index = 3;
+let current_zoom_index= 3;
 
-let speed_levels = ["x 0.5", "x 1", "x 2", "x 4", "x 8", "x 16", "x 32"];
-let current_speed_index = 1;
+let speed_levels = ["x0.5", "x1", "x2", "x4", "x8", "x16", "x32"];
+let current_speed_index= 1;
 
 let current_theme = "light";
 
@@ -37,7 +37,7 @@ const speed_minus = document.getElementById('speed-minus');
 // Zoom elements
 const zoom_in = document.getElementById('zoom-in');
 const zoom_out = document.getElementById('zoom-out');
-const zoom_level = document.getElementById('zoom-manual');
+const zoom_level = document.getElementById('zoom');
 
 // Data view elements
 const data_view_trigger = document.getElementById('data-view-trigger');

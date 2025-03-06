@@ -20,6 +20,8 @@
 	margin-top: 15svh;
 	width: 100%;
 	min-height: 85svh;
+
+	font-size: 2vh;
 }
 
 
@@ -43,13 +45,16 @@
 
 #guidelines > div {
 	height: 100%;
+	div > div{
+	border: .2vw solid var(--on-primary);
+	}
 }
 
 .back-lines {
 	height: min(78.5vh);
-	width: 0px;
-	border-width: 0px;
-	border-left-width: 3px;
+	width: 0;
+	border-width: 0;
+	border-left-width: .3vh;
 	border-color: grey;
 	border-style: dashed;
 }
@@ -62,10 +67,8 @@
 .input-element {
 	height: 16svh;
 	width: 16svh;
-	border-radius: 10px;
+	border-radius: 1vh;
 	margin-top: 6svh;
-
-	border: 2px solid var(--on-primary);
 
 	box-sizing: border-box;
 
@@ -122,10 +125,8 @@
 .output-element {
 	height: 16svh;
 	width: 16svh;
-	border-radius: 10px;
+	border-radius: 1vh;
 	margin-top: 6svh;
-
-	border: 2px solid var(--on-primary);
 
 	box-sizing: border-box;
 
@@ -209,9 +210,8 @@
 
 	height: 27svh;
 	width: 16svh;
-	border-radius: 10px;
+	border-radius: 1vh;
 	margin-top: 6svh;
-	border: 2px solid var(--on-primary);
 
 	box-sizing: border-box;
 
@@ -241,8 +241,6 @@
 .lut-in {
 	grid-column: 1;
 	margin-left: .5svw;
-
-	font-size: 2vh;
 }
 
 .lut-in::before{
@@ -298,9 +296,8 @@
 
 	height: 16svh;
 	width: 16svh;
-	border-radius: 10px;
+	border-radius: 1vh;
 	margin-top: 6svh;
-	border: 2px solid var(--on-primary);
 
 	box-sizing: border-box;
 
@@ -383,9 +380,8 @@
 
 	height: 16svh;
 	width: 16svh;
-	border-radius: 10px;
+	border-radius: 1vh;
 	margin-top: 6svh;
-	border: 2px solid var(--on-primary);
 
 	box-sizing: border-box;
 

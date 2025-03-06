@@ -94,7 +94,11 @@ function displayInput(name, type, state) {
 
 	let input_container = document.getElementById('input-container');
 	let input_element = document.createElement('div');
-	input_element.innerHTML = '<p class="input-name input-data">' + name + '</p><p class="input-out">Out</p><p class="input-data">State</p><p class="element-state input-data">' + state_string + '</p>';
+	if (name === 'clk'){
+		input_element.innerHTML = '<p class="input-name input-data">' + name + '</p><p class="input-out">Out</p>';
+	}else {
+		input_element.innerHTML = '<p class="input-name input-data">' + name + '</p><p class="input-out">Out</p><p class="input-data">State</p><p class="element-state input-data">' + state_string + '</p>';
+	}
 	switch (name) {
 		case 'clk':
 			input_element.className = 'input-element clock-element';
