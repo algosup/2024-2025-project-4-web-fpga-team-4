@@ -11,7 +11,7 @@ let zoom_levels = ["25%", "50%", "75%", "100%", "125%", "150%", "175%", "200%"];
 let current_zoom_index = 3;
 
 let speed_levels = ["x 0.5", "x 1", "x 2", "x 4", "x 8", "x 16", "x 32"];
-let current_speed_index = 2;
+let current_speed_index = 1;
 
 let current_theme = "light";
 

@@ -1,6 +1,7 @@
 :root {
-	--button-color: #999997;
-	--led-color: #DDB72B;
+	--reset-color: #999997;
+	--d-color: #DDB72B;
+	--q-color: #B7DD2B;
 	--lut-color: #15BF9A;
 	--ff-color: #BF1518;
 	--clock-color: #AE15BF;
@@ -45,7 +46,7 @@
 }
 
 .back-lines {
-	height: 100%;
+	height: min(78.5vh);
 	width: 0px;
 	border-width: 0px;
 	border-left-width: 3px;
@@ -97,15 +98,15 @@
 	margin-right: .7svw;
 }
 
-
-.input-out::after {
+.input-out::after{
 	position: absolute;
-	right: -7px;
+	right: -.7vh;
+	transform: translateY(.2vh);
 	content: "";
 	display: block;
-	width: 15px;
-	height: 15px;
-	background-color: var(--on-primary);
+	width: 1.5vh;
+	height: 1.5vh;
+	background-color: lime;
 	border-radius: 50%;
 }
 
@@ -141,12 +142,16 @@
 
 }
 
-.button{
-	background-color: var(--button-color);
+.reset-element{
+	background-color: var(--reset-color);
 }
 
-.led{
-	background-color: var(--led-color);
+.data-element{
+	background-color: var(--d-color);
+}
+
+.q-element{
+	background-color: var(--q-color);
 }
 
 .output-data{
@@ -166,20 +171,28 @@
 }
 
 
-.output-out::after {
-	position: absolute;
-	right: -7px;
-	content: "";
-	display: block;
-	width: 15px;
-	height: 15px;
-	background-color: var(--on-primary);
-	border-radius: 50%;
-}
-
 
 .led{
 	background-color: darkorange;
+}
+.output-in {
+	grid-column: 1;
+	margin-left: .5svw;
+}
+.output-in::before{
+	position: absolute;
+	left: -.7vh;
+	transform: translateY(.2vh);
+	content: "";
+	display: block;
+	width: 1.5vh;
+	height: 1.5vh;
+	background-color: red;
+	border-radius: 50%;
+}
+
+.output-in.used::before{
+	background-color: lime;
 }
 
 
@@ -228,18 +241,24 @@
 .lut-in {
 	grid-column: 1;
 	margin-left: .5svw;
+
+	font-size: 2vh;
 }
 
-.lut-in::before {
+.lut-in::before{
 	position: absolute;
-	left: -7px;
-	transform: translateY(1px);
+	left: -.7vh;
+	transform: translateY(.4vh);
 	content: "";
 	display: block;
-	width: 15px;
-	height: 15px;
-	background-color: var(--on-primary);
+	width: 1.5vh;
+	height: 1.5vh;
+	background-color: red;
 	border-radius: 50%;
+}
+
+.lut-in.used::before{
+	background-color: lime;
 }
 
 
@@ -250,17 +269,22 @@
 	margin-right: .5svw;
 }
 
-.lut-out::after {
+.lut-out::after{
 	position: absolute;
-	right: -7px;
-	transform: translateY(-15px);
+	right: -.7vh;
+	transform: translateY(-1.8vh);
 	content: "";
 	display: block;
-	width: 15px;
-	height: 15px;
-	background-color: var(--on-primary);
+	width: 1.5vh;
+	height: 1.5vh;
+	background-color: red;
 	border-radius: 50%;
 }
+
+.lut-out.used::after{
+	background-color: lime;
+}
+
 
 
 
@@ -306,17 +330,20 @@
 	grid-column: 1;
 	margin-left: .5svw;
 }
-
-.ff-in::before {
+.ff-in::before{
 	position: absolute;
-	left: -7px;
-	transform: translateY(1px);
+	left: -.7vh;
+	transform: translateY(.4vh);
 	content: "";
 	display: block;
-	width: 15px;
-	height: 15px;
-	background-color: var(--on-primary);
+	width: 1.5vh;
+	height: 1.5vh;
+	background-color: red;
 	border-radius: 50%;
+}
+
+.ff-in.used::before{
+	background-color: lime;
 }
 
 
@@ -327,16 +354,21 @@
 	margin-right: .5svw;
 }
 
-.ff-out::after {
+
+.ff-out::after{
 	position: absolute;
-	right: -7px;
-	transform: translateY(-15px);
+	right: -.7vh;
+	transform: translateY(-1.8vh);
 	content: "";
 	display: block;
-	width: 15px;
-	height: 15px;
-	background-color: var(--on-primary);
+	width: 1.5vh;
+	height: 1.5vh;
+	background-color: red;
 	border-radius: 50%;
+}
+
+.ff-out.used::after{
+	background-color: lime;
 }
 
 
@@ -380,19 +412,19 @@
 }
 
 .clock-out {
-	grid-column: 1;
-	margin-left: .5svw;
+	grid-column: 2;
+	margin-right: .5svw;
+	text-align: end;
 }
 
-
-.clock-out::before {
+.clock-out::after{
 	position: absolute;
-	left: -7px;
-	transform: translateY(1px);
+	right: -.7vh;
+	transform: translateY(-1.8vh);
 	content: "";
 	display: block;
-	width: 15px;
-	height: 15px;
-	background-color: var(--on-primary);
+	width: 1.5vh;
+	height: 1.5vh;
+	background-color: lime;
 	border-radius: 50%;
 }
