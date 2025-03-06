@@ -22,7 +22,7 @@
 
 You can find a detailed breakdown of the tasks identified for the project by following this link: [Gantt & Schedule](https://docs.google.com/spreadsheets/d/1TIji_6mbcO8O4CSqA-9L6FJdZySkKpRRgM-a_pmySaw/edit?usp=sharing)
 
-This document has been created using Google Docs to keep track of the different tasks for both team members and the client.
+This document has been created using Google Sheets to keep track of the different tasks for both team members and the client.
 
 ## RACI Matrix
 
@@ -53,14 +53,14 @@ Legend:
 
 | ID  | Description                                                                        | Consequence                                              | Impact | Likelihood | Mitigation/Avoidance                                                                                                                                                           |
 | --- | ---------------------------------------------------------------------------------- | -------------------------------------------------------- | ------ | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 1   | **Delays in communication with the clien**                                         | Deadlines not respected                                  | High   | High       | Plan messages in advance, schedule regular meetings, and consolidate questions into one message.                                                                               |
+| 1   | **Delays in communication with the client**                                         | Deadlines not respected                                  | High   | High       | Plan messages in advance, schedule regular meetings, and consolidate questions into one message.                                                                               |
 | 2   | **Misunderstanding of client requirements**                                        | Rework and wasted effort                                 | High   | Medium     | Organize clarification meetings, document requirements, and validate them with the client before starting the implementation.                                                  |
 | 3   | **Time estimation inaccuracies**                                                   | Project delivery delay                                   | Medium | High       | Use past project references, buffer time in estimations, and track time spent on tasks regularly.                                                                              |
-| 4   | **Team member unavailability**                                                     | Reduced productivity                                     | Medium | Low        | Assign backup responsibilities and ensure knowledge transfer between members.                                                                                                  |
+| 4   | **Team member unavailability**                                                     | Reduced productivity                                     | Medium | Medium        | Assign backup responsibilities and ensure knowledge transfer between members.                                                                                                  |
 | 5   | **Security vulnerabilities in the web interface**                                  | Data breaches and application failure                    | High   | Low        | Conduct regular security audits, use secure libraries, and apply best practices for secure development.                                                                        |
 | 6   | **Web technology compatibility issues**                                            | Interface malfunctions                                   | Medium | Medium     | Perform cross-browser testing, use standardized libraries, and follow web development best practices.                                                                          |
 | 7   | **Difficulties in understanding source files (.SDF) and interpreting them**        | Faulty source files, non-functioning final product       | High   | Medium     | Organize meetings with the client to clarify the source file format, allocate dedicated technical team members, and create internal documentation.                             |
-| 8   | **Falling in love with the project, even though it doesn't meet the requirements** | Off-topic, non-education web app                         | High   | Low        | Always stay open-minded and keep the project's scope and requirements in mind. Ask for feedback from the client (it should be the client's love for the product that matters). |
+| 8   | **Emotional attachment to personal ideas over project requirements** | Off-topic, non-education web app                         | High   | Low        | Always stay open-minded and keep the project's scope and requirements in mind. Ask for feedback from the client (it should be the client's love for the product that matters). |
 | 9   | **Team member leaving**                                                            | Tasks left to the remaining members without any assignee | High   | Unlikely   | Sharing the tasks among the remaining team members, rework planning                                                                                                            |
 
 ## KPIs
@@ -156,7 +156,7 @@ The following KPIs are tracked in this section:
 - **Overtime**
 - **Unjustified Absence**
 
-They are tracked in the weekly KPIs. Find them [here.](https://docs.google.com/spreadsheets/d/1EJIGbOufF86FP-Pb6Y5z0wuYymK0fEmoFKtg16JfIHg/edit?usp=sharing)
+They are tracked in the weekly KPIs. Which you can find in a link below in this document.
 
 #### <ins>Mood</ins>
 
@@ -164,7 +164,7 @@ The mood percentage is calculated from the average of a 10-point personal grade.
 
 This method allows an accurate way of tracking the motivation and overall mood during the project.
 
-You can find the responses [here](https://docs.google.com/spreadsheets/d/1EJIGbOufF86FP-Pb6Y5z0wuYymK0fEmoFKtg16JfIHg/edit?usp=sharing).
+You can find a link to the forms below. 
 
 ### Link to the Project's KPIs
 
@@ -174,7 +174,7 @@ You can see our project's KPIs, which were explained above, by following [this l
 
 This section gathers all the forms used for the KPIs.
 
-- [Satisfaction Week 1](https://docs.google.com/spreadsheets/d/1TIji_6mbcO8O4CSqA-9L6FJdZySkKpRRgM-a_pmySaw/edit?gid=1984360613#gid=1984360613)
+- [Satisfaction Week 1](https://docs.google.com/spreadsheets/d/1EJIGbOufF86FP-Pb6Y5z0wuYymK0fEmoFKtg16JfIHg/edit?resourcekey=&gid=322050487#gid=322050487)
 - [Satisfaction Week 2](https://docs.google.com/spreadsheets/d/1EJIGbOufF86FP-Pb6Y5z0wuYymK0fEmoFKtg16JfIHg/edit?resourcekey=&gid=824804903#gid=824804903)
 - [Satisfaction Week 3](https://docs.google.com/spreadsheets/d/1EJIGbOufF86FP-Pb6Y5z0wuYymK0fEmoFKtg16JfIHg/edit?resourcekey=&gid=1117234513#gid=1117234513)
 
