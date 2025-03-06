@@ -53,12 +53,72 @@
 	border-style: dashed;
 }
 
-#io-container {
+#input-container {
 	position: absolute;
 }
 
 
-.io-element {
+.input-element {
+	height: 16svh;
+	width: 16svh;
+	border-radius: 10px;
+	margin-top: 6svh;
+
+	border: 2px solid var(--on-primary);
+
+	box-sizing: border-box;
+
+	display: grid !important;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(6, 1fr);
+
+	color: var(--on-primary);
+
+
+	* {
+		height: .005svh;
+	}
+	
+}
+
+.input-data{
+	text-align: center;
+	grid-column: 1/3;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.input-out {
+	grid-column: 2;
+	display: flex;
+	justify-content: flex-end;
+	margin-right: .7svw;
+}
+
+
+.input-out::after {
+	position: absolute;
+	right: -7px;
+	content: "";
+	display: block;
+	width: 15px;
+	height: 15px;
+	background-color: var(--on-primary);
+	border-radius: 50%;
+}
+
+.button{
+	background-color: var(--button-color);
+}
+
+#output-container {
+	position: absolute;
+}
+
+
+.output-element {
 	height: 16svh;
 	width: 16svh;
 	border-radius: 10px;
@@ -89,7 +149,7 @@
 	background-color: var(--led-color);
 }
 
-.io-data{
+.output-data{
 	text-align: center;
 	grid-column: 1/3;
 	display: flex;
@@ -98,7 +158,7 @@
 }
 
 
-.io-out {
+.output-out {
 	grid-column: 2;
 	display: flex;
 	justify-content: flex-end;
@@ -106,7 +166,7 @@
 }
 
 
-.io-out::after {
+.output-out::after {
 	position: absolute;
 	right: -7px;
 	content: "";
@@ -116,6 +176,12 @@
 	background-color: var(--on-primary);
 	border-radius: 50%;
 }
+
+
+.led{
+	background-color: darkorange;
+}
+
 
 .element-state{
 	font-weight: bold;

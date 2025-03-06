@@ -84,31 +84,43 @@ function displayClock(frequency) {
 
 
 
-function displayIO(type, state) {
+function displayInput(type, state) {
 	if (typeof type !== 'string') {
 		console.error('Type must be a string');
 		return;
 	}
 	let state_string = state ? 'ON' : 'OFF';
 
-	let io_container = document.getElementById('io-container');
-	let io_element = document.createElement('div');
+	let input_container = document.getElementById('input-container');
+	let input_element = document.createElement('div');
 	if (type === 'Button') {
-		io_element.innerHTML = '<p class="io-name io-data">' + type + ' ' + button_count + '</p><p class="io-out">Out</p><p class="io-data">State</p><p class="element-state io-data">' + state_string + '</p>';
-		io_element.className = 'io-element button';
+		input_element.innerHTML = '<p class="input-name input-data">' + type + ' ' + button_count + '</p><p class="input-out">Out</p><p class="input-data">State</p><p class="element-state input-data">' + state_string + '</p>';
+		input_element.className = 'input-element button';
 		button_count++;
 	}
-	else if (type === 'LED') {
-		io_element.innerHTML = '<p class="io-name io-data">' + type + ' ' + led_count + '</p><p class="io-out">Out</p><p class="io-data">State</p><p class="element-state io-data">' + state_string + '</p>';
-		io_element.className = 'io-element led';
+	else {
+	}
+	input_container.appendChild(input_element);
+}
+
+function displayOutput(type, state) {
+	if (typeof type !== 'string') {
+		console.error('Type must be a string');
+		return;
+	}
+	let state_string = state ? 'ON' : 'OFF';
+
+	let output_container = document.getElementById('output-container');
+	let output_element = document.createElement('div');
+	if (type === 'LED') {
+		output_element.innerHTML = '<p class="output-name output-data">' + type + ' ' + led_count + '</p><p class="output-out">Out</p><p class="output-data">State</p><p class="element-state output-data">' + state_string + '</p>';
+		output_element.className = 'output-element led';
 		led_count++;
 	}
 	else {
 	}
-	io_container.appendChild(io_element);
+	output_container.appendChild(output_element);
 }
-
-
 
 function displayLUT() {
 	let lut_container = document.getElementById('lut-container');
@@ -134,10 +146,9 @@ function displayFlipFlop() {
 
 
 
-// IO
-displayIO('Button', true);
-displayIO('Button', false);
-displayIO('LED', false);
+// Input
+displayInput('Button', true);
+displayInput('Button', false);
 
 // LUTs
 displayLUT();
@@ -155,5 +166,8 @@ displayFlipFlop();
 
 
 // Clocks
-displayClock(100);
-displayClock(10000000000);
+// displayClock(100);
+// displayClock(10000000000);
+
+// Output
+displayOutput('LED', false);
