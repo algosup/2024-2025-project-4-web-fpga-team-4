@@ -1,46 +1,297 @@
-
 # Functional Specifications
 ---
-## Gloassary
+
+## Preamble
+*This document outlines the functional specifications for the development of a web interface designed to simulate the internal chip flows of an FPGA. This document serves as a comprehensive guide for the project's scope, requirements, and objectives, ensuring that all stakeholders have a clear understanding of the project's goals and deliverables.*
 
 
 ---
-## Overview
+## Introduction
 
-### Purpose
-The purpose of this project is to develop a user-friendly web interface for simulating the internal chip flows of an FPGA. This interface will allow users like teachers and students to easily upload SDF files, adjust the real-time clock speed, and view simulation results. By streamlining the simulation process, this tool will enhance the educational experience and provide a practical demonstration of FPGA behavior in a classroom setting.
+### Gloassary
 
-### State of the Art
+
+### Project Overview
+The purpose of this project is to develop a user-friendly web interface for simulating the internal chip flows of an FPGA. This interface will enable teachers and students to easily upload SDF files, adjust real-time clock speeds, and view simulation results. By streamlining the simulation process, this tool will enhance the educational experience and provide a practical demonstration of FPGA behavior in classroom settings.
+
+### Project Definition
+
+#### Vision
+The vision of this project is to provide an open source educational web platform for learning FPGA internal functioning and exploring the challenges associated with this technology.
+
+Team objectives include:
+- Developing a user-friendly web interface for simulating FPGA internal chip flows.
+- Providing tools for uploading SDF files, adjusting clock speeds, and controlling simulations.
+- Enhancing the educational experience for students and teachers through interactive real-time demonstrations.
+- Ensuring that the interface’s visual design is optimized for both computer screens and video projectors.
+
+#### State of the Art
 Currently, there is no dedicated web interface for FPGA internal chip flow simulation. Existing solutions rely on expensive, complex software that is not tailored for educational use. These tools often have steep learning curves and are not designed for interactive real-time demonstrations. This project aims to fill that gap by offering a simple, accessible, and cost-effective solution.
 
-### Poject Scope
-The project will be developed in two distinct phases:
-- **Phase 1:** Development of the web interface, including the core functionalities (uploading SDF files, simulation control, display of results, and zoom features).
-- **Phase 2:** Integration and development of the simulation engine that powers the FPGA flow simulations, which will be seamlessly connected to the web interface.
+Existing simulation tools:
+| Tool | Licence type | Limitations | Price | Source |
+| ---- | ------------ | ----------- | ----- | ------ |
+| Xilinx Vivado | Vivado ML Enterprise Edition, Fixed license, NCNR | Complex interface, expensive, not educational | $4,395| [🔗](https://www.amd.com/en/products/software/adaptive-socs-and-fpgas/vivado/vivado-buy.html#) |
+| Intel Quartus Prime | Quartus Prime Pro Edition, Fixed license | Complex interface, expensive, not educational | $3,995  | [🔗](https://www.thailand.intel.com/content/dam/www/central-libraries/us/en/documents/quartus-prime-compare-editions-guide.pdf) |
+| Intel Quartus Prime | Quartus Prime Standard Edition, Fixed license | Complex interface, expensive, not educational | $2,995  | [🔗](https://www.thailand.intel.com/content/dam/www/central-libraries/us/en/documents/quartus-prime-compare-editions-guide.pdf) |
+| Intel Quartus Prime | Quartus Prime Lite Edition | Complex interface, not educational, missing some simulation tools | Free  | [🔗](https://www.thailand.intel.com/content/dam/www/central-libraries/us/en/documents/quartus-prime-compare-editions-guide.pdf) |
 
-The initial implementation will use the following technologies:
-- **Frontend:** Native JavaScript, HTML, CSS
-- **Backend:** Node.js with Express.js (subject to change based on project needs)
 
-### Out of Scope
-This project is not designed or intended for commercial deployment. All source code and documentation will be released as open source, ensuring that it remains free and accessible for academic use.
+#### Scope
+This project will will use the following technologies:
+Frontend: Native JavaScript, HTML, CSS
+Backend: Node.js with Express.js (subject to change based on project needs)
+
+The final product will consist of a local server hosting a web interface accessible from any modern web browser.
+
+#### Deliverables
+| Deliverable | Purpose | Document |
+| ----------- | ------- | ---- |
+| Functional Specifications | Define project scope and requirements | [🔗](./functional-specifications.md) |
+| Graphic Charter | Define the visual identity of the web interface | [🔗](./graphic-charter.md) |
+| Technical Specifications | Outline technical details and implementation plan | [🔗](./../technical-specifications/technical-specifications.md) |
+| Test Plan | Define testing procedures and criteria | [🔗](./../quality-assurance/test-plan.md) |
+| User Manual | Provide instructions for using the web interface | [🔗](./../user-manual/user-manual.md) |
+| Source Code | Share the project codebase with the community | [🔗](./../../src) |
+
+### Project Organization|
+
+#### Project Representatives
+| Owners | Representative |
+| ------ | -------------- |
+| [CNES](https://www.cnes.fr/en) | Represented by [Florent MANNI](https://www.linkedin.com/in/florent-manni-182547211/) |
+| [ALGOSUP](https://www.algosup.com) | Represented by [Franck JEANNIN](https://www.linkedin.com/in/franck-jeannin/) |
+| [Thibaud MARLIER](https://www.linkedin.com/in/thibaudmarlier/) | Represented by [Maxime CARON](https://www.linkedin.com/in/maxime-caron-dev/) (Program Manager)|
+
+#### Team and Roles
+
+| Full Name | Role | Role Description | Contact |
+| --------- | ---- | ---------------- | ------- |
+| Thibaude MARLIER | Project Manager | Responsible for project planning, coordination, and communication | [LinkedIn](https://www.linkedin.com/in/thibaudmarlier/) |
+| Maxime CARON | Program Manager | Ensures project meets expectations; oversees design and functional specs | [LinkedIn](https://www.linkedin.com/in/maxime-caron-dev/) |
+| Emilien CHINSY | Technical Lead | Oversees technical aspects, including architecture and implementation | [LinkedIn](https://www.linkedin.com/in/emilien-chinsy-5a794632b/) |
+| Guillaume DESPAUX | Quality Assurance | Ensures quality of deliverables and adherence to requirements | [LinkedIn](https://www.linkedin.com/in/guillaume-despaux/) |
+| Clementine CUREL | Technical Writer | Documents the project, including user manuals	 | [LinkedIn](https://www.linkedin.com/in/clementinecurel/) |
+| Jason GROSSO | Software Engineer | Develops the web interface and simulation engine | [LinkedIn](https://www.linkedin.com/in/jason-grosso-847b39251/) |
+| Lauren BOUQUIN | Software Engineer | Develops the web interface and simulation engine | [LinkedIn](https://www.linkedin.com/in/laurentb22/) |
+
+#### Stakeholders
+
+| Stakeholder | Interest |
+| ----------- | -------- |
+| CNES | Project initiator and primary beneficiary |
+| ALGOSUP | Project collaborator and technology provider |
+| ALGOSUP Students| Developers and testers of the project |
+| Teachers | End users of the web interface for educational purposes |
+| Students | End users of the web interface for learning FPGA concepts |
+
+#### Project Reviwers
+External project reviewers have been appointed by the project owner to review our specifications and provide us with feedback.
+
+### Project Timeline
+
+#### Retro-Planning
+
+The project will be developed in 6 weeks, from 24<sup>th</sup> February 2025 to 4<sup>th</sup> April 2025.
+
+![Retro-Planning](./images/retro-planning-v1.png)
+
+#### Milestones
+| Date       | Milestone                 | Responsible                  |
+| ---------- | ------------------------- | ---------------------------- |
+| 02/28/2025 | First Weekly Report       | Thibaud MARLIER              |
+| 03/07/2025 | Second Weekly Report      | Thibaud MARLIER              |
+| 03/13/2025 | Functional Specifications | Maxime CARON                 |
+| 03/13/2025 | Graphic Charter           | Maxime CARON                 |
+| 03/14/2025 | Third Weekly Report       | Thibaud MARLIER              |
+| 03/21/2025 | Fourth Weekly Report      | Thibaud MARLIER              |
+| 03/25/2025 | Technical Specifications  | Emilien CHINSY               |
+| 03/25/2025 | Test Plan                 | Guillaume DESPAUX            |
+| 03/28/2025 | Fifth Weekly Report       | Thibaud MARLIER              |
+| 04/01/2025 | User Manual               | Clementine CUREL             |
+| 04/01/2025 | Source Code               | Jason GROSS & Lauren BOUQUIN |
+| 04/04/2025 | Final Presentation        | Entire Team                  |
+| 04/04/2025 | Final Report              | Thibaud MARLIER              |
+| 04/04/2025 | Project Post-Mortem       | Thibaud MARLIER              |
+
+#### Resources
+- Team of 7 people
+- Input from teachers and professionals at CNES
+- Help from ALGOSUP teachers and professionals
+- External project reviewers
+- Open-source tools and libraries
+- SDF file examples
+- Estimated project time: 490 hours (10 days × 7 people × 7 hours/day)
+
+#### Assumptions and Constraints
+- The project will use web technologies (HTML, CSS, JavaScript, Node.js, Express.js).
+- It will be hosted on a local server and accessible via modern web browsers.
+- The project is open source and free for educational use.
+- It will be developed in English and tested on Chrome, Firefox, Safari, and Edge.
+- It will be designed for ease of deployment on local machines with limited resources.
+- The interface will accommodate users with varying technical expertise and adhere to accessibility guidelines.
+- The project will comply with relevant data protection and privacy regulations.
 
 ---
-## Target Audience
+## Personas
 
-### Personas
+**1. Emily Thompson – High School Technology Teacher**  
+<div style="display: flex; flex-direction: row;">
+  <img src="images/personas-1.jpg" width="200" height="200px" style="margin-right: 20px;">
+  <p>
+    <strong>Background:</strong> A passionate educator who integrates hands-on technology into her curriculum.<br>
+    <strong>Goals:</strong><br>
+    - To demonstrate complex FPGA concepts through interactive, real-time simulations.<br>
+    - To simplify the learning process with an intuitive, accessible interface.<br>
+    <strong>Frustrations:</strong><br>
+    - Tools that are too complex or expensive.<br>
+    - Lack of real-time interactivity that limits classroom engagement.
+  </p>
+</div>
+<br />
 
-<!-- 
 
-- "Teacher" like Florent
 
-- Student advanced
+**2. Mark Reynolds – Undergraduate Electrical Engineering Student** 
+<div style="display: flex; flex-direction: row;">
+  <img src="images/personas-2.png" width="200" height="200px" style="margin-right: 20px;">
+  <p>
+    <strong>Background:</strong> An enthusiastic student eager to learn FPGA design and simulation.<br>
+    <strong>Goals:</strong><br>
+    - To experiment with different simulation parameters (like clock speeds and step sizes) for deeper understanding.<br>
+    - To use a tool that bridges theoretical concepts with practical application.<br>
+    <strong>Frustrations:</strong><br>
+    - Limited hands-on opportunities with actual FPGA behavior.<br>
+    - Overly technical interfaces that require steep learning curves.
+  </p>
+</div>
+<br />
 
-- Student beginner
+**3. Alex Kim – Software Developer & System Administrator** 
+<div style="display: flex; flex-direction: row;">
+  <img src="images/personas-3.png" width="200" height="200px" style="margin-right: 20px;">
+  <p>
+    <strong>Background:</strong> Responsible for maintaining and updating the web interface, ensuring its performance and ease of deployment..<br>
+    <strong>Goals:</strong><br>
+    - To provide a reliable, responsive simulation tool that meets both educational and technical requirements..<br>
+    - To integrate user feedback for continuous improvement.<br>
+    <strong>Frustrations:</strong><br>
+    - Unresponsive systems or frequent bugs that disrupt classroom sessions.<br>
+    - Complex deployment processes that hinder local installations.
+  </p>
+</div>
 
- -->
+---
+### Use Cases List
 
-### Use Cases
+| Use Case ID | Use Case Name                    | Description                                                                               |
+| ----------- | -------------------------------- | ----------------------------------------------------------------------------------------- |
+| 1           | Upload SDF File                  | Users can upload an SDF file containing the FPGA's internal structure for simulation.      |
+| 2           | Adjust Real-Time Clock Speed     | Users can adjust the simulation's clock speed in real time to observe different chip behaviors. |
+| 3           | Control Simulation (Start, Pause, Reset) | Users can start, pause, and reset the simulation to observe specific chip states.         |
+| 4           | Step-By-Step Simulation Mode     | Users can advance the simulation step-by-step to analyze internal chip flows in detail.     |
+| 5           | Zoom Features                    | Users can zoom in and out of the chip's internal structure to focus on specific areas.     |
+
+---
+
+### Use Cases Descriptions
+
+**Use Case 1: Upload SDF File**
+
+| Field           | Description |
+|-----------------|-------------|
+| **Use Case ID** | 1           |
+| **Use Case Name** | Upload SDF File |
+| **Actor** | Teacher or Student |
+| **Description** | The user navigates to the simulation page and selects the "Upload SDF" option. The system validates the file format and size, then parses and visually renders the FPGA’s internal structure. |
+| **Preconditions** | The user is logged in and has access to the simulation interface. |
+| **Postconditions** | The SDF file is successfully parsed and its contents are displayed. If validation fails, an error message is shown, and the user is prompted to re-upload a valid file. |
+| **Flow** | 1. User navigates to the simulation page.<br/>2. User clicks the "Upload SDF" button.<br/>3. User selects an SDF file from the local device.<br/>4. System validates file format and size.<br/>5. **Alternate Flow:** If validation fails, the system displays an error message and returns to the upload step.<br/>6. If the file is valid, the system parses the file.<br/>7. The system renders the FPGA's internal structure based on parsed data. |
+
+---
+
+**Use Case 2: Adjust Real-Time Clock Speed**
+
+| Field           | Description |
+|-----------------|-------------|
+| **Use Case ID** | 2           |
+| **Use Case Name** | Adjust Real-Time Clock Speed |
+| **Actor** | Teacher or Student |
+| **Description** | The user interacts with controls (e.g., `+`/`-` buttons) to adjust the simulation's clock speed within a defined range (e.g., X0.25 to X32). The system immediately updates the simulation to reflect the new speed. |
+| **Preconditions** | A simulation is loaded and either running or paused. |
+| **Postconditions** | The simulation clock speed is updated accordingly. If an invalid input is detected or the user cancels the operation, the system retains the previous valid setting and displays an appropriate message. |
+| **Flow** | 1. User clicks on `+` or `-` buttons to change the clock speed.<br/>2. The system checks the input for validity.<br/>3. **Alternate Flow:** If the input is invalid, an error message is displayed and the input is rejected.<br/>4. If valid, the system updates the simulation clock speed immediately.<br/>5. The simulation reflects the new speed in real time, and a status message confirms the update. |
+
+---
+
+**Use Case 3: Control Simulation (Start, Pause, Reset)**
+
+| Field           | Description |
+|-----------------|-------------|
+| **Use Case ID** | 3           |
+| **Use Case Name** | Control Simulation (Start, Pause, Reset) |
+| **Actor** | Teacher or Student |
+| **Description** | The user uses dedicated controls to start, pause, or reset the simulation. Visual cues and status indicators inform the user of the current state. |
+| **Preconditions** | An SDF file has been successfully uploaded and parsed. |
+| **Postconditions** | The simulation transitions to the requested state (running, paused, or reset) and the interface updates to reflect this state. |
+| **Flow** | 1. User clicks the "Start Simulation" button to begin the simulation.<br/>2. Once running, the user may click "Pause" to halt progress or "Reset" to restart the simulation.<br/>3. The system updates the simulation state and displays corresponding status indicators (e.g., "Running", "Paused", "Reset").<br/>4. **Alternate Flow:** If the user attempts to control the simulation before an SDF file is uploaded, the system prompts the user to complete the file upload first. |
+
+---
+
+**Use Case 4: Step-By-Step Simulation Mode**
+
+| Field           | Description |
+|-----------------|-------------|
+| **Use Case ID** | 4           |
+| **Use Case Name** | Step-By-Step Simulation Mode |
+| **Actor** | Teacher or Student |
+| **Description** | The user activates a step-by-step mode to advance or reverse the simulation by a predetermined number of clock cycles. This allows for detailed analysis of internal chip flows. |
+| **Preconditions** | The simulation is loaded and paused, with step-by-step mode enabled. |
+| **Postconditions** | The simulation advances (or reverses) by the specified number of clock cycles, and detailed internal behavior is displayed. |
+| **Flow** | 1. User activates step-by-step mode.<br/>2. User presses the "Step Forward" or "Step Back" button.<br/>3. **Customization Option:** The user can adjust the number of clock cycles per step if supported by the system settings.<br/>4. The system advances (or reverses) the simulation by the specified number of clock cycles.<br/>5. The display updates to reflect the detailed internal chip flows.<br/>6. **Alternate Flow:** If the simulation is not paused, the system prompts the user to pause the simulation before entering step-by-step mode. |
+
+---
+
+**Use Case 5: Zoom Features**
+
+| Field           | Description |
+|-----------------|-------------|
+| **Use Case ID** | 5           |
+| **Use Case Name** | Zoom Features |
+| **Actor** | Teacher or Student |
+| **Description** | The user utilizes zoom controls to magnify or reduce the display of the FPGA's internal structure, focusing on specific areas. |
+| **Preconditions** | The simulation interface is loaded and the FPGA structure is displayed. |
+| **Postconditions** | The view is adjusted (zoomed in or out) based on user input, with the display scaling accordingly. |
+| **Flow** | 1. User interacts with zoom controls (buttons).<br/>2. The system adjusts the view to either magnify or reduce the display of the FPGA's internal structure.<br/>3. The display updates in real time to reflect the new zoom level.<br/>4. **Alternate Flow:** If the user input is ambiguous or unsupported, the system defaults to the nearest valid zoom level and displays a notification. |
+
+---
+## UI/UX
+
+### Wireframes
+
+#### Main Page
+
+#### Settings Modal
+
+#### Error Message
+
+### Mockups
+
+#### Light Mode
+
+##### Main Page
+
+##### Settings Modal
+
+##### Error Message
+
+#### Dark Mode
+
+##### Main Page
+
+##### Settings Modal
+
+##### Error Message
 
 ---
 ## Functional Requirements
@@ -129,26 +380,6 @@ This project is not designed or intended for commercial deployment. All source c
   - **Reference:** Additional compatibility details can be found in the [Technical Specifications](../technical-specifications/technical-specifications.md) document.
 
 ---
-## Product
-
-### Description
-The product is a web application with a server backend that allows users to simulate the internal chip flows of an FPGA. The interface will provide tools for uploading SDF files, adjusting the clock speed, controlling the simulation, and viewing the results in real time. The product aims to simplify the simulation process and enhance the educational experience for students and teachers.
-
-### Key Features
-The project will include the following key features:
-- SDF file upload
-- Real-time clock speed adjustment
-- Simulation control (start, pause, reset)
-- Step-by-step simulation mode
-- Real-time interactions with the simulation
-- Zoom features for detailed observation
-- Light and dark mode support
-
-### Mockups
-
-### User Flows
-
----
 ## Future Improvements
 
 - **Advanced Simulation Controls:**  
@@ -189,18 +420,12 @@ The project will include the following key features:
 - Clearly state that the website and its content are the exclusive property of CNES.
 - Include appropriate copyright notices to protect intellectual property rights.
 
-<!-- ### Internal Policies -->
-
-<!-- ### Specific CNES Requirement
-
-Don't know 
-
--->
-
 ---
-## Timeline
+## End Matter
 
-### Milestones
+### Contributors
+
+### License
 
 
 
