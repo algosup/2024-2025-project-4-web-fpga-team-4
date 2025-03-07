@@ -89,21 +89,29 @@ Root
     │   README.md
     │
     ├───code
-    |   ├───client
-    |   |       client.css
-    |   |       client.html
-    |   |       client.js
     |   ├───server
-    |   |       server.css
-    |   |       server.html
-    |   |       server.js
+    |   |   server.html
+    |   |   server.js
+    |   |   server.css
     |   |
-    |   └───img
+    |   └───client
+    |       |  client.html
+    |       |
+    |       ├───css
+    |       |   tool-bar.css
+    |       |   schematics.css
+    |       |   data-display.css    
+    |       |
+    |       └───js
+    |           load.js
+    |           schematics.js
+    |           tool-bar.js
+    |           variables.js
     |
     ├───file-converter
-    |   |   file-converter.py (TBD)
-    |   |   input.sdf
-    |   |   output.json
+    |       file-converter.py (TBD)
+    |       input.sdf
+    |       output.json
     |
     ├───test
     |

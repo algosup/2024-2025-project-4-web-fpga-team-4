@@ -10,6 +10,7 @@
       - [Functions and Methods in TypeScript](#functions-and-methods-in-typescript)
       - [Variables in TypeScript](#variables-in-typescript)
       - [Element Names (HTML)](#element-names-html)
+      - [ID's and Classes (HTML)](#ids-and-classes-html)
       - [Close All HTML Elements](#close-all-html-elements)
       - [Always Quote Attribute Values](#always-quote-attribute-values)
       - [Comments](#comments)
@@ -54,12 +55,12 @@ This document guides individuals who wish to contribute to the project. It outli
 
 #### Variables in TypeScript
 
-- **Naming Convention:** camelCase (first word lowercase, subsequent words capitalized).
+- **Naming Convention:** snake_case (lowercase, words seperated by underscores).
 - Do this:
-  - `inputFile`
+  - `input_File`
   - `temp`
 - Don't do this:
-  - `input_File`
+  - `inputfile`
   - `Temp`
 
 #### Element Names (HTML)
@@ -74,6 +75,20 @@ This document guides individuals who wish to contribute to the project. It outli
   ```html
     <BODY></BODY>
     <P></P>
+  ```
+
+#### ID's and Classes (HTML)
+
+- **Naming Convention:** kebab-case(only use lowercase letters and hyphens between words).
+- Do this:
+  ```html
+    <body class="top-box"></body>
+    <p id="important-text"></p>
+  ```
+- Don't do this:
+  ```html
+    <body class="topBox"></body>
+    <p id="important_text"></p>
   ```
 
 #### Close All HTML Elements
@@ -98,11 +113,11 @@ This document guides individuals who wish to contribute to the project. It outli
 - HTML allows attribute values without quotes, however, for this project you have to quote all attribute values to make it easier to read the code.
 - Do this:
   ```html
-    <h1 class="big title">
+    <h1 class="big-title">
   ```
 - Don't do this:
   ```html
-    <h1 class=big title>
+    <h1 class=big-title>
   ```
 
 #### Comments
@@ -116,9 +131,11 @@ This document guides individuals who wish to contribute to the project. It outli
 
 ```TypeScript
 /*
- * This function parses the data from the sdf file:
+ * Convert a JSON file to a Javascript object and display the parsed data on the webpage.
+ * 
+ * @param {string} filepath - The path to the JSON file
  */
-test.dataParseFunction();
+async function parseJsonFile();
 ```
 
 #### Indentation & Spacing
@@ -132,7 +149,7 @@ test.dataParseFunction();
   
   </body>
   ```
-- Ensure consistent spacing around operators and after commas for better readability:
+- Ensure consistent spacing around operators, classes and id's and after commas for better readability:
   ```TypeScript
     c = a + b;
   ```
