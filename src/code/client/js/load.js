@@ -1,6 +1,6 @@
-// This file is the entry point for the client side code.
-// It is responsible for handling the client side logic.
-
+/* This file is the entry point for the client side code.
+It is responsible for handling the client side logic.
+*/
 
 
 let states = document.getElementsByClassName('element-state');
@@ -15,12 +15,12 @@ for (let i = 0; i < states.length; i++) {
 }
 
 
-let flip_flops = document.getElementsByClassName('ff-element');
+let flipFlops = document.getElementsByClassName('ff-element');
 let luts = document.getElementsByClassName('lut-element');
 
-if (flip_flops.length > 3 || luts.length > 2) {
-	if ((flip_flops.length / 3 > luts.length / 2)) {
-		let size = 85 + ((flip_flops.length - 3) * 22);
+if (flipFlops.length > 3 || luts.length > 2) {
+	if ((flipFlops.length / 3 > luts.length / 2)) {
+		let size = 85 + ((flipFlops.length - 3) * 22);
 		document.getElementById('main').style.height = size + "vh";
 	}
 	else {
@@ -30,7 +30,7 @@ if (flip_flops.length > 3 || luts.length > 2) {
 }
 
 
-zoom_level.textContent = zoom_levels[current_zoom_index];
+zoomLevel.textContent = zoomLevels[currentZoomIndex];
 
-document.documentElement.setAttribute("data-theme", current_theme);
-theme.firstChild.className = current_theme === 'light' ? 'fa-solid top-bar fa-moon' : 'fa-solid top-bar fa-sun';
+document.documentElement.setAttribute("data-theme", currentTheme);
+theme.firstChild.className = currentTheme === 'light' ? 'fa-solid top-bar fa-moon' : 'fa-solid top-bar fa-sun';

@@ -1,10 +1,14 @@
+/* Applies Style to the Whole Page */
+
 :root {
 	--reset-color: #999997;
 	--d-color: #DDB72B;
-	--q-color: #B7DD2B;
+	--q-color: #2BB7DD;
 	--lut-color: #15BF9A;
 	--ff-color: #BF1518;
 	--clock-color: #AE15BF;
+	--connection-used: lime;
+	--connection-unused: var(--on-primary);
 }
 
 /* Applies Style to the Main Part of the Page */
@@ -37,7 +41,9 @@
 		flex-direction: column;
 	}
 
-	h3 {
+	p {
+		margin-top: 1vh;
+		margin-bottom: 0;
 		color: var(--on-primary);
 		align-items: center;
 	}
@@ -51,7 +57,8 @@
 }
 
 .back-lines {
-	height: min(78.5vh);
+	margin-top: 1vh;
+	height: 80vh;
 	width: 0;
 	border-width: 0;
 	border-left-width: .3vh;
@@ -109,7 +116,7 @@
 	display: block;
 	width: 1.5vh;
 	height: 1.5vh;
-	background-color: lime;
+	background-color: var(--connection-used);
 	border-radius: 50%;
 }
 
@@ -188,12 +195,12 @@
 	display: block;
 	width: 1.5vh;
 	height: 1.5vh;
-	background-color: red;
+	background-color: var(--connection-unused);
 	border-radius: 50%;
 }
 
 .output-in.used::before{
-	background-color: lime;
+	background-color: var(--connection-used);
 }
 
 
@@ -251,12 +258,12 @@
 	display: block;
 	width: 1.5vh;
 	height: 1.5vh;
-	background-color: red;
+	background-color: var(--connection-unused);
 	border-radius: 50%;
 }
 
 .lut-in.used::before{
-	background-color: lime;
+	background-color: var(--connection-used);
 }
 
 
@@ -275,12 +282,12 @@
 	display: block;
 	width: 1.5vh;
 	height: 1.5vh;
-	background-color: red;
+	background-color: var(--connection-unused);
 	border-radius: 50%;
 }
 
 .lut-out.used::after{
-	background-color: lime;
+	background-color: var(--connection-used);
 }
 
 
@@ -335,12 +342,12 @@
 	display: block;
 	width: 1.5vh;
 	height: 1.5vh;
-	background-color: red;
+	background-color: var(--connection-unused);
 	border-radius: 50%;
 }
 
 .ff-in.used::before{
-	background-color: lime;
+	background-color: var(--connection-used);
 }
 
 
@@ -360,12 +367,12 @@
 	display: block;
 	width: 1.5vh;
 	height: 1.5vh;
-	background-color: red;
+	background-color: var(--connection-unused);
 	border-radius: 50%;
 }
 
 .ff-out.used::after{
-	background-color: lime;
+	background-color: var(--connection-used);
 }
 
 
@@ -421,6 +428,6 @@
 	display: block;
 	width: 1.5vh;
 	height: 1.5vh;
-	background-color: lime;
+	background-color: var(--connection-used);
 	border-radius: 50%;
 }

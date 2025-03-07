@@ -1,166 +1,95 @@
+/**
+ * Displays an input element in the input container.
+ * 
+ * @param {string} name - The name of the input element.
+ * @param {boolean} state - The state of the input element (true for ON, false for OFF).
+ */
+function displayInput(name, state) {
+	let stateString = state ? 'ON' : 'OFF';
 
-
-function displayClock(frequency) {
-
-	let clock_container = document.getElementById('input-container');
-	let clock_element = document.createElement('div');
-	clock_element.className = 'clock-element';
-	clock_element.innerHTML = '<p class="clock-id">Clock_' + clock_count + '</p><p class="clock-out">Out</p>';
-	clock_container.appendChild(clock_element);
-
-
-	let unit = 'Hz';
-	if (frequency >= 1000000000) {
-		frequency = frequency / 1000000000;
-		unit = 'GHz';
-	}
-	else if (frequency >= 1000000) {
-		frequency = frequency / 1000000;
-		unit = 'MHz';
-	}
-	else if (frequency >= 1000) {
-		frequency = frequency / 1000;
-		unit = 'KHz';
-	}
-	let clock_name = document.createElement('p');
-	clock_name.textContent = 'CLOCK_' + clock_count.toString() + ' (' + frequency.toString() + ' ' + unit + '):';
-	clock_name.className = 'clock-name';
-	live_data.appendChild(clock_name);
-	let clock_div = document.createElement('div');
-	clock_div.className = 'data-display-clock';
-	for (let i = 0; i < 84; i++) {
-		let clock = document.createElement('div');
-		clock.className = 'grid-item';
-		if (i % 14 === 0) {
-			clock.style.borderLeft = 'none';
-		}
-		if (i < 14) {
-			clock.style.borderTop = 'none';
-		}
-		if (i % 14 === 13) {
-			clock.style.borderRight = 'none';
-		}
-		if (i > 69) {
-			clock.style.borderBottom = 'none';
-		}
-		if (i % 14 >= 0 && i % 14 < 4 || i % 14 >= 8 && i % 14 < 12) {
-			if (i / 14 >= 3 && i / 14 < 4) {
-				clock.style.borderBottom = ' 3px solid var(--clock-graph)';
-			}
-			if (i / 14 >= 4 && i / 14 < 5) {
-				clock.style.borderTop = '3px solid var(--clock-graph)';
-			}
-		}
-		if (i % 14 >= 4 && i % 14 < 8 || i % 14 >= 12 && i % 14 < 14) {
-			if (i / 14 >= 1 && i / 14 < 2) {
-				clock.style.borderBottom = ' 3px solid var(--clock-graph)';
-			}
-			if (i / 14 >= 2 && i / 14 < 3) {
-				clock.style.borderTop = '3px solid var(--clock-graph)';
-			}
-		}
-		if (i % 14 % 4 === 3 && i % 14 < 13 && i / 14 >= 2 && i / 14 < 4) {
-			clock.style.borderRight = '3px solid var(--clock-graph)';
-		}
-		if (i % 14 % 4 === 0 && i % 14 > 0 && i / 14 >= 2 && i / 14 < 4) {
-			clock.style.borderLeft = '3px solid var(--clock-graph)';
-		}
-
-		if (i / 14 >= 2 && i / 14 < 3) {
-			clock.style.borderBottom = '2px solid red';
-		}
-
-		if (i / 14 >= 3 && i / 14 < 4) {
-			clock.style.borderTop = '2px solid red';
-		}
-
-
-
-		clock_div.appendChild(clock);
-	}
-	live_data.appendChild(clock_div);
-	clock_count++;
-};
-
-
-
-function displayInput(name, type, state) {
-	if (typeof type !== 'string') {
-		console.log(typeof type);
-		console.error('Type must be a string');
-		return;
-	}
-	let state_string = state ? 'ON' : 'OFF';
-
-	let input_container = document.getElementById('input-container');
-	let input_element = document.createElement('div');
-	if (name === 'clk'){
-		input_element.innerHTML = '<p class="input-name input-data">' + name + '</p><p class="input-out">Out</p>';
-	}else {
-		input_element.innerHTML = '<p class="input-name input-data">' + name + '</p><p class="input-out">Out</p><p class="input-data">State</p><p class="element-state input-data">' + state_string + '</p>';
+	let inputContainer = document.getElementById('input-container');
+	let inputElement = document.createElement('div');
+	if (name === 'clk') {
+		inputElement.innerHTML = '<p class="input-name input-data">' + name + '</p><p class="input-out">Out</p>';
+	} else {
+		inputElement.innerHTML = '<p class="input-name input-data">' + name + '</p><p class="input-out">Out</p><p class="input-data">State</p><p class="element-state input-data">' + stateString + '</p>';
 	}
 	switch (name) {
 		case 'clk':
-			input_element.className = 'input-element clock-element';
+			inputElement.className = 'input-element clock-element';
 			break;
 		case 'D':
-			input_element.className = 'input-element data-element';
+			inputElement.className = 'input-element data-element';
 			break;
 		case 'reset':
-			input_element.className = 'input-element reset-element';
+			inputElement.className = 'input-element reset-element';
 		default:
 			break;
 	}
-	input_container.appendChild(input_element);
+	inputContainer.appendChild(inputElement);
 }
 
-function displayOutput(name, type, state) {
-	if (typeof type !== 'string') {
-		console.log(typeof type);
-		console.error('Type must be a string');
-		return;
-	}
-
-	let output_container = document.getElementById('output-container');
-	let output_element = document.createElement('div');
-	output_element.innerHTML = '<p class="output-name output-data">' + name + '</p><p class="output-in">In</p>';
-	output_element.className = 'output-element q-element';
-	output_container.appendChild(output_element);
+/**
+ * Displays an output element in the output container.
+ * 
+ * @param {string} name - The name of the output element.
+ */
+function displayOutput(name) {
+	let outputContainer = document.getElementById('output-container');
+	let outputElement = document.createElement('div');
+	outputElement.innerHTML = '<p class="output-name output-data">' + name + '</p><p class="output-in used">In</p>';
+	outputElement.className = 'output-element q-element';
+	outputContainer.appendChild(outputElement);
 }
 
+/**
+ * Displays a LUT (Look-Up Table) element in the LUT container.
+ * 
+ * @param {number} id - The ID of the LUT element.
+ * @param {boolean} in0 - The state of the first input (true for used, false for unused).
+ * @param {boolean} in1 - The state of the second input (true for used, false for unused).
+ * @param {boolean} in2 - The state of the third input (true for used, false for unused).
+ * @param {boolean} in3 - The state of the fourth input (true for used, false for unused).
+ * @param {boolean} out - The state of the output (true for used, false for unused).
+ */
 function displayLUT(id, in0, in1, in2, in3, out) {
-	let lut_container = document.getElementById('lut-container');
-	let lut_element = document.createElement('div');
-	lut_element.className = 'lut-element';
-	let in_0_state = in0 ? 'used' : 'unused';
-	let in_1_state = in1 ? 'used' : 'unused';
-	let in_2_state = in2 ? 'used' : 'unused';
-	let in_3_state = in3 ? 'used' : 'unused';
-	let out_state = out ? 'used' : 'unused';
-	let id_0 = '<p class="lut-id ">LUT ' + id.toString() + '</p>';
-	let in_0 = '<p class="lut-in ' + in_0_state + '">0</p>';
-	let in_1 = '<p class="lut-in ' + in_1_state + '">1</p>';
-	let in_2 = '<p class="lut-in ' + in_2_state + '">2</p>';
-	let in_3 = '<p class="lut-in ' + in_3_state + '">3</p>';
-	let out_0 = '<p class="lut-out ' + out_state + '">0</p>';
-	lut_element.innerHTML = id_0 + in_0 + in_1 + in_2 + in_3 + out_0;
-	lut_container.appendChild(lut_element);
-	lut_count++;
+	let lutContainer = document.getElementById('lut-container');
+	let lutElement = document.createElement('div');
+	lutElement.className = 'lut-element';
+	let in0State = in0 ? 'used' : 'unused';
+	let in1State = in1 ? 'used' : 'unused';
+	let in2State = in2 ? 'used' : 'unused';
+	let in3State = in3 ? 'used' : 'unused';
+	let outState = out ? 'used' : 'unused';
+	let id0Para = '<p class="lut-id ">LUT ' + id.toString() + '</p>';
+	let in0Para = '<p class="lut-in ' + in0State + '">0</p>';
+	let in1Para = '<p class="lut-in ' + in1State + '">1</p>';
+	let in2Para = '<p class="lut-in ' + in2State + '">2</p>';
+	let in3Para = '<p class="lut-in ' + in3State + '">3</p>';
+	let out0Para = '<p class="lut-out ' + outState + '">0</p>';
+	lutElement.innerHTML = id0Para + in0Para + in1Para + in2Para + in3Para + out0Para;
+	lutContainer.appendChild(lutElement);
 }
 
-function displayFlipFlop(id, in0, in1, out) {
-	let ff_container = document.getElementById('ff-container');
-	let ff_element = document.createElement('div');
-	ff_element.className = 'ff-element';
-	let in_0_state = in0 ? 'used' : 'unused';
-	let in_1_state = in1 ? 'used' : 'unused';
-	let out_state = out ? 'used' : 'unused';
-	let id_0 = '<p class="ff-id ">Flip Flop ' + id.toString() + '</p>';
-	let in_0 = '<p class="ff-in ' + in_0_state + '">0</p>';
-	let in_1 = '<p class="ff-in ' + in_1_state + '">1</p>';
-	let out_0 = '<p class="ff-out ' + out_state + '">0</p>';
-	ff_element.innerHTML = id_0 + in_0 + in_1 + out_0;
-	// ff_element.innerHTML = '<p class="ff-id">Flip Flop ' + flip_flop_count + '</p><p class="ff-in">Data</p><p class="ff-in">Clock</p><p class="ff-out">Out</p>';
-	ff_container.appendChild(ff_element);
-	flip_flop_count++;
+/**
+ * Displays a Flip-Flop element in the Flip-Flop container.
+ * 
+ * @param {number} id - The ID of the Flip-Flop element.
+ * @param {boolean} dataIn - The state of the data input (true for used, false for unused).
+ * @param {boolean} clockIn - The state of the clock input (true for used, false for unused).
+ * @param {boolean} out - The state of the output (true for used, false for unused).
+ */
+function displayFlipFlop(id, dataIn, clockIn, out) {
+	let ffContainer = document.getElementById('ff-container');
+	let ffElement = document.createElement('div');
+	ffElement.className = 'ff-element';
+	let dataInState = dataIn ? 'used' : 'unused';
+	let clockInState = clockIn ? 'used' : 'unused';
+	let outState = out ? 'used' : 'unused';
+	let id0 = '<p class="ff-id ">Flip Flop ' + id.toString() + '</p>';
+	let in0 = '<p class="ff-in ' + dataInState + '">Data</p>';
+	let in1 = '<p class="ff-in ' + clockInState + '">Clock</p>';
+	let out0 = '<p class="ff-out ' + outState + '">Out</p>';
+	ffElement.innerHTML = id0 + in0 + in1 + out0;
+	ffContainer.appendChild(ffElement);
 }
