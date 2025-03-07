@@ -371,7 +371,7 @@ connection getConnectionsFromString(vector<pair<connection, connection>> *elemen
 	return ElementFinal;
 }
 
-void writeDeclarationsToJson(const string outputFilePath, vector<LUT> *luts, vector<FlipFlop> *flipFlops, vector<io> *ios){
+void writeDeclarationsToJson(const string outputFilePath, vector<LUT> *luts, vector<FlipFlop> *flipFlops, vector<io> *ios, vector<pair<connection, connection>> elementConnections){
 	ofstream outputFile(outputFilePath);
 	if (!outputFile.is_open())
 	{
@@ -463,6 +463,35 @@ void writeDeclarationsToJson(const string outputFilePath, vector<LUT> *luts, vec
 			outputFile << "\n";
 		}
 	}
+	outputFile << "\t],\n";
+	outputFile << "\t\"Connections\": [\n";
+	for (int i = 0; i < elementConnections.size(); i++)
+	{
+		outputFile << "\t\t{\n";
+		outputFile << "\t\t\t\"Input\": \n";
+		outputFile << "\t\t\t\t{\n";
+		outputFile << "\t\t\t\t\t\"type\": \"" << elementConnections[i].first.type << "\",\n";
+		outputFile << "\t\t\t\t\t\"id\": \"" << elementConnections[i].first.id << "\",\n";
+		outputFile << "\t\t\t\t\t\"io\": \"" << elementConnections[i].first.io << "\",\n";
+		outputFile << "\t\t\t\t\t\"port\": \"" << elementConnections[i].first.port << "\"\n";
+		outputFile << "\t\t\t\t},\n";
+		outputFile << "\t\t\t\"Output\": \n";
+		outputFile << "\t\t\t\t{\n";
+		outputFile << "\t\t\t\t\t\"type\": \"" << elementConnections[i].second.type << "\",\n";
+		outputFile << "\t\t\t\t\t\"id\": \"" << elementConnections[i].second.id << "\",\n";
+		outputFile << "\t\t\t\t\t\"io\": \"" << elementConnections[i].second.io << "\",\n";
+		outputFile << "\t\t\t\t\t\"port\": \"" << elementConnections[i].second.port << "\"\n";
+		outputFile << "\t\t\t\t}\n";
+		outputFile << "\t\t}";
+		if (i != elementConnections.size() - 1)
+		{
+			outputFile << ",\n";
+		}
+		else
+		{
+			outputFile << "\n";
+		}
+	}
 	outputFile << "\t]\n";
 	outputFile << "}\n";
 	outputFile.close();
@@ -542,7 +571,7 @@ int main()
 		cout << "IO: " << io.name << ", " << io.type << ", " << io.id << endl;
 	}
 
-	writeDeclarationsToJson(outputFilePath, &luts, &flipFlops, &ios);
+	writeDeclarationsToJson(outputFilePath, &luts, &flipFlops, &ios, elementConnections);
 
 	return 0;
 }
