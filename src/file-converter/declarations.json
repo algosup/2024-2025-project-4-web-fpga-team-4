@@ -1,0 +1,82 @@
+{
+	"LUTs": [
+		{
+			"id": 139,
+			"connections": [
+				{
+					"type": "output",
+					"id": "0"
+				},
+				{
+					"type": "input",
+					"id": "3"
+				},
+				{
+					"type": "input",
+					"id": "1"
+				},
+				{
+					"type": "input",
+					"id": "2"
+				}
+			]
+		}
+	],
+	"FlipFlops": [
+		{
+			"id": 0,
+			"connections": [
+				{
+					"type": "output",
+					"id": "0"
+				},
+				{
+					"type": "clock",
+					"id": "0"
+				},
+				{
+					"type": "input",
+					"id": "0"
+				}
+			]
+		}
+	],
+	"IOs": [
+		{
+			"name": "D",
+			"type": "output",
+			"id": "0"
+		},
+		{
+			"name": "clk",
+			"type": "output",
+			"id": "0"
+		},
+		{
+			"name": "reset",
+			"type": "output",
+			"id": "0"
+		},
+		{
+			"name": "Q",
+			"type": "input",
+			"id": "0"
+		}
+	],
+	"interconnects": [
+		{
+			"source": {
+				"type": "LUT",
+				"id": 139,
+				"io": "output",
+				"port": "0"
+			},
+			"destination": {
+				"type": "FlipFlop",
+				"id": 0,
+				"io": "input",
+				"port": "0"
+			}
+		}
+	]
+}

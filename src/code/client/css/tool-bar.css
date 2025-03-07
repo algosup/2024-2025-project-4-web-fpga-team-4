@@ -26,12 +26,12 @@ body {
 }
 
 ::-webkit-scrollbar {
-	width: .5em;
+	width: .8vh;
 }
 
 ::-webkit-scrollbar-thumb {
 	background-color: var(--tertiary);
-	border-radius: 10px;
+	border-radius: 1vh;
 }
 
 #logo{
@@ -52,7 +52,7 @@ body {
 	z-index: 1000;
 
 
-	font-size: max(3dvh);
+	font-size: 3dvh;
 	font-weight: bold;
 	color: var(--icons);
 	margin: 0;
@@ -65,15 +65,15 @@ body {
 
 	background-color: var(--secondary);
 
-	border-bottom: 3px solid var(--on-primary);
-	border-right: 3px solid var(--on-primary);
-	border-left: 3px solid var(--on-primary);
+	border-bottom: .4vh solid var(--on-primary);
+	border-right: .4vh solid var(--on-primary);
+	border-left: .4vh solid var(--on-primary);
 
 	box-sizing: border-box;
 
-	border-radius: 0 0 20px 20px;
+	border-radius: 0 0 2vh 2vh;
 
-	box-shadow: 0px 3px 10px var(--shadow-color);
+	box-shadow: 0 .3vh 1vh var(--shadow-color);
 }
 
 
@@ -82,10 +82,10 @@ body {
 .top-bar {
 	height: 5dvh;
 	aspect-ratio: 1;
-	font-size: max(4dvh);
+	font-size: 4dvh;
 	background-color: transparent;
-	border: 2px solid var(--icons);
-	border-radius: 10px;
+	border: .3vh solid var(--icons);
+	border-radius: 1vh;
 
 	display: flex;
 	justify-content: center;
@@ -94,13 +94,6 @@ body {
 	cursor: pointer;
 }
 
-
-
-/* .top-bar:hover{
-	transform: scale(1.1);
-	color: #bbb;
-	border: 4px solid #bbb;
-} */
 
 
 /* Applies Every "div" of the Page */
@@ -139,37 +132,40 @@ body {
 
 
 .speed-control {
-	margin-left: .5svw;
-	height: 100%;
-	aspect-ratio: 2 / 1;
+	margin-left: .5vw;
+	height: 7vh;
+	width: 6.2vw;
 	display: grid;
 	grid-template-columns: 2fr 1fr;
 	grid-template-rows: 1fr 1fr;
 
 	background-color: var(--tool-data-text);
 
-	border-radius: 1svh;
+	border-radius: 1vh;
 
 
-	button {
-		margin: 5%;
-		height: 90%;
-		width: 90%;
+	#speed {
+		margin: .5vh;
+		height: 6vh;
+		width: 3.5vw;
 		grid-row: 1/3;
 		background-color: var(--tool-data-back);
 		border: none;
-		font-size: max(3dvh);
+		font-size: 2.5vh;
 		color: var(--tool-data-text);
 		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 
-		border-radius: 1svh;
+		border-radius: 1vh;
 	}
 
-	div {
+	.speed {
 		display: flex;
 		flex-wrap: wrap;
 		align-content: flex-end;
-		justify-content: center;
+		justify-content: start;
 		cursor: pointer;
 
 		i {
@@ -177,9 +173,6 @@ body {
 		}
 	}
 }
-
-
-
 
 
 
@@ -207,23 +200,26 @@ body {
 }
 
 .zoom-control {
-	margin-left: .5svw;
-	height: 100%;
-	aspect-ratio: 1.5 / 1;
+	margin-left: .5vw;
+	height: 7vh;
+	width: 5vw;
 
 	background-color: var(--tool-data-text);
 
-	border-radius: 1svh;
+	border-radius: 1vh;
 
-	button {
-		margin: 3% 0 2.5% 0;
-		height: 90%;
-		width: 90%;
+	#zoom {
+		margin: .5vh 0 0 .25vw ;
+		height: 6vh;
+		width: 4.5vw;
 		background-color: var(--tool-data-back);
 		border: none;
-		font-size: max(3dvh);
+		font-size: 2vh;
 		color: var(--tool-data-text);
 		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 
 		border-radius: 1svh;
 	}

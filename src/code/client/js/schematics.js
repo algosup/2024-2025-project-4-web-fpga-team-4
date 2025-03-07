@@ -1,159 +1,95 @@
+/**
+ * Displays an input element in the input container.
+ * 
+ * @param {string} name - The name of the input element.
+ * @param {boolean} state - The state of the input element (true for ON, false for OFF).
+ */
+function displayInput(name, state) {
+	let stateString = state ? 'ON' : 'OFF';
 
-
-function displayClock(frequency) {
-
-	let clock_container = document.getElementById('clock-container');
-	let clock_element = document.createElement('div');
-	clock_element.className = 'clock-element';
-	clock_element.innerHTML = '<p class="clock-id">Clock_' + clock_count + '</p><p class="clock-out">Out</p>'; 
-	clock_container.appendChild(clock_element);
-
-
-	let unit = 'Hz';
-	if (frequency >= 1000000000) {
-		frequency = frequency / 1000000000;
-		unit = 'GHz';
+	let inputContainer = document.getElementById('input-container');
+	let inputElement = document.createElement('div');
+	if (name === 'clk') {
+		inputElement.innerHTML = '<p class="input-name input-data">' + name + '</p><p class="input-out">Out</p>';
+	} else {
+		inputElement.innerHTML = '<p class="input-name input-data">' + name + '</p><p class="input-out">Out</p><p class="input-data">State</p><p class="element-state input-data">' + stateString + '</p>';
 	}
-	else if (frequency >= 1000000) {
-		frequency = frequency / 1000000;
-		unit = 'MHz';
+	switch (name) {
+		case 'clk':
+			inputElement.className = 'input-element clock-element';
+			break;
+		case 'D':
+			inputElement.className = 'input-element data-element';
+			break;
+		case 'reset':
+			inputElement.className = 'input-element reset-element';
+		default:
+			break;
 	}
-	else if (frequency >= 1000) {
-		frequency = frequency / 1000;
-		unit = 'KHz';
-	}
-	let clock_name = document.createElement('p');
-	clock_name.textContent = 'CLOCK_' + clock_count.toString() + ' (' + frequency.toString() + ' ' + unit + '):';
-	clock_name.className = 'clock-name';
-	live_data.appendChild(clock_name);
-	let clock_div = document.createElement('div');
-	clock_div.className = 'data-display-clock';
-	for (let i = 0; i < 84; i++) {
-		let clock = document.createElement('div');
-		clock.className = 'grid-item';
-		if (i % 14 === 0) {
-			clock.style.borderLeft = 'none';
-		}
-		if (i < 14) {
-			clock.style.borderTop = 'none';
-		}
-		if (i % 14 === 13) {
-			clock.style.borderRight = 'none';
-		}
-		if (i > 69) {
-			clock.style.borderBottom = 'none';
-		}
-		if (i % 14 >= 0 && i % 14 < 4 || i % 14 >= 8 && i % 14 < 12) {
-			if (i / 14 >= 3 && i / 14 < 4) {
-				clock.style.borderBottom = ' 3px solid var(--clock-graph)';
-			}
-			if (i / 14 >= 4 && i / 14 < 5) {
-				clock.style.borderTop = '3px solid var(--clock-graph)';
-			}
-		}
-		if (i % 14 >= 4 && i % 14 < 8 || i % 14 >= 12 && i % 14 < 14) {
-			if (i / 14 >= 1 && i / 14 < 2) {
-				clock.style.borderBottom = ' 3px solid var(--clock-graph)';
-			}
-			if (i / 14 >= 2 && i / 14 < 3) {
-				clock.style.borderTop = '3px solid var(--clock-graph)';
-			}
-		}
-		if (i % 14 % 4 === 3 && i % 14 < 13 && i / 14 >= 2 && i / 14 < 4) {
-			clock.style.borderRight = '3px solid var(--clock-graph)';
-		}
-		if (i % 14 % 4 === 0 && i % 14 > 0 && i / 14 >= 2 && i / 14 < 4) {
-			clock.style.borderLeft = '3px solid var(--clock-graph)';
-		}
-
-		if (i / 14 >= 2 && i / 14 < 3) {
-			clock.style.borderBottom = '2px solid red';
-		}
-
-		if (i / 14 >= 3 && i / 14 < 4) {
-			clock.style.borderTop = '2px solid red';
-		}
-
-
-
-		clock_div.appendChild(clock);
-	}
-	live_data.appendChild(clock_div);
-	clock_count++;
-};
-
-
-
-function displayIO(type, state) {
-	if (typeof type !== 'string') {
-		console.error('Type must be a string');
-		return;
-	}
-	let state_string = state ? 'ON' : 'OFF';
-
-	let io_container = document.getElementById('io-container');
-	let io_element = document.createElement('div');
-	if (type === 'Button') {
-		io_element.innerHTML = '<p class="io-name io-data">' + type + ' ' + button_count + '</p><p class="io-out">Out</p><p class="io-data">State</p><p class="element-state io-data">' + state_string + '</p>';
-		io_element.className = 'io-element button';
-		button_count++;
-	}
-	else if (type === 'LED') {
-		io_element.innerHTML = '<p class="io-name io-data">' + type + ' ' + led_count + '</p><p class="io-out">Out</p><p class="io-data">State</p><p class="element-state io-data">' + state_string + '</p>';
-		io_element.className = 'io-element led';
-		led_count++;
-	}
-	else {
-	}
-	io_container.appendChild(io_element);
+	inputContainer.appendChild(inputElement);
 }
 
-
-
-function displayLUT() {
-	let lut_container = document.getElementById('lut-container');
-	let lut_element = document.createElement('div');
-	lut_element.className = 'lut-element';
-	lut_element.innerHTML = '<p class="lut-id">LUT '+ lut_count +'</p><p class="lut-in">In[0]</p><p class="lut-in">In[1]</p><p class="lut-in">In[2]</p><p class="lut-in">In[3]</p><p class="lut-out">Out</p>';
-	lut_container.appendChild(lut_element);
-	lut_count++;
+/**
+ * Displays an output element in the output container.
+ * 
+ * @param {string} name - The name of the output element.
+ */
+function displayOutput(name) {
+	let outputContainer = document.getElementById('output-container');
+	let outputElement = document.createElement('div');
+	outputElement.innerHTML = '<p class="output-name output-data">' + name + '</p><p class="output-in used">In</p>';
+	outputElement.className = 'output-element q-element';
+	outputContainer.appendChild(outputElement);
 }
 
-function displayFlipFlop() {
-	let ff_container = document.getElementById('ff-container');
-	let ff_element = document.createElement('div');
-	ff_element.className = 'ff-element';
-	ff_element.innerHTML = '<p class="ff-id">Flip Flop ' + flip_flop_count + '</p><p class="ff-in">Data</p><p class="ff-in">Clock</p><p class="ff-out">Out</p>';
-	ff_container.appendChild(ff_element);
-	flip_flop_count++;
+/**
+ * Displays a LUT (Look-Up Table) element in the LUT container.
+ * 
+ * @param {number} id - The ID of the LUT element.
+ * @param {boolean} in0 - The state of the first input (true for used, false for unused).
+ * @param {boolean} in1 - The state of the second input (true for used, false for unused).
+ * @param {boolean} in2 - The state of the third input (true for used, false for unused).
+ * @param {boolean} in3 - The state of the fourth input (true for used, false for unused).
+ * @param {boolean} out - The state of the output (true for used, false for unused).
+ */
+function displayLUT(id, in0, in1, in2, in3, out) {
+	let lutContainer = document.getElementById('lut-container');
+	let lutElement = document.createElement('div');
+	lutElement.className = 'lut-element';
+	let in0State = in0 ? 'used' : 'unused';
+	let in1State = in1 ? 'used' : 'unused';
+	let in2State = in2 ? 'used' : 'unused';
+	let in3State = in3 ? 'used' : 'unused';
+	let outState = out ? 'used' : 'unused';
+	let id0Para = '<p class="lut-id ">LUT ' + id.toString() + '</p>';
+	let in0Para = '<p class="lut-in ' + in0State + '">0</p>';
+	let in1Para = '<p class="lut-in ' + in1State + '">1</p>';
+	let in2Para = '<p class="lut-in ' + in2State + '">2</p>';
+	let in3Para = '<p class="lut-in ' + in3State + '">3</p>';
+	let out0Para = '<p class="lut-out ' + outState + '">0</p>';
+	lutElement.innerHTML = id0Para + in0Para + in1Para + in2Para + in3Para + out0Para;
+	lutContainer.appendChild(lutElement);
 }
 
-
-
-
-
-
-
-// IO
-displayIO('Button', true);
-displayIO('Button', false);
-displayIO('LED', false);
-
-// LUTs
-displayLUT();
-displayLUT();
-displayLUT();
-displayLUT();
-displayLUT();
-
-// Flip-flops
-displayFlipFlop();
-displayFlipFlop();
-displayFlipFlop();
-displayFlipFlop();
-displayFlipFlop();
-
-
-// Clocks
-displayClock(100);
-displayClock(10000000000);
+/**
+ * Displays a Flip-Flop element in the Flip-Flop container.
+ * 
+ * @param {number} id - The ID of the Flip-Flop element.
+ * @param {boolean} dataIn - The state of the data input (true for used, false for unused).
+ * @param {boolean} clockIn - The state of the clock input (true for used, false for unused).
+ * @param {boolean} out - The state of the output (true for used, false for unused).
+ */
+function displayFlipFlop(id, dataIn, clockIn, out) {
+	let ffContainer = document.getElementById('ff-container');
+	let ffElement = document.createElement('div');
+	ffElement.className = 'ff-element';
+	let dataInState = dataIn ? 'used' : 'unused';
+	let clockInState = clockIn ? 'used' : 'unused';
+	let outState = out ? 'used' : 'unused';
+	let id0 = '<p class="ff-id ">Flip Flop ' + id.toString() + '</p>';
+	let in0 = '<p class="ff-in ' + dataInState + '">Data</p>';
+	let in1 = '<p class="ff-in ' + clockInState + '">Clock</p>';
+	let out0 = '<p class="ff-out ' + outState + '">Out</p>';
+	ffElement.innerHTML = id0 + in0 + in1 + out0;
+	ffContainer.appendChild(ffElement);
+}
