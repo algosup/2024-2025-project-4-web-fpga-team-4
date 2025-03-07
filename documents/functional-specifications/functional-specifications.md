@@ -136,7 +136,7 @@ The project will be developed in 6 weeks, from 24<sup>th</sup> February 2025 to 
 ## Personas
 
 **1. Emily Thompson – High School Technology Teacher**  
-<div style="display: flex; flex-direction: row;">
+<div style="display: flex; flex-direction: row; width: 100%;">
   <img src="images/personas-1.jpg" width="200" height="200px" style="margin-right: 20px;">
   <p>
     <strong>Background:</strong> A passionate educator who integrates hands-on technology into her curriculum.<br>
@@ -153,7 +153,7 @@ The project will be developed in 6 weeks, from 24<sup>th</sup> February 2025 to 
 
 
 **2. Mark Reynolds – Undergraduate Electrical Engineering Student** 
-<div style="display: flex; flex-direction: row;">
+<div style="display: flex; flex-direction: row; width: 100%;">
   <img src="images/personas-2.png" width="200" height="200px" style="margin-right: 20px;">
   <p>
     <strong>Background:</strong> An enthusiastic student eager to learn FPGA design and simulation.<br>
@@ -168,7 +168,7 @@ The project will be developed in 6 weeks, from 24<sup>th</sup> February 2025 to 
 <br />
 
 **3. Alex Kim – Software Developer & System Administrator** 
-<div style="display: flex; flex-direction: row;">
+<div style="display: flex; flex-direction: row; width: 100%;">
   <img src="images/personas-3.png" width="200" height="200px" style="margin-right: 20px;">
   <p>
     <strong>Background:</strong> Responsible for maintaining and updating the web interface, ensuring its performance and ease of deployment..<br>
