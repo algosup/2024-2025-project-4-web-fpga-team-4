@@ -271,19 +271,26 @@ The project will be developed in 6 weeks, from 24<sup>th</sup> February 2025 to 
 
 #### Main Page
 
+<img src="images/main-page-wireframe.svg" alt="Main Page Wireframe" width="100%">
+
 #### Settings Modal
 
-#### Error Message
+<img src="images/settings-modal-wireframe.svg" alt="Settings Modal Wireframe" width="100%">
+
+#### Information Messages
+
+<img src="images/information-messages-wireframe.svg" alt="Information Messages Wireframe" width="50%">
 
 ### Mockups
 
+All the mockups are available in the [Figma project](https://www.figma.com/design/A6rvzTJCZQQyznhdQbu753/FPGA-Web-App?node-id=0-1&m=dev&t=lkPKlLFY9KAmra26-1).
 #### Light Mode
 
 ##### Main Page
 
 ##### Settings Modal
 
-##### Error Message
+##### Information Messages
 
 #### Dark Mode
 
@@ -291,7 +298,7 @@ The project will be developed in 6 weeks, from 24<sup>th</sup> February 2025 to 
 
 ##### Settings Modal
 
-##### Error Message
+##### Information Messages
 
 ---
 ## Functional Requirements
