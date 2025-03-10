@@ -9,6 +9,10 @@
 	--clock-color: #AE15BF;
 	--connection-used: lime;
 	--connection-unused: var(--on-primary);
+	--element-width: 10svh;
+	--element-height: 20svh;
+	--in-element-height: 18svh;
+	--element-margin-top: 5svh;
 }
 
 /* Applies Style to the Main Part of the Page */
@@ -25,14 +29,15 @@
 	width: 100%;
 	min-height: 85svh;
 
-	font-size: 2vh;
+	font-size: 1vh;
 }
 
 
 
 #guidelines {
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: space-between;
+	width: 100%;
 	height: 100%;
 
 	div {
@@ -43,17 +48,14 @@
 
 	p {
 		margin-top: 1vh;
-		margin-bottom: 0;
 		color: var(--on-primary);
 		align-items: center;
 	}
 }
 
 #guidelines > div {
+	width: 16vw;
 	height: 100%;
-	div > div{
-	border: .2vw solid var(--on-primary);
-	}
 }
 
 .back-lines {
@@ -68,26 +70,31 @@
 
 #input-container {
 	position: absolute;
+	margin-top: var(--element-margin-top);
 }
 
+.input-element{
+	height: var(--element-height);
+	width: var(--element-width);
+}
 
-.input-element {
-	height: 16svh;
-	width: 16svh;
+.input-element > div {
+	height: var(--in-element-height);
+	width: var(--element-width);
 	border-radius: 1vh;
-	margin-top: 6svh;
+	border: .1vh solid var(--on-primary);
 
 	box-sizing: border-box;
 
 	display: grid !important;
 	grid-template-columns: repeat(2, 1fr);
-	grid-template-rows: repeat(6, 1fr);
+	grid-template-rows: repeat(4, 1fr);
 
 	color: var(--on-primary);
 
 
 	* {
-		height: .005svh;
+		height: .7svh;
 	}
 	
 }
@@ -102,16 +109,17 @@
 
 
 .input-out {
+	text-align: end;
 	grid-column: 2;
 	display: flex;
 	justify-content: flex-end;
-	margin-right: .7svw;
+	margin-right: .5svw;
 }
 
 .input-out::after{
 	position: absolute;
 	right: -.7vh;
-	transform: translateY(.2vh);
+	transform: translateY(-.2vh);
 	content: "";
 	display: block;
 	width: 1.5vh;
@@ -120,20 +128,44 @@
 	border-radius: 50%;
 }
 
+
+
+
+
+
+
+
+
+
 .button{
 	background-color: var(--button-color);
 }
 
-#output-container {
-	position: absolute;
+.reset-element > div{
+	background-color: var(--reset-color);
+}
+
+.data-element > div{
+	background-color: var(--d-color);
 }
 
 
-.output-element {
-	height: 16svh;
-	width: 16svh;
+#output-container {
+	position: absolute;
+	margin-top: var(--element-margin-top);
+}
+
+.output-element{
+	height: var(--element-height);
+	width: var(--element-width);
+}
+
+
+.output-element >div{
+	height: var(--in-element-height);
+	width: var(--element-width);
 	border-radius: 1vh;
-	margin-top: 6svh;
+	border: .1vh solid var(--on-primary);
 
 	box-sizing: border-box;
 
@@ -144,21 +176,9 @@
 	color: var(--on-primary);
 
 
-	* {
-		height: .005svh;
-	}
-
 }
 
-.reset-element{
-	background-color: var(--reset-color);
-}
-
-.data-element{
-	background-color: var(--d-color);
-}
-
-.q-element{
+.q-element > div{
 	background-color: var(--q-color);
 }
 
@@ -171,13 +191,9 @@
 }
 
 
-.output-out {
-	grid-column: 2;
-	display: flex;
-	justify-content: flex-end;
-	margin-right: .7svw;
+.output-in.used::before{
+	background-color: var(--connection-used);
 }
-
 
 
 .led{
@@ -199,9 +215,9 @@
 	border-radius: 50%;
 }
 
-.output-in.used::before{
-	background-color: var(--connection-used);
-}
+
+
+
 
 
 .element-state{
@@ -211,14 +227,19 @@
 
 #lut-container {
 	position: absolute;
+	margin-top: var(--element-margin-top);
 }
 
-.lut-element {
+.lut-element{
+	height: var(--element-height);
+}
 
-	height: 27svh;
-	width: 16svh;
+.lut-element > div {
+
+	height: var(--in-element-height);
+	width: var(--element-width);
 	border-radius: 1vh;
-	margin-top: 6svh;
+	border: .1vh solid var(--on-primary);
 
 	box-sizing: border-box;
 
@@ -296,15 +317,24 @@
 
 #ff-container {
 	position: absolute;
+	margin-top: var(--element-margin-top);
+}
+
+.ff-element{
+	height: var(--element-height);
+	width: var(--element-width);
 }
 
 
-.ff-element {
-
-	height: 16svh;
-	width: 16svh;
+.ff-element > div {
+	
+	height: var(--in-element-height);
+	width: 100%;
 	border-radius: 1vh;
-	margin-top: 6svh;
+	
+	background-color: var(--ff-color);
+	border: .1vh solid var(--on-primary);
+	box-sizing: border-box;
 
 	box-sizing: border-box;
 
@@ -314,23 +344,22 @@
 	grid-template-columns: repeat(2, 1fr);
 	grid-template-rows: repeat(4, 1fr);
 
-	background-color: var(--ff-color);
-
-
 	* {
-		height: .7svh;
+		height: 3vh;
 	}
 
 
 }
 
 .ff-id {
+	margin-top: .8vh;
 	text-align: center;
 	grid-column: 1/3;
 	grid-row: 1;
 }
 
 .ff-in {
+	align-items: baseline;
 	grid-column: 1;
 	margin-left: .5svw;
 }
@@ -383,29 +412,8 @@
 }
 
 
-.clock-element {
-
-	height: 16svh;
-	width: 16svh;
-	border-radius: 1vh;
-	margin-top: 6svh;
-
-	box-sizing: border-box;
-
-	color: var(--on-primary);
-
-	display: grid !important;
-	grid-template-columns: repeat(2, 1fr);
-	grid-template-rows: repeat(3, 1fr);
-
+.clock-element > div {
 	background-color: var(--clock-color);
-
-
-	* {
-		height: .7svh;
-	}
-
-
 }
 
 .clock-id {
@@ -430,4 +438,32 @@
 	height: 1.5vh;
 	background-color: var(--connection-used);
 	border-radius: 50%;
+}
+
+
+
+/* Creates lines that connect the elements */
+
+#connections{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -12000;
+}
+
+.line.used{
+	background-color: var(--connection-used);
+	position: absolute;
+}
+
+
+.point.used{
+	background-color: var(--connection-used);
+	position: absolute;
+}
+
+.point.unused{
+	fill: red;
 }

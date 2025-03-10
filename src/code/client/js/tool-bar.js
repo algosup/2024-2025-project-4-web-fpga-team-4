@@ -93,6 +93,7 @@ hideButton.addEventListener('click', function () {
 	liveData.style.display = 'none';
 	hideButton.style.display = 'none';
 	page.style.display = 'block';
+	// document.getElementById('guidelines').style.gridTemplateColumns = 'repeat(5, 1fr)';
 });
 
 dataViewTrigger.addEventListener('click', function () {
@@ -102,12 +103,14 @@ dataViewTrigger.addEventListener('click', function () {
 		liveData.style.display = 'block';
 		hideButton.style.display = 'block';
 		page.style.display = 'grid';
+		// document.getElementById('guidelines').style.gridTemplateColumns = 'repeat(4, 1fr)';
 	}
 	else {
 		isHidden = true;
 		liveData.style.display = 'none';
 		hideButton.style.display = 'none';
 		page.style.display = 'block';
+		// document.getElementById('guidelines').style.gridTemplateColumns = "repeat(5, 1fr)";
 	}
 });
 

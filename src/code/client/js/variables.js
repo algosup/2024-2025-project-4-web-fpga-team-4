@@ -2,6 +2,9 @@
 Declare variables that will be used in the client side code
 */
 let isHidden = false;
+let dataCount = 0;
+let clockCount = 0;
+let resetCount = 0;
 
 let zoomLevels = ["25%", "50%", "75%", "100%", "125%", "150%", "175%", "200%"];
 let currentZoomIndex= 3;
@@ -9,7 +12,7 @@ let currentZoomIndex= 3;
 let speedLevels = ["x0.5", "x1", "x2", "x4", "x8", "x16", "x32"];
 let currentSpeedIndex= 1;
 
-let currentTheme = "light";
+let currentTheme = "dark";
 
 /*
 Declare the elements that will be used in the client side code
@@ -48,6 +51,7 @@ const settings = document.getElementById('settings');
 Main page elements
 */
 const page = document.getElementById('visualization-area');
+const main = document.getElementById('main');
 
 /*
 Live data elements

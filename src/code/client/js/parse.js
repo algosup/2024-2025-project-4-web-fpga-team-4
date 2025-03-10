@@ -28,4 +28,8 @@ async function parseJsonFile(filePath) {
 
 /* Call the function to parse the JSON file */
 const filePath = '../../../file-converter/declarations.json';
-parseJsonFile(filePath);
+parseJsonFile(filePath).then(() => {
+	// generateConnections();
+}).catch((error) => {
+	console.error('Error parsing JSON file:', error);
+});
