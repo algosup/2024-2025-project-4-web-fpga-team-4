@@ -15,20 +15,6 @@
 
 **Last updated:** March 10<sup>th</sup>, 2025
 
----
-
-### Approvals
-
-| Reviewer          | Role              | Approved | Date       |
-| ----------------- | ----------------- | -------- | ---------- |
-| Guillaume DESPAUX | Quality Assurance |          |            |
-| Thibaud MARLIER   | Project Manager   |          |            |
-| Maxime CARON      | Program Manager   |          |            |
-| Emilien CHINSY    | Technical Lead    |          |            |
-| Clementine CUREL  | Technical Writer  |          |            |
-| Jason GROSSO      | Software Engineer |          |            |
-| Laurent BOUQUIN   | Software Engineer |          |            |
-
 </div>
 
 ---
@@ -39,10 +25,9 @@
 <details>
 
 - [Functional Specifications](#functional-specifications)
-    - [Approvals](#approvals)
   - [Preamble](#preamble)
   - [Introduction](#introduction)
-    - [Gloassary](#gloassary)
+    - [Glossary](#glossary)
     - [Project Overview](#project-overview)
     - [Project Definition](#project-definition)
       - [Vision](#vision)
@@ -53,7 +38,7 @@
       - [Project Representatives](#project-representatives)
       - [Team and Roles](#team-and-roles)
       - [Stakeholders](#stakeholders)
-      - [Project Reviwers](#project-reviwers)
+      - [Project Reviewers](#project-reviewers)
     - [Project Timeline](#project-timeline)
       - [Retro-Planning](#retro-planning)
       - [Milestones](#milestones)
@@ -61,8 +46,9 @@
       - [Assumptions and Constraints](#assumptions-and-constraints)
   - [Personas](#personas)
     - [Use Cases List](#use-cases-list)
-    - [Use Cases Descriptions](#use-cases-descriptions)
+    - [Use Case Descriptions](#use-case-descriptions)
   - [UI/UX](#uiux)
+    - [Inspiration](#inspiration)
     - [Wireframes](#wireframes)
       - [Main Page](#main-page)
       - [Settings Modal](#settings-modal)
@@ -76,6 +62,7 @@
         - [Main Page](#main-page-2)
         - [Settings Modal](#settings-modal-2)
         - [Information Messages](#information-messages-2)
+    - [Logo](#logo)
   - [Functional Requirements](#functional-requirements)
     - [SDF File Upload](#sdf-file-upload)
     - [Real-Time Clock Speed Adjustment](#real-time-clock-speed-adjustment)
@@ -111,22 +98,22 @@
 ---
 ## Introduction
 
-### Gloassary
+### Glossary
 
 
 ### Project Overview
-The purpose of this project is to develop a user-friendly web interface for simulating the internal chip flows of an FPGA. This interface will enable teachers and students to easily upload SDF files, adjust real-time clock speeds, and view simulation results. By streamlining the simulation process, this tool will enhance the educational experience and provide a practical demonstration of FPGA behavior in classroom settings.
+This project aims to develop a user-friendly web interface for simulating the internal chip flows of an FPGA. This interface will enable teachers and students to easily upload SDF files, adjust real-time clock speeds, and view simulation results. By streamlining the simulation process, this tool will enhance the educational experience and provide a practical demonstration of FPGA behavior in classroom settings.
 
 ### Project Definition
 
 #### Vision
-The vision of this project is to provide an open source educational web platform for learning FPGA internal functioning and exploring the challenges associated with this technology.
+The vision of this project is to provide an open-source educational web platform for learning FPGA internal functioning and exploring the challenges associated with this technology.
 
 Team objectives include:
 - Developing a user-friendly web interface for simulating FPGA internal chip flows.
 - Providing tools for uploading SDF files, adjusting clock speeds, and controlling simulations.
 - Enhancing the educational experience for students and teachers through interactive real-time demonstrations.
-- Ensuring that the interface’s visual design is optimized for both computer screens and video projectors.
+- Ensuring the interface’s visual design is optimized for computer screens and video projectors.
 
 #### State of the Art
 Currently, there is no dedicated web interface for FPGA internal chip flow simulation. Existing solutions rely on expensive, complex software that is not tailored for educational use. These tools often have steep learning curves and are not designed for interactive real-time demonstrations. This project aims to fill that gap by offering a simple, accessible, and cost-effective solution.
@@ -188,7 +175,7 @@ The final product will consist of a local server hosting a web interface accessi
 | Teachers | End users of the web interface for educational purposes |
 | Students | End users of the web interface for learning FPGA concepts |
 
-#### Project Reviwers
+#### Project Reviewers
 External project reviewers have been appointed by the project owner to review our specifications and provide us with feedback.
 
 ### Project Timeline
@@ -290,14 +277,14 @@ The project will be developed in 6 weeks, from 24<sup>th</sup> February 2025 to 
 | Use Case ID | Use Case Name                    | Description                                                                               |
 | ----------- | -------------------------------- | ----------------------------------------------------------------------------------------- |
 | 1           | Upload SDF File                  | Users can upload an SDF file containing the FPGA's internal structure for simulation.      |
-| 2           | Adjust Real-Time Clock Speed     | Users can adjust the simulation's clock speed in real time to observe different chip behaviors. |
+| 2           | Adjust Real-Time Clock Speed     | Users can adjust the simulation's clock speed in real-time to observe different chip behaviors. |
 | 3           | Control Simulation (Start, Pause, Reset) | Users can start, pause, and reset the simulation to observe specific chip states.         |
 | 4           | Step-By-Step Simulation Mode     | Users can advance the simulation step-by-step to analyze internal chip flows in detail.     |
 | 5           | Zoom Features                    | Users can zoom in and out of the chip's internal structure to focus on specific areas.     |
 
 ---
 
-### Use Cases Descriptions
+### Use Case Descriptions
 
 **Use Case 1: Upload SDF File**
 
@@ -309,7 +296,7 @@ The project will be developed in 6 weeks, from 24<sup>th</sup> February 2025 to 
 | **Description** | The user navigates to the simulation page and selects the "Upload SDF" option. The system validates the file format and size, then parses and visually renders the FPGA’s internal structure. |
 | **Preconditions** | The user is logged in and has access to the simulation interface. |
 | **Postconditions** | The SDF file is successfully parsed and its contents are displayed. If validation fails, an error message is shown, and the user is prompted to re-upload a valid file. |
-| **Flow** | 1. User navigates to the simulation page.<br/>2. User clicks the "Upload SDF" button.<br/>3. User selects an SDF file from the local device.<br/>4. System validates file format and size.<br/>5. **Alternate Flow:** If validation fails, the system displays an error message and returns to the upload step.<br/>6. If the file is valid, the system parses the file.<br/>7. The system renders the FPGA's internal structure based on parsed data. |
+| **Flow** | 1. The user navigates to the simulation page.<br/>2. The user clicks the "Upload SDF" button.<br/>3. The user selects an SDF file from the local device.<br/>4. The system validates file format and size.<br/>5. **Alternate Flow:** If validation fails, the system displays an error message and returns to the upload step.<br/>6. If the file is valid, the system parses the file.<br/>7. The system renders the FPGA's internal structure based on parsed data. |
 
 ---
 
@@ -323,7 +310,7 @@ The project will be developed in 6 weeks, from 24<sup>th</sup> February 2025 to 
 | **Description** | The user interacts with controls (e.g., `+`/`-` buttons) to adjust the simulation's clock speed within a defined range (e.g., X0.25 to X32). The system immediately updates the simulation to reflect the new speed. |
 | **Preconditions** | A simulation is loaded and either running or paused. |
 | **Postconditions** | The simulation clock speed is updated accordingly. If an invalid input is detected or the user cancels the operation, the system retains the previous valid setting and displays an appropriate message. |
-| **Flow** | 1. User clicks on `+` or `-` buttons to change the clock speed.<br/>2. The system checks the input for validity.<br/>3. **Alternate Flow:** If the input is invalid, an error message is displayed and the input is rejected.<br/>4. If valid, the system updates the simulation clock speed immediately.<br/>5. The simulation reflects the new speed in real time, and a status message confirms the update. |
+| **Flow** | 1. The user clicks on the `+` or `-` buttons to change the clock speed.<br/>2. The system checks the input for validity.<br/>3. **Alternate Flow:** If the input is invalid, an error message is displayed and the input is rejected.<br/>4. If valid, the system updates the simulation clock speed immediately.<br/>5. The simulation reflects the new speed in real-time, and a status message confirms the update. |
 
 ---
 
@@ -336,8 +323,8 @@ The project will be developed in 6 weeks, from 24<sup>th</sup> February 2025 to 
 | **Actor** | Teacher or Student |
 | **Description** | The user uses dedicated controls to start, pause, or reset the simulation. Visual cues and status indicators inform the user of the current state. |
 | **Preconditions** | An SDF file has been successfully uploaded and parsed. |
-| **Postconditions** | The simulation transitions to the requested state (running, paused, or reset) and the interface updates to reflect this state. |
-| **Flow** | 1. User clicks the "Start Simulation" button to begin the simulation.<br/>2. Once running, the user may click "Pause" to halt progress or "Reset" to restart the simulation.<br/>3. The system updates the simulation state and displays corresponding status indicators (e.g., "Running", "Paused", "Reset").<br/>4. **Alternate Flow:** If the user attempts to control the simulation before an SDF file is uploaded, the system prompts the user to complete the file upload first. |
+| **Postconditions** | The simulation transitions to the requested state (running, paused, or reset), and the interface updates to reflect this state. |
+| **Flow** | 1. The user clicks the "Start Simulation" button to begin the simulation.<br/>2. Once running, the user may click "Pause" to halt progress or "Reset" to restart the simulation.<br/>3. The system updates the simulation state and displays corresponding status indicators (e.g., "Running", "Paused", "Reset").<br/>4. **Alternate Flow:** If the user attempts to control the simulation before an SDF file is uploaded, the system prompts the user to complete the file upload first. |
 
 ---
 
@@ -351,7 +338,7 @@ The project will be developed in 6 weeks, from 24<sup>th</sup> February 2025 to 
 | **Description** | The user activates a step-by-step mode to advance or reverse the simulation by a predetermined number of clock cycles. This allows for detailed analysis of internal chip flows. |
 | **Preconditions** | The simulation is loaded and paused, with step-by-step mode enabled. |
 | **Postconditions** | The simulation advances (or reverses) by the specified number of clock cycles, and detailed internal behavior is displayed. |
-| **Flow** | 1. User activates step-by-step mode.<br/>2. User presses the "Step Forward" or "Step Back" button.<br/>3. **Customization Option:** The user can adjust the number of clock cycles per step if supported by the system settings.<br/>4. The system advances (or reverses) the simulation by the specified number of clock cycles.<br/>5. The display updates to reflect the detailed internal chip flows.<br/>6. **Alternate Flow:** If the simulation is not paused, the system prompts the user to pause the simulation before entering step-by-step mode. |
+| **Flow** | 1. The user activates step-by-step mode.<br/>2. User presses the "Step Forward" or "Step Back" button.<br/>3. **Customization Option:** The user can adjust the number of clock cycles per step if supported by the system settings.<br/>4. The system advances (or reverses) the simulation by the specified number of clock cycles.<br/>5. The display updates to reflect the detailed internal chip flows.<br/>6. **Alternate Flow:** If the simulation is not paused, the system prompts the user to pause the simulation before entering step-by-step mode. |
 
 ---
 
@@ -365,10 +352,13 @@ The project will be developed in 6 weeks, from 24<sup>th</sup> February 2025 to 
 | **Description** | The user utilizes zoom controls to magnify or reduce the display of the FPGA's internal structure, focusing on specific areas. |
 | **Preconditions** | The simulation interface is loaded and the FPGA structure is displayed. |
 | **Postconditions** | The view is adjusted (zoomed in or out) based on user input, with the display scaling accordingly. |
-| **Flow** | 1. User interacts with zoom controls (buttons).<br/>2. The system adjusts the view to either magnify or reduce the display of the FPGA's internal structure.<br/>3. The display updates in real time to reflect the new zoom level.<br/>4. **Alternate Flow:** If the user input is ambiguous or unsupported, the system defaults to the nearest valid zoom level and displays a notification. |
+| **Flow** | 1. The user interacts with zoom controls (buttons).<br/>2. The system adjusts the view to either magnify or reduce the display of the FPGA's internal structure.<br/>3. The display updates in real-time to reflect the new zoom level.<br/>4. **Alternate Flow:** If the user input is ambiguous or unsupported, the system defaults to the nearest valid zoom level and displays a notification. |
 
 ---
 ## UI/UX
+
+### Inspiration
+The user interface has been designed to provide an intuitive and engaging experience for teachers and students. The visual design is minimalistic, with a focus on clarity and ease of use. The color scheme is optimized for both light and dark modes to ensure readability in various environments. Interactive elements are designed to be accessible and responsive, allowing users to control the simulation with precision.
 
 ### Wireframes
 
@@ -390,6 +380,7 @@ All the mockups are available in the [Figma project](https://www.figma.com/desig
 #### Light Mode
 
 ##### Main Page
+<img src="images/main-page-mockups-light.png" alt="Main page light mode mockups" width="100%">
 
 ##### Settings Modal
 
@@ -398,10 +389,15 @@ All the mockups are available in the [Figma project](https://www.figma.com/desig
 #### Dark Mode
 
 ##### Main Page
+<img src="images/main-page-mockups-dark.png" alt="Main page dark mode mockups" width="100%">
 
 ##### Settings Modal
 
 ##### Information Messages
+
+### Logo
+
+The logo design is inspired by the concept of a "chip" and "exploration." It features a stylized representation spaceman exploring a circuit board, symbolizing the educational journey of discovering FPGA internals.
 
 ---
 ## Functional Requirements
@@ -416,7 +412,7 @@ All the mockups are available in the [Figma project](https://www.figma.com/desig
 
 ### Real-Time Clock Speed Adjustment  
 - **Functionality:**  
-  Users will be able to adjust the simulation's clock speed in real time.  
+  Users will be able to adjust the simulation's clock speed in real-time.  
 - **Details:**  
   - A dedicated control will allow users to increase or decrease the clock speed by predefined increments (e.g., 1x, 2x, 4x, ...).
   - Changes to the clock speed will take effect immediately, with a tooltip displaying the current speed.
@@ -433,7 +429,10 @@ All the mockups are available in the [Figma project](https://www.figma.com/desig
   The interface will offer a step-by-step simulation mode where users can advance the simulation a specified number of clock cycles at a time.  
 - **Details:**  
   - This mode enables detailed observation of the chip's behavior at each simulation step.  
-> **Note:** The default number of clock cycles per step is defined in the [Technical Specifications](../technical-specifications/technical-specifications.md) document.
+
+
+> [!NOTE]
+> The default number of clock cycles per step is defined in the [Technical Specifications](../technical-specifications/technical-specifications.md) document.
 
 ### Real-Time Interactions  
 - **Functionality:**  
@@ -441,7 +440,8 @@ All the mockups are available in the [Figma project](https://www.figma.com/desig
 - **Details:**  
   - The interactive elements are generated based on data specified in the uploaded SDF file.  
   - Users will not be able to add or modify these inputs directly within the interface to maintain simulation integrity.  
-> **Note:** All input controls derived from the SDF file are read-only to prevent unintended alterations.
+> [!NOTE]
+> All input controls derived from the SDF file are read-only to prevent unintended alterations.
 
 ### Zoom Features
 - **Functionality:**  
@@ -452,7 +452,7 @@ All the mockups are available in the [Figma project](https://www.figma.com/desig
 
 ### Light and Dark Mode
 - **Functionality:**  
-  The interface will support light and dark modes to accommodate user preferences. This will allow user to keep a consistent experience across different devices (e.g., desktop, video projector).
+  The interface will support light and dark modes to accommodate user preferences. This will allow users to keep a consistent experience across different devices (e.g., desktop, video projector).
 - **Details:**
   - Users can toggle between light and dark modes using a dedicated control in the interface.
   - The interface will adapt its color scheme and contrast to ensure readability in both modes.
@@ -493,8 +493,8 @@ All the mockups are available in the [Figma project](https://www.figma.com/desig
 ## Future Improvements
 
 - **Advanced Simulation Controls:**  
-  - **Functionality:** Enhance the simulation controls to include breakpoint setting, dynamic variable clock speeds, and customizable step sizes.  
-  - **Details:** These controls will allow users to pause simulations at predetermined points, adjust clock speeds on-the-fly, and choose step increments ranging from 1 to 100 clock cycles. This will facilitate detailed debugging and deeper analysis of chip behavior.  
+  - **Functionality:** Enhance the simulation controls to include breakpoint settings, dynamic variable clock speeds, and customizable step sizes.  
+  - **Details:** These controls will allow users to pause simulations at predetermined points, adjust clock speeds on the fly, and choose step increments ranging from 1 to 100 clock cycles. This will facilitate detailed debugging and deeper analysis of chip behavior.  
   - **End Goal:** To reduce simulation debugging time by at least 30% and provide flexible simulation stepping for both educational and research purposes.
 
 - **Realistic Chip Behavior:**  
