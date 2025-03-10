@@ -7,7 +7,7 @@ import * as assert from 'assert';
 
   try {
     driver = await new Builder().forBrowser(Browser.FIREFOX).build();
-    await driver.get("http://127.0.0.1:5500/src/code/client/client.html");
+    await driver.get("https://two024-2025-project-4-web-fpga-team-4.onrender.com/client.html");
 
     try {
       let title: string = await driver.getTitle();

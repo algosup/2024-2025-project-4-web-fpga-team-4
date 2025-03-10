@@ -618,3 +618,5 @@ bower_components/
 
 build/
 dist/
+
+test/*.js
