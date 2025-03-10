@@ -43,7 +43,7 @@ The team reported good communication, though a suggestion was made to create a s
 
 On a more negative note, a few team members were absent on Thursday after a night out, which impacted productivity. They were informed that such unprofessional behavior should not be repeated to maintain the project's progress.
 
-More details on the satisfaction survey can be found **[here](https://docs.google.com/spreadsheets/d/1EJIGbOufF86FP-Pb6Y5z0wuYymK0fEmoFKtg16JfIHg/edit?resourcekey=&gid=824804903#gid=824804903)**. 
+More details on the satisfaction survey can be found **[here](https://docs.google.com/spreadsheets/d/1EJIGbOufF86FP-Pb6Y5z0wuYymK0fEmoFKtg16JfIHg/edit?resourcekey=&gid=824804903#gid=824804903)**.
 
 ## **Project Progress**
 
