@@ -1,4 +1,107 @@
+<div align="center">
+
 # Functional Specifications
+
+---
+**Title:** FPGA Explorer - Team 4
+
+**Author:** Maxime CARON
+
+**Team:** Team 4
+
+**Reviewer:** Guillaume Despaux
+
+**Created on:** February 25<sup>th</sup>, 2025
+
+**Last updated:** March 10<sup>th</sup>, 2025
+
+---
+
+### Approvals
+
+| Reviewer          | Role              | Approved | Date       |
+| ----------------- | ----------------- | -------- | ---------- |
+| Guillaume DESPAUX | Quality Assurance |          |            |
+| Thibaud MARLIER   | Project Manager   |          |            |
+| Maxime CARON      | Program Manager   |          |            |
+| Emilien CHINSY    | Technical Lead    |          |            |
+| Clementine CUREL  | Technical Writer  |          |            |
+| Jason GROSSO      | Software Engineer |          |            |
+| Laurent BOUQUIN   | Software Engineer |          |            |
+
+</div>
+
+---
+
+<br>
+<summary><h2 id="toc"> Table of Contents <i>(Click to expand)</i></h2></summary>
+
+<details>
+
+- [Functional Specifications](#functional-specifications)
+    - [Approvals](#approvals)
+  - [Preamble](#preamble)
+  - [Introduction](#introduction)
+    - [Gloassary](#gloassary)
+    - [Project Overview](#project-overview)
+    - [Project Definition](#project-definition)
+      - [Vision](#vision)
+      - [State of the Art](#state-of-the-art)
+      - [Scope](#scope)
+      - [Deliverables](#deliverables)
+    - [Project Organization|](#project-organization)
+      - [Project Representatives](#project-representatives)
+      - [Team and Roles](#team-and-roles)
+      - [Stakeholders](#stakeholders)
+      - [Project Reviwers](#project-reviwers)
+    - [Project Timeline](#project-timeline)
+      - [Retro-Planning](#retro-planning)
+      - [Milestones](#milestones)
+      - [Resources](#resources)
+      - [Assumptions and Constraints](#assumptions-and-constraints)
+  - [Personas](#personas)
+    - [Use Cases List](#use-cases-list)
+    - [Use Cases Descriptions](#use-cases-descriptions)
+  - [UI/UX](#uiux)
+    - [Wireframes](#wireframes)
+      - [Main Page](#main-page)
+      - [Settings Modal](#settings-modal)
+      - [Information Messages](#information-messages)
+    - [Mockups](#mockups)
+      - [Light Mode](#light-mode)
+        - [Main Page](#main-page-1)
+        - [Settings Modal](#settings-modal-1)
+        - [Information Messages](#information-messages-1)
+      - [Dark Mode](#dark-mode)
+        - [Main Page](#main-page-2)
+        - [Settings Modal](#settings-modal-2)
+        - [Information Messages](#information-messages-2)
+  - [Functional Requirements](#functional-requirements)
+    - [SDF File Upload](#sdf-file-upload)
+    - [Real-Time Clock Speed Adjustment](#real-time-clock-speed-adjustment)
+    - [Simulation Control](#simulation-control)
+    - [Simulation Control Step-by-Step](#simulation-control-step-by-step)
+    - [Real-Time Interactions](#real-time-interactions)
+    - [Zoom Features](#zoom-features)
+    - [Light and Dark Mode](#light-and-dark-mode)
+  - [Non-Functional Requirements](#non-functional-requirements)
+    - [Performance](#performance)
+    - [Hosting Performance](#hosting-performance)
+    - [Ease of Use](#ease-of-use)
+    - [Compatibility](#compatibility)
+  - [Future Improvements](#future-improvements)
+  - [Legal and Compliance](#legal-and-compliance)
+    - [Data Protection and Privacy](#data-protection-and-privacy)
+    - [Accessibility](#accessibility)
+    - [Security](#security)
+    - [Intellectual Property](#intellectual-property)
+  - [End Matter](#end-matter)
+    - [Contributors](#contributors)
+    - [License](#license)
+
+
+</details>
+
 ---
 
 ## Preamble
@@ -38,7 +141,7 @@ Existing simulation tools:
 
 
 #### Scope
-This project will will use the following technologies:
+This project will use the following technologies:
 Frontend: Native JavaScript, HTML, CSS
 Backend: Node.js with Express.js (subject to change based on project needs)
 
@@ -67,7 +170,7 @@ The final product will consist of a local server hosting a web interface accessi
 
 | Full Name | Role | Role Description | Contact |
 | --------- | ---- | ---------------- | ------- |
-| Thibaude MARLIER | Project Manager | Responsible for project planning, coordination, and communication | [LinkedIn](https://www.linkedin.com/in/thibaudmarlier/) |
+| Thibaud MARLIER | Project Manager | Responsible for project planning, coordination, and communication | [LinkedIn](https://www.linkedin.com/in/thibaudmarlier/) |
 | Maxime CARON | Program Manager | Ensures project meets expectations; oversees design and functional specs | [LinkedIn](https://www.linkedin.com/in/maxime-caron-dev/) |
 | Emilien CHINSY | Technical Lead | Oversees technical aspects, including architecture and implementation | [LinkedIn](https://www.linkedin.com/in/emilien-chinsy-5a794632b/) |
 | Guillaume DESPAUX | Quality Assurance | Ensures quality of deliverables and adherence to requirements | [LinkedIn](https://www.linkedin.com/in/guillaume-despaux/) |
@@ -431,9 +534,15 @@ All the mockups are available in the [Figma project](https://www.figma.com/desig
 ## End Matter
 
 ### Contributors
+| Pictures | Full Name | Role | Role Description | Contact |
+| -------- | --------- | ---- | ---------------- | ------- |
+|  <img alt="https://github.com/Biohazardyee" src="https://avatars.githubusercontent.com/u/146005163?v=4" width=150 /> | Thibaud MARLIER | Project Manager | Responsible for project planning, coordination, and communication | [LinkedIn](https://www.linkedin.com/in/thibaudmarlier/) |
+|  <img alt="https://github.com/MaximeAlgosup" src="https://avatars.githubusercontent.com/u/145995231?v=4" width=150 /> | Maxime CARON | Program Manager | Ensures project meets expectations; oversees design and functional specs | [LinkedIn](https://www.linkedin.com/in/maxime-caron-dev/) |
+|  <img alt="https://github.com/EmilienChinsy" src="https://avatars.githubusercontent.com/u/182214919?v=4" width=150 /> | Emilien CHINSY | Technical Lead | Oversees technical aspects, including architecture and implementation | [LinkedIn](https://www.linkedin.com/in/emilien-chinsy-5a794632b/) |
+|  <img alt="https://github.com/GuillaumeDespaux" src="https://avatars.githubusercontent.com/u/146001117?v=4" width=150 /> | Guillaume DESPAUX | Quality Assurance | Ensures quality of deliverables and adherence to requirements | [LinkedIn](https://www.linkedin.com/in/guillaume-despaux/) |
+|  <img alt="https://github.com/Clementine951" src="https://avatars.githubusercontent.com/u/78617457?v=4" width=150 /> | Clementine CUREL | Technical Writer | Documents the project, including user manuals	 | [LinkedIn](https://www.linkedin.com/in/clementinecurel/) |
+|  <img alt="https://github.com/JasonGROSSO" src="https://avatars.githubusercontent.com/u/114397870?v=4" width=150 /> | Jason GROSSO | Software Engineer | Develops the web interface and simulation engine | [LinkedIn](https://www.linkedin.com/in/jason-grosso-847b39251/) |
+|  <img alt="https://github.com/laurentbouquin" src="https://avatars.githubusercontent.com/u/71769489?v=4" width=150 /> | Lauren BOUQUIN | Software Engineer | Develops the web interface and simulation engine | [LinkedIn](https://www.linkedin.com/in/laurentb22/) |
 
 ### License
-
-
-
-
+This project is licensed under the MIT License - see the LICENSE file for details.
