@@ -1,9 +1,18 @@
+/* Applies Style to the Whole Page */
+
 :root {
-	--button-color: #999997;
-	--led-color: #DDB72B;
+	--reset-color: #999997;
+	--d-color: #DDB72B;
+	--q-color: #2BB7DD;
 	--lut-color: #15BF9A;
 	--ff-color: #BF1518;
 	--clock-color: #AE15BF;
+	--connection-used: lime;
+	--connection-unused: var(--on-primary);
+	--element-width: 10svh;
+	--element-height: 20svh;
+	--in-element-height: 18svh;
+	--element-margin-top: 5svh;
 }
 
 /* Applies Style to the Main Part of the Page */
@@ -19,13 +28,16 @@
 	margin-top: 15svh;
 	width: 100%;
 	min-height: 85svh;
+
+	font-size: 1vh;
 }
 
 
 
 #guidelines {
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: space-between;
+	width: 100%;
 	height: 100%;
 
 	div {
@@ -34,37 +46,126 @@
 		flex-direction: column;
 	}
 
-	h3 {
+	p {
+		margin-top: 1vh;
 		color: var(--on-primary);
 		align-items: center;
 	}
 }
 
 #guidelines > div {
+	width: 16vw;
 	height: 100%;
 }
 
 .back-lines {
-	height: 100%;
-	width: 0px;
-	border-width: 0px;
-	border-left-width: 3px;
+	margin-top: 1vh;
+	height: 80vh;
+	width: 0;
+	border-width: 0;
+	border-left-width: .3vh;
 	border-color: grey;
 	border-style: dashed;
 }
 
-#io-container {
+#input-container {
 	position: absolute;
+	margin-top: var(--element-margin-top);
+}
+
+.input-element{
+	height: var(--element-height);
+	width: var(--element-width);
+}
+
+.input-element > div {
+	height: var(--in-element-height);
+	width: var(--element-width);
+	border-radius: 1vh;
+	border: .1vh solid var(--on-primary);
+
+	box-sizing: border-box;
+
+	display: grid !important;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(4, 1fr);
+
+	color: var(--on-primary);
+
+
+	* {
+		height: .7svh;
+	}
+	
+}
+
+.input-data{
+	text-align: center;
+	grid-column: 1/3;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 
-.io-element {
-	height: 16svh;
-	width: 16svh;
-	border-radius: 10px;
-	margin-top: 6svh;
+.input-out {
+	text-align: end;
+	grid-column: 2;
+	display: flex;
+	justify-content: flex-end;
+	margin-right: .5svw;
+}
 
-	border: 2px solid var(--on-primary);
+.input-out::after{
+	position: absolute;
+	right: -.7vh;
+	transform: translateY(-.2vh);
+	content: "";
+	display: block;
+	width: 1.5vh;
+	height: 1.5vh;
+	background-color: var(--connection-used);
+	border-radius: 50%;
+}
+
+
+
+
+
+
+
+
+
+
+.button{
+	background-color: var(--button-color);
+}
+
+.reset-element > div{
+	background-color: var(--reset-color);
+}
+
+.data-element > div{
+	background-color: var(--d-color);
+}
+
+
+#output-container {
+	position: absolute;
+	margin-top: var(--element-margin-top);
+}
+
+.output-element{
+	height: var(--element-height);
+	width: var(--element-width);
+}
+
+
+.output-element >div{
+	height: var(--in-element-height);
+	width: var(--element-width);
+	border-radius: 1vh;
+	border: .1vh solid var(--on-primary);
 
 	box-sizing: border-box;
 
@@ -75,21 +176,13 @@
 	color: var(--on-primary);
 
 
-	* {
-		height: .005svh;
-	}
-
 }
 
-.button{
-	background-color: var(--button-color);
+.q-element > div{
+	background-color: var(--q-color);
 }
 
-.led{
-	background-color: var(--led-color);
-}
-
-.io-data{
+.output-data{
 	text-align: center;
 	grid-column: 1/3;
 	display: flex;
@@ -98,24 +191,34 @@
 }
 
 
-.io-out {
-	grid-column: 2;
-	display: flex;
-	justify-content: flex-end;
-	margin-right: .7svw;
+.output-in.used::before{
+	background-color: var(--connection-used);
 }
 
 
-.io-out::after {
+.led{
+	background-color: darkorange;
+}
+.output-in {
+	grid-column: 1;
+	margin-left: .5svw;
+}
+.output-in::before{
 	position: absolute;
-	right: -7px;
+	left: -.7vh;
+	transform: translateY(.2vh);
 	content: "";
 	display: block;
-	width: 15px;
-	height: 15px;
-	background-color: var(--on-primary);
+	width: 1.5vh;
+	height: 1.5vh;
+	background-color: var(--connection-unused);
 	border-radius: 50%;
 }
+
+
+
+
+
 
 .element-state{
 	font-weight: bold;
@@ -124,15 +227,19 @@
 
 #lut-container {
 	position: absolute;
+	margin-top: var(--element-margin-top);
 }
 
-.lut-element {
+.lut-element{
+	height: var(--element-height);
+}
 
-	height: 27svh;
-	width: 16svh;
-	border-radius: 10px;
-	margin-top: 6svh;
-	border: 2px solid var(--on-primary);
+.lut-element > div {
+
+	height: var(--in-element-height);
+	width: var(--element-width);
+	border-radius: 1vh;
+	border: .1vh solid var(--on-primary);
 
 	box-sizing: border-box;
 
@@ -164,16 +271,20 @@
 	margin-left: .5svw;
 }
 
-.lut-in::before {
+.lut-in::before{
 	position: absolute;
-	left: -7px;
-	transform: translateY(1px);
+	left: -.7vh;
+	transform: translateY(.4vh);
 	content: "";
 	display: block;
-	width: 15px;
-	height: 15px;
-	background-color: var(--on-primary);
+	width: 1.5vh;
+	height: 1.5vh;
+	background-color: var(--connection-unused);
 	border-radius: 50%;
+}
+
+.lut-in.used::before{
+	background-color: var(--connection-used);
 }
 
 
@@ -184,33 +295,46 @@
 	margin-right: .5svw;
 }
 
-.lut-out::after {
+.lut-out::after{
 	position: absolute;
-	right: -7px;
-	transform: translateY(-15px);
+	right: -.7vh;
+	transform: translateY(-1.8vh);
 	content: "";
 	display: block;
-	width: 15px;
-	height: 15px;
-	background-color: var(--on-primary);
+	width: 1.5vh;
+	height: 1.5vh;
+	background-color: var(--connection-unused);
 	border-radius: 50%;
 }
+
+.lut-out.used::after{
+	background-color: var(--connection-used);
+}
+
 
 
 
 
 #ff-container {
 	position: absolute;
+	margin-top: var(--element-margin-top);
+}
+
+.ff-element{
+	height: var(--element-height);
+	width: var(--element-width);
 }
 
 
-.ff-element {
-
-	height: 16svh;
-	width: 16svh;
-	border-radius: 10px;
-	margin-top: 6svh;
-	border: 2px solid var(--on-primary);
+.ff-element > div {
+	
+	height: var(--in-element-height);
+	width: 100%;
+	border-radius: 1vh;
+	
+	background-color: var(--ff-color);
+	border: .1vh solid var(--on-primary);
+	box-sizing: border-box;
 
 	box-sizing: border-box;
 
@@ -220,37 +344,39 @@
 	grid-template-columns: repeat(2, 1fr);
 	grid-template-rows: repeat(4, 1fr);
 
-	background-color: var(--ff-color);
-
-
 	* {
-		height: .7svh;
+		height: 3vh;
 	}
 
 
 }
 
 .ff-id {
+	margin-top: .8vh;
 	text-align: center;
 	grid-column: 1/3;
 	grid-row: 1;
 }
 
 .ff-in {
+	align-items: baseline;
 	grid-column: 1;
 	margin-left: .5svw;
 }
-
-.ff-in::before {
+.ff-in::before{
 	position: absolute;
-	left: -7px;
-	transform: translateY(1px);
+	left: -.7vh;
+	transform: translateY(.4vh);
 	content: "";
 	display: block;
-	width: 15px;
-	height: 15px;
-	background-color: var(--on-primary);
+	width: 1.5vh;
+	height: 1.5vh;
+	background-color: var(--connection-unused);
 	border-radius: 50%;
+}
+
+.ff-in.used::before{
+	background-color: var(--connection-used);
 }
 
 
@@ -261,16 +387,21 @@
 	margin-right: .5svw;
 }
 
-.ff-out::after {
+
+.ff-out::after{
 	position: absolute;
-	right: -7px;
-	transform: translateY(-15px);
+	right: -.7vh;
+	transform: translateY(-1.8vh);
 	content: "";
 	display: block;
-	width: 15px;
-	height: 15px;
-	background-color: var(--on-primary);
+	width: 1.5vh;
+	height: 1.5vh;
+	background-color: var(--connection-unused);
 	border-radius: 50%;
+}
+
+.ff-out.used::after{
+	background-color: var(--connection-used);
 }
 
 
@@ -281,30 +412,8 @@
 }
 
 
-.clock-element {
-
-	height: 16svh;
-	width: 16svh;
-	border-radius: 10px;
-	margin-top: 6svh;
-	border: 2px solid var(--on-primary);
-
-	box-sizing: border-box;
-
-	color: var(--on-primary);
-
-	display: grid !important;
-	grid-template-columns: repeat(2, 1fr);
-	grid-template-rows: repeat(3, 1fr);
-
+.clock-element > div {
 	background-color: var(--clock-color);
-
-
-	* {
-		height: .7svh;
-	}
-
-
 }
 
 .clock-id {
@@ -314,19 +423,47 @@
 }
 
 .clock-out {
-	grid-column: 1;
-	margin-left: .5svw;
+	grid-column: 2;
+	margin-right: .5svw;
+	text-align: end;
+}
+
+.clock-out::after{
+	position: absolute;
+	right: -.7vh;
+	transform: translateY(-1.8vh);
+	content: "";
+	display: block;
+	width: 1.5vh;
+	height: 1.5vh;
+	background-color: var(--connection-used);
+	border-radius: 50%;
 }
 
 
-.clock-out::before {
+
+/* Creates lines that connect the elements */
+
+#connections{
+	width: 100%;
+	height: 100%;
 	position: absolute;
-	left: -7px;
-	transform: translateY(1px);
-	content: "";
-	display: block;
-	width: 15px;
-	height: 15px;
-	background-color: var(--on-primary);
-	border-radius: 50%;
+	top: 0;
+	left: 0;
+	z-index: -12000;
+}
+
+.line.used{
+	background-color: var(--connection-used);
+	position: absolute;
+}
+
+
+.point.used{
+	background-color: var(--connection-used);
+	position: absolute;
+}
+
+.point.unused{
+	fill: red;
 }

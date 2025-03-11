@@ -1,2 +1,5 @@
-// Server file for the application
-// This file is responsible for setting up the server and handling the requests
+/* 
+Server file for the application
+This file is responsible for setting up the server and handling the requests
+
+*/

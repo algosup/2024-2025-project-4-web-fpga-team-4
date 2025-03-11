@@ -1,18 +1,17 @@
 
-// File management buttons
-
-open_folder.addEventListener('click', function () {
-	// new FileReader().readAsText('file.txt');
+/* 
+File management buttons
+*/
+openFolder.addEventListener('click', function () {
 	console.log('open folder button clicked');
 });
 
-upload_file.addEventListener('click', function () {
-	console.log('upload file button clicked');
+uploadFile.addEventListener('click', function () {
 });
 
-
-// Control buttons
-
+/*
+Control buttons
+*/
 pause.addEventListener('click', function () {
 	console.log('pause button clicked');
 });
@@ -38,90 +37,93 @@ last.addEventListener('click', function () {
 });
 
 
-
-// Speed buttons
-
+/*
+Speed buttons
+*/
 speed.addEventListener('click', function () {
 	console.log('speed button clicked');
 });
 
-speed_plus.addEventListener('click', function () {
-	if (current_speed_index != speed_levels.length - 1) {
-		current_speed_index++;
+speedPlus.addEventListener('click', function () {
+	if (currentSpeedIndex != speedLevels.length - 1) {
+		currentSpeedIndex++;
 		console.log('speed plus button clicked');
 	}
-	speed.textContent = speed_levels[current_speed_index];
+	speed.textContent = speedLevels[currentSpeedIndex];
 });
 
-speed_minus.addEventListener('click', function () {
-	if (current_speed_index != 0) {
-		current_speed_index--;
+speedMinus.addEventListener('click', function () {
+	if (currentSpeedIndex != 0) {
+		currentSpeedIndex--;
 		console.log('speed minus button clicked');
 	}
-	speed.textContent = speed_levels[current_speed_index];
+	speed.textContent = speedLevels[currentSpeedIndex];
 });
 
-
-// Zoom buttons
-
-zoom_in.addEventListener('click', function () {
-	if (current_zoom_index != zoom_levels.length - 1) {
-		current_zoom_index++;
+/*
+Zoom buttons
+*/
+zoomIn.addEventListener('click', function () {
+	if (currentZoomIndex != zoomLevels.length - 1) {
+		currentZoomIndex++;
 		console.log('zoom in button clicked');
 	}
-	zoom_level.textContent = zoom_levels[current_zoom_index];
+	zoomLevel.textContent = zoomLevels[currentZoomIndex];
 });
 
-zoom_out.addEventListener('click', function () {
-	if (current_zoom_index != 0) {
-		current_zoom_index--;
+zoomOut.addEventListener('click', function () {
+	if (currentZoomIndex != 0) {
+		currentZoomIndex--;
 		console.log('zoom out button clicked');
 	}
-	zoom_level.textContent = zoom_levels[current_zoom_index];
+	zoomLevel.textContent = zoomLevels[currentZoomIndex];
 
 });
 
-zoom_level.addEventListener('click', function () {
+zoomLevel.addEventListener('click', function () {
 	console.log('zoom manual button clicked');
 });
 
-
-// Display buttons
-
-hide_button.addEventListener('click', function () {
-	is_Hidden = true;
+/*
+Display buttons
+*/
+hideButton.addEventListener('click', function () {
+	isHidden = true;
 	console.log('hide button clicked');
-	live_data.style.display = 'none';
-	hide_button.style.display = 'none';
+	liveData.style.display = 'none';
+	hideButton.style.display = 'none';
 	page.style.display = 'block';
+	// document.getElementById('guidelines').style.gridTemplateColumns = 'repeat(5, 1fr)';
 });
 
-data_view_trigger.addEventListener('click', function () {
+dataViewTrigger.addEventListener('click', function () {
 	console.log('data view trigger clicked');
-	if (is_Hidden) {
-		is_Hidden = false;
-		live_data.style.display = 'block';
-		hide_button.style.display = 'block';
+	if (isHidden) {
+		isHidden = false;
+		liveData.style.display = 'block';
+		hideButton.style.display = 'block';
 		page.style.display = 'grid';
+		// document.getElementById('guidelines').style.gridTemplateColumns = 'repeat(4, 1fr)';
 	}
 	else {
-		is_Hidden = true;
-		live_data.style.display = 'none';
-		hide_button.style.display = 'none';
+		isHidden = true;
+		liveData.style.display = 'none';
+		hideButton.style.display = 'none';
 		page.style.display = 'block';
+		// document.getElementById('guidelines').style.gridTemplateColumns = "repeat(5, 1fr)";
 	}
 });
 
 theme.addEventListener('click', function () {
 	console.log('theme button clicked');
-	if (current_theme === 'light') {
-		current_theme = 'dark';
-		document.documentElement.setAttribute('data-theme', current_theme);
+	if (currentTheme === 'light') {
+		currentTheme = 'dark';
+		document.documentElement.setAttribute('data-theme', currentTheme);
 		theme.firstChild.className = 'fa-solid top-bar fa-sun';
 	}
 	else {
-		current_theme = 'light';
-		document.documentElement.setAttribute('data-theme', current_theme);
+		currentTheme = 'light';
+		document.documentElement.setAttribute('data-theme', currentTheme);
 		theme.firstChild.className = 'fa-solid top-bar fa-moon';
 	}
 });
@@ -132,7 +134,7 @@ settings.addEventListener('click', function () {
 
 
 
-top_bar_buttons.forEach(function (button) {
+toolBarButtons.forEach(function (button) {
 	button.addEventListener('click', function () {
 		this.style.transform = 'scale(1.1)';
 		setTimeout(() => {
