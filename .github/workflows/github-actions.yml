@@ -40,6 +40,6 @@ jobs:
       - name: Run tests
         run: |
           npm install typescript
-          npx tsc
+          npx tsc -p ./tsconfig.json;
           node html-testing.js
         continue-on-error: false # Ensure the workflow fails if this step fails
