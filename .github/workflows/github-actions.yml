@@ -35,13 +35,14 @@ jobs:
         run: |
           cd ./src/test
           npm install
+          npm install typescript
           pwd
 
       # Run the test command
       - name: Run tests
         run: |
+          cd ./src/test
           pwd
-          npm install typescript
           npx tsc
           node html-testing.js
         continue-on-error: false # Ensure the workflow fails if this step fails
