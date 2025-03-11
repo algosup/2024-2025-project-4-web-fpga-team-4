@@ -32,11 +32,13 @@ jobs:
 
       # Install dependencies
       - name: Install dependencies
-        run: npm install
+        run: |
+          cd ./src/test
+          npm install
 
       # Run the test command
       - name: Run tests
         run: |
-          cd ./src/test
-          npx tsc; node html-testing.js
+          npx tsc
+          node html-testing.js
         continue-on-error: false # Ensure the workflow fails if this step fails
