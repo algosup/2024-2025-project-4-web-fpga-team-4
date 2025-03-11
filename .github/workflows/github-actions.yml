@@ -23,6 +23,7 @@ jobs:
 
       - name: Install dependencies inside /test
         run: |
+          pwd
           if [ -f "./src/test/package.json" ]; then 
             cd ./src/test
             npm install
