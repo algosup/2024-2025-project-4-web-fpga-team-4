@@ -35,10 +35,12 @@ jobs:
         run: |
           cd ./src/test
           npm install
+          pwd
 
       # Run the test command
       - name: Run tests
         run: |
+          pwd
           npm install typescript
           npx tsc
           node html-testing.js
