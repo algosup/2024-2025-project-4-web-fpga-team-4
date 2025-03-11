@@ -11,11 +11,11 @@
   "description": "",
   "dependencies": {
     "@types/selenium-webdriver": "^4.1.28",
-    "selenium-webdriver": "^4.29.0"
+    "selenium-webdriver": "^4.29.0",
+    "typescript": "^5.8.2"
   },
   "devDependencies": {
     "@types/node": "^22.13.9",
-    "mocha": "11.1.0",
-    "typescript": "^5.8.2"
+    "mocha": "11.1.0"
   }
 }
