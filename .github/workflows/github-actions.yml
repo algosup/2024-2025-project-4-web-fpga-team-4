@@ -5,8 +5,6 @@ name: CI
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main", "QA", "dev" ]
   pull_request:
     branches: [ "main", "QA", "dev" ]
 
@@ -22,15 +20,19 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+      # Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '23.6.0' # Specify the Node.js version you need
+          
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      # Run the test command
+      - name: Run tests
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          cd ./src/test
+          npx tsc; node html-testing.js
+        continue-on-error: false # Ensure the workflow fails if this step fails
