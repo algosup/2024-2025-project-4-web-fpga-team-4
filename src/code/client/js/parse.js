@@ -21,7 +21,7 @@ async function parseJsonFile(filePath) {
 		if (IOs[i].type === 'input') {
 			displayOutput(IOs[i].name);
 		} else {
-			displayInput(IOs[i].name, true);
+			displayInput(IOs[i].name);
 		}
 	}
 }
