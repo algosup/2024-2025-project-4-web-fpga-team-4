@@ -33,7 +33,12 @@ jobs:
           cd ./src/test
           npm install
           npm install typescript
-
+      # Install Firefox & GeckoDriver
+      - name: Install Firefox & GeckoDriver
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y firefox-geckodriver
+          
       # Run the test command and capture output
       - name: Run tests
         id: run-tests

@@ -1,5 +1,7 @@
 import { By, Builder, Browser, WebDriver } from 'selenium-webdriver';
 import * as assert from 'assert';
+import { Options as FirefoxOptions } from 'selenium-webdriver/firefox'
+import { Options as ChromeOptions } from 'selenium-webdriver/chrome';
 const fs = require('fs');
 const path = require('path');
 
@@ -10,7 +12,11 @@ const logFilePath = path.join(__dirname, 'logs', dateString + '-test.log');
 
 async function runTests() {
   let driver: WebDriver | null = null;
-  driver = await new Builder().forBrowser(Browser.FIREFOX).build();
+  const firefoxOptions = new FirefoxOptions();
+  const chromeOptions = new ChromeOptions();
+  firefoxOptions.addArguments('--headless');
+  // chromeOptions.addArguments('--headless');
+  driver = await new Builder().forBrowser(Browser.FIREFOX).setFirefoxOptions(firefoxOptions).build();
 
   try {
     await driver.get("https://two024-2025-project-4-web-fpga-team-4.onrender.com/client.html");
