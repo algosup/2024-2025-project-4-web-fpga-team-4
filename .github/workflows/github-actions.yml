@@ -47,7 +47,6 @@ jobs:
       - name: Extract failed tests
         id: extract-failed-tests
         run: |
-          # Extract failed tests from the ./src/test/logs/2025-03-12-test.json file
           FAILED_TESTS=$(cat ./src/test/logs/2025-03-12-test.json | jq -c '.results[] | select(.test.passed == false)')
           echo "::set-output name=failed_tests::$FAILED_TESTS"
 
@@ -64,7 +63,6 @@ jobs:
         run: |
           FAILED_TEST=${{ fromJson(steps.extract-failed-tests.outputs.failed_tests)[0] }}
           cat <<EOF > ISSUE_TEMPLATE.md
-          ### Failed Test Details
           - **Browser:** ${FAILED_TEST.browser}
           - **Test Name:** ${FAILED_TEST.test.name}
           - **Description:** ${FAILED_TEST.test.description}
