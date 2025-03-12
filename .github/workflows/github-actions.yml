@@ -40,9 +40,7 @@ jobs:
         run: |
           cd ./src/test
           npx tsc
-          for file in *.js; do
-            node "$file"
-          done
+          for file in *.js; do node "$file"; done
         continue-on-error: true # Allow the workflow to continue even if this step fails
 
       # Find the latest log file and create issues for test failures
