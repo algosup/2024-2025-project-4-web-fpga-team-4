@@ -40,44 +40,35 @@ jobs:
         run: |
           cd ./src/test
           npx tsc
-          mkdir -p ../logs
-          LOG_FILE="../logs/$(date +'%Y-%m-%d')-test.log"
           for file in *.js; do
-            node "$file" >> "$LOG_FILE" 2>&1
+            node "$file"
           done
         continue-on-error: true # Allow the workflow to continue even if this step fails
 
-      # Create a GitHub issue if tests fail
-      - name: Create GitHub Issue on Test Failure
-        if: steps.run-tests.outcome == 'failure'
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const fs = require('fs');
-            const path = require('path');
-            const date = new Date();
-            const logFileName = date.toISOString().split(/T/)[0] + '-test.log';
-            const logFilePath = path.join('./logs', logFileName);
-            const output = fs.readFileSync(logFilePath, 'utf8');
+      # Find the latest log file and create issues for test failures
+      - name: Check for test failures and create issues
+        run: |
+          LOG_DIR="./src/test/logs/"
+          
+          # Find the latest .log file (sorted by modification time)
+          LOG_FILE=$(ls -t "$LOG_DIR"*.log | head -n 1)
 
-            const issueTitle = 'Test Failure in CI';
-            const issueBody = `The tests in the CI workflow have failed. Please investigate and fix the issues.\n\nTest Output:\n\`\`\`\n${output}\n\`\`\``;
+          if [ -f "$LOG_FILE" ]; then
+            echo "Using latest log file: $LOG_FILE"
 
-            const { data: issues } = await github.issues.listForRepo({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              state: 'open',
-              labels: ['test-failure']
-            });
+            grep -A 2 "FAILED" "$LOG_FILE" | while read -r line; do
+              if echo "$line" | grep -q "FAILED"; then
+                TITLE=$(echo "$PREV_LINE" | sed 's/^[0-9]\+\s*//')
+                ERROR=$(echo "$line" | sed 's/FAILED//')
 
-            if (issues.some(issue => issue.title === issueTitle)) {
-              console.log('Issue already exists.');
-            } else {
-              await github.issues.create({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                title: issueTitle,
-                body: issueBody,
-                labels: ['test-failure']
-              });
-            }
+                curl -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+                  -H "Accept: application/vnd.github.v3+json" \
+                  https://api.github.com/repos/${{ github.repository }}/issues \
+                  -d "{\"title\": \"Test Failure: $TITLE\", \"body\": \"### Test failed: $TITLE\n\n$ERROR\"}"
+
+              fi
+              PREV_LINE="$line"
+            done
+          else
+            echo "No log file found in $LOG_DIR"
+          fi
