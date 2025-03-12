@@ -27,7 +27,7 @@ async function parseJsonFile(filePath) {
 }
 
 /* Call the function to parse the JSON file */
-const filePath = '../data/declarations.json';
+const filePath = 'data/declarations.json';
 parseJsonFile(filePath).then(() => {
 	// generateConnections();
 }).catch((error) => {
