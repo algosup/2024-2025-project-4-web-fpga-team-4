@@ -54,8 +54,11 @@ jobs:
         with:
           script: |
             const fs = require('fs');
-            const path = './logs/$(date +'%Y-%m-%d')-test.log';
-            const output = fs.readFileSync(path, 'utf8');
+            const path = require('path');
+            const date = new Date();
+            const logFileName = date.toISOString().split(/T/)[0]-test.log;
+            const logFilePath = path.join('./logs', logFileName);
+            const output = fs.readFileSync(logFilePath, 'utf8');
 
             const issueTitle = 'Test Failure in CI';
             const issueBody = `The tests in the CI workflow have failed. Please investigate and fix the issues.\n\nTest Output:\n\`\`\`\n${output}\n\`\`\``;
