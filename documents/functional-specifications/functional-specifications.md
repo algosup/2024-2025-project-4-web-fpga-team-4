@@ -19,7 +19,6 @@
 
 ---
 
-<br>
 <summary><h2 id="toc"> Table of Contents <i>(Click to expand)</i></h2></summary>
 
 <details>
@@ -34,7 +33,7 @@
       - [1.3.2. State of the Art](#132-state-of-the-art)
       - [1.3.3. Scope](#133-scope)
       - [1.3.4. Deliverables](#134-deliverables)
-    - [1.4. Project Organization|](#14-project-organization)
+    - [1.4. Project Organization](#14-project-organization)
       - [1.4.1. Project Representatives](#141-project-representatives)
       - [1.4.2. Team and Roles](#142-team-and-roles)
       - [1.4.3. Stakeholders](#143-stakeholders)
@@ -81,6 +80,8 @@
     - [4.5. Real-Time Interactions](#45-real-time-interactions)
     - [4.6. Zoom Features](#46-zoom-features)
     - [4.7. Light and Dark Mode](#47-light-and-dark-mode)
+    - [4.8. Settings Modal](#48-settings-modal)
+    - [4.9. Information Messages](#49-information-messages)
   - [5. Non-Functional Requirements](#5-non-functional-requirements)
     - [5.1. Performance](#51-performance)
     - [5.2. Hosting Performance](#52-hosting-performance)
@@ -112,6 +113,9 @@
 ## 1. Introduction
 
 ### 1.1. Glossary
+
+| Term | Definition |
+| ---- | ---------- |
 
 
 ### 1.2. Project Overview
@@ -157,7 +161,7 @@ The final product will consist of a local server hosting a web interface accessi
 | User Manual | Provide instructions for using the web interface | [🔗](./../user-manual/user-manual.md) |
 | Source Code | Share the project codebase with the community | [🔗](./../../src) |
 
-### 1.4. Project Organization|
+### 1.4. Project Organization
 
 #### 1.4.1. Project Representatives
 | Owners | Representative |
@@ -375,6 +379,13 @@ The target audience for this project includes teachers, students, and profession
 ---
 ## 3. UI/UX
 
+> [!NOTE]
+> Mockups and wireframe designs are subject to change based on user feedback and project requirements.
+
+
+> [!NOTE]
+> More detailed design specifications can be found in the [Graphic Charter](./graphic-charter.md) document.
+
 ### 3.1. Inspiration
 The user interface has been designed to provide an intuitive and engaging experience for teachers and students. The visual design is minimalistic, with a focus on clarity and ease of use. The color scheme is optimized for both light and dark modes to ensure readability in various environments. Interactive elements are designed to be accessible and responsive, allowing users to control the simulation with precision.
 
@@ -394,7 +405,8 @@ The user interface has been designed to provide an intuitive and engaging experi
 
 ### 3.3. Mockups
 
-All the mockups are available in the [Figma project](https://www.figma.com/design/A6rvzTJCZQQyznhdQbu753/FPGA-Web-App?node-id=0-1&m=dev&t=lkPKlLFY9KAmra26-1).
+All the mockups are available in the [Figma project](https://www.figma.com/design/A6rvzTJCZQQyznhdQbu753/FPGA-Web-App?node-id=0-1&m=dev&t=lkPKlLFY9KAmra26-1)
+
 #### 3.3.1 Light Mode
 
 ##### Main Page
@@ -491,6 +503,24 @@ The logo design is inspired by the concept of a "chip" and "exploration." It fea
 - **Details:**
   - Users can toggle between light and dark modes using a dedicated control in the interface.
   - The interface will adapt its color scheme and contrast to ensure readability in both modes.
+
+### 4.8. Settings Modal
+- **Functionality:**  
+  The interface will include a settings modal to provide users with additional customization options and information.
+- **Details:**
+  - The settings modal will contain options for adjusting clock speed, enabling step-by-step mode, and adding columns for LUT and Flip-Flop.
+  - The setting modal will also include the current version of the web interface and link to the GitHub repository.
+
+### 4.9. Information Messages
+- **Functionality:**  
+  The interface will be displayed on top right corner of the screen to provide users with real-time feedback and guidance.
+- **Details:**
+  - **Notice Messages:**
+    - Inform users of successful operations, such as file uploads, clock speed adjustments, and simulation controls.
+    - Provide guidance on how to interact with the simulation and navigate the interface.
+  - **Error Messages:**
+    - Alert users to potential issues, such as invalid file uploads, clock speed errors, and simulation control conflicts.
+    - Offer suggestions for resolving errors and provide links to additional resources for troubleshooting.
 
 ---
 ## 5. Non-Functional Requirements
