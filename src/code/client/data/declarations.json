@@ -20,69 +20,6 @@
 					"id": "2"
 				}
 			]
-		},
-		{
-			"id": 137,
-			"connections": [
-				{
-					"type": "output",
-					"id": "0"
-				},
-				{
-					"type": "input",
-					"id": "3"
-				},
-				{
-					"type": "input",
-					"id": "1"
-				},
-				{
-					"type": "input",
-					"id": "2"
-				}
-			]
-		},
-		{
-			"id": 135,
-			"connections": [
-				{
-					"type": "output",
-					"id": "0"
-				},
-				{
-					"type": "input",
-					"id": "3"
-				},
-				{
-					"type": "input",
-					"id": "1"
-				},
-				{
-					"type": "input",
-					"id": "2"
-				}
-			]
-		},
-		{
-			"id": 133,
-			"connections": [
-				{
-					"type": "output",
-					"id": "0"
-				},
-				{
-					"type": "input",
-					"id": "3"
-				},
-				{
-					"type": "input",
-					"id": "1"
-				},
-				{
-					"type": "input",
-					"id": "2"
-				}
-			]
 		}
 	],
 	"FlipFlops": [

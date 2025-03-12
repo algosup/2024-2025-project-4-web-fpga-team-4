@@ -375,7 +375,6 @@ void writeDeclarationsToJson(const string outputFilePath, vector<LUT> *luts, vec
 	ofstream outputFile(outputFilePath);
 	if (!outputFile.is_open())
 	{
-		cout << "Current directory: " << filesystem::current_path() << endl;
 		cerr << "error opening output file!" << endl;
 		return;
 	}
@@ -504,7 +503,7 @@ int main()
 	string inputFilePath;
 	cout << "Enter your .v file's path: ";
 	cin >> inputFilePath;
-	string outputFilePath = "declarations.json";
+	string outputFilePath = "../src/code/client/data/declarations.json";
 
 	vector<string> modules;
 	vector<string> wires;
