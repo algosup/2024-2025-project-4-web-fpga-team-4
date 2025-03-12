@@ -13,7 +13,7 @@
 
 **Created on:** February 25<sup>th</sup>, 2025
 
-**Last updated:** March 10<sup>th</sup>, 2025
+**Last updated:** March 12<sup>th</sup>, 2025
 
 </div>
 
@@ -26,65 +26,78 @@
 
 - [Functional Specifications](#functional-specifications)
   - [Preamble](#preamble)
-  - [Introduction](#introduction)
-    - [Glossary](#glossary)
-    - [Project Overview](#project-overview)
-    - [Project Definition](#project-definition)
-      - [Vision](#vision)
-      - [State of the Art](#state-of-the-art)
-      - [Scope](#scope)
-      - [Deliverables](#deliverables)
-    - [Project Organization|](#project-organization)
-      - [Project Representatives](#project-representatives)
-      - [Team and Roles](#team-and-roles)
-      - [Stakeholders](#stakeholders)
-      - [Project Reviewers](#project-reviewers)
-    - [Project Timeline](#project-timeline)
-      - [Retro-Planning](#retro-planning)
-      - [Milestones](#milestones)
-      - [Resources](#resources)
-      - [Assumptions and Constraints](#assumptions-and-constraints)
-  - [Personas](#personas)
-    - [Use Cases List](#use-cases-list)
-    - [Use Case Descriptions](#use-case-descriptions)
-  - [UI/UX](#uiux)
-    - [Inspiration](#inspiration)
-    - [Wireframes](#wireframes)
-      - [Main Page](#main-page)
-      - [Settings Modal](#settings-modal)
-      - [Information Messages](#information-messages)
-    - [Mockups](#mockups)
-      - [Light Mode](#light-mode)
+  - [1. Introduction](#1-introduction)
+    - [1.1. Glossary](#11-glossary)
+    - [1.2. Project Overview](#12-project-overview)
+    - [1.3. Project Definition](#13-project-definition)
+      - [1.3.1. Vision](#131-vision)
+      - [1.3.2. State of the Art](#132-state-of-the-art)
+      - [1.3.3. Scope](#133-scope)
+      - [1.3.4. Deliverables](#134-deliverables)
+    - [1.4. Project Organization|](#14-project-organization)
+      - [1.4.1. Project Representatives](#141-project-representatives)
+      - [1.4.2. Team and Roles](#142-team-and-roles)
+      - [1.4.3. Stakeholders](#143-stakeholders)
+      - [1.4.4. Project Reviewers](#144-project-reviewers)
+    - [1.5. Project Timeline](#15-project-timeline)
+      - [1.5.1. Retro-Planning](#151-retro-planning)
+      - [1.5.2. Milestones](#152-milestones)
+      - [1.5.3. Resources](#153-resources)
+      - [1.5.4. Assumptions and Constraints](#154-assumptions-and-constraints)
+  - [2. Target Audience](#2-target-audience)
+    - [2.1. Target Audience](#21-target-audience)
+    - [2.2. User Personas](#22-user-personas)
+      - [2.2.1. Emily Thompson – High School Technology Teacher](#221-emily-thompson--high-school-technology-teacher)
+      - [2.2.2. Mark Reynolds – Undergraduate Electrical Engineering Student](#222-mark-reynolds--undergraduate-electrical-engineering-student)
+      - [2.2.3. Alex Kim – Software Developer \& System Administrator](#223-alex-kim--software-developer--system-administrator)
+    - [2.3. Use Cases List](#23-use-cases-list)
+    - [2.4. Use Case Descriptions](#24-use-case-descriptions)
+      - [2.4.1. Upload SDF File](#241-upload-sdf-file)
+      - [2.4.2. Adjust Real-Time Clock Speed](#242-adjust-real-time-clock-speed)
+      - [2.4.3. Control Simulation (Start, Pause, Reset)](#243-control-simulation-start-pause-reset)
+      - [2.4.4. Step-By-Step Simulation Mode](#244-step-by-step-simulation-mode)
+      - [2.4.5. Zoom Features](#245-zoom-features)
+  - [3. UI/UX](#3-uiux)
+    - [3.1. Inspiration](#31-inspiration)
+    - [3.2. Wireframes](#32-wireframes)
+      - [3.2.1. Main Page](#321-main-page)
+      - [3.2.2. Settings Modal](#322-settings-modal)
+      - [3.2.3. Information Messages](#323-information-messages)
+    - [3.3. Mockups](#33-mockups)
+      - [3.3.1 Light Mode](#331-light-mode)
+        - [Main Page](#main-page)
+        - [Settings Modal](#settings-modal)
+        - [Information Messages](#information-messages)
+      - [3.3.2. Dark Mode](#332-dark-mode)
         - [Main Page](#main-page-1)
         - [Settings Modal](#settings-modal-1)
         - [Information Messages](#information-messages-1)
-      - [Dark Mode](#dark-mode)
-        - [Main Page](#main-page-2)
-        - [Settings Modal](#settings-modal-2)
-        - [Information Messages](#information-messages-2)
-    - [Logo](#logo)
-  - [Functional Requirements](#functional-requirements)
-    - [SDF File Upload](#sdf-file-upload)
-    - [Real-Time Clock Speed Adjustment](#real-time-clock-speed-adjustment)
-    - [Simulation Control](#simulation-control)
-    - [Simulation Control Step-by-Step](#simulation-control-step-by-step)
-    - [Real-Time Interactions](#real-time-interactions)
-    - [Zoom Features](#zoom-features)
-    - [Light and Dark Mode](#light-and-dark-mode)
-  - [Non-Functional Requirements](#non-functional-requirements)
-    - [Performance](#performance)
-    - [Hosting Performance](#hosting-performance)
-    - [Ease of Use](#ease-of-use)
-    - [Compatibility](#compatibility)
-  - [Future Improvements](#future-improvements)
-  - [Legal and Compliance](#legal-and-compliance)
-    - [Data Protection and Privacy](#data-protection-and-privacy)
-    - [Accessibility](#accessibility)
-    - [Security](#security)
-    - [Intellectual Property](#intellectual-property)
-  - [End Matter](#end-matter)
-    - [Contributors](#contributors)
-    - [License](#license)
+    - [3.4. Logo](#34-logo)
+  - [4. Functional Requirements](#4-functional-requirements)
+    - [4.1. SDF File Upload](#41-sdf-file-upload)
+    - [4.2. Real-Time Clock Speed Adjustment](#42-real-time-clock-speed-adjustment)
+    - [4.3. Simulation Control](#43-simulation-control)
+    - [4.4. Simulation Control Step-by-Step](#44-simulation-control-step-by-step)
+    - [4.5. Real-Time Interactions](#45-real-time-interactions)
+    - [4.6. Zoom Features](#46-zoom-features)
+    - [4.7. Light and Dark Mode](#47-light-and-dark-mode)
+  - [5. Non-Functional Requirements](#5-non-functional-requirements)
+    - [5.1. Performance](#51-performance)
+    - [5.2. Hosting Performance](#52-hosting-performance)
+    - [5.3. Ease of Use](#53-ease-of-use)
+    - [5.4. Compatibility](#54-compatibility)
+  - [6. Future Improvements](#6-future-improvements)
+    - [6.1. Advanced Simulation Controls](#61-advanced-simulation-controls)
+    - [6.2. Realistic Chip Behavior](#62-realistic-chip-behavior)
+    - [6.3. Collaborative Simulation](#63-collaborative-simulation)
+  - [7. Legal and Compliance](#7-legal-and-compliance)
+    - [7.1. Data Protection and Privacy](#71-data-protection-and-privacy)
+    - [7.2. Accessibility](#72-accessibility)
+    - [7.3. Security](#73-security)
+    - [7.4. Intellectual Property](#74-intellectual-property)
+  - [8. End Matter](#8-end-matter)
+    - [8.1. Contributors](#81-contributors)
+    - [8.2. License](#82-license)
 
 
 </details>
@@ -96,17 +109,17 @@
 
 
 ---
-## Introduction
+## 1. Introduction
 
-### Glossary
+### 1.1. Glossary
 
 
-### Project Overview
+### 1.2. Project Overview
 This project aims to develop a user-friendly web interface for simulating the internal chip flows of an FPGA. This interface will enable teachers and students to easily upload SDF files, adjust real-time clock speeds, and view simulation results. By streamlining the simulation process, this tool will enhance the educational experience and provide a practical demonstration of FPGA behavior in classroom settings.
 
-### Project Definition
+### 1.3. Project Definition
 
-#### Vision
+#### 1.3.1. Vision
 The vision of this project is to provide an open-source educational web platform for learning FPGA internal functioning and exploring the challenges associated with this technology.
 
 Team objectives include:
@@ -115,7 +128,7 @@ Team objectives include:
 - Enhancing the educational experience for students and teachers through interactive real-time demonstrations.
 - Ensuring the interface’s visual design is optimized for computer screens and video projectors.
 
-#### State of the Art
+#### 1.3.2. State of the Art
 Currently, there is no dedicated web interface for FPGA internal chip flow simulation. Existing solutions rely on expensive, complex software that is not tailored for educational use. These tools often have steep learning curves and are not designed for interactive real-time demonstrations. This project aims to fill that gap by offering a simple, accessible, and cost-effective solution.
 
 Existing simulation tools:
@@ -127,14 +140,14 @@ Existing simulation tools:
 | Intel Quartus Prime | Quartus Prime Lite Edition | Complex interface, not educational, missing some simulation tools | Free  | [🔗](https://www.thailand.intel.com/content/dam/www/central-libraries/us/en/documents/quartus-prime-compare-editions-guide.pdf) |
 
 
-#### Scope
+#### 1.3.3. Scope
 This project will use the following technologies:
 Frontend: Native JavaScript, HTML, CSS
 Backend: Node.js with Express.js (subject to change based on project needs)
 
 The final product will consist of a local server hosting a web interface accessible from any modern web browser.
 
-#### Deliverables
+#### 1.3.4. Deliverables
 | Deliverable | Purpose | Document |
 | ----------- | ------- | ---- |
 | Functional Specifications | Define project scope and requirements | [🔗](./functional-specifications.md) |
@@ -144,16 +157,16 @@ The final product will consist of a local server hosting a web interface accessi
 | User Manual | Provide instructions for using the web interface | [🔗](./../user-manual/user-manual.md) |
 | Source Code | Share the project codebase with the community | [🔗](./../../src) |
 
-### Project Organization|
+### 1.4. Project Organization|
 
-#### Project Representatives
+#### 1.4.1. Project Representatives
 | Owners | Representative |
 | ------ | -------------- |
 | [CNES](https://www.cnes.fr/en) | Represented by [Florent MANNI](https://www.linkedin.com/in/florent-manni-182547211/) |
 | [ALGOSUP](https://www.algosup.com) | Represented by [Franck JEANNIN](https://www.linkedin.com/in/franck-jeannin/) |
 | [Thibaud MARLIER](https://www.linkedin.com/in/thibaudmarlier/) | Represented by [Maxime CARON](https://www.linkedin.com/in/maxime-caron-dev/) (Program Manager)|
 
-#### Team and Roles
+#### 1.4.2. Team and Roles
 
 | Full Name | Role | Role Description | Contact |
 | --------- | ---- | ---------------- | ------- |
@@ -165,7 +178,7 @@ The final product will consist of a local server hosting a web interface accessi
 | Jason GROSSO | Software Engineer | Develops the web interface and simulation engine | [LinkedIn](https://www.linkedin.com/in/jason-grosso-847b39251/) |
 | Lauren BOUQUIN | Software Engineer | Develops the web interface and simulation engine | [LinkedIn](https://www.linkedin.com/in/laurentb22/) |
 
-#### Stakeholders
+#### 1.4.3. Stakeholders
 
 | Stakeholder | Interest |
 | ----------- | -------- |
@@ -175,18 +188,18 @@ The final product will consist of a local server hosting a web interface accessi
 | Teachers | End users of the web interface for educational purposes |
 | Students | End users of the web interface for learning FPGA concepts |
 
-#### Project Reviewers
+#### 1.4.4. Project Reviewers
 External project reviewers have been appointed by the project owner to review our specifications and provide us with feedback.
 
-### Project Timeline
+### 1.5. Project Timeline
 
-#### Retro-Planning
+#### 1.5.1. Retro-Planning
 
 The project will be developed in 6 weeks, from 24<sup>th</sup> February 2025 to 4<sup>th</sup> April 2025.
 
 ![Retro-Planning](./images/retro-planning-v1.png)
 
-#### Milestones
+#### 1.5.2. Milestones
 | Date       | Milestone                 | Responsible                  |
 | ---------- | ------------------------- | ---------------------------- |
 | 02/28/2025 | First Weekly Report       | Thibaud MARLIER              |
@@ -204,7 +217,7 @@ The project will be developed in 6 weeks, from 24<sup>th</sup> February 2025 to 
 | 04/04/2025 | Final Report              | Thibaud MARLIER              |
 | 04/04/2025 | Project Post-Mortem       | Thibaud MARLIER              |
 
-#### Resources
+#### 1.5.3. Resources
 - Team of 7 people
 - Input from teachers and professionals at CNES
 - Help from ALGOSUP teachers and professionals
@@ -213,7 +226,7 @@ The project will be developed in 6 weeks, from 24<sup>th</sup> February 2025 to 
 - SDF file examples
 - Estimated project time: 490 hours (10 days × 7 people × 7 hours/day)
 
-#### Assumptions and Constraints
+#### 1.5.4. Assumptions and Constraints
 - The project will use web technologies (HTML, CSS, JavaScript, Node.js, Express.js).
 - It will be hosted on a local server and accessible via modern web browsers.
 - The project is open source and free for educational use.
@@ -223,9 +236,15 @@ The project will be developed in 6 weeks, from 24<sup>th</sup> February 2025 to 
 - The project will comply with relevant data protection and privacy regulations.
 
 ---
-## Personas
+## 2. Target Audience
 
-**1. Emily Thompson – High School Technology Teacher**  
+### 2.1. Target Audience
+The target audience for this project includes teachers, students, and professionals interested in FPGA design and simulation. The web interface is designed to provide an educational platform for learning about FPGA internals and exploring the challenges associated with this technology. By offering an intuitive, interactive simulation tool, the project aims to engage users in hands-on learning experiences that bridge theoretical concepts with practical applications.
+
+### 2.2. User Personas
+
+#### 2.2.1. Emily Thompson – High School Technology Teacher
+  
 <div style="display: flex; flex-direction: row; width: 100%;">
   <img src="images/personas-1.jpg" width="200" height="200px" style="margin-right: 20px;">
   <p>
@@ -238,11 +257,9 @@ The project will be developed in 6 weeks, from 24<sup>th</sup> February 2025 to 
     - Lack of real-time interactivity that limits classroom engagement.
   </p>
 </div>
-<br />
 
+#### 2.2.2. Mark Reynolds – Undergraduate Electrical Engineering Student
 
-
-**2. Mark Reynolds – Undergraduate Electrical Engineering Student** 
 <div style="display: flex; flex-direction: row; width: 100%;">
   <img src="images/personas-2.png" width="200" height="200px" style="margin-right: 20px;">
   <p>
@@ -255,9 +272,10 @@ The project will be developed in 6 weeks, from 24<sup>th</sup> February 2025 to 
     - Overly technical interfaces that require steep learning curves.
   </p>
 </div>
-<br />
 
-**3. Alex Kim – Software Developer & System Administrator** 
+
+#### 2.2.3. Alex Kim – Software Developer & System Administrator
+
 <div style="display: flex; flex-direction: row; width: 100%;">
   <img src="images/personas-3.png" width="200" height="200px" style="margin-right: 20px;">
   <p>
@@ -272,7 +290,7 @@ The project will be developed in 6 weeks, from 24<sup>th</sup> February 2025 to 
 </div>
 
 ---
-### Use Cases List
+### 2.3. Use Cases List
 
 | Use Case ID | Use Case Name                    | Description                                                                               |
 | ----------- | -------------------------------- | ----------------------------------------------------------------------------------------- |
@@ -284,9 +302,9 @@ The project will be developed in 6 weeks, from 24<sup>th</sup> February 2025 to 
 
 ---
 
-### Use Case Descriptions
+### 2.4. Use Case Descriptions
 
-**Use Case 1: Upload SDF File**
+#### 2.4.1. Upload SDF File
 
 | Field           | Description |
 |-----------------|-------------|
@@ -300,7 +318,7 @@ The project will be developed in 6 weeks, from 24<sup>th</sup> February 2025 to 
 
 ---
 
-**Use Case 2: Adjust Real-Time Clock Speed**
+#### 2.4.2. Adjust Real-Time Clock Speed
 
 | Field           | Description |
 |-----------------|-------------|
@@ -314,7 +332,7 @@ The project will be developed in 6 weeks, from 24<sup>th</sup> February 2025 to 
 
 ---
 
-**Use Case 3: Control Simulation (Start, Pause, Reset)**
+#### 2.4.3. Control Simulation (Start, Pause, Reset)
 
 | Field           | Description |
 |-----------------|-------------|
@@ -328,7 +346,7 @@ The project will be developed in 6 weeks, from 24<sup>th</sup> February 2025 to 
 
 ---
 
-**Use Case 4: Step-By-Step Simulation Mode**
+#### 2.4.4. Step-By-Step Simulation Mode
 
 | Field           | Description |
 |-----------------|-------------|
@@ -342,7 +360,7 @@ The project will be developed in 6 weeks, from 24<sup>th</sup> February 2025 to 
 
 ---
 
-**Use Case 5: Zoom Features**
+#### 2.4.5. Zoom Features
 
 | Field           | Description |
 |-----------------|-------------|
@@ -355,29 +373,29 @@ The project will be developed in 6 weeks, from 24<sup>th</sup> February 2025 to 
 | **Flow** | 1. The user interacts with zoom controls (buttons).<br/>2. The system adjusts the view to either magnify or reduce the display of the FPGA's internal structure.<br/>3. The display updates in real-time to reflect the new zoom level.<br/>4. **Alternate Flow:** If the user input is ambiguous or unsupported, the system defaults to the nearest valid zoom level and displays a notification. |
 
 ---
-## UI/UX
+## 3. UI/UX
 
-### Inspiration
+### 3.1. Inspiration
 The user interface has been designed to provide an intuitive and engaging experience for teachers and students. The visual design is minimalistic, with a focus on clarity and ease of use. The color scheme is optimized for both light and dark modes to ensure readability in various environments. Interactive elements are designed to be accessible and responsive, allowing users to control the simulation with precision.
 
-### Wireframes
+### 3.2. Wireframes
 
-#### Main Page
+#### 3.2.1. Main Page
 
 <img src="images/main-page-wireframe.svg" alt="Main Page Wireframe" width="100%">
 
-#### Settings Modal
+#### 3.2.2. Settings Modal
 
 <img src="images/settings-modal-wireframe.svg" alt="Settings Modal Wireframe" width="100%">
 
-#### Information Messages
+#### 3.2.3. Information Messages
 
 <img src="images/information-messages-wireframe.svg" alt="Information Messages Wireframe" width="50%">
 
-### Mockups
+### 3.3. Mockups
 
 All the mockups are available in the [Figma project](https://www.figma.com/design/A6rvzTJCZQQyznhdQbu753/FPGA-Web-App?node-id=0-1&m=dev&t=lkPKlLFY9KAmra26-1).
-#### Light Mode
+#### 3.3.1 Light Mode
 
 ##### Main Page
 <img src="images/main-page-mockups-light.png" alt="Main page light mode mockups" width="100%">
@@ -393,7 +411,7 @@ All the mockups are available in the [Figma project](https://www.figma.com/desig
 **Error Message:**
 <img src="images/error-modal-mockups.png" alt="Error message light mode mockup" width="50%">
 
-#### Dark Mode
+#### 3.3.2. Dark Mode
 
 ##### Main Page
 <img src="images/main-page-mockups-dark.png" alt="Main page dark mode mockups" width="100%">
@@ -410,16 +428,16 @@ All the mockups are available in the [Figma project](https://www.figma.com/desig
 **Error Message:**
 <img src="images/error-modal-mockups.png" alt="Error message light mode mockup" width="50%">
 
-### Logo
+### 3.4. Logo
 
 The logo design is inspired by the concept of a "chip" and "exploration." It features a stylized representation spaceman exploring a circuit board, symbolizing the educational journey of discovering FPGA internals.
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="images/logo-light.png"><source media="(prefers-color-scheme: light)" srcset="images/logo-dark.png"><img alt="FPGA Explorer Logo"  style="width:100px">    </picture>
 
 ---
-## Functional Requirements
+## 4. Functional Requirements
 
-### SDF File Upload  
+### 4.1. SDF File Upload  
 - **Functionality:**  
   The web interface will allow users to upload SDF files containing the chip design information.  
 - **Details:**  
@@ -427,21 +445,21 @@ The logo design is inspired by the concept of a "chip" and "exploration." It fea
   - Upon file upload, the system will validate the file format and size. If the file is malformed or exceeds the allowed limit, a clear error message will be displayed.  
   - Successfully uploaded files will be parsed, and the chip’s internal structure will be rendered visually on the interface.
 
-### Real-Time Clock Speed Adjustment  
+### 4.2. Real-Time Clock Speed Adjustment  
 - **Functionality:**  
   Users will be able to adjust the simulation's clock speed in real-time.  
 - **Details:**  
   - A dedicated control will allow users to increase or decrease the clock speed by predefined increments (e.g., 1x, 2x, 4x, ...).
   - Changes to the clock speed will take effect immediately, with a tooltip displaying the current speed.
 
-### Simulation Control  
+### 4.3. Simulation Control  
 - **Functionality:**  
   The interface will provide controls for starting, pausing, and resetting the simulation.  
 - **Details:**  
   - Visual cues such as play, pause, and reset buttons will be available to control the simulation flow.
   - Users can easily control the simulation flow to observe behaviors at their own pace.
 
-### Simulation Control Step-by-Step  
+### 4.4. Simulation Control Step-by-Step  
 - **Functionality:**  
   The interface will offer a step-by-step simulation mode where users can advance the simulation a specified number of clock cycles at a time.  
 - **Details:**  
@@ -451,7 +469,7 @@ The logo design is inspired by the concept of a "chip" and "exploration." It fea
 > [!NOTE]
 > The default number of clock cycles per step is defined in the [Technical Specifications](../technical-specifications/technical-specifications.md) document.
 
-### Real-Time Interactions  
+### 4.5. Real-Time Interactions  
 - **Functionality:**  
   Users will interact with the simulation through various input fields and buttons provided on the interface.  
 - **Details:**  
@@ -460,14 +478,14 @@ The logo design is inspired by the concept of a "chip" and "exploration." It fea
 > [!NOTE]
 > All input controls derived from the SDF file are read-only to prevent unintended alterations.
 
-### Zoom Features
+### 4.6. Zoom Features
 - **Functionality:**  
   The interface will provide zoom features to allow users to focus on specific areas of the displayed circuit.
 - **Details:**
   - Users can zoom in and out of the chip's internal structure using dedicated controls.
   - Zoom controls will use predefined zoom levels to maintain consistency and avoid distortion (e.g., 50%, 100%, 150%, ...).
 
-### Light and Dark Mode
+### 4.7. Light and Dark Mode
 - **Functionality:**  
   The interface will support light and dark modes to accommodate user preferences. This will allow users to keep a consistent experience across different devices (e.g., desktop, video projector).
 - **Details:**
@@ -475,9 +493,9 @@ The logo design is inspired by the concept of a "chip" and "exploration." It fea
   - The interface will adapt its color scheme and contrast to ensure readability in both modes.
 
 ---
-## Non-Functional Requirements
+## 5. Non-Functional Requirements
 
-### Performance  
+### 5.1. Performance  
 - **Responsiveness:**  
   The web interface must be highly responsive, providing real-time feedback to user interactions.  
   - **Requirement:** All interactive operations must complete within 100ms to be considered smooth.  
@@ -487,19 +505,19 @@ The logo design is inspired by the concept of a "chip" and "exploration." It fea
   - **Requirement:** File upload and parsing processes can take up to 1 minute, depending on file size and complexity.  
   - **Error Handling:** In cases where the process exceeds the maximum allowed time, the system should display a status update and offer options to retry.
 
-### Hosting Performance  
+### 5.2. Hosting Performance  
 - **Local Deployment:**  
   As the project is open source and free, any user with a reasonably modern computer should be able to run the server locally.  
   - **Requirement:** A "decent computer" is defined as one with at least 4GB of RAM and a 4-core CPU.  
   - **Scalability:** The application should maintain functionality under local deployment without requiring extensive configuration.
 
-### Ease of Use  
+### 5.3. Ease of Use  
 - **User Interface:**  
   The interface must be intuitive, easy to navigate, and provide clear instructions and visual cues to guide users through the simulation process.
   - **Guidance:** Onboarding instructions and tooltips should be available for first-time users.
   - **Accessibility:** The design should consider accessibility guidelines to ensure usability for all users.
 
-### Compatibility  
+### 5.4. Compatibility  
 - **Browser Support:**  
   The web interface should be compatible with modern web browsers, including Chrome, Firefox, Safari, and Edge.  
 - **Responsive Design:**  
@@ -507,50 +525,51 @@ The logo design is inspired by the concept of a "chip" and "exploration." It fea
   - **Reference:** Additional compatibility details can be found in the [Technical Specifications](../technical-specifications/technical-specifications.md) document.
 
 ---
-## Future Improvements
+## 6. Future Improvements
 
-- **Advanced Simulation Controls:**  
+### 6.1. Advanced Simulation Controls
+
   - **Functionality:** Enhance the simulation controls to include breakpoint settings, dynamic variable clock speeds, and customizable step sizes.  
   - **Details:** These controls will allow users to pause simulations at predetermined points, adjust clock speeds on the fly, and choose step increments ranging from 1 to 100 clock cycles. This will facilitate detailed debugging and deeper analysis of chip behavior.  
   - **End Goal:** To reduce simulation debugging time by at least 30% and provide flexible simulation stepping for both educational and research purposes.
 
-- **Realistic Chip Behavior:**  
+### 6.2. Realistic Chip Behavior
   - **Functionality:** Expand the simulation engine to model realistic chip behavior by incorporating external environmental factors such as temperature, voltage fluctuations, and other dynamic conditions.  
   - **Details:** Environmental factors will be integrated using parameterized models and lookup tables derived from real-world measurements. This will allow the simulation to reflect subtle variations in chip performance under different conditions.  
   - **End Goal:** To achieve simulation accuracy within 5% of real-world measurements, providing a more immersive and educational experience that mirrors actual FPGA behavior.
 
-- **Collaborative Simulation:**  
+### 6.3. Collaborative Simulation
   - **Functionality:** Introduce collaborative simulation features to enable multiple users to interact with the simulation simultaneously.  
   - **Details:** The interface will support shared dashboards and real-time collaboration tools, with role-based access control to manage simultaneous interactions and prevent conflicts.  
   - **End Goal:** To support at least 5 simultaneous users without performance degradation, thereby promoting interactive learning, knowledge sharing, and teamwork among students and researchers.
 
 ---
-## Legal and Compliance
+## 7. Legal and Compliance
 
-### Data Protection and Privacy
+### 7.1. Data Protection and Privacy
 
 - Do not store or save any personal data on the website.
 
-### Accessibility
+### 7.2. Accessibility
 
 - The website will be used by a large number of students and must comply with accessibility standards to accommodate all types of disabilities. 
 - Ensure the design and functionality adhere to inclusive accessibility guidelines
 
-### Security 
+### 7.3. Security 
 
 - Implement robust security measures to safeguard sensitive company information.
 - Use strict authentication methods to ensure that only authorized CNES employees can access the website.
 - Alternatively, deploy the website locally within CNES’s internal network to restrict external access entirely.
 
-### Intellectual Property
+### 7.4. Intellectual Property
 
 - Clearly state that the website and its content are the exclusive property of CNES.
 - Include appropriate copyright notices to protect intellectual property rights.
 
 ---
-## End Matter
+## 8. End Matter
 
-### Contributors
+### 8.1. Contributors
 | Pictures | Full Name | Role | Role Description | Contact |
 | -------- | --------- | ---- | ---------------- | ------- |
 |  <img alt="https://github.com/Biohazardyee" src="https://avatars.githubusercontent.com/u/146005163?v=4" width=150 /> | Thibaud MARLIER | Project Manager | Responsible for project planning, coordination, and communication | [LinkedIn](https://www.linkedin.com/in/thibaudmarlier/) |
@@ -561,5 +580,5 @@ The logo design is inspired by the concept of a "chip" and "exploration." It fea
 |  <img alt="https://github.com/JasonGROSSO" src="https://avatars.githubusercontent.com/u/114397870?v=4" width=150 /> | Jason GROSSO | Software Engineer | Develops the web interface and simulation engine | [LinkedIn](https://www.linkedin.com/in/jason-grosso-847b39251/) |
 |  <img alt="https://github.com/laurentbouquin" src="https://avatars.githubusercontent.com/u/71769489?v=4" width=150 /> | Lauren BOUQUIN | Software Engineer | Develops the web interface and simulation engine | [LinkedIn](https://www.linkedin.com/in/laurentb22/) |
 
-### License
+### 8.2. License
 This project is licensed under the MIT License - see the LICENSE file for details.
