@@ -62,15 +62,15 @@
 
 | Term              | Definition                                                                                                                                                      |
 |-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Branding**      | The overall visual identity including logo, color palette, typography, and imagery that conveys the brand’s values and style.                                   |
+| **Branding** | The overall visual identity including logo, color palette, typography, and imagery conveys the brand’s values and style.                                   |
 | **Color Palette** | A defined set of colors used consistently throughout the interface, including separate specifications for Light Mode, Dark Mode, and specialized FPGA elements. |
 | **Contrast Ratio** | A metric defining the luminance difference between text and background colors. A minimum ratio of 4.5:1 is required for accessibility.                         |
-| **Dark Mode**     | A color theme using darker backgrounds with lighter text, suitable for low-light environments.                                                                  |
+| **Dark Mode** | A color theme using darker backgrounds with lighter text, suitable for low-light environments.                                                                  |
 | **Design Tokens** | A centralized collection of style values (colors, fonts, spacing, etc.) used to ensure consistency and facilitate maintenance across the design system.         |
-| **Light Mode**    | A color theme using lighter backgrounds with darker text, optimized for well-lit environments.                                                                  |
+| **Light Mode** | A color theme using lighter backgrounds with darker text, optimized for well-lit environments.                                                                  |
 | **Responsive Design** | A design approach that ensures the layout and components adapt seamlessly to different screen sizes and resolutions.                                        |
-| **SVG**           | Scalable Vector Graphics, a file format for vector-based images that ensures icons and graphics can scale without quality loss.                                 |
-| **Typography**    | The style, arrangement, and appearance of text, covering font families, sizes, weights, and hierarchy (e.g., headings, body, code).                             |
+| **SVG** | Scalable Vector Graphics, a file format for vector-based images that ensure icons and graphics can scale without quality loss.                                 |
+| **Typography** | The style, arrangement, and appearance of text, covering font families, sizes, weights, and hierarchy (e.g., headings, body, code).                             |
 
 ---
 
@@ -84,7 +84,7 @@
 
 ### 1.2. Branding
 - **Approach:**  
-  The branding is kept minimal and professional, with emphasis on clarity and usability.
+ The branding is kept minimal and professional, with an emphasis on clarity and usability.
 - **Elements:**
   - **Color Palette:** A limited set of colors is used to maintain consistency.
   - **Typography:** A clear, readable font is used for all text elements.
@@ -186,7 +186,7 @@
   - **Preferred:** IBM Plex Mono or Roboto Mono.
   - **Weight:** Regular (400).
   - **Size:** 14–16px on desktop.
-  - **Line-height:** 1.4–1.6 for optimal readability.
+  - **Line height:** 1.4–1.6 for optimal readability.
 - **Code / Technical Snippets:**
   - A monospaced variant (e.g., IBM Plex Mono) is used.
   - Code blocks should have a distinct background or border to differentiate them from regular text.
@@ -210,7 +210,7 @@
   - Contains the logo, main navigation, settings, and theme toggle.
   - Remains fixed at the top for continuous accessibility.
 - **Side Bar (Toggleable, Right):**
-  - Occupies around 20% of the horizontal space on desktop.
+  - Occupies around 20% of the horizontal space on the desktop.
   - Is collapsible to maximize the central content area.
 - **Canvas (Main Content Area):**
   - Uses approximately 85% of the vertical space.

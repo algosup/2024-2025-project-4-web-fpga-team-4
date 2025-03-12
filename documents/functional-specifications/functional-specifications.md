@@ -199,7 +199,7 @@ The final product will consist of a local server hosting a web interface accessi
 | Maxime CARON | Program Manager | Ensures project meets expectations; oversees design and functional specs | [LinkedIn](https://www.linkedin.com/in/maxime-caron-dev/) |
 | Emilien CHINSY | Technical Lead | Oversees technical aspects, including architecture and implementation | [LinkedIn](https://www.linkedin.com/in/emilien-chinsy-5a794632b/) |
 | Guillaume DESPAUX | Quality Assurance | Ensures quality of deliverables and adherence to requirements | [LinkedIn](https://www.linkedin.com/in/guillaume-despaux/) |
-| Clementine CUREL | Technical Writer | Documents the project, including user manuals	 | [LinkedIn](https://www.linkedin.com/in/clementinecurel/) |
+| Clementine CUREL | Technical Writer | Documents the project, including user manuals  | [LinkedIn](https://www.linkedin.com/in/clementinecurel/) |
 | Jason GROSSO | Software Engineer | Develops the web interface and simulation engine | [LinkedIn](https://www.linkedin.com/in/jason-grosso-847b39251/) |
 | Lauren BOUQUIN | Software Engineer | Develops the web interface and simulation engine | [LinkedIn](https://www.linkedin.com/in/laurentb22/) |
 
@@ -275,11 +275,11 @@ The target audience for this project includes teachers, students, and profession
   <p>
     <strong>Background:</strong> A passionate educator who integrates hands-on technology into her curriculum.<br>
     <strong>Goals:</strong><br>
-    - To demonstrate complex FPGA concepts through interactive, real-time simulations.<br>
-    - To simplify the learning process with an intuitive, accessible interface.<br>
+ - To demonstrate complex FPGA concepts through interactive, real-time simulations.<br>
+ - To simplify the learning process with an intuitive, accessible interface.<br>
     <strong>Frustrations:</strong><br>
-    - Tools that are too complex or expensive.<br>
-    - Lack of real-time interactivity that limits classroom engagement.
+ - Tools that are too complex or expensive.<br>
+ - Lack of real-time interactivity that limits classroom engagement.
   </p>
 </div>
 
@@ -290,11 +290,11 @@ The target audience for this project includes teachers, students, and profession
   <p>
     <strong>Background:</strong> An enthusiastic student eager to learn FPGA design and simulation.<br>
     <strong>Goals:</strong><br>
-    - To experiment with different simulation parameters (like clock speeds and step sizes) for deeper understanding.<br>
-    - To use a tool that bridges theoretical concepts with practical application.<br>
+ - To experiment with different simulation parameters (like clock speeds and step sizes) for deeper understanding.<br>
+ - To use a tool that bridges theoretical concepts with practical application.<br>
     <strong>Frustrations:</strong><br>
-    - Limited hands-on opportunities with actual FPGA behavior.<br>
-    - Overly technical interfaces that require steep learning curves.
+ - Limited hands-on opportunities with actual FPGA behavior.<br>
+ - Overly technical interfaces that require steep learning curves.
   </p>
 </div>
 
@@ -306,11 +306,11 @@ The target audience for this project includes teachers, students, and profession
   <p>
     <strong>Background:</strong> Responsible for maintaining and updating the web interface, ensuring its performance and ease of deployment..<br>
     <strong>Goals:</strong><br>
-    - To provide a reliable, responsive simulation tool that meets both educational and technical requirements..<br>
-    - To integrate user feedback for continuous improvement.<br>
+ - To provide a reliable, responsive simulation tool that meets both educational and technical requirements..<br>
+ - To integrate user feedback for continuous improvement.<br>
     <strong>Frustrations:</strong><br>
-    - Unresponsive systems or frequent bugs that disrupt classroom sessions.<br>
-    - Complex deployment processes that hinder local installations.
+ - Unresponsive systems or frequent bugs that disrupt classroom sessions.<br>
+ - Complex deployment processes that hinder local installations.
   </p>
 </div>
 
@@ -463,7 +463,7 @@ All the mockups are available in the [Figma project](https://www.figma.com/desig
 
 ### 3.4. Logo
 
-The logo design is inspired by the concept of a "chip" and "exploration." It features a stylized representation spaceman exploring a circuit board, symbolizing the educational journey of discovering FPGA internals.
+The logo design is inspired by the concept of a "chip" and "exploration." It features a stylized representation of a spaceman exploring a circuit board, symbolizing the educational journey of discovering FPGA internals.
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="images/logo-light.png"><source media="(prefers-color-scheme: light)" srcset="images/logo-dark.png"><img alt="FPGA Explorer Logo"  style="width:100px">    </picture>
 
@@ -472,7 +472,7 @@ The logo design is inspired by the concept of a "chip" and "exploration." It fea
 
 ### 4.1. SDF File Upload  
 - **Functionality:**  
-  The web interface will allow users to upload SDF files containing the chip design information.  
+ The web interface will allow users to upload SDF files containing the chip design information.  
 - **Details:**  
   - The system shall support SDF file formats up to 10 MB in size.  
   - Upon file upload, the system will validate the file format and size. If the file is malformed or exceeds the allowed limit, a clear error message will be displayed.  
@@ -480,21 +480,21 @@ The logo design is inspired by the concept of a "chip" and "exploration." It fea
 
 ### 4.2. Real-Time Clock Speed Adjustment  
 - **Functionality:**  
-  Users will be able to adjust the simulation's clock speed in real-time.  
+ Users will be able to adjust the simulation's clock speed in real-time.  
 - **Details:**  
   - A dedicated control will allow users to increase or decrease the clock speed by predefined increments (e.g., 1x, 2x, 4x, ...).
   - Changes to the clock speed will take effect immediately, with a tooltip displaying the current speed.
 
 ### 4.3. Simulation Control  
 - **Functionality:**  
-  The interface will provide controls for starting, pausing, and resetting the simulation.  
+ The interface will provide controls for starting, pausing, and resetting the simulation.  
 - **Details:**  
   - Visual cues such as play, pause, and reset buttons will be available to control the simulation flow.
   - Users can easily control the simulation flow to observe behaviors at their own pace.
 
 ### 4.4. Simulation Control Step-by-Step  
 - **Functionality:**  
-  The interface will offer a step-by-step simulation mode where users can advance the simulation a specified number of clock cycles at a time.  
+ The interface will offer a step-by-step simulation mode where users can advance the simulation a specified number of clock cycles at a time.  
 - **Details:**  
   - This mode enables detailed observation of the chip's behavior at each simulation step.  
 
@@ -504,7 +504,7 @@ The logo design is inspired by the concept of a "chip" and "exploration." It fea
 
 ### 4.5. Real-Time Interactions  
 - **Functionality:**  
-  Users will interact with the simulation through various input fields and buttons provided on the interface.  
+ Users will interact with the simulation through various input fields and buttons provided on the interface.  
 - **Details:**  
   - The interactive elements are generated based on data specified in the uploaded SDF file.  
   - Users will not be able to add or modify these inputs directly within the interface to maintain simulation integrity.  
@@ -513,28 +513,28 @@ The logo design is inspired by the concept of a "chip" and "exploration." It fea
 
 ### 4.6. Zoom Features
 - **Functionality:**  
-  The interface will provide zoom features to allow users to focus on specific areas of the displayed circuit.
+ The interface will provide zoom features to allow users to focus on specific areas of the displayed circuit.
 - **Details:**
   - Users can zoom in and out of the chip's internal structure using dedicated controls.
   - Zoom controls will use predefined zoom levels to maintain consistency and avoid distortion (e.g., 50%, 100%, 150%, ...).
 
 ### 4.7. Light and Dark Mode
 - **Functionality:**  
-  The interface will support light and dark modes to accommodate user preferences. This will allow users to keep a consistent experience across different devices (e.g., desktop, video projector).
+ The interface will support light and dark modes to accommodate user preferences. This will allow users to keep a consistent experience across different devices (e.g., desktop, video projector).
 - **Details:**
   - Users can toggle between light and dark modes using a dedicated control in the interface.
   - The interface will adapt its color scheme and contrast to ensure readability in both modes.
 
 ### 4.8. Settings Modal
 - **Functionality:**  
-  The interface will include a settings modal to provide users with additional customization options and information.
+ The interface will include settings modal to provide users with additional customization options and information.
 - **Details:**
   - The settings modal will contain options for adjusting clock speed, enabling step-by-step mode, and adding columns for LUT and Flip-Flop.
   - The setting modal will also include the current version of the web interface and link to the GitHub repository.
 
 ### 4.9. Information Messages
 - **Functionality:**  
-  The interface will be displayed on top right corner of the screen to provide users with real-time feedback and guidance.
+ The interface will be displayed on the top right corner of the screen to provide users with real-time feedback and guidance.
 - **Details:**
   - **Notice Messages:**
     - Inform users of successful operations, such as file uploads, clock speed adjustments, and simulation controls.
@@ -548,31 +548,31 @@ The logo design is inspired by the concept of a "chip" and "exploration." It fea
 
 ### 5.1. Performance  
 - **Responsiveness:**  
-  The web interface must be highly responsive, providing real-time feedback to user interactions.  
+ The web interface must be highly responsive, providing real-time feedback to user interactions.  
   - **Requirement:** All interactive operations must complete within 100ms to be considered smooth.  
 - **Simulation Engine Optimization:**  
-  The simulation engine should be optimized for speed and efficiency to ensure smooth operation during simulations.
+ The simulation engine should be optimized for speed and efficiency to ensure smooth operation during simulations.
 - **File Upload and Load:**  
   - **Requirement:** File upload and parsing processes can take up to 1 minute, depending on file size and complexity.  
   - **Error Handling:** In cases where the process exceeds the maximum allowed time, the system should display a status update and offer options to retry.
 
 ### 5.2. Hosting Performance  
 - **Local Deployment:**  
-  As the project is open source and free, any user with a reasonably modern computer should be able to run the server locally.  
+ As the project is open source and free, any user with a reasonably modern computer should be able to run the server locally.  
   - **Requirement:** A "decent computer" is defined as one with at least 4GB of RAM and a 4-core CPU.  
   - **Scalability:** The application should maintain functionality under local deployment without requiring extensive configuration.
 
 ### 5.3. Ease of Use  
 - **User Interface:**  
-  The interface must be intuitive, easy to navigate, and provide clear instructions and visual cues to guide users through the simulation process.
+ The interface must be intuitive, easy to navigate, and provide clear instructions and visual cues to guide users through the simulation process.
   - **Guidance:** Onboarding instructions and tooltips should be available for first-time users.
   - **Accessibility:** The design should consider accessibility guidelines to ensure usability for all users.
 
 ### 5.4. Compatibility  
 - **Browser Support:**  
-  The web interface should be compatible with modern web browsers, including Chrome, Firefox, Safari, and Edge.  
+ The web interface should be compatible with modern web browsers, including Chrome, Firefox, Safari, and Edge.  
 - **Responsive Design:**  
-  The interface must adapt to different screen sizes and resolutions, ensuring a consistent user experience on desktops, tablets, and smartphones.
+ The interface must adapt to different screen sizes and resolutions, ensuring a consistent user experience on desktops, tablets, and smartphones.
   - **Reference:** Additional compatibility details can be found in the [Technical Specifications](../technical-specifications/technical-specifications.md) document.
 
 ---
@@ -610,7 +610,7 @@ The logo design is inspired by the concept of a "chip" and "exploration." It fea
 
 - Implement robust security measures to safeguard sensitive company information.
 - Use strict authentication methods to ensure that only authorized CNES employees can access the website.
-- Alternatively, deploy the website locally within CNES’s internal network to restrict external access entirely.
+- Alternatively, the website can be deployed locally within CNES’s internal network to restrict external access entirely.
 
 ### 7.4. Intellectual Property
 
@@ -627,7 +627,7 @@ The logo design is inspired by the concept of a "chip" and "exploration." It fea
 |  <img alt="https://github.com/MaximeAlgosup" src="https://avatars.githubusercontent.com/u/145995231?v=4" width=150 /> | Maxime CARON | Program Manager | Ensures project meets expectations; oversees design and functional specs | [LinkedIn](https://www.linkedin.com/in/maxime-caron-dev/) |
 |  <img alt="https://github.com/EmilienChinsy" src="https://avatars.githubusercontent.com/u/182214919?v=4" width=150 /> | Emilien CHINSY | Technical Lead | Oversees technical aspects, including architecture and implementation | [LinkedIn](https://www.linkedin.com/in/emilien-chinsy-5a794632b/) |
 |  <img alt="https://github.com/GuillaumeDespaux" src="https://avatars.githubusercontent.com/u/146001117?v=4" width=150 /> | Guillaume DESPAUX | Quality Assurance | Ensures quality of deliverables and adherence to requirements | [LinkedIn](https://www.linkedin.com/in/guillaume-despaux/) |
-|  <img alt="https://github.com/Clementine951" src="https://avatars.githubusercontent.com/u/78617457?v=4" width=150 /> | Clementine CUREL | Technical Writer | Documents the project, including user manuals	 | [LinkedIn](https://www.linkedin.com/in/clementinecurel/) |
+|  <img alt="https://github.com/Clementine951" src="https://avatars.githubusercontent.com/u/78617457?v=4" width=150 /> | Clementine CUREL | Technical Writer | Documents the project, including user manuals   | [LinkedIn](https://www.linkedin.com/in/clementinecurel/) |
 |  <img alt="https://github.com/JasonGROSSO" src="https://avatars.githubusercontent.com/u/114397870?v=4" width=150 /> | Jason GROSSO | Software Engineer | Develops the web interface and simulation engine | [LinkedIn](https://www.linkedin.com/in/jason-grosso-847b39251/) |
 |  <img alt="https://github.com/laurentbouquin" src="https://avatars.githubusercontent.com/u/71769489?v=4" width=150 /> | Lauren BOUQUIN | Software Engineer | Develops the web interface and simulation engine | [LinkedIn](https://www.linkedin.com/in/laurentb22/) |
 
