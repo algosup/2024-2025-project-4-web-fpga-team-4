@@ -384,7 +384,14 @@ All the mockups are available in the [Figma project](https://www.figma.com/desig
 
 ##### Settings Modal
 
+<img src="images/settings-page-mockups-light.png" alt="Settings page light mode mockups" width="100%">
+
 ##### Information Messages
+**Notice Message:**
+<img src="images/notice-modal-mockups.png" alt="Notice message light mode mockup" width="50%">
+
+**Error Message:**
+<img src="images/error-modal-mockups.png" alt="Error message light mode mockup" width="50%">
 
 #### Dark Mode
 
@@ -393,11 +400,21 @@ All the mockups are available in the [Figma project](https://www.figma.com/desig
 
 ##### Settings Modal
 
+<img src="images/settings-page-mockups-dark.png" alt="Settings page dark mode mockups" width="100%">
+
+
 ##### Information Messages
+**Notice Message:**
+<img src="images/notice-modal-mockups.png" alt="Notice message light mode mockup" width="50%">
+
+**Error Message:**
+<img src="images/error-modal-mockups.png" alt="Error message light mode mockup" width="50%">
 
 ### Logo
 
 The logo design is inspired by the concept of a "chip" and "exploration." It features a stylized representation spaceman exploring a circuit board, symbolizing the educational journey of discovering FPGA internals.
+
+<picture><source media="(prefers-color-scheme: dark)" srcset="images/logo-light.png"><source media="(prefers-color-scheme: light)" srcset="images/logo-dark.png"><img alt="FPGA Explorer Logo"  style="width:100px">    </picture>
 
 ---
 ## Functional Requirements
