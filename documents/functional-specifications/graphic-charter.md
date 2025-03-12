@@ -64,13 +64,13 @@
 |-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Branding**      | The overall visual identity including logo, color palette, typography, and imagery that conveys the brand’s values and style.                                   |
 | **Color Palette** | A defined set of colors used consistently throughout the interface, including separate specifications for Light Mode, Dark Mode, and specialized FPGA elements. |
-| **Typography**    | The style, arrangement, and appearance of text, covering font families, sizes, weights, and hierarchy (e.g., headings, body, code).                             |
+| **Contrast Ratio** | A metric defining the luminance difference between text and background colors. A minimum ratio of 4.5:1 is required for accessibility.                         |
+| **Dark Mode**     | A color theme using darker backgrounds with lighter text, suitable for low-light environments.                                                                  |
 | **Design Tokens** | A centralized collection of style values (colors, fonts, spacing, etc.) used to ensure consistency and facilitate maintenance across the design system.         |
+| **Light Mode**    | A color theme using lighter backgrounds with darker text, optimized for well-lit environments.                                                                  |
 | **Responsive Design** | A design approach that ensures the layout and components adapt seamlessly to different screen sizes and resolutions.                                        |
 | **SVG**           | Scalable Vector Graphics, a file format for vector-based images that ensures icons and graphics can scale without quality loss.                                 |
-| **Contrast Ratio** | A metric defining the luminance difference between text and background colors. A minimum ratio of 4.5:1 is required for accessibility.                         |
-| **Light Mode**    | A color theme using lighter backgrounds with darker text, optimized for well-lit environments.                                                                  |
-| **Dark Mode**     | A color theme using darker backgrounds with lighter text, suitable for low-light environments.                                                                  |
+| **Typography**    | The style, arrangement, and appearance of text, covering font families, sizes, weights, and hierarchy (e.g., headings, body, code).                             |
 
 ---
 

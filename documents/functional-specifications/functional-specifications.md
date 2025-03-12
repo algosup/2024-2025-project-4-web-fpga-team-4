@@ -116,7 +116,28 @@
 
 | Term | Definition |
 | ---- | ---------- |
-
+| **ALGOSUP** | A French educational institution focused on training students in digital technologies and soft skills. |
+| **Clock Speed** | The frequency at which an FPGA or processor executes instructions, measured in Hertz (Hz). |
+| **CNES** | *Centre National d'Études Spatiales*, the French government agency responsible for space research and exploration. |
+| **Dark Mode** | A user interface theme with a dark background and light text, designed for low-light environments to reduce eye strain. |
+| **Figma** | A collaborative, web-based design tool for creating wireframes, mockups, and interactive prototypes. |
+| **Flip-Flop** | A digital circuit element that stores binary data, commonly used in sequential logic and state machines. |
+| **FPGA** | *Field-Programmable Gate Array*, an integrated circuit that can be reconfigured after manufacturing to perform specific digital logic functions. |
+| **GitHub** | A cloud-based platform for version control and collaborative software development using Git repositories. |
+| **Hosting** | The service of storing and delivering web applications, websites, or data on a remote server accessible via the internet. |
+| **I/O (Input/Output)** | The communication interface between a system and external devices, such as sensors, displays, or peripherals. |
+| **Light Mode** | A user interface theme with a bright background and dark text, optimized for high-light environments. |
+| **LUT** | *Look-Up Table*, a core component in FPGA logic cells used for implementing combinational logic functions. |
+| **MIT License** | A permissive open-source license that allows free use, modification, and distribution of software with minimal restrictions. |
+| **Modal** | A temporary on-screen window that appears over the main interface to display additional content or request user input. |
+| **Post-Mortem** | A retrospective project analysis conducted after completion to assess successes, challenges, and lessons learned. |
+| **Responsive Design** | A design approach that ensures web content adapts dynamically to different screen sizes and devices for an optimal user experience. |
+| **SDF** | *Standard Delay Format*, a file format used to specify the timing characteristics of digital circuits for simulation purposes. |
+| **Simulation** | The process of modeling and analyzing a system’s behavior over time to predict its performance and verify its design. |
+| **Step-by-Step Mode** | A simulation mode that allows users to advance the execution one step at a time for detailed debugging and analysis. |
+| **Tooltip** | A small informational pop-up that appears when hovering over an interactive element, providing context or guidance. |
+| **Wireframe** | A low-fidelity visual representation of a web or application layout, outlining its structure and content placement. |
+| **Zoom** | A feature that enables users to magnify or reduce the display of a circuit or interface for better visibility and focus. |
 
 ### 1.2. Project Overview
 This project aims to develop a user-friendly web interface for simulating the internal chip flows of an FPGA. This interface will enable teachers and students to easily upload SDF files, adjust real-time clock speeds, and view simulation results. By streamlining the simulation process, this tool will enhance the educational experience and provide a practical demonstration of FPGA behavior in classroom settings.
