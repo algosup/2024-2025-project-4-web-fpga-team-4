@@ -57,6 +57,7 @@ jobs:
             const path = require('path');
             const date = new Date();
             const logFileName = date.toISOString().split(/T/)[0] + '-test.log';
+            console.log(__dirname);
             const logFilePath = path.join('./logs', logFileName);
             const output = fs.readFileSync(logFilePath, 'utf8');
 
