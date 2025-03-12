@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "npx tsc; node html-testing.js",
+    "start": "npx tsc; for file in *.js; do node \"$file\"; done;",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

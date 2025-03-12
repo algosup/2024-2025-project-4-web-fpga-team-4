@@ -1,5 +1,3 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
 # Controls when the workflow will run
@@ -23,7 +21,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      # Runs a single command using the runners shell
       # Set up Node.js environment
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -37,10 +34,47 @@ jobs:
           npm install
           npm install typescript
 
-      # Run the test command
+      # Run the test command and capture output
       - name: Run tests
+        id: run-tests
         run: |
           cd ./src/test
           npx tsc
-          for file in *.js; do node "$file"; done
-        continue-on-error: false # Ensure the workflow fails if this step fails
+          mkdir -p ../logs
+          LOG_FILE="../logs/$(date +'%Y-%m-%d')-test.log"
+          for file in *.js; do
+            node "$file" >> "$LOG_FILE" 2>&1
+          done
+        continue-on-error: true # Allow the workflow to continue even if this step fails
+
+      # Create a GitHub issue if tests fail
+      - name: Create GitHub Issue on Test Failure
+        if: steps.run-tests.outcome == 'failure'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const path = './logs/$(date +'%Y-%m-%d')-test.log';
+            const output = fs.readFileSync(path, 'utf8');
+
+            const issueTitle = 'Test Failure in CI';
+            const issueBody = `The tests in the CI workflow have failed. Please investigate and fix the issues.\n\nTest Output:\n\`\`\`\n${output}\n\`\`\``;
+
+            const { data: issues } = await github.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: ['test-failure']
+            });
+
+            if (issues.some(issue => issue.title === issueTitle)) {
+              console.log('Issue already exists.');
+            } else {
+              await github.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: issueTitle,
+                body: issueBody,
+                labels: ['test-failure']
+              });
+            }
