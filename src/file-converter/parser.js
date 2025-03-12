@@ -37,31 +37,27 @@ class FlipFlop {
 }
 
 function getLUTFromString(luts, element) {
-    let newLut = new LUT(parseInt(element.id));
+    let newLutId = parseInt(element.id);
+    let newConnection = { type: element.io, id: element.port }; // Ensure both type and id are included
+    // Check if a LUT with the same id already exists
+    let existingLut = luts.find(lut => lut.id === newLutId);
 
-    // Check if the LUT already exists
-    let lutExists = luts.some(lut => lut.id === newLut.id);
+    if (existingLut) {
+        // If the LUT exists, check if the connection already exists in its connections array
+        let connectionExists = existingLut.connections.some(conn => 
+            conn.type === newConnection.type && 
+            conn.id === newConnection.id
+        );
 
-    // If the LUT doesn't exist, add it to the array
-    if (!lutExists) {
-        luts.push(newLut);
-    }
-
-    // Add the connection to the LUT if it doesn't already exist
-    let connection = new IO(element.io, element.port);
-    for (let lut of luts) {
-        if (lut.id === newLut.id) {
-            let connectionExists = lut.connections.some(conn => 
-                conn.type === connection.type && 
-                conn.id === connection.id
-            );
-
-            // Add the connection only if it doesn't already exist
-            if (!connectionExists) {
-                lut.connections.push(connection);
-            }
-            break;
+        // Add the connection only if it doesn't already exist
+        if (!connectionExists) {
+            existingLut.connections.push(newConnection);
         }
+    } else {
+        // If the LUT doesn't exist, create a new one and add the connection
+        let newLut = { id: newLutId, connections: [newConnection] };
+        console.log(newLut)
+        luts.push(newLut);
     }
 }
 
@@ -168,8 +164,8 @@ function getConnectionsFromString(element) {
                 elementFinal.port = element[i + 10];
             }
         } else {
-            elementFinal.type = "lut_gnd";
-            elementFinal.io = "input";
+            elementFinal.type = "lut-gnd";
+            elementFinal.io = "output";
             elementFinal.id = "0";
             elementFinal.port = "0";
         }
@@ -212,8 +208,8 @@ function writeDeclarationsToJson(luts, flipFlops, ios, elementConnections) {
         LUTs: luts.map(lut => ({
             id: lut.id,
             connections: lut.connections.map(conn => ({
-                type: conn.name,
-                id: conn.type
+                type: conn.type,
+                id: conn.id
             }))
         })),
         FlipFlops: flipFlops.map(flipflop => ({
@@ -267,7 +263,7 @@ document.getElementById('sdfFileInput').addEventListener('change', function (eve
                     getIOFromString(ios, elements.connectionTiming.first);
                 } else if (elements.connectionTiming.first.type === "DFF") {
                     getFlipFlopFromString(flipFlops, elements.connectionTiming.first);
-                } else if (["lut", "lut_gnd"].includes(elements.connectionTiming.first.type)) {
+                } else if (["lut", "lut-gnd"].includes(elements.connectionTiming.first.type)) {
                     getLUTFromString(luts, elements.connectionTiming.first);
                 }
 
@@ -275,7 +271,7 @@ document.getElementById('sdfFileInput').addEventListener('change', function (eve
                     getIOFromString(ios, elements.connectionTiming.second);
                 } else if (elements.connectionTiming.second.type === "DFF") {
                     getFlipFlopFromString(flipFlops, elements.connectionTiming.second);
-                } else if (["lut", "lut_gnd"].includes(elements.connectionTiming.second.type)) {
+                } else if (["lut", "lut-gnd"].includes(elements.connectionTiming.second.type)) {
                     getLUTFromString(luts, elements.connectionTiming.second);
                 }
             }
