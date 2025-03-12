@@ -94,6 +94,7 @@ hideButton.addEventListener('click', function () {
 	hideButton.style.display = 'none';
 	page.style.display = 'block';
 	main.style.marginLeft = '20vh';
+	connections.style.marginLeft = '20vh';
 });
 
 dataViewTrigger.addEventListener('click', function () {
@@ -104,6 +105,7 @@ dataViewTrigger.addEventListener('click', function () {
 		hideButton.style.display = 'block';
 		page.style.display = 'grid';
 		main.style.marginLeft = '0vh';
+		connections.style.marginLeft = '0vh';
 	}
 	else {
 		isHidden = true;
@@ -111,6 +113,7 @@ dataViewTrigger.addEventListener('click', function () {
 		hideButton.style.display = 'none';
 		page.style.display = 'block';
 		main.style.marginLeft = '20vh';
+		connections.style.marginLeft = '20vh';
 	}
 });
 

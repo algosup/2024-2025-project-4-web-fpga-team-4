@@ -29,7 +29,14 @@ async function parseJsonFile(filePath) {
 /* Call the function to parse the JSON file */
 const filePath = 'data/declarations.json';
 parseJsonFile(filePath).then(() => {
-	// generateConnections();
+	let objects = [
+		{start: 'lut-139-out', end: 'ff-0-clk'},
+		{start: 'D-out', end: 'lut-139-in1'},
+		{start: 'clk-out', end: 'lut-139-in3'},
+		{start: 'reset-out', end: 'lut-139-in2'},
+		{start: 'ff-0-out', end: 'q-0-in'}
+	];
+	generateConnections(objects);
 }).catch((error) => {
 	console.error('Error parsing JSON file:', error);
 });

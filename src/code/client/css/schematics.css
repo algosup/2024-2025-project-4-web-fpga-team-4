@@ -370,7 +370,7 @@
 /* Creates lines that connect the elements */
 
 #connections{
-	width: 100%;
+	width: 80vw;
 	height: 100%;
 	position: absolute;
 	top: 0;

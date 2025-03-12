@@ -14,6 +14,10 @@ let currentSpeedIndex= 1;
 
 let currentTheme = "dark";
 
+let inToLutColumns = [false, false, false, false, false, false, false, false, false, false];
+let lutToFfColumns = [false, false, false, false, false, false, false, false, false, false];
+let ffToOutColumns = [false, false, false, false, false, false, false, false, false, false];
+
 /*
 Declare the elements that will be used in the client side code
 
@@ -52,6 +56,7 @@ Main page elements
 */
 const page = document.getElementById('visualization-area');
 const main = document.getElementById('main');
+const connections = document.getElementById('connections');
 
 /*
 Live data elements
