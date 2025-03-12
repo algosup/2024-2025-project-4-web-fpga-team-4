@@ -24,7 +24,13 @@ async function runTests() {
 
     await runTest(driver, 'Description Background Color Test', async () => {
       const description = await driver.findElement(By.id('description')).getCssValue('background-color');
-      assert.strictEqual("rgb(27, 38, 58)", description);
+      assert.strictEqual("rgb(27, 38, 59)", description);
+    });
+    
+    await runTest(driver, 'Description Background Color Test', async () => {
+      const description = await driver.findElement(By.id('description')).getCssValue('background-color');
+      const hexColor = rgbToHex(description);
+      assert.strictEqual("#1B263B", hexColor);
     });
 
     await runTest(driver, 'Speed Value Test', async () => {
@@ -73,4 +79,15 @@ function logResults() {
   logStream.end();
 }
 
+function rgbToHex(rgb: string): string {
+  const result = rgb.match(/\d+/g);
+  if (!result || result.length < 3) {
+    throw new Error('Invalid RGB format');
+  }
+  const [r, g, b] = result.map(Number);
+  return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase()}`;
+}
+
 runTests();
+
+
