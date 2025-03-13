@@ -44,5 +44,5 @@ jobs:
           npx tsc
           mkdir -p logs
           for file in *.js; do node "$file"; done
-          gh issue create --title "Test don't take in account" --body "Here are more details." --label "test" 
+          gh issue create --title "Test don't take in account" --body "Here are more details." --label "html" 
         continue-on-error: true # Allow the workflow to continue even if this step fails
