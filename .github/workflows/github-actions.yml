@@ -2,15 +2,12 @@ name: CI
 
 permissions:
   contents: write
-# Controls when the workflow will run
+
 on:
   push:
     branches: [ "QA", "dev" ]
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   pull_request:
     branches: [ "dev" ]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
@@ -18,88 +15,88 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
       
       # Deploy Render app
-      - name: Install dependencies
+      - name: Deploy Application
         env:
           deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
         run: |
-          curl "$deploy_url"
+          if [[ -z "$deploy_url" ]]; then
+            echo "Error: deploy_url is not set!"
+            exit 1
+          fi
+          echo "Triggering deployment..."
+          curl -v "$deploy_url"
           sleep 60
 
       # Set up Node.js environment
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '23.6.0' # You can specify the Node.js version you need
+          node-version: '23.6.0'
 
       # Install dependencies
       - name: Install dependencies
         run: |
-            cd ./src/test
-            npm install
-            npm install typescript
+          cd ./src/test
+          npm install
+          npm install typescript
 
-      # Run the test command and capture output
+      # Ensure the logs folder exists
+      - name: Ensure logs folder exists
+        run: |
+          mkdir -p ./src/test/logs
+
+      # Run tests
       - name: Run tests
         id: run-tests
         run: |
           cd ./src/test
           npx tsc
           for file in *.js; do node "$file"; done
+        continue-on-error: true
 
-        continue-on-error: true # Allow the workflow to continue even if this step fails
-
-      # Verify that the .json files are generated
+      # Verify JSON files
       - name: Check generated JSON files
         run: ls -l ./src/test/logs
 
-      # Commit and push JSON files to the QA branch
-      - name: Commit and push JSON files
+      # Commit and push logs to QA
+      - name: Commit and push JSON logs to QA
         run: |
-          # Set Git user for GitHub Actions bot
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Fetch all branches to ensure we have the latest state
-          git fetch origin
-
-          # Stash any local changes and untracked files before switching branches
+          # Stash changes before switching branches
           git stash --include-untracked
 
-          # Checkout QA branch, create it if it doesn't exist
-          if git show-ref --verify --quiet refs/remotes/origin/QA; then
+          # Fetch latest branches
+          git fetch origin
+
+          # Ensure QA branch exists
+          if git ls-remote --exit-code --heads origin QA; then
             git checkout QA
-            
-            # Pull the latest changes from the remote QA branch
             git pull --rebase origin QA
           else
-            # Create QA branch if it doesn't exist
             git checkout -b QA
             git push -u origin QA
           fi
 
-          # Apply any stashed changes (restore local changes after switching)
+          # Restore only logs (prevent conflicts with other files)
           git stash pop || echo "No stashed changes to restore."
 
-          # Check if there are changes before committing
-          if [[ -n $(git status --porcelain) ]]; then
-            # Force add ignored JSON files
+          # Ensure logs folder exists (again, just in case)
+          mkdir -p ./src/test/logs
+
+          # Commit only logs if changed
+          if [[ -n $(git status --porcelain src/test/logs/*.json) ]]; then
             git add -f src/test/logs/*.json
-
-            # If package-lock.json changed, commit it as well
-            if [[ -n $(git status --porcelain src/test/package-lock.json) ]]; then
-              git add src/test/package-lock.json
-            fi
-
-            # Commit the changes
-            git commit -m "Add generated JSON files"
+            git commit -m "Add generated JSON logs from tests"
             git push origin QA
           else
-            echo "No changes to commit"
+            echo "No log changes to commit."
           fi
 
-          # Checkout back to dev branch
+          # Checkout back to dev
           git checkout dev
+          git pull origin dev
