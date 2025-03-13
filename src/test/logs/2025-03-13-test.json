@@ -10,7 +10,14 @@
         "type": [
           "typo"
         ],
-        "passed": true
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": "Client Side",
+          "expected": "FPGA Web Visualizer",
+          "operator": "strictEqual"
+        }
       }
     },
     {
