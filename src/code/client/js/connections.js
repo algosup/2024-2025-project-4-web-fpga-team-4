@@ -22,24 +22,24 @@ function drawLine(height, width, top, left, colorValue) {
 	let color
 	switch (colorValue.substring(0, 2)) {
 		case 'lu':
-			color = "#FF0000FF";
+			color = "#FFFF00FF";
 			break;
 		case 'ff':
 			color = "#00FF00FF";
 			break;
 		case 'As':
+			color = "#FF0000FF";
+			break;
+		case 'us':
 			color = "#0000FFFF";
 			break;
-			case 'us':
-				color = "#FFFF00FF";
-				break;
 		case 'cl':
 			color = "#FF00FFFF";
 			break;
 		default:
 			break;
 	}
-	connections.innerHTML += `<div class="line used" style="height: ${height}vh; width: ${width}vw; margin-top: ${top}vh; margin-left: ${left}vw; background-color:${color}"></div>`
+	connections.innerHTML += `<div class="line used ${colorValue}" style="height: ${height}vh; width: ${width}vw; margin-top: ${top}vh; margin-left: ${left}vw; background-color:${color}"></div>`
 }
 
 
@@ -99,6 +99,9 @@ function drawBasicConnection(obj1, obj2) {
 	// Calculate the height difference between the two objects
 	let heightDiff = output.bottom > output.top ? output.bottom - output.top : output.top - output.bottom;
 
+	let sizeOut = output.right - output.left;
+	let sizeIn = input.right - input.left;
+
 	// Calculate the distance between the two objects
 	let distW = input.left > output.right ? (input.left - output.right) / 2 : (output.left - input.right) / 2;
 	let distH = output.top > input.top ? (output.top + (heightDiff * 1.4) - input.bottom) : input.top + heightDiff - output.bottom;
@@ -145,9 +148,9 @@ function drawBasicConnection(obj1, obj2) {
 
 
 	// Draw the connection
-	drawLine(.6, distW1, outputCenter, output.right, obj1);
+	drawLine(.6, distW1 + sizeOut, outputCenter, output.left, obj1);
 	drawLine(distH, .4, (output.top < input.top ? outputCenter : inputCenter), output.right + distW1, obj1);
-	drawLine(.6, distW2, inputCenter, input.left - distW2, obj1);
+	drawLine(.6, distW2 + sizeIn, inputCenter, input.right - distW2 - sizeIn, obj1);
 }
 
 
@@ -191,10 +194,14 @@ function drawClockConnection(obj2) {
 }
 
 
-function drawLutGnd(obj2){
+function drawLutGnd(obj){
+
+	obj = obj.replace('_', '-');
+
+	console.log('obj', obj);
 
 	// Get the bounding rectangles of the two objects
-	let inB = document.getElementById(obj2).getBoundingClientRect();
+	let inB = document.getElementById(obj).getBoundingClientRect();
 
 	// Convert the pixel values to viewport units
 	const input = { top: convertPxToVh(inB.top), left: convertPxToVw(inB.left), bottom: convertPxToVh(inB.bottom), right: convertPxToVw(inB.right) };
@@ -208,7 +215,7 @@ function drawLutGnd(obj2){
 
 	
 	// Draw the connection
-	drawLine(.6, .6, inputCenter, input.left - .8, "lut-gnd");
+	drawLine(.6, 1, inputCenter, input.left - .8, "lut-gnd");
 }
 
 
@@ -223,11 +230,16 @@ function drawLutGnd(obj2){
 function drawConnectionSelect(obj1, obj2) {
 	let ob1 = obj1.split('-')[0];
 	let ob2 = obj2.split('-')[0];
+	console.log('obj1', obj1);
+	console.log('obj2', obj2);
 	if ((ob1 === 'lut' && ob2 === 'ff' ||
 		ob1 === 'ff' && ob2 === 'q' ||
 		(ob1 === 'userInput' || ob1 === 'Async_reset' || ob1 === 'Clock' ) && ob2 === 'lut') && obj2 !== 'lut-gnd') {
 		drawBasicConnection(obj1, obj2);
 	} else if (ob1 === 'Clock') {
 		drawClockConnection(obj2);
+	} else if (ob1 === 'lut_0' ) {
+		drawLutGnd(obj2);
+		drawLutGnd(obj1);
 	}
 }

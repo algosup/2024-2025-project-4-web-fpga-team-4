@@ -44,18 +44,19 @@ async function parseJsonFile(filePath) {
 		} else if (Connections[i].Input.type === 'userInput') {
 			start = 'userInput-out';
 		} else if (Connections[i].Input.type === 'lut-gnd') {
-			start = 'lut-' + Connections[i].Input.id + '-out';
+			start = 'lut_' + Connections[i].Input.id + '-out';
 		}
-		if (Connections[i].Output.type.startsWith('lut')/* && !Connections[i].Input.type === 'lut-gnd'*/) {
+		if (Connections[i].Output.type.startsWith('lut') && !(Connections[i].Input.type === 'lut-gnd')) {
 			end = 'lut-' + Connections[i].Output.id + '-in' + Connections[i].Output.port;
 		} else if (Connections[i].Output.type === 'DFF') {
 			end = 'ff-' + Connections[i].Output.id + '-' + (Connections[i].Output.io === 'clock' ? '1' : '0');
 		} else if (Connections[i].Output.type === 'userOutput') {
 			end = 'q-0-in';
-		} /* else if (Connections[i].Output.type === 'lut' && Connections[i].Input.type === 'lut-gnd') {
-			end = 'lut-gnd' + Connections[i].Output.id + '-in' + Connections[i].Output.port;
-		}*/
+		} else if (Connections[i].Output.type.startsWith('lut') && (Connections[i].Input.type === 'lut-gnd')) {
+			end = 'lut-' + Connections[i].Output.id + '-in' + Connections[i].Output.port;
+		}
 		if (start != null && end != null) {
+			console.log('Connection:', start, end);
 			drawConnectionSelect(start, end);
 		}
 	}
