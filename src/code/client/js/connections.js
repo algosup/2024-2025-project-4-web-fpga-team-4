@@ -18,8 +18,28 @@ function convertPxToVw(px) {
  * @param {number} top - The top position of the line in vh.
  * @param {number} left - The left position of the line in vw.
  */
-function drawLine(height, width, top, left) {
-	connections.innerHTML += `<div class="line used" style="height: ${height}vh; width: ${width}vw; margin-top: ${top}vh; margin-left: ${left}vw"></div>`
+function drawLine(height, width, top, left, colorValue) {
+	let color
+	switch (colorValue.substring(0, 2)) {
+		case 'lu':
+			color = "#FF0000FF";
+			break;
+		case 'ff':
+			color = "#00FF00FF";
+			break;
+		case 'As':
+			color = "#0000FFFF";
+			break;
+			case 'us':
+				color = "#FFFF00FF";
+				break;
+		case 'cl':
+			color = "#FF00FFFF";
+			break;
+		default:
+			break;
+	}
+	connections.innerHTML += `<div class="line used" style="height: ${height}vh; width: ${width}vw; margin-top: ${top}vh; margin-left: ${left}vw; background-color:${color}"></div>`
 }
 
 
@@ -62,7 +82,7 @@ function selectColumn(dist, type) {
  * @param {string} obj1 The id of the first object from which the connection starts.
  * @param {string} obj2 The id of the second object to which the connection ends.
  */
-function drawConnection(obj1, obj2) {
+function drawBasicConnection(obj1, obj2) {
 
 	// Get the bounding rectangles of the two objects
 	let outB = document.getElementById(obj1).getBoundingClientRect();
@@ -86,8 +106,6 @@ function drawConnection(obj1, obj2) {
 	// Calculate the center of the output and input objects
 	let outputCenter = output.top + outputCenterHeight - .3;
 	let inputCenter = input.top + inputCenterHeight - .3;
-
-	console.log(obj1, obj2);
 
 	let inputElement;
 	let outputElement;
@@ -125,12 +143,73 @@ function drawConnection(obj1, obj2) {
 	let distW1 = dists[0];
 	let distW2 = dists[1];
 
+
 	// Draw the connection
-	drawLine(.6, distW1, outputCenter, output.right);
-	drawLine(distH, .4, (output.top < input.top ? outputCenter : inputCenter), output.right + distW1);
-	drawLine(.6, distW2, inputCenter, input.left - distW2);
+	drawLine(.6, distW1, outputCenter, output.right, obj1);
+	drawLine(distH, .4, (output.top < input.top ? outputCenter : inputCenter), output.right + distW1, obj1);
+	drawLine(.6, distW2, inputCenter, input.left - distW2, obj1);
 }
 
+
+function drawClockBase(clock) {
+	let clockB = document.getElementById(clock).getBoundingClientRect();
+	let ffList = document.getElementsByClassName('ff-element');
+
+	console.log('test', ffList[0]);
+
+	let ffB = ffList[0].childNodes[0].childNodes[3].getBoundingClientRect();
+	const clockBase = { top: convertPxToVh(clockB.top), left: convertPxToVw(clockB.left), bottom: convertPxToVh(clockB.bottom), right: convertPxToVw(clockB.right) };
+	const ffBase = { top: convertPxToVh(ffB.top), left: convertPxToVw(ffB.left), bottom: convertPxToVh(ffB.bottom), right: convertPxToVw(ffB.right) };
+	let clockCenterHeight = (clockBase.bottom - clockBase.top) / 2;
+	let clockCenter = clockBase.top + clockCenterHeight - .3;
+	let ffBaseCenter = (ffBase.top + (ffBase.bottom - ffBase.top) / 2);
+	let distW = (ffBase.left - clockBase.right);
+	let distH = (ffBase.top + (ffBase.bottom - ffBase.top) / 2) - clockCenter - .3;
+	drawLine(.6, distW - .6, clockCenter, clockBase.right, `clock`);
+	drawLine(-distH, .4, ffBaseCenter - .3, ffBase.left - 1, `clock`);
+}
+
+
+function drawClockConnection(obj2) {
+
+	// Get the bounding rectangles of the two objects
+	let inB = document.getElementById(obj2).getBoundingClientRect();
+
+	// Convert the pixel values to viewport units
+	const input = { top: convertPxToVh(inB.top), left: convertPxToVw(inB.left), bottom: convertPxToVh(inB.bottom), right: convertPxToVw(inB.right) };
+
+	// Calculate the center of the output and input objects
+	let inputCenterHeight = (input.bottom - input.top) / 2;
+
+
+	// Calculate the center of the output and input objects
+	let inputCenter = input.top + inputCenterHeight - .3;
+
+	
+	// Draw the connection
+	drawLine(.6, .6, inputCenter, input.left - .8, "clock");
+}
+
+
+function drawLutGnd(obj2){
+
+	// Get the bounding rectangles of the two objects
+	let inB = document.getElementById(obj2).getBoundingClientRect();
+
+	// Convert the pixel values to viewport units
+	const input = { top: convertPxToVh(inB.top), left: convertPxToVw(inB.left), bottom: convertPxToVh(inB.bottom), right: convertPxToVw(inB.right) };
+
+	// Calculate the center of the output and input objects
+	let inputCenterHeight = (input.bottom - input.top) / 2;
+
+
+	// Calculate the center of the output and input objects
+	let inputCenter = input.top + inputCenterHeight - .3;
+
+	
+	// Draw the connection
+	drawLine(.6, .6, inputCenter, input.left - .8, "lut-gnd");
+}
 
 
 
@@ -138,10 +217,17 @@ function drawConnection(obj1, obj2) {
 
 /**
  * Generate the connections between the objects.
+ * @param {string} obj1 - The first object to connect.
+ * @returns {string} obj2 - The second object to connect.
  */
-function generateConnections(objects) {
-
-	for (let object of objects) {
-		drawConnection(object.start, object.end);
+function drawConnectionSelect(obj1, obj2) {
+	let ob1 = obj1.split('-')[0];
+	let ob2 = obj2.split('-')[0];
+	if ((ob1 === 'lut' && ob2 === 'ff' ||
+		ob1 === 'ff' && ob2 === 'q' ||
+		(ob1 === 'userInput' || ob1 === 'Async_reset' || ob1 === 'Clock' ) && ob2 === 'lut') && obj2 !== 'lut-gnd') {
+		drawBasicConnection(obj1, obj2);
+	} else if (ob1 === 'Clock') {
+		drawClockConnection(obj2);
 	}
 }

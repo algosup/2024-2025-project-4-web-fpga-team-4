@@ -1,19 +1,19 @@
 :root {
-	--primary: #0D1B2A;
-	--secondary: #1B263B;
-	--tertiary: #415A77;
-	--on-primary: #E0E1DD;
-	--icons: #E0E1DD;
-	--tool-data-back: #0D1B2A;
-	--tool-data-text: #E0E1DD;
+	--primary: #0D1B2AFF;
+	--secondary: #1B263BFF;
+	--tertiary: #415A77FF;
+	--on-primary: #E0E1DDFF;
+	--icons: #E0E1DDFF;
+	--tool-data-back: #0D1B2AFF;
+	--tool-data-text: #E0E1DDFF;
 	--shadow-color: rgba(255, 255, 255, 0.9);
 }
 
 [data-theme="light"] {
-	--primary: #E0E1DD;
-	--secondary: #415A77;
-	--tertiary: #1B263B;
-	--on-primary: #0D1B2A;
+	--primary: #E0E1DDFF;
+	--secondary: #415A77FF;
+	--tertiary: #1B263BFF;
+	--on-primary: #0D1B2AFF;
 	--shadow-color: rgba(0, 0, 0, 0.9);
 }
 

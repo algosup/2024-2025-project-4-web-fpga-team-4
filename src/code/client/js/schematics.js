@@ -10,13 +10,13 @@ function displayInput(name) {
 	let inputInElement = document.createElement('div');
 	inputInElement.innerHTML = `<p class="input-name input-data">${name}</p><p class="input-out">Out</p><div class="input-out-after" id="${name}-out"></div>`;
 	switch (name) {
-		case 'clk':
+		case 'Clock':
 			inputElement.className = 'input-element clock-element';
 			break;
-		case 'D':
+		case 'userInput':
 			inputElement.className = 'input-element data-element';
 			break;
-		case 'reset':
+		case 'Async_reset':
 			inputElement.className = 'input-element reset-element';
 		default:
 			break;
@@ -50,24 +50,24 @@ function displayOutput(name) {
  * @param {boolean} in3 - The state of the fourth input (true for used, false for unused).
  * @param {boolean} out - The state of the output (true for used, false for unused).
  */
-function displayLUT(id, in0, in1, in2, in3, out) {
+function displayLUT(id, in0, in1, in2, out) {
 	let lutContainer = document.getElementById('lut-container');
 	let lutElement = document.createElement('div');
 	let lutInElement = document.createElement('div');
 	lutElement.className = 'lut-element';
 	lutElement.id = 'lut' + id.toString();
-	let in0State = in0 ? 'used' : 'unused';
-	let in1State = in1 ? 'used' : 'unused';
-	let in2State = in2 ? 'used' : 'unused';
-	let in3State = in3 ? 'used' : 'unused';
 	let outState = out ? 'used' : 'unused';
 	let id0Para = `<p class="lut-id ">LUT ${id.toString()}</p>`;
-	let in0Para = `<div class="lut-in-before ${in0State}" id="lut-${id.toString()}-in0"></div><p class="lut-in">0</p>`;
-	let in1Para = `<div class="lut-in-before ${in1State}" id="lut-${id.toString()}-in1"></div><p class="lut-in">1</p>`;
-	let in2Para = `<div class="lut-in-before ${in2State}" id="lut-${id.toString()}-in2"></div><p class="lut-in">2</p>`;
-	let in3Para = `<div class="lut-in-before ${in3State}" id="lut-${id.toString()}-in3"></div><p class="lut-in">3</p>`;
+	let in0Para = `<div class="lut-in-before used" id="lut-${id.toString()}-in${in0}"></div><p class="lut-in">${in0}</p>`;
+	let in1Para = `<div class="lut-in-before used" id="lut-${id.toString()}-in${in1}"></div><p class="lut-in">${in1}</p>`;
+	let in2Para = `<div class="lut-in-before used" id="lut-${id.toString()}-in${in2}"></div><p class="lut-in">${in2}</p>`;
+	// let in3Para = `<div class="lut-in-before ${in3State}" id="lut-${id.toString()}-in3"></div><p class="lut-in">3</p>`;
 	let out0Para = `<p class="lut-out ${outState}">0</p><div class="lut-out-after ${outState}" id="lut-${id.toString()}-out"></div>`;
-	lutInElement.innerHTML = id0Para + in0Para + in1Para + in2Para + in3Para + out0Para;
+	if (in0 === null && in1 === null && in2 === null) {
+		lutInElement.innerHTML = id0Para + out0Para;
+	} else {
+		lutInElement.innerHTML = id0Para + in0Para + in1Para + in2Para /*+ in3Para */+ out0Para;
+	}
 	lutElement.appendChild(lutInElement);
 	lutContainer.appendChild(lutElement);
 }
@@ -89,8 +89,8 @@ function displayFlipFlop(id, dataIn, clockIn, out) {
 	let clockInState = clockIn ? 'used' : 'unused';
 	let outState = out ? 'used' : 'unused';
 	let id0 = `<p class="ff-id ">Flip Flop ${id.toString()}</p>`;
-	let in0 = `<div class="ff-in-before ${dataInState}" id="ff-${id.toString()}-data"></div><p class="ff-in">Data</p>`;
-	let in1 = `<div class="ff-in-before ${clockInState}" id="ff-${id.toString()}-clk"></div><p class="ff-in">Clock</p>`;
+	let in0 = `<div class="ff-in-before ${dataInState}" id="ff-${id.toString()}-0"></div><p class="ff-in">Data</p>`;
+	let in1 = `<div class="ff-in-before ${clockInState}" id="ff-${id.toString()}-1"></div><p class="ff-in">Clock</p>`;
 	let out0 = `<p class="ff-out">Out</p><div class="ff-out-after ${outState}" id="ff-${id.toString()}-out"></div>`;
 	ffInElement.innerHTML = id0 + in0 + in1 + out0;
 	ffElement.appendChild(ffInElement);

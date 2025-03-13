@@ -18,6 +18,8 @@ let inToLutColumns = [false, false, false, false, false, false, false, false, fa
 let lutToFfColumns = [false, false, false, false, false, false, false, false, false, false];
 let ffToOutColumns = [false, false, false, false, false, false, false, false, false, false];
 
+let colorIndex = 0;
+
 /*
 Declare the elements that will be used in the client side code
 

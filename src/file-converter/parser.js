@@ -62,8 +62,8 @@ function getLUTFromString(luts, element) {
 }
 
 function getFlipFlopFromString(flipFlops, element) {
-    let newFlipFlopId = parseInt(element.port);
-    let newConnection = { type: element.io, id: element.id }; // Ensure both type and id are included
+    let newFlipFlopId = parseInt(element.id);
+    let newConnection = { type: element.io}; // Ensure both type and id are included
 
     // Check if a FlipFlop with the same id already exists
     let existingFlipFlop = flipFlops.find(flipflop => flipflop.id === newFlipFlopId);
@@ -71,8 +71,7 @@ function getFlipFlopFromString(flipFlops, element) {
     if (existingFlipFlop) {
         // If the FlipFlop exists, check if the connection already exists in its connections array
         let connectionExists = existingFlipFlop.connections.some(conn => 
-            conn.type === newConnection.type && 
-            conn.id === newConnection.id
+            conn.type === newConnection.type
         );
 
         // Add the connection only if it doesn't already exist
@@ -262,6 +261,7 @@ document.getElementById('sdfFileInput').addEventListener('change', function (eve
                 if (["userInput", "userOutput", "Clock", "Async_reset"].includes(elements.connectionTiming.first.type)) {
                     getIOFromString(ios, elements.connectionTiming.first);
                 } else if (elements.connectionTiming.first.type === "DFF") {
+					console.log(elements.connectionTiming.first)
                     getFlipFlopFromString(flipFlops, elements.connectionTiming.first);
                 } else if (["lut", "lut-gnd"].includes(elements.connectionTiming.first.type)) {
                     getLUTFromString(luts, elements.connectionTiming.first);
@@ -270,6 +270,7 @@ document.getElementById('sdfFileInput').addEventListener('change', function (eve
                 if (["userInput", "userOutput", "Clock", "Async_reset"].includes(elements.connectionTiming.second.type)) {
                     getIOFromString(ios, elements.connectionTiming.second);
                 } else if (elements.connectionTiming.second.type === "DFF") {
+					console.log(elements.connectionTiming.second);
                     getFlipFlopFromString(flipFlops, elements.connectionTiming.second);
                 } else if (["lut", "lut-gnd"].includes(elements.connectionTiming.second.type)) {
                     getLUTFromString(luts, elements.connectionTiming.second);

@@ -1,13 +1,13 @@
 /* Applies Style to the Whole Page */
 
 :root {
-	--reset-color: #999997;
-	--d-color: #DDB72B;
-	--q-color: #2BB7DD;
-	--lut-color: #15BF9A;
-	--ff-color: #BF1518;
-	--clock-color: #AE15BF;
-	--connection-used: lime;
+	--reset-color: #999997FF;
+	--d-color: #DDB72BFF;
+	--q-color: #2BB7DDFF;
+	--lut-color: #15BF9AFF;
+	--ff-color: #BF1518FF;
+	--clock-color: #AE15BFFF;
+	--connection-used: #00ff00ff;
 	--connection-unused: var(--on-primary);
 	--element-width: 10svh;
 	--element-height: 18svh;
@@ -15,6 +15,7 @@
 	--element-margin-top: 5svh;
 	--little-element-height: 12svh;
 	--in-little-element-height: 10svh;
+
 }
 
 /* Applies Style to the Main Part of the Page */
@@ -60,11 +61,11 @@
 
 .back-lines {
 	margin-top: .5vh;
-	height: 80vh;
+	height: 100%;
 	width: 0;
 	border-width: 0;
 	border-left-width: .3vh;
-	border-color: grey;
+	border-color: #808080FF;
 	border-style: dashed;
 }
 
@@ -381,14 +382,4 @@
 .line.used{
 	background-color: var(--connection-used);
 	position: absolute;
-}
-
-
-.point.used{
-	background-color: var(--connection-used);
-	position: absolute;
-}
-
-.point.unused{
-	fill: red;
 }
