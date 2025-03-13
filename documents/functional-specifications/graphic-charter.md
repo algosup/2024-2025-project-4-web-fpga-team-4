@@ -97,77 +97,77 @@
 
 ### 2.1. Base Palette (Light Mode)
 
-- **Primary Color:** `#0D1B2A`
+- **Primary Color:** `#0D1B2AFF`
   - **Usage:** Key interactive elements (buttons, icons), headers, and major highlights.
-- **Text Color:** `#0D1B2A`
+- **Text Color:** `#0D1B2AFF`
   - **Usage:** Standard body text.
-- **Secondary Color:** `#1B263B`
+- **Secondary Color:** `#1B263BFF`
   - **Usage:** Accents, hover states, or smaller UI elements requiring emphasis.
-- **Background Color:** `#E0E1DD`
+- **Background Color:** `#E0E1DDFF`
   - **Usage:** Main page background for optimal contrast with text.
-  - **Variation:** `#415A77` may be used for subtle section distinctions.
+  - **Variation:** `#415A77FF` may be used for subtle section distinctions.
 
 > **Note:** A contrast ratio of at least 4.5:1 must always be maintained between text and background to ensure accessibility for users with visual impairments.
 
 ### 2.2. Dark Mode Palette
 
-- **Primary Color:** `#E0E1DD`
+- **Primary Color:** `#E0E1DDFF`
   - **Usage:** Key interactive elements (buttons, icons), headers, and major highlights.
-- **Text Color:** `#E0E1DD`
+- **Text Color:** `#E0E1DDFF`
   - **Usage:** Standard body text.
-- **Secondary Color:** `#415A77`
+- **Secondary Color:** `#415A77FF`
   - **Usage:** Accents, hover states, or smaller UI elements requiring emphasis.
-- **Background Color:** `#0D1B2A`
+- **Background Color:** `#0D1B2AFF`
   - **Usage:** Main page background for optimal contrast with text.
-  - **Variation:** `#1B263B` may be used for subtle section distinctions.
+  - **Variation:** `#1B263BFF` may be used for subtle section distinctions.
 
 ### 2.3. FPGA Palette
 
 - **Look-Up Table (LUT):**
-  - Light mode: `#15BF9A`
-  - Dark mode: `#15BF9A`
+  - Light mode: `#15BF9AFF`
+  - Dark mode: `#15BF9AFF`
 - **Flip Flop:**
-  - Light mode: `#BF1518`
-  - Dark mode: `#BF1518`
+  - Light mode: `#BF1518FF`
+  - Dark mode: `#BF1518FF`
 - **Input and Outputs (I/O):**
   - **Inputs:**
-    - Light mode: `#E0E1DD`
-    - Dark mode: `#E0E1DD`
+    - Light mode: `#E0E1DDFF`
+    - Dark mode: `#E0E1DDFF`
   - **Outputs:**
-    - Light mode: `#DDB72B`
-    - Dark mode: `#DDB72B`
+    - Light mode: `#DDB72BFF`
+    - Dark mode: `#DDB72BFF`
 - **Wires:**
   - **Powered:**
-    - Light mode: `#00EB14`
-    - Dark mode: `#00EB14`
+    - Light mode: `#00EB14FF`
+    - Dark mode: `#00EB14FF`
   - **Unpowered:**
-    - Light mode: `#68111A`
-    - Dark mode: `#68111A`
+    - Light mode: `#68111AFF`
+    - Dark mode: `#68111AFF`
 - **Clock:**
-  - Light mode: `#EEAD0A`
-  - Dark mode: `#E1FF00`
+  - Light mode: `#EEAD0AFF`
+  - Dark mode: `#E1FF00FF`
 - **Notice Message:**
   - **Background:**
-    - Light mode: `#80BDEB`
-    - Dark mode: `#80BDEB`
+    - Light mode: `#80BDEBFF`
+    - Dark mode: `#80BDEBFF`
   - **Text:**
-    - Light mode: `#235DE4`
-    - Dark mode: `#235DE4`
+    - Light mode: `#235DE4FF`
+    - Dark mode: `#235DE4FF`
   - **Border:**
-    - Light mode: `#325BD7`
-    - Dark mode: `#325BD7`
+    - Light mode: `#325BD7FF`
+    - Dark mode: `#325BD7FF`
 - **Error Message:**
   - **Background:**
-    - Light mode: `#DA9595`
-    - Dark mode: `#DA9595`
+    - Light mode: `#DA9595FF`
+    - Dark mode: `#DA9595FF`
   - **Text:**
-    - Light mode: `#C71303`
-    - Dark mode: `#C71303`
+    - Light mode: `#C71303FF`
+    - Dark mode: `#C71303FF`
   - **Border:**
-    - Light mode: `#D01100`
-    - Dark mode: `#D01100`
+    - Light mode: `#D01100FF`
+    - Dark mode: `#D01100FF`
 
-> **Note:** When specific elements are not in active use, they will default to the fallback color `#5B5151`.
+> **Note:** When specific elements are not in active use, they will default to the fallback color `#5B5151FF`.
 
 ---
 
@@ -242,9 +242,9 @@
   - Default  
   - Hover (with a slight background color shift)  
   - Active/Pressed (with an outline effect)  
-  - Disabled text displayed in gray `#5B5151` with an opacity of 50%.
+  - Disabled text displayed in gray `#5B5151FF` with an opacity of 50%.
 - **Color:**
-  - Light mode: Use the primary color (`#0D1B2A`) with white text.
+  - Light mode: Use the primary color (`#0D1B2AFF`) with white text.
   - Dark mode: Adapt colors to ensure clarity and contrast.
 
 ---

@@ -13,7 +13,7 @@
 
 **Created on:** February 25<sup>th</sup>, 2025
 
-**Last updated:** March 12<sup>th</sup>, 2025
+**Last updated:** March 13<sup>th</sup>, 2025
 
 </div>
 
@@ -46,7 +46,7 @@
       - [1.5.3. Resources](#153-resources)
       - [1.5.4. Assumptions](#154-assumptions)
       - [1.5.5. Constraints](#155-constraints)
-  - [2. Audience and User Cases](#2-audience-and-user-cases)
+  - [2. Audience and Use Cases](#2-audience-and-use-cases)
     - [2.1. Target Audience](#21-target-audience)
     - [2.2. User Personas](#22-user-personas)
     - [2.3. Use Cases List](#23-use-cases-list)
@@ -126,30 +126,30 @@
 
 | Term | Definition   |
 | ---- | --------- |
-| **ALGOSUP**      | A French educational institution focused on training students in digital technologies and soft skills. |
-| **Clock Speed**  | The frequency at which an FPGA or processor executes instructions, measured in Hertz (Hz). |
-| **CNES**   | *Centre National d'Études Spatiales*, the French government agency responsible for space research and exploration. |
-| **Dark Mode**    | A user interface theme with a dark background and light text, designed for low-light environments to reduce eye strain.  |
-| **Figma**  | A collaborative, web-based design tool for creating wireframes, mockups, and interactive prototypes.   |
-| **Flip-Flop**    | A digital circuit element that stores binary data, commonly used in sequential logic and state machines.     |
-| **FPGA**   | *Field-Programmable Gate Array*, an integrated circuit that can be reconfigured after manufacturing to perform specific digital logic functions. |
+| **ALGOSUP** | A French educational institution focused on training students in digital technologies and soft skills. |
+| **Clock Speed** | The frequency at which an FPGA or processor executes instructions, measured in Hertz (Hz). |
+| **CNES** | *Centre National d'Études Spatiales*, the French government agency responsible for space research and exploration. |
+| **Dark Mode** | A user interface theme with a dark background and light text, designed for low-light environments to reduce eye strain.  |
+| **Figma** | A collaborative, web-based design tool for creating wireframes, mockups, and interactive prototypes.   |
+| **Flip-Flop** | A digital circuit element that stores binary data, commonly used in sequential logic and state machines.     |
+| **FPGA** | *Field-Programmable Gate Array*, an integrated circuit that can be reconfigured after manufacturing to perform specific digital logic functions. |
 | **GitHub** | A cloud-based platform for version control and collaborative software development using Git repositories.    |
-| **Hosting**      | The service of storing and delivering web applications, websites, or data on a remote server accessible via the internet.      |
+| **Hosting** | The service of storing and delivering web applications, websites, or data on a remote server accessible via the internet.      |
 | **I/O (Input/Output)** | The communication interface between a system and external devices, such as sensors, displays, or peripherals.      |
-| **Light Mode**   | A user interface theme with a bright background and dark text, optimized for high-light environments.  |
-| **LUT**    | *Look-Up Table*, a core component in FPGA logic cells used for implementing combinational logic functions.   |
-| **MIT License**  | A permissive open-source license that allows free use, modification, and distribution of software with minimal restrictions.   |
-| **Modal**  | A temporary on-screen window that appears over the main interface to display additional content or request user input.   |
+| **Light Mode** | A user interface theme with a bright background and dark text, optimized for high-light environments.  |
+| **LUT** | *Look-Up Table*, a core component in FPGA logic cells that implements combinational logic functions.   |
+| **MIT License** | A permissive open-source license that allows free use, modification, and distribution of software with minimal restrictions.   |
+| **Modal** | A temporary on-screen window that appears over the main interface to display additional content or request user input.   |
 | **Mockup** | A static visual representation of a web interface or application design, used to demonstrate layout and functionality.   |
-| **MS**     | *Millisecond*, a unit of time equal to one-thousandth of a second. |
-| **Post-Mortem**  | A retrospective project analysis conducted after completion to assess successes, challenges, and lessons learned.  |
-| **Responsive Design**  | A design approach that ensures web content adapts dynamically to different screen sizes and devices for an optimal user experience.  |
-| **SDF**    | *Standard Delay Format*, a file format used to specify the timing characteristics of digital circuits for simulation purposes. |
-| **Simulation**   | The process of modeling and analyzing a system’s behavior over time to predict its performance and verify its design.    |
-| **Step-by-Step Mode**  | A simulation mode that allows users to advance the execution one step at a time for detailed debugging and analysis.     |
-| **Tooltip**      | A small informational pop-up that appears when hovering over an interactive element, providing context or guidance.      |
-| **Wireframe**    | A low-fidelity visual representation of a web or application layout, outlining its structure and content placement.      |
-| **Zoom**   | A feature that enables users to magnify or reduce the display of a circuit or interface for better visibility and focus. |
+| **MS** | *Millisecond*, a unit of time equal to one-thousandth of a second. |
+| **Post-Mortem** | A retrospective project analysis conducted after completion to assess successes, challenges, and lessons learned.  |
+| **Responsive Design** | A design approach that ensures web content adapts dynamically to different screen sizes and devices for an optimal user experience.  |
+| **SDF** | *Standard Delay Format*, a file format used to specify the timing characteristics of digital circuits for simulation purposes. |
+| **Simulation** | The process of modeling and analyzing a system’s behavior over time to predict its performance and verify its design.    |
+| **Step-by-Step Mode** | A simulation mode that allows users to advance the execution one step at a time for detailed debugging and analysis.     |
+| **Tooltip** | A small informational pop-up appears when hovering over an interactive element, providing context or guidance.      |
+| **Wireframe** | A low-fidelity visual representation of a web or application layout, outlining its structure and content placement.      |
+| **Zoom** | A feature that enables users to magnify or reduce the display of a circuit or interface for better visibility and focus. |
 
 ### 1.2. Project Overview
 This project aims to develop a user-friendly web interface for simulating the internal chip flows of an FPGA. This interface will enable teachers and students to easily upload SDF files, adjust real-time clock speeds, and view simulation results. By streamlining the simulation process, this tool will enhance the educational experience and provide a practical demonstration of FPGA behavior in classroom settings.
@@ -169,12 +169,12 @@ Team objectives include:
 - Ensuring the interface’s visual design is optimized for computer screens and video projectors.
 
 #### 1.3.2. State of the Art
-Currently, there is no dedicated web interface for FPGA internal chip flow simulation. Existing solutions rely on expensive, complex software that is not tailored for educational use. These tools often have steep learning curves and are not designed for interactive real-time demonstrations. This project aims to fill that gap by offering a simple, accessible, and cost-effective solution.
+Currently, there is no dedicated web interface for FPGA internal chip flow simulation. Existing solutions rely on expensive, complex software unsuitable for educational use. These tools often have steep learning curves and are not designed for interactive real-time demonstrations. This project aims to fill that gap by offering a simple, accessible, and cost-effective solution.
 
 Existing simulation tools:
 | Tool    | Licence type  | Source | Limitations | Price  |
 | - | ---- | --------- | -- | ------ |
-| Xilinx Vivado | Vivado ML Enterprise Edition, Fixed license, NCNR | [🔗](https://www.amd.com/en/products/software/adaptive-socs-and-fpgas/vivado/vivado-buy.html#)    | Complex interface, expensive, not educational   | $4,395 |
+| Xilinx Vivado | Vivado ML Enterprise Edition, Fixed license, NCNR | [🔗](https://www.amd.com/en/products/software/adaptive-socs-and-fpgas/vivado/vivado-buy.html#) | Complex interface, expensive, not educational   | $4,395 |
 | Intel Quartus Prime | Quartus Prime Pro Edition, Fixed license    | [🔗](https://www.thailand.intel.com/content/dam/www/central-libraries/us/en/documents/quartus-prime-compare-editions-guide.pdf) | Complex interface, expensive, not educational   | $3,995 |
 | Intel Quartus Prime | Quartus Prime Standard Edition, Fixed license     | [🔗](https://www.thailand.intel.com/content/dam/www/central-libraries/us/en/documents/quartus-prime-compare-editions-guide.pdf) | Complex interface, expensive, not educational   | $2,995 |
 | Intel Quartus Prime | Quartus Prime Lite Edition      | [🔗](https://www.thailand.intel.com/content/dam/www/central-libraries/us/en/documents/quartus-prime-compare-editions-guide.pdf) | Complex interface, not educational, missing some simulation tools | Free   |
@@ -187,38 +187,38 @@ Frontend: Native JavaScript, HTML, CSS
 
 Backend: Node.js with Express.js (subject to change based on project needs)
 
-The final product will consist of a local server hosting a web interface accessible from any modern web browser. User will be able to upload SDF file that will be translated into a JSON file and then displayed on the web interface for simulation.
+The final product will consist of a local server hosting a web interface accessible from any modern web browser. Users will be able to upload an SDF file that will be translated into a JSON file and then displayed on the web interface for simulation.
 
 #### 1.3.4. Deliverables
 | Deliverable   | Purpose | Document |
 | ------- | ---- | -------- |
-| Functional Specifications | Define project scope and requirements | [🔗](#functional-specifications)  |
-| Graphic Charter     | Define the visual identity of the web interface   | [🔗](./graphic-charter.md)  |
+| Functional Specifications | Define project scope and requirements | [🔗](#functional-specifications) |
+| Graphic Charter     | Define the visual identity of the web interface   | [🔗](./graphic-charter.md) |
 | Technical Specifications  | Outline technical details and implementation plan | [🔗](./../technical-specifications/technical-specifications.md) |
-| Test Plan     | Define testing procedures and criteria      | [🔗](./../quality-assurance/test-plan.md)     |
-| User Manual   | Provide instructions for using the web interface  | [🔗](./../user-manual/user-manual.pdf)   |
-| Source Code   | Share the project codebase with the community     | [🔗](./../../src)     |
+| Test Plan     | Define testing procedures and criteria      | [🔗](./../quality-assurance/test-plan.md) |
+| User Manual   | Provide instructions for using the web interface  | [🔗](./../user-manual/user-manual.pdf) |
+| Source Code   | Share the project codebase with the community     | [🔗](./../../src) |
 
 ### 1.4. Project Organization
 
 #### 1.4.1. Project Representatives
 | Entities | Representative   |
 | -------- | ------- |
-| [CNES](https://www.cnes.fr/en)   | Represented by [Florent MANNI](https://www.linkedin.com/in/florent-manni-182547211/)     |
-| [ALGOSUP](https://www.algosup.com)     | Represented by [Franck JEANNIN](https://www.linkedin.com/in/franck-jeannin/) |
+| [CNES](https://www.cnes.fr/en) | Represented by [Florent MANNI](https://www.linkedin.com/in/florent-manni-182547211/) |
+| [ALGOSUP](https://www.algosup.com) | Represented by [Franck JEANNIN](https://www.linkedin.com/in/franck-jeannin/) |
 | [Thibaud MARLIER](https://www.linkedin.com/in/thibaudmarlier/) | Represented by [Maxime CARON](https://www.linkedin.com/in/maxime-caron-dev/) (Program Manager) |
 
 #### 1.4.2. Team and Roles
 
 | Full Name   | Role  | Role Description   | Contact     |
 | -------- | -------- | --------- | -- |
-| Thibaud MARLIER   | Project Manager   | Responsible for project planning, coordination, and communication  | [LinkedIn](https://www.linkedin.com/in/thibaudmarlier/)     |
-| Maxime CARON      | Program Manager   | Ensures project meets expectations; oversees design and functional specs | [LinkedIn](https://www.linkedin.com/in/maxime-caron-dev/)   |
+| Thibaud MARLIER   | Project Manager   | Responsible for project planning, coordination, and communication  | [LinkedIn](https://www.linkedin.com/in/thibaudmarlier/) |
+| Maxime CARON      | Program Manager   | Ensures project meets expectations; oversees design and functional specs | [LinkedIn](https://www.linkedin.com/in/maxime-caron-dev/) |
 | Emilien CHINSY    | Technical Lead    | Oversees technical aspects, including architecture and implementation    | [LinkedIn](https://www.linkedin.com/in/emilien-chinsy-5a794632b/) |
-| Guillaume DESPAUX | Quality Assurance | Ensures quality of deliverables and adherence to requirements      | [LinkedIn](https://www.linkedin.com/in/guillaume-despaux/)  |
-| Clementine CUREL  | Technical Writer  | Documents the project, including user manuals    | [LinkedIn](https://www.linkedin.com/in/clementinecurel/)    |
-| Jason GROSSO      | Software Engineer | Develops the web interface and simulation engine | [LinkedIn](https://www.linkedin.com/in/jason-grosso-847b39251/)   |
-| Laurent BOUQUIN    | Software Engineer | Develops the web interface and simulation engine | [LinkedIn](https://www.linkedin.com/in/laurentb22/)   |
+| Guillaume DESPAUX | Quality Assurance | Ensures quality of deliverables and adherence to requirements      | [LinkedIn](https://www.linkedin.com/in/guillaume-despaux/) |
+| Clementine CUREL  | Technical Writer  | Documents the project, including user manuals    | [LinkedIn](https://www.linkedin.com/in/clementinecurel/) |
+| Jason GROSSO      | Software Engineer | Develops the web interface and simulation engine | [LinkedIn](https://www.linkedin.com/in/jason-grosso-847b39251/) |
+| Laurent BOUQUIN    | Software Engineer | Develops the web interface and simulation engine | [LinkedIn](https://www.linkedin.com/in/laurentb22/) |
 
 #### 1.4.3. Stakeholders
 
@@ -282,7 +282,7 @@ The project will be developed in 6 weeks, from 24<sup>th</sup> February 2025 to 
 - The project will comply with relevant data protection and privacy regulations.
 
 ---
-## 2. Audience and User Cases
+## 2. Audience and Use Cases
 
 ### 2.1. Target Audience
 The target audience for this project includes teachers, students, and professionals interested in FPGA design and simulation. The web interface is designed to provide an educational platform for learning about FPGA internals and exploring the challenges associated with this technology. By offering an intuitive, interactive simulation tool, the project aims to engage users in hands-on learning experiences that bridge theoretical concepts with practical applications.
@@ -340,11 +340,11 @@ The target audience for this project includes teachers, students, and profession
 
 | Use Case ID | Use Case Name | Description |
 | -- | ---- | ----- |
-| 1     | [Upload SDF File](#241-upload-sdf-file)     | Users can upload an SDF file containing the FPGA's internal structure for simulation.     |
-| 2     | [Adjust Real-Time Clock Speed](#242-adjust-real-time-clock-speed)   | Users can adjust the simulation's clock speed in real-time to observe different chip behaviors. |
+| 1     | [Upload SDF File](#241-upload-sdf-file) | Users can upload an SDF file containing the FPGA's internal structure for simulation.     |
+| 2     | [Adjust Real-Time Clock Speed](#242-adjust-real-time-clock-speed) | Users can adjust the simulation's clock speed in real time to observe different chip behaviors. |
 | 3     | [Control Simulation (Start, Pause, Reset)](#243-control-simulation-start-pause-reset) | Users can start, pause, and reset the simulation to observe specific chip states.   |
-| 4     | [Step-By-Step Simulation Mode ](#244-step-by-step-simulation-mode)  | Users can advance the simulation step-by-step to analyze internal chip flows in detail.   |
-| 5     | [Zoom Features](#245-zoom-features)   | Users can zoom in and out of the chip's internal structure to focus on specific areas.    |
+| 4     | [Step-By-Step Simulation Mode ](#244-step-by-step-simulation-mode) | Users can advance the simulation step-by-step to analyze internal chip flows in detail.   |
+| 5     | [Zoom Features](#245-zoom-features) | Users can zoom in and out of the chip's internal structure to focus on specific areas.    |
 | 6     | [Deploy Server Locally](#246-deploy-server-locally) | Developers can deploy the simulation server locally for testing and development purposes. |
 | 7     | [Update Application Configuration](#247-update-application-configuration) | Developers can update the application's configuration settings for customization and optimization. |
 
@@ -389,7 +389,7 @@ The target audience for this project includes teachers, students, and profession
 | **Actor** | Emily Thompson |
 | **Description** | Emily uses dedicated controls to start, pause, or reset the simulation. The interface provides visual cues and status indicators to inform her of the current simulation state. |
 | **Preconditions** | An SDF file has been successfully uploaded and parsed. |
-| **Postconditions** | The simulation transitions to the requested state (running, paused, or reset) and the interface updates accordingly. |
+| **Postconditions** | The simulation transitions to the requested state (running, paused, or reset), and the interface updates accordingly. |
 | **Flow** | 1. Emily clicks the "Start Simulation" button to begin the simulation.<br/>2. While the simulation is running, she may click "Pause" to halt progress or "Reset" to restart.<br/>3. The system updates the simulation state and displays the appropriate status indicator.<br/>4. **Alternate Flow:** If she attempts to control the simulation before uploading an SDF file, the system prompts her to complete the file upload first. |
 
 ---
@@ -418,7 +418,7 @@ The target audience for this project includes teachers, students, and profession
 | **Description** | Emily uses zoom controls to magnify or reduce the display of the FPGA's internal structure, enabling her to focus on specific areas. |
 | **Preconditions** | The simulation interface is loaded and the FPGA structure is displayed. |
 | **Postconditions** | The view is adjusted (zoomed in or out) based on Emily's input, with the display scaling accordingly. |
-| **Flow** | 1. Emily interacts with the zoom controls (buttons, slider, or mouse wheel).<br/>2. The system adjusts the view to magnify or reduce the display.<br/>3. The display updates in real time to reflect the new zoom level.<br/>4. **Alternate Flow:** If the input is ambiguous or unsupported, the system defaults to the nearest valid zoom level and shows a notification. |
+| **Flow** | 1. Emily interacts with the zoom controls (buttons, slider, or mouse wheel).<br/>2. The system adjusts the view to magnify or reduce the display.<br/>3. The display updates in real-time to reflect the new zoom level.<br/>4. **Alternate Flow:** If the input is ambiguous or unsupported, the system defaults to the nearest valid zoom level and shows a notification. |
 
 ---
 
@@ -432,7 +432,7 @@ The target audience for this project includes teachers, students, and profession
 | **Description** | Alex deploys the simulation server on a local machine to test and run the application in a controlled environment. |
 | **Preconditions** | The application source code is available and dependencies are installed. |
 | **Postconditions** | The server is successfully deployed and accessible via a modern web browser on the local network. |
-| **Flow** | 1. Alex sets up the local development environment (installing Node.js, Express.js, etc.).<br/>2. He deploys the application to the local server.<br/>3. Alex accesses the application via a web browser to verify that it loads correctly.<br/>4. **Alternate Flow:** If deployment fails, the system logs an error and Alex is notified with troubleshooting instructions. |
+| **Flow** | 1. Alex sets up the local development environment (installing Node.js, Express.js, etc.).<br/>2. He deploys the application to the local server.<br/>3. Alex accesses the application via a web browser to verify that it loads correctly.<br/>4. **Alternate Flow:** If the deployment fails, the system logs an error and Alex is notified with troubleshooting instructions. |
 
 ---
 
@@ -446,7 +446,7 @@ The target audience for this project includes teachers, students, and profession
 | **Description** | Alex updates the application's configuration settings (e.g., server port, environment variables) through a configuration file. |
 | **Preconditions** | The application is deployed and running on the local server. |
 | **Postconditions** | The new configuration is applied successfully, and the application reflects the updated settings without errors. |
-| **Flow** | 1. Alex accesses the configuration settings (via a config filee).<br/>2. He updates the necessary parameters (e.g., server port, database connections).<br/>3. Alex saves the changes and restarts the application.<br/>4. The application loads with the new configuration settings.<br/>5. **Alternate Flow:** If configuration updates fail, an error message is logged and Alex is notified with recommendations for resolution. |
+| **Flow** | 1. Alex accesses the configuration settings (via a config file).<br/>2. He updates the necessary parameters (e.g., server port, database connections).<br/>3. Alex saves the changes and restarts the application.<br/>4. The application loads with the new configuration settings.<br/>5. **Alternate Flow:** If configuration updates fail, an error message is logged and Alex is notified with recommendations for resolution. |
 
 ---
 ## 3. UI/UX
@@ -480,7 +480,7 @@ The user interface has been designed to provide an intuitive and engaging experi
 All the mockups are available in the [Figma project](https://www.figma.com/design/A6rvzTJCZQQyznhdQbu753/FPGA-Web-App?node-id=0-1&m=dev&t=lkPKlLFY9KAmra26-1).
 
 > [!NOTE]
-> Mockups are not interractive, they are static images.
+> Mockups are not interactive, they are static images.
 
 #### 3.3.1 Light Mode
 
@@ -534,13 +534,13 @@ The logo design is inspired by the concept of a "chip" and "exploration". It fea
 
 ### 4.2. Real-Time Clock Speed Adjustment  
 - **Functionality:**  
- Users will be able to adjust the simulation's clock speed in real-time.  
+ Users will be able to adjust the simulation's clock speed in real time.  
 - **Details:**  
   - A dedicated control will allow users to increase or decrease the clock speed by predefined increments (e.g., 1x, 2x, 4x, ...).
   - Changes to the clock speed will take effect immediately, with a tooltip displaying the current speed.
 
 > [!NOTE]
-> The SDF file initially provide a default clock speed in pico-seconds. The X1 clock speed dynamically adjusts the simulation time to make a clock period equal to 500 ms.
+> The SDF file initially provides a default clock speed in pico-seconds. The X1 clock speed dynamically adjusts the simulation time to make a clock period equal to 500 ms.
 
 ### 4.3. Simulation Control  
 - **Functionality:**  
@@ -615,7 +615,7 @@ Notice messages inform users of successful operations and provide guidance on in
 - **"Settings updated."** – The settings have been successfully applied.  
 
 #### **Error Messages**  
-Error messages alert users to issues and provide guidance on resolution.  
+Error messages alert users to issues and guide resolution.  
 
 **Behavior:**  
 - Displayed in the top-right corner.  
@@ -624,7 +624,7 @@ Error messages alert users to issues and provide guidance on resolution.
 
 **Samples:**  
 - **"Invalid file format."** – The uploaded file format is not supported.  
-- **"File size exceeds limit."** – The uploaded file is too large.  
+- **"File size exceeds the limit."** – The uploaded file is too large.  
 - **"Invalid clock speed."** – The entered clock speed is not valid.  
 - **"Simulation cannot start due to an internal error."** – A system error prevents the simulation from running.  
 - **"Simulation cannot be paused due to an internal error."** – The pause operation failed due to an error.  
@@ -659,7 +659,7 @@ Error messages alert users to issues and provide guidance on resolution.
 - **User Interface:**  
  The interface must be intuitive, easy to navigate, and provide clear instructions and visual cues to guide users through the simulation process.
   - **Guidance:** Onboarding instructions and tooltips should be available for first-time users.
-  - **Accessibility:** The design should consider accessibility guidelines to ensure usability for all users.
+  - **Accessibility:** The design should consider accessibility guidelines to ensure user usability.
 
 ### 5.4. Compatibility  
 - **Browser Support:**  
@@ -669,7 +669,7 @@ Error messages alert users to issues and provide guidance on resolution.
   - **Reference:** Additional compatibility details can be found in the [Technical Specifications](../technical-specifications/technical-specifications.md) document.
 
 > [!WARNING]
-> Minimal screen resolution supported is 1024x768 pixels.
+> The minimal screen resolution supported is 1024x768 pixels.
 
 ---
 
@@ -749,13 +749,13 @@ Error messages alert users to issues and provide guidance on resolution.
 ### 9.1. Contributors
 | Pictures    | Full Name   | Role  | Role Description   | Contact     |
 | -- | -------- | -------- | --------- | -- |
-| <img alt="https://github.com/Biohazardyee" src="https://avatars.githubusercontent.com/u/146005163?v=4" width=150 />     | Thibaud MARLIER   | Project Manager   | Responsible for project planning, coordination, and communication  | [LinkedIn](https://www.linkedin.com/in/thibaudmarlier/)     |
-| <img alt="https://github.com/MaximeAlgosup" src="https://avatars.githubusercontent.com/u/145995231?v=4" width=150 />    | Maxime CARON      | Program Manager   | Ensures project meets expectations; oversees design and functional specs | [LinkedIn](https://www.linkedin.com/in/maxime-caron-dev/)   |
+| <img alt="https://github.com/Biohazardyee" src="https://avatars.githubusercontent.com/u/146005163?v=4" width=150 />     | Thibaud MARLIER   | Project Manager   | Responsible for project planning, coordination, and communication  | [LinkedIn](https://www.linkedin.com/in/thibaudmarlier/) |
+| <img alt="https://github.com/MaximeAlgosup" src="https://avatars.githubusercontent.com/u/145995231?v=4" width=150 />    | Maxime CARON      | Program Manager   | Ensures project meets expectations; oversees design and functional specs | [LinkedIn](https://www.linkedin.com/in/maxime-caron-dev/) |
 | <img alt="https://github.com/EmilienChinsy" src="https://avatars.githubusercontent.com/u/182214919?v=4" width=150 />    | Emilien CHINSY    | Technical Lead    | Oversees technical aspects, including architecture and implementation    | [LinkedIn](https://www.linkedin.com/in/emilien-chinsy-5a794632b/) |
-| <img alt="https://github.com/GuillaumeDespaux" src="https://avatars.githubusercontent.com/u/146001117?v=4" width=150 /> | Guillaume DESPAUX | Quality Assurance | Ensures quality of deliverables and adherence to requirements      | [LinkedIn](https://www.linkedin.com/in/guillaume-despaux/)  |
-| <img alt="https://github.com/Clementine951" src="https://avatars.githubusercontent.com/u/78617457?v=4" width=150 />     | Clementine CUREL  | Technical Writer  | Documents the project, including user manuals    | [LinkedIn](https://www.linkedin.com/in/clementinecurel/)    |
-| <img alt="https://github.com/JasonGROSSO" src="https://avatars.githubusercontent.com/u/114397870?v=4" width=150 />      | Jason GROSSO      | Software Engineer | Develops the web interface and simulation engine | [LinkedIn](https://www.linkedin.com/in/jason-grosso-847b39251/)   |
-| <img alt="https://github.com/laurentbouquin" src="https://avatars.githubusercontent.com/u/71769489?v=4" width=150 />    | Lauren BOUQUIN    | Software Engineer | Develops the web interface and simulation engine | [LinkedIn](https://www.linkedin.com/in/laurentb22/)   |
+| <img alt="https://github.com/GuillaumeDespaux" src="https://avatars.githubusercontent.com/u/146001117?v=4" width=150 /> | Guillaume DESPAUX | Quality Assurance | Ensures quality of deliverables and adherence to requirements      | [LinkedIn](https://www.linkedin.com/in/guillaume-despaux/) |
+| <img alt="https://github.com/Clementine951" src="https://avatars.githubusercontent.com/u/78617457?v=4" width=150 />     | Clementine CUREL  | Technical Writer  | Documents the project, including user manuals    | [LinkedIn](https://www.linkedin.com/in/clementinecurel/) |
+| <img alt="https://github.com/JasonGROSSO" src="https://avatars.githubusercontent.com/u/114397870?v=4" width=150 />      | Jason GROSSO      | Software Engineer | Develops the web interface and simulation engine | [LinkedIn](https://www.linkedin.com/in/jason-grosso-847b39251/) |
+| <img alt="https://github.com/laurentbouquin" src="https://avatars.githubusercontent.com/u/71769489?v=4" width=150 />    | Lauren BOUQUIN    | Software Engineer | Develops the web interface and simulation engine | [LinkedIn](https://www.linkedin.com/in/laurentb22/) |
 
 ### 9.2. License
 This project is licensed under the MIT License - see the LICENSE file for details.
