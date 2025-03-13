@@ -47,7 +47,7 @@ jobs:
         continue-on-error: true # Allow the workflow to continue even if this step fails
       # Verify is the .json are generated
       - name: Check generated JSON files
-        run: ls -l ./src/test
+        run: ls -l ./src/test/logs
 
       # Commit and push the generated JSON files
       - name: Commit and push JSON files
