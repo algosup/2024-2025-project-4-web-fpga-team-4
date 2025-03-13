@@ -55,10 +55,10 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-          if [[ -n $(git status --porcelain) ]]; then
+            if [[ -n $(git status --porcelain) ]]; then
             git add src/test/logs/*.json
             git commit -m "Add generated JSON files"
-            git push origin $(git branch --show-current)
+            git push origin QA
           else
             echo "No changes to commit"
           fi
