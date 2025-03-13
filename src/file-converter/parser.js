@@ -126,9 +126,9 @@ function getConnectionsFromString(element) {
         elementFinal.port = "0";
     } else if (element.startsWith("latch_")) {
         elementFinal.type = "DFF";
-        elementFinal.id = "0";
+        elementFinal.port = "0";
         if (element[7] === '$') {
-            elementFinal.port = element.substring(14, 15);
+            elementFinal.id = element.substring(14, 15);
             if (element[22] === 'i') {
                 elementFinal.io = "input";
             } else if (element[22] === 'o') {
@@ -137,7 +137,7 @@ function getConnectionsFromString(element) {
                 elementFinal.io = "clock"
             }
         } else {
-            elementFinal.port = "0";
+            elementFinal.id = "-1";
             if (element[8] === 'i') {
                 elementFinal.io = "input";
             } else if (element[8] === 'o') {
