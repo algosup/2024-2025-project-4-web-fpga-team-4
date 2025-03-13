@@ -57,8 +57,6 @@ jobs:
 
           git checkout QA || git checkout -b QA
 
-          git pull --rebase origin QA
-
           if [[ -n $(git status --porcelain) ]]; then
             git add src/test/logs/*.json
             git commit -m "Add generated JSON files"
