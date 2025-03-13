@@ -49,18 +49,28 @@ jobs:
       - name: Check generated JSON files
         run: ls -l ./src/test/logs
 
-      # Commit and push the generated JSON files
       - name: Commit and push JSON files
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-          git checkout QA || git checkout -b QA
+          # Fetch all branches to ensure we have the latest state
+          git fetch origin
 
+          # Checkout QA branch, create it if it doesn't exist
+          if git show-ref --verify --quiet refs/remotes/origin/QA; then
+            git checkout QA
+            git pull --rebase origin QA
+          else
+            git checkout -b QA
+            git push -u origin QA
+          fi
+
+          # Check if there are changes before committing
           if [[ -n $(git status --porcelain) ]]; then
             git add src/test/logs/*.json
             git commit -m "Add generated JSON files"
-            git push -u origin QA
+            git push origin QA
           else
             echo "No changes to commit"
           fi
