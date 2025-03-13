@@ -18,7 +18,7 @@ const results: {
   }
 }[] = [];
 
-const logFilePath = path.join(__dirname, 'logs', dateString + '-test.json');
+const logFilePath = path.join(__dirname, 'logs', dateString + '-uthc-test.json');
 
 async function runTests() {
   let driver: WebDriver | null = null;
