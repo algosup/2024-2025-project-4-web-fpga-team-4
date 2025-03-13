@@ -58,7 +58,7 @@ jobs:
             if [[ -n $(git status --porcelain) ]]; then
             git add src/test/logs/*.json
             git commit -m "Add generated JSON files"
-            git push origin QA
+            git push -u origin <QA>
           else
             echo "No changes to commit"
           fi
