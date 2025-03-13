@@ -1,0 +1,31 @@
+name: UI change request
+description: Request a change in the UI
+labels: [UI change request]
+title: "UI change request: [Your request]"
+assignees:
+  - MaximeAlgosup
+body:
+  - type: markdown
+    attributes:
+      value: |
+        We can not garanty that your change will be implemented, still, do not hesitate to sent in your request.
+  - type: textarea
+    id: description
+    attributes:
+      label: Feature
+      description: A clear and concise description of what change you want to be implemented.
+      placeholder: A good addition would be...
+    validations:
+      required: true
+  - type: textarea
+    id: explanation
+    attributes:
+      label: Reason behind the change request
+      description: A logical explanation as to why we should change this part of the UI.
+    validations:
+      required: true
+  - type: textarea
+    id: additional_information
+    attributes:
+      label: Additional information
+      description: Any example/drawings to give us a better idea of how you want this part of the UI to look like once it has been changed.
