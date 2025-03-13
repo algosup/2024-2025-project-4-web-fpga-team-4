@@ -42,33 +42,5 @@ jobs:
           npx tsc
           mkdir -p logs
           for file in *.js; do node "$file"; done
+          gh issue create --title "Test don't take in account" --body "Here are more details." --assignee @me --label "test" 
         continue-on-error: true # Allow the workflow to continue even if this step fails
-
-      - name: Extract failed tests
-        id: extract-failed-tests
-        run: |
-          FAILED_TESTS=$(cat ./src/test/logs/2025-03-12-test.json | jq -c '.results[] | select(.test.passed == false)')
-          echo "::set-output name=failed_tests::$FAILED_TESTS"
-
-      - name: Open issue
-        if: ${{ steps.extract-failed-tests.outputs.failed_tests != '[]' }}
-        uses: peter-evans/create-issue-from-file@v3
-        with:
-          title: "Failed Test: ${{ fromJson(steps.extract-failed-tests.outputs.failed_tests)[0].test.name }}"
-          content-filepath: ./ISSUE_TEMPLATE.md
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Create issue content
-        if: ${{ steps.extract-failed-tests.outputs.failed_tests != '[]' }}
-        run: |
-          FAILED_TEST=${{ fromJson(steps.extract-failed-tests.outputs.failed_tests)[0] }}
-          cat <<EOF > ISSUE_TEMPLATE.md
-          - **Browser:** ${FAILED_TEST.browser}
-          - **Test Name:** ${FAILED_TEST.test.name}
-          - **Description:** ${FAILED_TEST.test.description}
-          - **Type:** ${FAILED_TEST.test.type}
-          - **Error Code:** ${FAILED_TEST.test.error.code}
-          - **Actual Value:** ${FAILED_TEST.test.error.actual}
-          - **Expected Value:** ${FAILED_TEST.test.error.expected}
-          - **Operator:** ${FAILED_TEST.test.error.operator}
-          EOF
