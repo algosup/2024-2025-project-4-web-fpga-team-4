@@ -37,6 +37,8 @@ jobs:
       # Run the test command and capture output
       - name: Run tests
         id: run-tests
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           cd ./src/test
           npx tsc
