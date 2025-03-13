@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "xstring": "cpp",
+        "vector": "cpp",
+        "utility": "cpp",
+        "string": "cpp",
+        "chrono": "cpp",
+        "iostream": "cpp",
+        "filesystem": "cpp",
+        "xutility": "cpp",
+        "xlocale": "cpp"
+    }
+}

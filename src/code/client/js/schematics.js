@@ -4,21 +4,19 @@
  * @param {string} name - The name of the input element.
  * @param {boolean} state - The state of the input element (true for ON, false for OFF).
  */
-function displayInput(name, state) {
-	let stateString = state ? 'ON' : 'OFF';
-
+function displayInput(name) {
 	let inputContainer = document.getElementById('input-container');
 	let inputElement = document.createElement('div');
 	let inputInElement = document.createElement('div');
-	inputInElement.innerHTML = `<p class="input-name input-data">${name}</p><p class="input-out" id="${name}-out">Out</p></p>`;
+	inputInElement.innerHTML = `<p class="input-name input-data">${name}</p><p class="input-out">Out</p><div class="input-out-after" id="${name}-out"></div>`;
 	switch (name) {
-		case 'clk':
+		case 'Clock':
 			inputElement.className = 'input-element clock-element';
 			break;
-		case 'D':
+		case 'userInput':
 			inputElement.className = 'input-element data-element';
 			break;
-		case 'reset':
+		case 'Async_reset':
 			inputElement.className = 'input-element reset-element';
 		default:
 			break;
@@ -36,7 +34,7 @@ function displayOutput(name) {
 	let outputContainer = document.getElementById('output-container');
 	let outputElement = document.createElement('div');
 	let outputInElement = document.createElement('div');
-	outputInElement.innerHTML = '<p class="output-name output-data">' + name + '</p><p class="output-in used" id="q-0-in">In</p>';
+	outputInElement.innerHTML = '<p class="output-name output-data">' + name + '</p><div class="output-in-before"  id="q-0-in"></div><p class="output-in used">In</p>';
 	outputElement.className = 'output-element q-element';
 	outputElement.appendChild(outputInElement);
 	outputContainer.appendChild(outputElement);
@@ -52,24 +50,24 @@ function displayOutput(name) {
  * @param {boolean} in3 - The state of the fourth input (true for used, false for unused).
  * @param {boolean} out - The state of the output (true for used, false for unused).
  */
-function displayLUT(id, in0, in1, in2, in3, out) {
+function displayLUT(id, in0, in1, in2, out) {
 	let lutContainer = document.getElementById('lut-container');
 	let lutElement = document.createElement('div');
 	let lutInElement = document.createElement('div');
 	lutElement.className = 'lut-element';
 	lutElement.id = 'lut' + id.toString();
-	let in0State = in0 ? 'used' : 'unused';
-	let in1State = in1 ? 'used' : 'unused';
-	let in2State = in2 ? 'used' : 'unused';
-	let in3State = in3 ? 'used' : 'unused';
 	let outState = out ? 'used' : 'unused';
 	let id0Para = `<p class="lut-id ">LUT ${id.toString()}</p>`;
-	let in0Para = `<p class="lut-in ${in0State}" id="lut-${id.toString()}-in0">0</p>`;
-	let in1Para = `<p class="lut-in ${in1State}" id="lut-${id.toString()}-in1">1</p>`;
-	let in2Para = `<p class="lut-in ${in2State}" id="lut-${id.toString()}-in2">2</p>`;
-	let in3Para = `<p class="lut-in ${in3State}" id="lut-${id.toString()}-in3">3</p>`;
-	let out0Para = `<p class="lut-out ${outState}" id="lut-${id.toString()}-out">0</p>`;
-	lutInElement.innerHTML = id0Para + in0Para + in1Para + in2Para + in3Para + out0Para;
+	let in0Para = `<div class="lut-in-before used" id="lut-${id.toString()}-in${in0}"></div><p class="lut-in">${in0}</p>`;
+	let in1Para = `<div class="lut-in-before used" id="lut-${id.toString()}-in${in1}"></div><p class="lut-in">${in1}</p>`;
+	let in2Para = `<div class="lut-in-before used" id="lut-${id.toString()}-in${in2}"></div><p class="lut-in">${in2}</p>`;
+	// let in3Para = `<div class="lut-in-before ${in3State}" id="lut-${id.toString()}-in3"></div><p class="lut-in">3</p>`;
+	let out0Para = `<p class="lut-out ${outState}">0</p><div class="lut-out-after ${outState}" id="lut-${id.toString()}-out"></div>`;
+	if (in0 === null && in1 === null && in2 === null) {
+		lutInElement.innerHTML = id0Para + out0Para;
+	} else {
+		lutInElement.innerHTML = id0Para + in0Para + in1Para + in2Para /*+ in3Para */+ out0Para;
+	}
 	lutElement.appendChild(lutInElement);
 	lutContainer.appendChild(lutElement);
 }
@@ -90,10 +88,10 @@ function displayFlipFlop(id, dataIn, clockIn, out) {
 	let dataInState = dataIn ? 'used' : 'unused';
 	let clockInState = clockIn ? 'used' : 'unused';
 	let outState = out ? 'used' : 'unused';
-	let id0 = `<div class="ff-id ">Flip Flop ${id.toString()}</div>`;
-	let in0 = `<div class="ff-in ${dataInState}" id="ff-${id.toString()}-data">Data</div>`;
-	let in1 = `<div class="ff-in ${clockInState}" id="ff-${id.toString()}-clk">Clock</div>`;
-	let out0 = `<div class="ff-out ${outState}" id="ff-${id.toString()}-out">Out</div>`;
+	let id0 = `<p class="ff-id ">Flip Flop ${id.toString()}</p>`;
+	let in0 = `<div class="ff-in-before ${dataInState}" id="ff-${id.toString()}-0"></div><p class="ff-in">Data</p>`;
+	let in1 = `<div class="ff-in-before ${clockInState}" id="ff-${id.toString()}-1"></div><p class="ff-in">Clock</p>`;
+	let out0 = `<p class="ff-out">Out</p><div class="ff-out-after ${outState}" id="ff-${id.toString()}-out"></div>`;
 	ffInElement.innerHTML = id0 + in0 + in1 + out0;
 	ffElement.appendChild(ffInElement);
 	ffContainer.appendChild(ffElement);

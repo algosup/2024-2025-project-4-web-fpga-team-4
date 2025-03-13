@@ -1,7 +1,7 @@
 :root{
 	/* --grid-border: #E1FF00; */
 	--grid-border: rgba(225, 255, 0, .6);
-	--clock-graph: #00FFF7;
+	--clock-graph: #00FFF7FF;
 }
 
 /* Applies Style to the Right Part of the Page */
@@ -68,7 +68,7 @@
 
 
 
-	background-color: black;
+	background-color: #000000FF;
 }
 
 .grid-item{

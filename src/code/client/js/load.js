@@ -2,35 +2,26 @@
 It is responsible for handling the client side logic.
 */
 
+function endLoad(){
 
-let states = document.getElementsByClassName('element-state');
+	let luts = document.getElementsByClassName('lut-element');
+	
+	let height = 85;
+	
+	if (luts.length > 4) {
+		height += (luts.length - 4) * 18;
+	}
+	
+	document.getElementById('main').style.height = height.toString() + 'vh';
+	
+	zoomLevel.textContent = zoomLevels[currentZoomIndex];
+	
+	document.documentElement.setAttribute("data-theme", currentTheme);
+	theme.firstChild.className = currentTheme === 'light' ? 'fa-solid top-bar fa-moon' : 'fa-solid top-bar fa-sun';
 
-for (let i = 0; i < states.length; i++) {
-	if (states[i].textContent === 'ON') {
-		states[i].style.color = 'lime';
-	}
-	else {
-		states[i].style.color = 'red';
-	}
+	let inputs = document.getElementsByClassName('input-out');
+	let clock = document.getElementsByClassName('clock-element');
+
+	clock[0].style.marginTop = height - (inputs.length * 14) + 'vh';
+
 }
-
-
-let flipFlops = document.getElementsByClassName('ff-element');
-let luts = document.getElementsByClassName('lut-element');
-
-if (flipFlops.length > 3 || luts.length > 2) {
-	if ((flipFlops.length / 3 > luts.length / 2)) {
-		let size = 85 + ((flipFlops.length - 3) * 22);
-		document.getElementById('main').style.height = size + "vh";
-	}
-	else {
-		let size = 85 + ((luts.length - 2) * 33);
-		document.getElementById('main').style.height = size.toString() + 'vh';
-	}
-}
-
-
-zoomLevel.textContent = zoomLevels[currentZoomIndex];
-
-document.documentElement.setAttribute("data-theme", currentTheme);
-theme.firstChild.className = currentTheme === 'light' ? 'fa-solid top-bar fa-moon' : 'fa-solid top-bar fa-sun';

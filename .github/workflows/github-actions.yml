@@ -1,14 +1,14 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
+permissions:
+  contents: write
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main", "QA", "dev" ]
+    branches: [ "QA", "dev" ]
+  # Triggers the workflow on push or pull request events but only for the "main" branch
   pull_request:
-    branches: [ "main", "QA", "dev" ]
+    branches: [ "dev" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -25,12 +25,67 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      # Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '23.6.0' # You can specify the Node.js version you need
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      # Install dependencies
+      - name: Install dependencies
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          cd ./src/test
+          npm install
+          npm install typescript
+
+      # Run the test command and capture output
+      - name: Run tests
+        id: run-tests
+        run: |
+          cd ./src/test
+          npx tsc
+          for file in *.js; do node "$file"; done
+
+        continue-on-error: true # Allow the workflow to continue even if this step fails
+      # Verify is the .json are generated
+      - name: Check generated JSON files
+        run: ls -l ./src/test/logs
+      
+      # Commit and push JSON files
+      - name: Commit and push JSON files
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Fetch all branches to ensure we have the latest state
+          git fetch origin
+
+          # Checkout QA branch, create it if it doesn't exist
+          if git show-ref --verify --quiet refs/remotes/origin/QA; then
+            git checkout QA
+            
+            # Stash any local changes before pulling
+            git stash --include-untracked
+            git pull --rebase origin QA
+            git stash pop || echo "No stashed changes to restore."
+          else
+            git checkout -b QA
+            git push -u origin QA
+          fi
+
+          # Check if there are changes before committing
+          if [[ -n $(git status --porcelain) ]]; then
+            # Force add ignored JSON files
+            git add -f src/test/logs/*.json
+            
+            # If package-lock.json changed, commit it as well
+            if [[ -n $(git status --porcelain src/test/package-lock.json) ]]; then
+              git add src/test/package-lock.json
+            fi
+
+            git commit -m "Add generated JSON files"
+            git push origin QA
+          else
+            echo "No changes to commit"
+          fi
+

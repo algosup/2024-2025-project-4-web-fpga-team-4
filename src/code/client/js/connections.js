@@ -2,22 +2,13 @@ function convertPxToVh(px) {
 	return (px / document.documentElement.clientHeight * 100);
 }
 function convertPxToVw(px) {
-	return (px / document.documentElement.clientWidth * 100) ;
+	return (px / document.documentElement.clientWidth * 100);
 }
 
 
 
 
 
-
-/**
- * Start drawing the schematic.
- * 
- * @returns {void}
- */
-function startDrawing() {
-	main.innerHTML += `<div id="connections"><div>`;
-}
 
 
 /**
@@ -27,98 +18,216 @@ function startDrawing() {
  * @param {number} top - The top position of the line in vh.
  * @param {number} left - The left position of the line in vw.
  */
-function drawLine(height, width, top, left) {
-	main.lastChild.innerHTML += `<div class="line used" style="height: ${height}vh; width: ${width}vw; margin-top: ${top}vh; margin-left: ${left}vw"></div>`
+function drawLine(height, width, top, left, colorValue) {
+	let color
+	switch (colorValue.substring(0, 2)) {
+		case 'lu':
+			color = "#FF0000FF";
+			break;
+		case 'ff':
+			color = "#00FF00FF";
+			break;
+		case 'As':
+			color = "#0000FFFF";
+			break;
+			case 'us':
+				color = "#FFFF00FF";
+				break;
+		case 'cl':
+			color = "#FF00FFFF";
+			break;
+		default:
+			break;
+	}
+	connections.innerHTML += `<div class="line used" style="height: ${height}vh; width: ${width}vw; margin-top: ${top}vh; margin-left: ${left}vw; background-color:${color}"></div>`
 }
+
+
+function selectColumn(dist, type) {
+	let dists = [dist, dist];
+	for (let i = 0; i < 5; i++) {
+		if (type === 'inTolut') {
+			if (!inToLutColumns[i]) {
+				inToLutColumns[i] = true;
+				dists[0] *= ((i + 1) * .1);
+				dists[1] *= (2 - (i + 1) * .1);
+				break;
+			}
+		} else if (type === 'lutToff') {
+			if (!lutToFfColumns[i]) {
+				lutToFfColumns[i] = true;
+				dists[0] *= ((i + 1) * .1);
+				dists[1] *= (2 - (i + 1) * .1);
+				break;
+			}
+		} else {
+			if (!ffToOutColumns[i]) {
+				ffToOutColumns[i] = true;
+				dists[0] *= ((i + 1) * .1);
+				dists[1] *= (2 - (i + 1) * .1);
+				break;
+			}
+		}
+	}
+	return dists;
+}
+
+
+
+
+
 
 /**
- * Draw a point on the schematic.
- * 
- * @param {number} size - The size of the point in vh.
- * @param {number} top - The top position of the point in vh.
- * @param {number} left - The left position
-*/
-function drawPoint(size, top, left) {
-	main.lastChild.innerHTML += `<div class="point used" style="height: ${size}vh; width: ${size}vh; margin-top: ${top}vh; margin-left: ${left}vw; border-radius: 50%"></div>`
-}
+ * Draw a connection between two objects.
+ * @param {string} obj1 The id of the first object from which the connection starts.
+ * @param {string} obj2 The id of the second object to which the connection ends.
+ */
+function drawBasicConnection(obj1, obj2) {
 
-startDrawing();
+	// Get the bounding rectangles of the two objects
+	let outB = document.getElementById(obj1).getBoundingClientRect();
+	let inB = document.getElementById(obj2).getBoundingClientRect();
 
+	// Convert the pixel values to viewport units
+	const output = { top: convertPxToVh(outB.top), left: convertPxToVw(outB.left), bottom: convertPxToVh(outB.bottom), right: convertPxToVw(outB.right) };
+	const input = { top: convertPxToVh(inB.top), left: convertPxToVw(inB.left), bottom: convertPxToVh(inB.bottom), right: convertPxToVw(inB.right) };
 
-
-
-
-
-
-
-
-
-function drawConnection(obj1, obj2){
-	let outp = document.getElementById(obj1).getBoundingClientRect();
-	let inp = document.getElementById(obj2).getBoundingClientRect();
-	const output = {top: convertPxToVh(outp.top), left: convertPxToVw(outp.left), bottom: convertPxToVh(outp.bottom), right: convertPxToVw(outp.right)};
-	const input = {top: convertPxToVh(inp.top), left: convertPxToVw(inp.left), bottom: convertPxToVh(inp.bottom), right: convertPxToVw(inp.right)};
+	// Calculate the center of the output and input objects
 	let outputCenterHeight = (output.bottom - output.top) / 2;
 	let inputCenterHeight = (input.bottom - input.top) / 2;
-	let distW = input.left > output.right ? (input.left - output.right) / 2: (output.left - input.right) / 2;
-	let heightDiff = output.bottom > output.top ? output.bottom - output.top: output.top - output.bottom;
-	let distH = output.top > input.bottom ? (output.top + heightDiff - input.bottom): input.top + heightDiff - output.bottom;
-	let topLine = output.top > input.top ? output.top: input.top;
-	let bottomLine = output.bottom < input.bottom ? output.bottom: input.bottom;
+
+	// Calculate the height difference between the two objects
+	let heightDiff = output.bottom > output.top ? output.bottom - output.top : output.top - output.bottom;
+
+	// Calculate the distance between the two objects
+	let distW = input.left > output.right ? (input.left - output.right) / 2 : (output.left - input.right) / 2;
+	let distH = output.top > input.top ? (output.top + (heightDiff * 1.4) - input.bottom) : input.top + heightDiff - output.bottom;
+
+	// Calculate the center of the output and input objects
+	let outputCenter = output.top + outputCenterHeight - .3;
+	let inputCenter = input.top + inputCenterHeight - .3;
+
+	let inputElement;
+	let outputElement;
 	
-	if (obj1.startsWith('D') || obj1.startsWith('clk') || obj1.startsWith('reset')) {
-		drawLine(.6, distW, output.top, output.right);
-		drawLine(distH - outputCenterHeight / 4, .4, bottomLine, output.right + distW);
-		drawLine(.6, distW, input.bottom, input.left - distW);
-		drawPoint(1.6, output.top - .4, output.right + distW - .35);
-		drawPoint(1.6, input.bottom - .6, output.right + distW - .35);
-	} else if (obj2.startsWith('q')){
-		drawLine(.6, distW, output.bottom + outputCenterHeight / 2, output.right);
-		drawLine(distH, .4, bottomLine + outputCenterHeight / 2, output.right + distW);
-		drawLine(.6, distW, input.top + inputCenterHeight /2, input.left - distW);
-	}else {
-		drawLine(.6, distW, output.bottom + outputCenterHeight, output.right);
-		drawLine(distH + outputCenterHeight, .4, bottomLine + outputCenterHeight, output.right + distW);
-		drawLine(.6, distW, input.bottom + inputCenterHeight, input.left - distW);
+	switch (obj1.split('-')[0]) {
+		case 'lut':
+			inputElement = "lut";
+			break;
+		case 'ff':
+			inputElement = "ff";
+			break;
+		case 'D' || 'reset' || 'clk':
+			inputElement = "in";
+			break;
+		default:
+			'no'
+			break;
+	}
+	switch (obj2.split('-')[0]) {
+		case 'lut':
+			outputElement = "lut";
+			break;
+		case 'ff':
+			outputElement = "ff";
+			break;
+		case 'q':
+			outputElement = "out";
+			break;
+		default:
+			'no'
+			break;
+	}
+
+	let dists = selectColumn(distW, inputElement + 'To' + outputElement);
+	let distW1 = dists[0];
+	let distW2 = dists[1];
+
+
+	// Draw the connection
+	drawLine(.6, distW1, outputCenter, output.right, obj1);
+	drawLine(distH, .4, (output.top < input.top ? outputCenter : inputCenter), output.right + distW1, obj1);
+	drawLine(.6, distW2, inputCenter, input.left - distW2, obj1);
+}
+
+
+function drawClockBase(clock) {
+	let clockB = document.getElementById(clock).getBoundingClientRect();
+	let ffList = document.getElementsByClassName('ff-element');
+
+	console.log('test', ffList[0]);
+
+	let ffB = ffList[0].childNodes[0].childNodes[3].getBoundingClientRect();
+	const clockBase = { top: convertPxToVh(clockB.top), left: convertPxToVw(clockB.left), bottom: convertPxToVh(clockB.bottom), right: convertPxToVw(clockB.right) };
+	const ffBase = { top: convertPxToVh(ffB.top), left: convertPxToVw(ffB.left), bottom: convertPxToVh(ffB.bottom), right: convertPxToVw(ffB.right) };
+	let clockCenterHeight = (clockBase.bottom - clockBase.top) / 2;
+	let clockCenter = clockBase.top + clockCenterHeight - .3;
+	let ffBaseCenter = (ffBase.top + (ffBase.bottom - ffBase.top) / 2);
+	let distW = (ffBase.left - clockBase.right);
+	let distH = (ffBase.top + (ffBase.bottom - ffBase.top) / 2) - clockCenter - .3;
+	drawLine(.6, distW - .6, clockCenter, clockBase.right, `clock`);
+	drawLine(-distH, .4, ffBaseCenter - .3, ffBase.left - 1, `clock`);
+}
+
+
+function drawClockConnection(obj2) {
+
+	// Get the bounding rectangles of the two objects
+	let inB = document.getElementById(obj2).getBoundingClientRect();
+
+	// Convert the pixel values to viewport units
+	const input = { top: convertPxToVh(inB.top), left: convertPxToVw(inB.left), bottom: convertPxToVh(inB.bottom), right: convertPxToVw(inB.right) };
+
+	// Calculate the center of the output and input objects
+	let inputCenterHeight = (input.bottom - input.top) / 2;
+
+
+	// Calculate the center of the output and input objects
+	let inputCenter = input.top + inputCenterHeight - .3;
+
+	
+	// Draw the connection
+	drawLine(.6, .6, inputCenter, input.left - .8, "clock");
+}
+
+
+function drawLutGnd(obj2){
+
+	// Get the bounding rectangles of the two objects
+	let inB = document.getElementById(obj2).getBoundingClientRect();
+
+	// Convert the pixel values to viewport units
+	const input = { top: convertPxToVh(inB.top), left: convertPxToVw(inB.left), bottom: convertPxToVh(inB.bottom), right: convertPxToVw(inB.right) };
+
+	// Calculate the center of the output and input objects
+	let inputCenterHeight = (input.bottom - input.top) / 2;
+
+
+	// Calculate the center of the output and input objects
+	let inputCenter = input.top + inputCenterHeight - .3;
+
+	
+	// Draw the connection
+	drawLine(.6, .6, inputCenter, input.left - .8, "lut-gnd");
+}
+
+
+
+
+
+/**
+ * Generate the connections between the objects.
+ * @param {string} obj1 - The first object to connect.
+ * @returns {string} obj2 - The second object to connect.
+ */
+function drawConnectionSelect(obj1, obj2) {
+	let ob1 = obj1.split('-')[0];
+	let ob2 = obj2.split('-')[0];
+	if ((ob1 === 'lut' && ob2 === 'ff' ||
+		ob1 === 'ff' && ob2 === 'q' ||
+		(ob1 === 'userInput' || ob1 === 'Async_reset' || ob1 === 'Clock' ) && ob2 === 'lut') && obj2 !== 'lut-gnd') {
+		drawBasicConnection(obj1, obj2);
+	} else if (ob1 === 'Clock') {
+		drawClockConnection(obj2);
 	}
 }
-
-
-
-
-
-
-
-function generateConnections() {
-
-	drawConnection('lut-139-out', 'ff-0-clk');
-	drawConnection('D-out', 'lut-139-in3');
-	drawConnection('clk-out', 'lut-133-in2');
-	// drawConnection('reset-out', 'lut-139-in3');
-	drawConnection('ff-0-out', 'q-0-in');
-}
-
-
-
-	// var out = document.getElementById('lut-139-out').getBoundingClientRect();
-	// var in1 = document.getElementById('ff-0-clk').getBoundingClientRect();
-	// let dist1 = (in1.left - out.right) / 2;
-	// let dist2 = (out.bottom - in1.bottom) / 2;
-
-	// drawLine(out.right, out.bottom, out.right + dist1, out.bottom)
-	// drawLine(in1.left - dist1 , in1.bottom, in1.left - dist1, in1.bottom - 16)
-	// drawLine(in1.left - dist1, in1.bottom, in1.left, in1.bottom)
-	// drawPoint(in1.left - dist1, in1.bottom + 2)
-	// drawPoint(in1.left - dist1, in1.bottom - 14)
-
-	// let out1 = document.getElementById('reset-out').getBoundingClientRect();
-	// let in2 = document.getElementById('lut-139-in1').getBoundingClientRect();
-	// let dist3 = (in2.left - out1.right) / 2;
-	// let heightDiff = out1.bottom - out1.top;
-	// let dist4 = (out1.top + heightDiff / 2 - in2.bottom) / 2;
-	
-	// drawLine(out1.right, out1.top - heightDiff / 2, out1.right + dist3, out1.top - heightDiff / 2)
-	// drawLine(in2.left - dist3, in2.bottom, in2.left - dist3, in2.bottom + dist4*2)
-	// drawLine(in2.left - dist3, in2.bottom, in2.left, in2.bottom)
-	// drawPoint(in2.left - dist3, in2.bottom + 2)
-	// drawPoint(in2.left - dist3, in2.bottom + dist4* 2)
