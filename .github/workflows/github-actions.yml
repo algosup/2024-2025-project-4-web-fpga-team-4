@@ -26,7 +26,9 @@ jobs:
         env:
           deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
         run: |
-          curl "$deploy_url"
+          curl $deploy_url
+          sleep 60
+
       # Set up Node.js environment
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -101,10 +103,3 @@ jobs:
 
           # Checkout back to dev branch
           git checkout dev
-
-          # Clean up logs from the dev branch (optional, if you don’t want them here)
-          git rm -rf src/test/logs/*.json
-
-          # Commit and push the removal of log files in dev branch
-          git commit -m "Remove generated logs from dev branch"
-          git push origin dev
