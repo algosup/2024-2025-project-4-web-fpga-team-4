@@ -62,10 +62,11 @@ function displayLUT(id, in0, in1, in2, out) {
 	let in1Para = `<div class="lut-in-before used" id="lut-${id.toString()}-in${in1}"></div><p class="lut-in">${in1}</p>`;
 	let in2Para = `<div class="lut-in-before used" id="lut-${id.toString()}-in${in2}"></div><p class="lut-in">${in2}</p>`;
 	// let in3Para = `<div class="lut-in-before ${in3State}" id="lut-${id.toString()}-in3"></div><p class="lut-in">3</p>`;
-	let out0Para = `<p class="lut-out ${outState}">0</p><div class="lut-out-after ${outState}" id="lut-${id.toString()}-out"></div>`;
 	if (in0 === null && in1 === null && in2 === null) {
+		out0Para = `<p class="lut-gnd-out ${outState}">Out</p><div class="lut-gnd-out-before ${outState}" id="lut-${id.toString()}-out"></div>`;
 		lutInElement.innerHTML = id0Para + out0Para;
 	} else {
+		let out0Para = `<p class="lut-out ${outState}">0</p><div class="lut-out-after ${outState}" id="lut-${id.toString()}-out"></div>`;
 		lutInElement.innerHTML = id0Para + in0Para + in1Para + in2Para /*+ in3Para */+ out0Para;
 	}
 	lutElement.appendChild(lutInElement);

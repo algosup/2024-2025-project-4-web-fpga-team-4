@@ -22,7 +22,7 @@ const results: {
   }
 }[] = [];
 
-const logFilePath = path.join(__dirname, 'logs', dateString + '-utc-test.json');
+const logFilePath = path.join(__dirname, 'logs', dateString + '-uthc-test.json');
 
 const firefoxOptions = new FirefoxOptions();
 const chromeOptions = new ChromeOptions();

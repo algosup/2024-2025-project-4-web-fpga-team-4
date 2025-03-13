@@ -226,10 +226,6 @@
 	grid-template-rows: repeat(6, 1fr);
 
 	background-color: var(--lut-color);
-
-
-
-
 }
 
 
@@ -282,6 +278,25 @@
 
 
 
+.lut-gnd-out-before{
+	background-color: var(--connection-unused);
+	align-self: center;
+	grid-column: 1;
+	grid-row: 2;
+	width: 1.5vh;
+	aspect-ratio: 1/1;
+	border-radius: 50%;
+	margin-left: -.75vh;
+}
+
+.lut-gnd-out-before.used{
+	background-color: var(--connection-used);
+}
+
+
+.lut-gnd-out {
+	grid-column: 2;
+}
 
 
 #ff-container {
