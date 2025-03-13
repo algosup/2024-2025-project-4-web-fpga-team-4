@@ -48,7 +48,8 @@ jobs:
       # Verify is the .json are generated
       - name: Check generated JSON files
         run: ls -l ./src/test/logs
-
+      
+      # Commit and push JSON files
       - name: Commit and push JSON files
         run: |
           git config --global user.name "github-actions[bot]"
@@ -72,7 +73,14 @@ jobs:
 
           # Check if there are changes before committing
           if [[ -n $(git status --porcelain) ]]; then
-            git add src/test/logs/*.json
+            # Force add ignored JSON files
+            git add -f src/test/logs/*.json
+            
+            # If package-lock.json changed, commit it as well
+            if [[ -n $(git status --porcelain src/test/package-lock.json) ]]; then
+              git add src/test/package-lock.json
+            fi
+
             git commit -m "Add generated JSON files"
             git push origin QA
           else
