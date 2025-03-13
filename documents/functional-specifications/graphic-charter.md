@@ -46,7 +46,8 @@
     - [7.1. Toggle Control](#71-toggle-control)
     - [7.2. Style Adaptation](#72-style-adaptation)
   - [8. Maintenance and Expansion](#8-maintenance-and-expansion)
-    - [Design Tokens](#design-tokens)
+    - [8.1. Design Tokens](#81-design-tokens)
+    - [8.2. Logo](#82-logo)
 
 </details>
 
@@ -264,5 +265,23 @@
 
 ## 8. Maintenance and Expansion
 
-### Design Tokens
+### 8.1. Design Tokens
 A centralized list of design tokens—including color codes, font sizes, and spacing units—is maintained in a shared [Figma file](https://www.figma.com/design/A6rvzTJCZQQyznhdQbu753/FPGA-Web-App?node-id=0-1&p=f&t=6NnWKfw2FvNavJcS-0).
+
+### 8.2. Logo
+
+For any modification or adaptation, only the following authorized logo may be used:
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/logo-light.png">
+  <source media="(prefers-color-scheme: light)" srcset="images/logo-dark.png">
+  <img alt="FPGA Explorer Logo" style="width:100px">
+</picture>
+<br/>
+<br/>
+The logo is available in two color variations: light and dark.  
+
+
+[Light logo](images/logo-light.png)  
+[Dark logo](images/logo-dark.png)
+
