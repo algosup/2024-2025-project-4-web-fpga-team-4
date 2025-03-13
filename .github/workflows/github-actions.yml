@@ -1,5 +1,7 @@
 name: CI
 
+permissions:
+  contents: write
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
@@ -43,3 +45,21 @@ jobs:
           for file in *.js; do node "$file"; done
 
         continue-on-error: true # Allow the workflow to continue even if this step fails
+      # Verify is the .json are generated
+      - name: Check generated JSON files
+        run: ls -l ./src/test
+
+      # Commit and push the generated JSON files
+      - name: Commit and push JSON files
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          if [[ -n $(git status --porcelain) ]]; then
+            git add src/test/logs/*.json
+            git commit -m "Add generated JSON files"
+            git pull --rebase
+            git push origin $(git branch --show-current)
+          else
+            echo "No changes to commit"
+          fi
