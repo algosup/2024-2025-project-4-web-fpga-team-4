@@ -60,7 +60,11 @@ jobs:
           # Checkout QA branch, create it if it doesn't exist
           if git show-ref --verify --quiet refs/remotes/origin/QA; then
             git checkout QA
+            
+            # Stash any local changes before pulling
+            git stash --include-untracked
             git pull --rebase origin QA
+            git stash pop || echo "No stashed changes to restore."
           else
             git checkout -b QA
             git push -u origin QA
