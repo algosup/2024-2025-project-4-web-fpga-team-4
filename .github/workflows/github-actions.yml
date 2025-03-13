@@ -13,14 +13,10 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
@@ -47,11 +43,12 @@ jobs:
           for file in *.js; do node "$file"; done
 
         continue-on-error: true # Allow the workflow to continue even if this step fails
-      # Verify is the .json are generated
+
+      # Verify that the .json files are generated
       - name: Check generated JSON files
         run: ls -l ./src/test/logs
-      
-      # Commit and push JSON files
+
+      # Commit and push JSON files to the QA branch
       - name: Commit and push JSON files
         run: |
           git config --global user.name "github-actions[bot]"
@@ -77,7 +74,7 @@ jobs:
           if [[ -n $(git status --porcelain) ]]; then
             # Force add ignored JSON files
             git add -f src/test/logs/*.json
-            
+
             # If package-lock.json changed, commit it as well
             if [[ -n $(git status --porcelain src/test/package-lock.json) ]]; then
               git add src/test/package-lock.json
@@ -89,3 +86,12 @@ jobs:
             echo "No changes to commit"
           fi
 
+      # Clean up logs from the dev branch and remove them
+      - name: Clean up logs from dev branch
+        run: |
+          git checkout dev
+          git rm -rf src/test/logs/*.json
+
+          # Commit and push the removal of log files in dev branch
+          git commit -m "Remove generated logs from dev branch"
+          git push origin dev
