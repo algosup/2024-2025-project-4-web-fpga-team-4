@@ -4,9 +4,11 @@ permissions:
   contents: write
 # Controls when the workflow will run
 on:
+  push:
+    branches: [ "QA", "dev" ]
   # Triggers the workflow on push or pull request events but only for the "main" branch
   pull_request:
-    branches: [ "main", "QA", "dev" ]
+    branches: [ "dev" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -86,3 +88,4 @@ jobs:
           else
             echo "No changes to commit"
           fi
+
