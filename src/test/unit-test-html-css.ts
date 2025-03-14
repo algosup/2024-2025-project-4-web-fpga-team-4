@@ -1,9 +1,11 @@
-import { By, Builder, Browser, WebDriver } from 'selenium-webdriver';
+import { By, WebDriver, Browser, Builder } from 'selenium-webdriver';
 import * as assert from 'assert';
 import { Options as FirefoxOptions } from 'selenium-webdriver/firefox';
 import { Options as ChromeOptions } from 'selenium-webdriver/chrome';
-const fs = require('fs');
-const path = require('path');
+import { Options as EdgeOptions } from 'selenium-webdriver/edge';
+import { Options as SafariOptions } from 'selenium-webdriver/safari';
+import * as fs from 'fs';
+import * as path from 'path';
 
 const date: Date = new Date();
 const dateString: string = date.toISOString().split(/T/)[0];
@@ -18,15 +20,33 @@ const results: {
   }
 }[] = [];
 
-const logFilePath = path.join(__dirname, 'logs', dateString + '-uthc-test.json');
+const logFilePath = path.join(__dirname, 'logs', dateString + '-unit-test-html-css.json');
 
-async function runTests() {
-  let driver: WebDriver | null = null;
-  const firefoxOptions = new FirefoxOptions();
-  const chromeOptions = new ChromeOptions();
-  firefoxOptions.addArguments('--headless');
-  // chromeOptions.addArguments('--headless');
-  driver = await new Builder().forBrowser(Browser.FIREFOX).setFirefoxOptions(firefoxOptions).build();
+const firefoxOptions = new FirefoxOptions().addArguments('--headless');
+const chromeOptions = new ChromeOptions().addArguments('--headless');
+const edgeOptions = new EdgeOptions();
+const safariOptions = new SafariOptions();
+// safariOptions.setPageLoadStrategy("https://two024-2025-project-4-web-fpga-team-4.onrender.com/client.html");
+
+
+async function runTests(browser: string, options: any) {
+  let driver: WebDriver;
+  switch (browser) {
+    case Browser.FIREFOX:
+      driver = await new Builder().forBrowser(browser).setFirefoxOptions(options).build();
+      break;
+    case Browser.CHROME:
+      driver = await new Builder().forBrowser(browser).setChromeOptions(options).build();
+      break;
+    case Browser.EDGE:
+      driver = await new Builder().forBrowser(browser).setEdgeOptions(options).build();
+      break;
+    case Browser.SAFARI:
+      driver = await new Builder().forBrowser(browser).setSafariOptions(options).build();
+      break;
+    default:
+      throw new Error('Invalid browser');
+  }
 
   try {
     await driver.get("https://two024-2025-project-4-web-fpga-team-4.onrender.com/client.html");
@@ -56,7 +76,7 @@ async function runTests() {
     });
 
   } catch (e) {
-    console.log(e);
+    console.error(`Error running tests on ${browser}:`, e);
   } finally {
     if (driver) {
       await driver.quit();
@@ -110,4 +130,9 @@ function rgbToHex(rgb: string): string {
   return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase()}`;
 }
 
-runTests();
+runTests(Browser.FIREFOX, firefoxOptions);
+runTests(Browser.CHROME, chromeOptions);
+
+runTests(Browser.EDGE, edgeOptions); // Do not work yet
+// runTests(Browser.SAFARI, safariOptions);
+

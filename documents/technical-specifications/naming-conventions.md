@@ -9,7 +9,7 @@
     - [Branches, Folders \& Files](#branches-folders--files)
       - [Functions and Methods in TypeScript](#functions-and-methods-in-typescript)
       - [Variables in TypeScript](#variables-in-typescript)
-      - [Element Names (HTML)](#element-names-html)
+      - [Element Names in HTML](#element-names-in-html)
       - [Close All HTML Elements](#close-all-html-elements)
       - [Always Quote Attribute Values](#always-quote-attribute-values)
       - [Comments](#comments)
