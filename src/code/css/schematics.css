@@ -1,13 +1,13 @@
 /* Applies Style to the Whole Page */
 
 :root {
-	--reset-color: #999997FF;
-	--d-color: #DDB72BFF;
-	--q-color: #2BB7DDFF;
-	--lut-color: #15BF9AFF;
-	--ff-color: #BF1518FF;
-	--clock-color: #AE15BFFF;
-	--connection-used: #00ff00ff;
+	--reset-color: #7D7D7DFF; 
+	--d-color: #C29000FF; 
+	--q-color: #007ACCFF; 
+	--lut-color: #009688FF; 
+	--ff-color: #D32F2FFF; 
+	--clock-color: #8E24AAFF;
+	--connection-used: #00C853FF; 
 	--connection-unused: var(--on-primary);
 	--element-width: 10svh;
 	--element-height: 18svh;
@@ -15,7 +15,6 @@
 	--element-margin-top: 5svh;
 	--little-element-height: 12svh;
 	--in-little-element-height: 10svh;
-
 }
 
 /* Applies Style to the Main Part of the Page */

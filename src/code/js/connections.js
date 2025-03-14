@@ -21,20 +21,20 @@ function convertPxToVw(px) {
 function drawLine(height, width, top, left, colorValue) {
 	let color
 	switch (colorValue.substring(0, 2)) {
-		case 'lu':
-			color = "#FFFF00FF";
+		case 'lu': // LUT
+			color = "var(--lut-color)";
 			break;
-		case 'ff':
-			color = "#00FF00FF";
+		case 'ff': // Flip-flop
+			color = "var(--ff-color)";
 			break;
-		case 'As':
-			color = "#FF0000FF";
+		case 'As': // Async reset
+			color = "var(--reset-color)";
 			break;
-		case 'us':
-			color = "#0000FFFF";
+		case 'us': // User input
+			color = "var(--d-color)";
 			break;
-		case 'cl':
-			color = "#FF00FFFF";
+		case 'cl': // Clock
+			color = "var(--clock-color)";
 			break;
 		default:
 			break;
