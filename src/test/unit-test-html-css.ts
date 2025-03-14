@@ -24,9 +24,8 @@ const logFilePath = path.join(__dirname, 'logs', dateString + '-unit-test-html-c
 
 const firefoxOptions = new FirefoxOptions().addArguments('--headless');
 const chromeOptions = new ChromeOptions().addArguments('--headless');
-const edgeOptions = new EdgeOptions();
+const edgeOptions = new EdgeOptions().addArguments('--headless');
 const safariOptions = new SafariOptions();
-// safariOptions.setPageLoadStrategy("https://two024-2025-project-4-web-fpga-team-4.onrender.com/client.html");
 
 
 async function runTests(browser: string, options: any) {
@@ -77,7 +76,8 @@ async function runTests(browser: string, options: any) {
 
   } catch (e) {
     console.error(`Error running tests on ${browser}:`, e);
-  } finally {
+  } 
+  finally {
     if (driver) {
       await driver.quit();
     }
@@ -134,5 +134,5 @@ runTests(Browser.FIREFOX, firefoxOptions);
 runTests(Browser.CHROME, chromeOptions);
 
 runTests(Browser.EDGE, edgeOptions); // Do not work yet
-// runTests(Browser.SAFARI, safariOptions);
+runTests(Browser.SAFARI, safariOptions);
 
