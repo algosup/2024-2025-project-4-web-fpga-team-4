@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" href="../img/fpga-explorer.png" type="image/x-icon">
+	<link rel="icon" href="./img/fpga-explorer.png" type="image/x-icon">
 	<script src="https://kit.fontawesome.com/d57f386eaf.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="./css/tool-bar.css">
 	<link rel="stylesheet" href="./css/data-display.css">
@@ -15,7 +15,7 @@
 <body>
 	<div id="description">
 		<div class="data-icon">
-			<img src="../img/fpga-explorer.png" id="logo" alt="logo">
+			<img src="./img/fpga-explorer.png" id="logo" alt="logo">
 			<div id="open-folder"><i class="fa-solid top-bar fa-folder-open "></i></div>
 			<div id="upload-file"><i class="fa-solid top-bar fa-upload "></i></div>
 		</div>
@@ -103,12 +103,13 @@
 		<div id="connections"></div>
 	</div>
 
+	<script src="js/parse-sdf-to-json.js"></script>
 	<script src="js/variables.js"></script>
 	<script src="js/load.js"></script>
 	<script src="js/tool-bar.js" defer></script>
 	<script src="js/schematics.js"></script>
 	<script src="js/connections.js" defer></script>
-	<script src="js/parse.js"></script>
+	<script src="js/parse-json-to-data.js"></script>
 </body>
 
 </html>
