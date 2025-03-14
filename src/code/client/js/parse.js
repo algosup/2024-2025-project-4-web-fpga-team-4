@@ -56,7 +56,6 @@ async function parseJsonFile(filePath) {
 			end = 'lut-' + Connections[i].Output.id + '-in' + Connections[i].Output.port;
 		}
 		if (start != null && end != null) {
-			console.log('Connection:', start, end);
 			drawConnectionSelect(start, end);
 		}
 	}
@@ -67,6 +66,8 @@ const filePath = 'data/declarations.json';
 parseJsonFile(filePath).then(() => {
 	endLoad()
 }).then(() => {
+	drawGndVertical();
+	drawAsyncBase();
 	drawClockBase('Clock-out');
 }).catch((error) => {
 	console.error('Error parsing JSON file:', error);

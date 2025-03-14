@@ -189,12 +189,12 @@
   ],
   "IOs": [
     {
-      "name": "userInput",
+      "name": "Async_reset",
       "type": "output",
       "id": "0"
     },
     {
-      "name": "Async_reset",
+      "name": "userInput",
       "type": "output",
       "id": "0"
     },

@@ -14,11 +14,15 @@ let currentSpeedIndex= 1;
 
 let currentTheme = "dark";
 
-let inToLutColumns = [false, false, false, false, false, false, false, false, false, false];
-let lutToFfColumns = [false, false, false, false, false, false, false, false, false, false];
-let ffToOutColumns = [false, false, false, false, false, false, false, false, false, false];
+let inToLutColumns = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+let lutToFfColumns = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-let colorIndex = 0;
+
+let firstLutId = null;
+let firstLutGnd = null;
+
+let lastLutId = null;
+let lastLutAsync = null;
 
 /*
 Declare the elements that will be used in the client side code

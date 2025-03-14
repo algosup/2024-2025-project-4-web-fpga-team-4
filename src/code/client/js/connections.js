@@ -47,26 +47,18 @@ function selectColumn(dist, type) {
 	let dists = [dist, dist];
 	for (let i = 0; i < 5; i++) {
 		if (type === 'inTolut') {
-			if (!inToLutColumns[i]) {
-				inToLutColumns[i] = true;
-				dists[0] *= ((i + 1) * .1);
-				dists[1] *= (2 - (i + 1) * .1);
-				break;
-			}
+			dists[0] = 1.8;
+			dists[1] = 14;
 		} else if (type === 'lutToff') {
 			if (!lutToFfColumns[i]) {
-				lutToFfColumns[i] = true;
+				lutToFfColumns[i] = 1;
 				dists[0] *= ((i + 1) * .1);
 				dists[1] *= (2 - (i + 1) * .1);
 				break;
 			}
 		} else {
-			if (!ffToOutColumns[i]) {
-				ffToOutColumns[i] = true;
-				dists[0] *= ((i + 1) * .1);
-				dists[1] *= (2 - (i + 1) * .1);
-				break;
-			}
+			dists[0] = 14;
+			dists[1] = 1.8;
 		}
 	}
 	return dists;
@@ -112,7 +104,7 @@ function drawBasicConnection(obj1, obj2) {
 
 	let inputElement;
 	let outputElement;
-	
+
 	switch (obj1.split('-')[0]) {
 		case 'lut':
 			inputElement = "lut";
@@ -120,7 +112,7 @@ function drawBasicConnection(obj1, obj2) {
 		case 'ff':
 			inputElement = "ff";
 			break;
-		case 'D' || 'reset' || 'clk':
+		case 'userInput':
 			inputElement = "in";
 			break;
 		default:
@@ -141,7 +133,6 @@ function drawBasicConnection(obj1, obj2) {
 			'no'
 			break;
 	}
-
 	let dists = selectColumn(distW, inputElement + 'To' + outputElement);
 	let distW1 = dists[0];
 	let distW2 = dists[1];
@@ -149,7 +140,7 @@ function drawBasicConnection(obj1, obj2) {
 
 	// Draw the connection
 	drawLine(.6, distW1 + sizeOut, outputCenter, output.left, obj1);
-	drawLine(distH, .4, (output.top < input.top ? outputCenter : inputCenter), output.right + distW1, obj1);
+	drawLine(distH, .3, (output.top < input.top ? outputCenter : inputCenter), output.right + distW1, obj1);
 	drawLine(.6, distW2 + sizeIn, inputCenter, input.right - distW2 - sizeIn, obj1);
 }
 
@@ -157,8 +148,6 @@ function drawBasicConnection(obj1, obj2) {
 function drawClockBase(clock) {
 	let clockB = document.getElementById(clock).getBoundingClientRect();
 	let ffList = document.getElementsByClassName('ff-element');
-
-	console.log('test', ffList[0]);
 
 	let ffB = ffList[0].childNodes[0].childNodes[3].getBoundingClientRect();
 	const clockBase = { top: convertPxToVh(clockB.top), left: convertPxToVw(clockB.left), bottom: convertPxToVh(clockB.bottom), right: convertPxToVw(clockB.right) };
@@ -169,7 +158,7 @@ function drawClockBase(clock) {
 	let distW = (ffBase.left - clockBase.right);
 	let distH = (ffBase.top + (ffBase.bottom - ffBase.top) / 2) - clockCenter - .3;
 	drawLine(.6, distW - .6, clockCenter, clockBase.right, `clock`);
-	drawLine(-distH, .4, ffBaseCenter - .3, ffBase.left - 1, `clock`);
+	drawLine(-distH, .3, ffBaseCenter - .3, ffBase.left - .9, `clock`);
 }
 
 
@@ -188,17 +177,22 @@ function drawClockConnection(obj2) {
 	// Calculate the center of the output and input objects
 	let inputCenter = input.top + inputCenterHeight - .3;
 
-	
+
 	// Draw the connection
-	drawLine(.6, .6, inputCenter, input.left - .8, "clock");
+	drawLine(.6, 3, inputCenter, input.left - .8, "clock");
 }
 
 
-function drawLutGnd(obj){
+function drawLutGnd(obj) {
 
 	obj = obj.replace('_', '-');
 
-	console.log('obj', obj);
+	if (firstLutId === null && obj.split('-')[1] != 'gnd') {
+		firstLutId = obj.split('-')[1];
+	}
+	if (firstLutGnd === null && obj.split('-')[1] != 'gnd') {
+		firstLutGnd = obj.split('in')[1];
+	}
 
 	// Get the bounding rectangles of the two objects
 	let inB = document.getElementById(obj).getBoundingClientRect();
@@ -213,10 +207,68 @@ function drawLutGnd(obj){
 	// Calculate the center of the output and input objects
 	let inputCenter = input.top + inputCenterHeight - .3;
 
-	
+
 	// Draw the connection
-	drawLine(.6, 1, inputCenter, input.left - .8, "lut-gnd");
+	drawLine(.6, 6, inputCenter, input.left - 5.8, "lut-gnd");
 }
+
+function drawGndVertical() {
+	let lutGnd = document.getElementById('lut-0-out').getBoundingClientRect();
+	let firstLut = document.getElementById(`lut-${firstLutId}-in${firstLutGnd}`).getBoundingClientRect();
+
+	const gndBase = { top: convertPxToVh(lutGnd.top), left: convertPxToVw(lutGnd.left), bottom: convertPxToVh(lutGnd.bottom), right: convertPxToVw(lutGnd.right) };
+	const firstLutBase = { top: convertPxToVh(firstLut.top), left: convertPxToVw(firstLut.left), bottom: convertPxToVh(firstLut.bottom), right: convertPxToVw(firstLut.right) };
+	let gndBaseHeight = (gndBase.bottom - gndBase.top) / 2;
+	let clockCenter = gndBase.top + gndBaseHeight - .3;
+	let firstLutBaseCenter = (firstLutBase.top + (firstLutBase.bottom - firstLutBase.top) / 2);
+	let distH = (firstLutBase.top + (firstLutBase.bottom - firstLutBase.top) / 2) - clockCenter - .9;
+	drawLine(-distH, .3, firstLutBaseCenter - .3, firstLutBase.left - 6, `lut-gnd`);
+
+}
+
+function drawAsyncConnection(obj2) {
+
+	lastLutId = obj2.split('-')[1];
+	lastLutAsync = obj2.split('in')[1];
+
+	// Get the bounding rectangles of the two objects
+	let inB = document.getElementById(obj2).getBoundingClientRect();
+
+	// Convert the pixel values to viewport units
+	const input = { top: convertPxToVh(inB.top), left: convertPxToVw(inB.left), bottom: convertPxToVh(inB.bottom), right: convertPxToVw(inB.right) };
+
+	// Calculate the center of the output and input objects
+	let inputCenterHeight = (input.bottom - input.top) / 2;
+
+
+	// Calculate the center of the output and input objects
+	let inputCenter = input.top + inputCenterHeight - .3;
+
+
+	// Draw the connection
+	drawLine(.6, 12, inputCenter, input.left - 10.8, "Async_reset");
+}
+
+function drawAsyncBase() {
+
+	let asyncB = document.getElementById('Async_reset-out').getBoundingClientRect();
+	let lastLutAsyncB = document.getElementById(`lut-${lastLutId}-in${lastLutAsync}`).getBoundingClientRect();
+
+	let asyncBase = { top: convertPxToVh(asyncB.top), left: convertPxToVw(asyncB.left), bottom: convertPxToVh(asyncB.bottom), right: convertPxToVw(asyncB.right) };
+	let lastLutAsyncBase = { top: convertPxToVh(lastLutAsyncB.top), left: convertPxToVw(lastLutAsyncB.left), bottom: convertPxToVh(lastLutAsyncB.bottom), right: convertPxToVw(lastLutAsyncB.right) };
+	let asyncCenterHeight = (asyncBase.bottom - asyncBase.top) / 2;
+	let asyncCenter = asyncBase.top + asyncCenterHeight - .3;
+
+
+	let height = ((lastLutAsyncBase.top + .6) - asyncBase.top);
+
+
+
+
+	drawLine(.6, 5.6, asyncCenter, asyncBase.left, "Async_reset");
+	drawLine(height, .3, asyncBase.top + asyncCenterHeight - .3, 15.6, "Async_reset");
+}
+
 
 
 
@@ -230,16 +282,17 @@ function drawLutGnd(obj){
 function drawConnectionSelect(obj1, obj2) {
 	let ob1 = obj1.split('-')[0];
 	let ob2 = obj2.split('-')[0];
-	console.log('obj1', obj1);
-	console.log('obj2', obj2);
 	if ((ob1 === 'lut' && ob2 === 'ff' ||
-		ob1 === 'ff' && ob2 === 'q' ||
-		(ob1 === 'userInput' || ob1 === 'Async_reset' || ob1 === 'Clock' ) && ob2 === 'lut') && obj2 !== 'lut-gnd') {
+		(ob1 === 'userInput' || ob1 === 'Clock') && ob2 === 'lut') && obj2 !== 'lut-gnd') {
 		drawBasicConnection(obj1, obj2);
+	} else if (ob1 === 'Async_reset') {
+		drawAsyncConnection(obj2);
 	} else if (ob1 === 'Clock') {
 		drawClockConnection(obj2);
-	} else if (ob1 === 'lut_0' ) {
+	} else if (ob1 === 'lut_0') {
 		drawLutGnd(obj2);
 		drawLutGnd(obj1);
+	} else if (ob1 === 'ff' && ob2 === 'q') {
+		drawBasicConnection(obj1, obj2);
 	}
 }
