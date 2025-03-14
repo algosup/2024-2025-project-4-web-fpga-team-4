@@ -16,7 +16,8 @@
 	<div id="description">
 		<div class="data-icon">
 			<img src="./img/fpga-explorer.png" id="logo" alt="logo">
-			<div id="open-folder"><i class="fa-solid top-bar fa-folder-open "></i></div>
+			<div id="open-folder"><i class="fa-solid top-bar fa-folder-open "></i>
+			<input type="file" id="open-folder-input"></div>
 			<div id="upload-file"><i class="fa-solid top-bar fa-upload "></i></div>
 		</div>
 		<div class="control-icon-up">
@@ -103,8 +104,8 @@
 		<div id="connections"></div>
 	</div>
 
-	<script src="js/parse-sdf-to-json.js"></script>
 	<script src="js/variables.js"></script>
+	<script type="module" src="js/parse-sdf-to-json.js"></script>
 	<script src="js/load.js"></script>
 	<script src="js/tool-bar.js" defer></script>
 	<script src="js/schematics.js"></script>

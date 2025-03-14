@@ -3,10 +3,10 @@
  * 
  * @param {string} filePath - The path to the JSON file.
  */
-async function parseJsonFile(filePath) {
+async function parseJsonFile() {
 	/* Function to read and parse JSON file */
-	const response = await fetch(filePath);
-	const json = await response.json();
+	// const response = await fetch(filePath);
+	const json = JSON.parse(jsonData);
 	/* Access specific values from the JSON object */
 	const Luts = json.LUTs;
 	const FlipFlops = json.FlipFlops;
@@ -59,18 +59,15 @@ async function parseJsonFile(filePath) {
 			drawConnections ? drawConnectionSelect(start, end) : {};
 		}
 	}
+	endLoad();
+	drawGndVertical();
+	drawAsyncBase();
+	drawClockBase('Clock-out');
 }
 
 /* Call the function to parse the JSON file */
-const filePath = 'data/declarations.json';
-parseJsonFile(filePath).then(() => {
-	endLoad()
+parseJsonFile().then(() => {
 }).then(() => {
-	if (drawConnections) {
-		drawGndVertical();
-		drawAsyncBase();
-		drawClockBase('Clock-out');
-	}
 }).catch((error) => {
 	console.error('Error parsing JSON file:', error);
 });

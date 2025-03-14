@@ -243,10 +243,10 @@ function writeDeclarationsToJson(luts, flipFlops, ios, elementConnections) {
     return JSON.stringify(jsonOutput, null, 2);
 }
 
-// Main function to handle file upload and processing
-document.getElementById('sdfFileInput').addEventListener('change', function (event) {
+
+openFolderInput.addEventListener('change', function (event) {
     const file = event.target.files[0];
-    if (getFileExtension(file.name) !== 'sdf') {
+    if (file.name.split('.').pop() !== 'sdf') {
         alert('Please upload a .sdf file');
         return;
     }
@@ -282,10 +282,8 @@ document.getElementById('sdfFileInput').addEventListener('change', function (eve
             }
             const jsonOutput = writeDeclarationsToJson(luts, flipFlops, ios, elementConnections);
             const blob = new Blob([jsonOutput], { type: 'application/json' });
-            const downloadLink = document.getElementById('downloadLink');
-            downloadLink.href = URL.createObjectURL(blob);
-            downloadLink.download = 'declarations.json';
-            downloadLink.style.display = 'block';
+			jsonData = jsonOutput;
+			parseJsonFile();
         };
         reader.readAsText(file);
     }

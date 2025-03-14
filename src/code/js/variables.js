@@ -26,12 +26,15 @@ let lastLutAsync = null;
 
 const drawConnections = true;
 
+let jsonData;
+
 /*
 Declare the elements that will be used in the client side code
 
 File management elements
 */
 const openFolder = document.getElementById('open-folder');
+const openFolderInput = document.getElementById('open-folder-input');
 const uploadFile = document.getElementById('upload-file');
 /*
 Control elements
