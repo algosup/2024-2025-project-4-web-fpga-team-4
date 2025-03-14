@@ -2,6 +2,11 @@
 It is responsible for handling the client side logic.
 */
 
+window.onbeforeunload = function() {
+	window.scrollTo(0, 0);
+};
+
+
 function endLoad(){
 
 	let luts = document.getElementsByClassName('lut-element');
@@ -23,5 +28,7 @@ function endLoad(){
 	let clock = document.getElementsByClassName('clock-element');
 
 	clock[0].style.marginTop = height - (inputs.length * 14) + 'vh';
+
+	console.log('end load');
 
 }
