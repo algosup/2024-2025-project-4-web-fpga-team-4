@@ -11,93 +11,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  # Job for Edge Tests (runs on Ubuntu)
-  edge-tests:
+  build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
       
-      # Set up Node.js environment
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '23.6.0'
-
-      # Install dependencies
-      - name: Install dependencies
-        run: |
-          cd ./src/test
-          npm install
-          npm install typescript
-
-      # Ensure logs folder exists
-      - name: Ensure logs folder exists
-        run: |
-          mkdir -p ./src/test/logs
-
-      # Set up Microsoft Edge WebDriver
-      - name: Set up Microsoft Edge WebDriver
-        uses: microsoft/setup-msedge@v1
-
-      # Run tests on Edge
-      - name: Run tests on Edge
-        id: run-tests-edge
-        run: |
-          cd ./src/test
-          npx tsc
-          for file in *.js; do node "$file"; done
-        continue-on-error: true
-
-      # Verify JSON files
-      - name: Check generated JSON files (Edge)
-        run: ls -l ./src/test/logs
-
-  # Job for Safari Tests (runs on macOS)
-  safari-tests:
-    runs-on: macos-latest  # Safari is available on macOS
-    steps:
-      - uses: actions/checkout@v4
-
-      # Set up Node.js environment for Safari tests
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '23.6.0'
-
-      # Install dependencies
-      - name: Install dependencies
-        run: |
-          cd ./src/test
-          npm install
-          npm install typescript
-
-      # Ensure logs folder exists
-      - name: Ensure logs folder exists
-        run: |
-          mkdir -p ./src/test/logs
-
-      # Run tests on Safari (Safari is available on macOS)
-      - name: Run tests on Safari
-        id: run-tests-safari
-        run: |
-          cd ./src/test
-          npx tsc
-          for file in *.js; do node "$file"; done
-        continue-on-error: true
-
-      # Verify JSON files
-      - name: Check generated JSON files (Safari)
-        run: ls -l ./src/test/logs
-
-  # Job for pushing logs to QA branch (runs after all tests finish)
-  commit-logs:
-    runs-on: ubuntu-latest  # This can run on Ubuntu since it doesn't need a specific browser
-    needs: [edge-tests, safari-tests]  # This ensures that this job only runs after both tests are completed
-
-    steps:
-      - uses: actions/checkout@v4
-
-      # Deploy Render app (optional, if needed)
       - name: Deploy Application
         env:
           deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
@@ -110,36 +29,37 @@ jobs:
           curl -v "$deploy_url"
           sleep 60
 
-      # Set up Node.js for commit and push logs
-      - name: Set up Node.js for logs
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '23.6.0'
 
-      # Install dependencies for commit process
-      - name: Install dependencies for commit process
+      - name: Install dependencies
         run: |
           cd ./src/test
           npm install
+          npm install typescript
 
-      # Ensure the logs folder exists
-      - name: Ensure logs folder exists for commit
+      - name: Ensure logs folder exists
+        run: mkdir -p ./src/test/logs
+
+      - name: Run tests
+        id: run-tests
         run: |
-          mkdir -p ./src/test/logs
+          cd ./src/test
+          npx tsc
+          for file in *.js; do node "$file"; done
+        continue-on-error: true
 
-      # Commit and push JSON logs to QA branch
+      - name: Check generated JSON files
+        run: ls -l ./src/test/logs
+
       - name: Commit and push JSON logs to QA
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-          # Stash changes before switching branches
           git stash --include-untracked
-
-          # Fetch latest branches
           git fetch origin
-
-          # Ensure QA branch exists
           if git ls-remote --exit-code --heads origin QA; then
             git checkout QA
             git pull --rebase origin QA
@@ -147,14 +67,8 @@ jobs:
             git checkout -b QA
             git push -u origin QA
           fi
-
-          # Restore only logs (prevent conflicts with other files)
           git stash pop || echo "No stashed changes to restore."
-
-          # Ensure logs folder exists (again, just in case)
           mkdir -p ./src/test/logs
-
-          # Commit only logs if changed
           if [[ -n $(git status --porcelain src/test/logs/*.json) ]]; then
             git add -f src/test/logs/*.json
             git commit -m "Add generated JSON logs from tests"
@@ -162,7 +76,31 @@ jobs:
           else
             echo "No log changes to commit."
           fi
-
-          # Checkout back to dev
           git checkout dev
           git pull origin dev
+
+  edge-unit-tests:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '23.6.0'
+
+      - name: Install dependencies
+        run: |
+          cd ./src/test
+          npm install
+          npm install typescript
+
+      - name: Install Edge browser
+        run: |
+          choco install microsoft-edge --version=latest
+
+      - name: Run unit tests on Edge
+        run: |
+          cd ./src/test
+          npx tsc
+          for file in *.js; do node "$file" --browser=edge; done

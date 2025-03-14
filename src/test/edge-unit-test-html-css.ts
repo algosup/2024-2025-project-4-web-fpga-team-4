@@ -1,9 +1,6 @@
 import { By, WebDriver, Browser, Builder } from 'selenium-webdriver';
 import * as assert from 'assert';
-import { Options as FirefoxOptions } from 'selenium-webdriver/firefox';
-import { Options as ChromeOptions } from 'selenium-webdriver/chrome';
 import { Options as EdgeOptions } from 'selenium-webdriver/edge';
-import { Options as SafariOptions } from 'selenium-webdriver/safari';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -20,28 +17,16 @@ const results: {
   }
 }[] = [];
 
-const logFilePath = path.join(__dirname, 'logs', dateString + '-unit-test-html-css.json');
+const logFilePath = path.join(__dirname, 'logs', dateString + '-edge-unit-test-html-css.json');
 
-const firefoxOptions = new FirefoxOptions().addArguments('--headless');
-const chromeOptions = new ChromeOptions().addArguments('--headless');
-const safariOptions = new SafariOptions();
+const edgeOptions = new EdgeOptions().addArguments('--headless');
 
 
 async function runTests(browser: string, options: any) {
   let driver: WebDriver;
-  switch (browser) {
-    case Browser.FIREFOX:
-      driver = await new Builder().forBrowser(browser).setFirefoxOptions(options).build();
-      break;
-    case Browser.CHROME:
-      driver = await new Builder().forBrowser(browser).setChromeOptions(options).build();
-      break;
-    case Browser.SAFARI:
-      driver = await new Builder().forBrowser(browser).setSafariOptions(options).build();
-      break;
-    default:
-      throw new Error('Invalid browser');
-  }
+  driver = await new Builder().forBrowser(browser).setEdgeOptions(options).build();
+
+
 
   try {
     await driver.get("https://two024-2025-project-4-web-fpga-team-4.onrender.com/client.html");
@@ -126,8 +111,5 @@ function rgbToHex(rgb: string): string {
   return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase()}`;
 }
 
-runTests(Browser.FIREFOX, firefoxOptions);
-runTests(Browser.CHROME, chromeOptions);
-
-runTests(Browser.SAFARI, safariOptions);
+runTests(Browser.EDGE, edgeOptions); // Do not work yet
 
