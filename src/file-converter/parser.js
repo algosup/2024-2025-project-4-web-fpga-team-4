@@ -246,6 +246,10 @@ function writeDeclarationsToJson(luts, flipFlops, ios, elementConnections) {
 // Main function to handle file upload and processing
 document.getElementById('sdfFileInput').addEventListener('change', function (event) {
     const file = event.target.files[0];
+    if (getFileExtension(file.name) !== 'sdf') {
+        alert('Please upload a .sdf file');
+        return;
+    }
     if (file) {
         const reader = new FileReader();
         reader.onload = function (e) {
