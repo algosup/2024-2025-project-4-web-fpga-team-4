@@ -7,8 +7,8 @@
   - [Document Overview](#document-overview)
   - [Naming Conventions](#naming-conventions)
     - [Branches, Folders \& Files](#branches-folders--files)
-      - [Functions and Methods in TypeScript](#functions-and-methods-in-typescript)
-      - [Variables in TypeScript](#variables-in-typescript)
+      - [Functions and Methods in JavaScript](#functions-and-methods-in-javascript)
+      - [Variables in JavaScript](#variables-in-javascript)
       - [Element Names (HTML)](#element-names-html)
       - [ID's and Classes (HTML)](#ids-and-classes-html)
       - [Close All HTML Elements](#close-all-html-elements)
@@ -43,7 +43,7 @@ This document guides individuals who wish to contribute to the project. It outli
 
 ---
 
-#### Functions and Methods in TypeScript
+#### Functions and Methods in JavaScript
 
 - **Naming Convention:** camelCase (lowercase the first word and capitalize all the others).
 - Do this:
@@ -53,7 +53,7 @@ This document guides individuals who wish to contribute to the project. It outli
   - `ConvertSDFToJSON()`
   - `Convert-V-To-JSON()`
 
-#### Variables in TypeScript
+#### Variables in JavaScript
 
 - **Naming Convention:** snake_case (lowercase, words seperated by underscores).
 - Do this:
@@ -129,7 +129,7 @@ This document guides individuals who wish to contribute to the project. It outli
 - Ensure all functions and complex code segments are well-documented with comments explaining their purpose.
   - Example:
 
-```TypeScript
+```JavaScript
 /*
  * Convert a JSON file to a Javascript object and display the parsed data on the webpage.
  * 
@@ -150,7 +150,7 @@ async function parseJsonFile();
   </body>
   ```
 - Ensure consistent spacing around operators, classes and id's and after commas for better readability:
-  ```TypeScript
+  ```JavaScript
     c = a + b;
   ```
 
