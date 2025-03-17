@@ -10,7 +10,7 @@
     - [Project Introduction](#project-introduction)
     - [Document Purpose](#document-purpose)
   - [Scope](#scope)
-  - [Tasks](#tasks)
+  - [Tasks and schedule](#tasks-and-schedule)
     - [Designing the web interface and the User Interface](#designing-the-web-interface-and-the-user-interface)
     - [Parsing from SDF to JSON](#parsing-from-sdf-to-json)
     - [Coding the web interface and the User Interface](#coding-the-web-interface-and-the-user-interface)
@@ -21,76 +21,106 @@
     - [Testing, Debugging and reviewing](#testing-debugging-and-reviewing)
     - [Task handling](#task-handling)
     - [Task distribution](#task-distribution)
+    - [Schedule](#schedule)
   - [System Overview](#system-overview)
     - [System Architecture](#system-architecture)
     - [Software Architecture Diagram](#software-architecture-diagram)
+      - [Project Structure](#project-structure)
+        - [Frontend](#frontend)
+        - [Backend](#backend)
+          - [Backend Workflow:](#backend-workflow)
+          - [Additional Backend Files:](#additional-backend-files)
+  - [Software](#software)
+    - [Frontend](#frontend-1)
+      - [Web page](#web-page)
+    - [Backend](#backend-1)
+      - [Parser](#parser)
+        - [Timescale](#timescale)
+        - ["fpga\_interconnect"](#fpga_interconnect)
+          - [JSON Counterpart:](#json-counterpart)
+          - [Example on the webpage:](#example-on-the-webpage)
+        - ["LUT\_K"](#lut_k)
+          - [JSON counterpart:](#json-counterpart-1)
+          - [Example on the webpage:](#example-on-the-webpage-1)
+        - ["DFF"](#dff)
+          - [JSON counterpart:](#json-counterpart-2)
+          - [Example on the webpage:](#example-on-the-webpage-2)
+        - ["IO"](#io)
+          - [JSON counterpart:](#json-counterpart-3)
+          - [Example on the webpage:](#example-on-the-webpage-3)
+      - [Visualising the elements and signals](#visualising-the-elements-and-signals)
+        - [elements](#elements)
+        - [signals](#signals)
+    - [Testing](#testing)
+    - [Supported FPGA designs](#supported-fpga-designs)
+    - [Risks and mitigation strategies](#risks-and-mitigation-strategies)
   - [Glossary](#glossary)
 
 ## Project Overview
 
 ### Project Introduction
-This project was commissioned by the CNES (Centre National d'Études Spatiales)<sup><a href="#1">[1]</a></sup>. The objective is to develop a web page that assists teachers in explaining how FPGAs (Field Programmable Gate Arrays)<sup><a href="#2">[2]</a></sup> function. The web page will achieve this by visualizing an example or simulation of the internal FPGA processes when specific code is input.
+This project was commissioned by the **CNES (Centre National d'Études Spatiales)<sup><a href="#1">[1]</a></sup>**. The objective is to develop a web page that assists teachers in **explaining how FPGAs (Field Programmable Gate Arrays)<sup><a href="#2">[2]</a></sup> function**. The web page will achieve this by **visualizing an example or simulation of the internal FPGA processes** when specific code is input.
 
-The website will utilize information stored in SDF (Standard Delay Format)<sup><a href="#3">[3]</a></sup> files. These files will be parsed and converted into a .JSON format.
+The website will utilize information stored in **`.SDF` (Standard Delay Format)<sup><a href="#3">[3]</a></sup> files**. These files will be parsed and converted into a .JSON format.
 
 Our primary audience is:
 
 - **Teachers** who will use the tool to teach their students.
 - **Students** who will interact with the simulator to discover FPGA's and help them understand FPGA behavior.
 
-Since the primary goal is education, user experience (UX) and user interface (UI) design will be the focus as they are crucial to the project's success.
+Since the primary goal is education, **user experience (UX) and user interface (UI) design will be the focus** as they are crucial to the project's success.
 
 ### Document Purpose
-This document provides detailed technical specifications for the development of the web page, ensuring the correct implementation of the required features. These specifications will be based on the functional specification (link to be added).
+This document provides **detailed technical specifications for the development of the web page**, ensuring the correct implementation of the required features. These specifications will be based on the **functional specifications** (link to be added).
 
 This tool is being developed at the CNES's request and will serve as an educational resource for teachers to explain the inner workings of FPGA's.
 
 ## Scope
 The project is divided into two main parts:
 
-1. **Front-end**: The web-based interface that users will see and interact with. This includes the visualization of the FPGA structure and signal propagation, as well as the user interface.
-2. **Back-end**: The code that handles file uploads, translates the .SDF file into HTML code and injects it back onto the page.
+1. **Front-end**: **The web-based interface that users will see and interact with**. This includes the visualization of the FPGA structure and signal propagation, as well as the user interface.
+2. **Back-end**: The code that **handles file uploads**, translates the `.SDF` file into HTML code and injects it back onto the page.
 
 | Part          | In Scope                                                                                                                                                                                          | Out of Scope                                                                                                                                                                                        |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Front-end** | - Representation of the FPGA structures and signal propagation of the provided file. <br> - User interface for uploading .SDF files. <br> - Manual simulation control (start, stop, pause, step). | - Advanced features like debugging, and waveform analysis. <br> - Support for complex FPGA architectures and designs. |
-| **Back-end**  | - Handling .SDF file uploads and parsing. <br> - translating the .SDF file to HTML code and sending it to the front-end.          | - Full-scale FPGA synthesis or hardware implementation. <br> - Integration with proprietary FPGA vendor tools.                                                                       |
+| **Front-end** | - Representation of the FPGA structures and signal propagation of the provided file. <br> - User interface for uploading `.SDF` files. <br> - Manual simulation control (start, stop, pause, step). | - Advanced features like debugging, and waveform analysis. <br> - Support for complex FPGA architectures and designs. |
+| **Back-end**  | - Handling `.SDF` file uploads and parsing. <br> - translating the `.SDF` file to HTML code and sending it to the front-end.          | - Full-scale FPGA synthesis or hardware implementation. <br> - Integration with proprietary FPGA vendor tools.                                                                       |
 
 The programming languages we will use for this project are as follows:
 
 - **Front-end**: HTML, CSS and JavaScript.
 - **Back-end**: Node.js(only for testing, development and debug) and JavaScript
 
-## Tasks
+## Tasks and schedule
 
 Here are the tasks we will need to accomplish in order to finish the project:
 
 ### Designing the web interface and the User Interface
-The first step is to design the web interface and write graphical charters to allow the development team to start working on the UI as soon as possible. the mockups will be made using Figma and are available [here](https://www.figma.com/design/A6rvzTJCZQQyznhdQbu753/FPGA-Web-App?node-id=0-1&m=dev&t=lkPKlLFY9KAmra26-1). And the graphical charter is available [here](../functional-specifications/graphical-charter.md)
+The first step is to **design the web interface and write graphical charters** to allow the development team to start working on the UI as soon as possible. **the mockups will be made using Figma** and are available [here](https://www.figma.com/design/A6rvzTJCZQQyznhdQbu753/FPGA-Web-App?node-id=0-1&m=dev&t=lkPKlLFY9KAmra26-1). And the graphical charter is available [here](../functional-specifications/graphical-charter.md)
 
 ### Parsing from SDF to JSON
-While designing the web interface, we need to work on writing a data parser, which will allow us to parse the data from the .SDF file that the teacher will give our program, into a .JSON file that will be a lot easier to read. Doing this is not necessary for the project, however, it allows the teacher to write a .JSON file themselves in our format so they do not have to write code in verilog<sup><a href="#4">[5]</a></sup> or VHDL<sup><a href="#5">[5]</a></sup> and make it into an .SDF file every time they want to show their students other examples.
+While designing the web interface, **we need to work on writing a data parser**, which will allow us to **parse the data from the `.SDF` file that the teacher will give our program, into a .JSON file that will be a lot easier to read**. Doing this is not necessary for the project, however, it **allows the teacher to write a .JSON file themselves** in our format so they do not have to write code in verilog<sup><a href="#4">[5]</a></sup> or VHDL<sup><a href="#6">[6]</a></sup> and make it into an `.SDF` file every time they want to show their students other examples.
 
 ### Coding the web interface and the User Interface
-After the designs have been decided on and mockups have been made, the coding team needs to start making them. These will be made using HTML, CSS and Javascript, these need to be made first to allow the HTML code returned from transforming the parsed data to be implemented.
+After the designs have been decided on and mockups have been made, the coding team needs to start making them. **These will be made using HTML, CSS and Javascript**, they need to be made first to allow the HTML code returned from transforming the parsed data to be implemented.
 
 ### Parsing from JSON to HTML
-Once we have the web interface, we need to transform the JSON file that contains the information from the .SDF file into HTML code that can be injected into the web-page. 
+Once we have the web interface, **we need to transform the JSON file** that contains the information from the `.SDF` file **into HTML code** that can be injected into the web-page. 
 
 ### Back-End development
-We don't only need HTML elements, we need JavaScript and CSS code as well to make our web-page look good and responsive. The back-end code will contain elements like the tool-bar on the top of our page, which controls the signal flow and the import button, or the colors and placements of the FPGA elements. 
+We don't only need HTML elements, **we need JavaScript and CSS code as well to make our web-page look good and responsive**. The back-end code will contain elements like **the tool-bar** on the top of our page, which **controls the signal flow and the import button**, or the colors and placements of the FPGA elements. 
 
 ### Animations
-After the elemnts show correctly we need to add animations for electrical signal, to show delay the paths and clock signals. the anmiations will be made using CSS key-frames.
+After the elemnts show correctly **we need to add animations for electrical signals**, to show **delay the paths and clock signals**. the anmiations will be made **using CSS key-frames**.
 
 ### Documentation
-While the web-page is being made, the rest of the team needs to work on the documentation. They need to write technical documentation, user guides test cases and all other relevant documentation.
+While the web-page is being made, **the rest of the team needs to work on the documentation**. They need to write **technical documentation, user guides test cases and all other relevant documentation**.
 
 ### Testing, Debugging and reviewing
-We need to test the system for bugs, performance issues and problems with the UI. Testing will be done throughout the whole project to ensure the fixes are implemented as soon as possible. We will also need to review the documentation to check for spelling mistakes, clarity issues and relevance issues.
+We need to test the system for **bugs, performance issues and problems with the UI**. Testing will be done **throughout the whole project** to ensure the fixes are implemented as soon as possible. We will also need to **review the documentation** to check for **spelling mistakes, clarity issues and relevance issues**.
 
 ### Task handling
-The team will collaboratively work on all tasks, each members will focus on the tasks assigned to their role and will help other members if they have nothing to do.
+The team will **collaboratively work on all tasks**, each members will **focus on the tasks assigned to their role** and will **help other members** if they have nothing to do.
 
 ### Task distribution
 
@@ -105,9 +135,22 @@ The tasks will be distributed among the team members as follows:
 - **Documentation**: Maxime (PGM), Emilien (TL), Clémentine (TW), Thibaud (PM) and Guillaume (QA)
 - **Testing, debugging and reviewing**: Guillaume (QA) and Thibaud (PM)
 
-By doing so, each team member will work on multiple tasks, ensuring that everyone has a well-rounded understanding of the project and can contribute effectively to its success.
+By doing so, each team member **will work on multiple tasks**, ensuring that everyone has a well-rounded understanding of the project and can contribute effectively to its success.
 
-The team will follow an agile development approach, with regular sprints, stand-up meetings, and retrospectives to track progress, address issues, and make adjustments as needed. The team will also use version control and issue-tracking tools to manage the project and collaborate effectively.
+The team will follow an **agile development approach**, with **regular sprints, stand-up meetings, and retrospectives** to track progress, address issues, and make adjustments as needed. The team will also use **version control and issue-tracking tools** to manage the project and collaborate effectively.
+
+### Schedule
+
+The project will be developed over a period of 6 weeks, with the following milestones:
+
+1. **Week 1**: Project Kickoff, Analysis of the requirements, Understanding of the `.SDF` files, Task Distribution, and Planning.
+2. **Week 2**: Parsing, Send our mockups and designs to the client for review and Frontend development.
+3. **Week 3**: User interface, Back-end development and integration
+4. **Week 4**: Signal propagation integration.
+5. **Week 5**: Testing and debugging.
+6. **Week 6**: Final Testing, deployment, and delivery
+
+The documentation will also be worked on during this 6 week period.
 
 ## System Overview
 
@@ -238,6 +281,10 @@ Root
                 routed_POC_worst.sdf
 ```
 
+The project will be structured into these main folders:
+> [!NOTE]
+> TODO
+
 ### Software Architecture Diagram
 Our Software communicates following the diagram hereunder
 ```mermaid
@@ -246,8 +293,7 @@ graph TB
     %% Back-End Section
     subgraph Back-End [Back-End]
         sdfParser[sdf-to-json-parser.js]
-        jsonParser[json-to-HTML-parser.js]
-        Declarations[declarations.json]
+        jsonParser[json-to-data-parser.js]
         Schematics[schematics.js]
         Connections[connections.js]
         Toolbar[tool-bar.js]
@@ -269,30 +315,365 @@ graph TB
     %% User Section
     subgraph User [User]
         File[file.sdf]
-        Screen
+        Browser
     end
 
     %% Connections
 
     File -->|Upload| Client
-    sdfParser --> |Return Parsed File |Declarations
-    Declarations --> jsonParser
-    jsonParser -->|Generate HTML| Client
-    Declarations --> Schematics
-    Toolbar --> |Generate HTML| Client
-    Variables --> Schematics
-    Variables --> Connections
-    Variables --> Toolbar
-    Schematics --> |Process File| jsonParser
-    Connections --> Load
-    Load -->|Generate HTML| Client
-    Client -->|Display Output| Screen
     Data-Display-Style --> Client
     Schematics-Style --> Client
     Tool-Bar-Style --> Client
-    Upload-Button -->|Process File| sdfParser
     Client --> |Functionality added for clarity| Upload-Button
+    Upload-Button -->|Process File| sdfParser
+    Variables --> Schematics
+    Variables --> Connections
+    Variables --> Toolbar
+    Variables --> sdfParser
+    Variables --> jsonParser
+    sdfParser <--> jsonParser
+    Schematics <--> jsonParser
+    Connections <--> jsonParser
+    Connections --> Load
+    Load -->|Generate HTML| Client
+    Toolbar --> |Generate HTML| Client
+    Schematics --> |Generate HTML| Client
+    Client -->|Display Output| Browser
 ```
+
+#### Project Structure
+
+This project is structured into two main components: the **Frontend** and the **Backend**.
+
+##### Frontend
+
+The Frontend will be built using **HTML, CSS, and JavaScript**. Its main goal is to visualize the `.SDF` file and provide an **interactive user interface**. Users will be able to **upload an `.SDF` file** and **control the speed of the electricity flow**.
+
+Several files will manage different aspects of the Frontend:
+
+- **`client.html`** – Serves as the main structure of the web page.
+- **`tool-bar.css`** & **`data-display.css`** – Handle the interface styling.
+- **`schematics.css`** – Defines the color and shape of the wires and FPGA elements.
+
+When a user uploads an `.SDF` file, it will be sent to the **`sdf-to-json` parser** in the Backend for processing.
+
+##### Backend
+
+The Backend will be **developed using JavaScript** and **tested with Node.js**. Its primary role is to **process the `.SDF` file** provided by the user and extract relevant information for display.
+
+###### Backend Workflow:
+1. The uploaded `.SDF` file is sent to **`sdf-to-json-parser.js`**, which processes the file.
+2. The parsed data is returned as a **`.json`** file, which will be explained in more detail in the parser section. It is processed as a variable and sent to the **`json-to-data-parser.js`**.
+3. The **`json-to-data-parser.js`** file then calls these two files:
+   - **`schematics.js`** – To display the FPGA elements.
+   - **`connections.js`** – To draws wires between elements.
+
+###### Additional Backend Files:
+- **`load.js`** – Manages client-side logic.
+- **`tool-bar.js`** – Handles the toolbar buttons.
+
+Finally, the Backend sends all processed information to **`client.html`**, which renders the web page in the user's browser.
+
+
+## Software
+
+This section will explain in detail the **role, goal and structure of each important software element** for this project.
+
+### Frontend
+
+The Frontend for this project is **the part we will focus on the most**. As the project is supposed to be used by teachers, for students, the user interface and displayed elements need to be **easy to use/read and responsive**.
+
+#### Web page
+
+The web page is the **main element of this project**, it's goal is first and formeost to show the **visualization of the FPGA structure** contained in the `.SDF` file. It should also provide an **intuitive and interactive user interface** for uploading Verilog applications and controlling signal propagation.
+The webpage will consist of these components:
+- **Main content**: The main content area where the FPGA structure visualization will be displayed. This will include the FPGA elements and cables.
+- **Sidebar**: The sidebar area where clock signals will be displayed.
+- **Header**: The header area with the project name and a button for uploading files. It will aslo contain the interactive components for controlling simulations such as arrows to move backward and forward in time.
+
+### Backend
+
+The Backend will handle **file uploads, signal propagation buttons, and will send the necessary information to the Frontend**.  
+
+The Backend consists of the **`sdf-to-json-parser.js`** file, which processes `.SDF` files and outputs **parsed data in `.json` format**.  
+
+This `.json` file will then be used by **`json-to-data-parser.js`**, which interacts with:  
+- **`schematics.js`** – Responsible for displaying FPGA elements.  
+- **`connections.js`** – Used to draw the cables between FPGA elements.  
+
+- **`tool-bar.js`** – Controls the buttons on the toolbar.  
+- **`load.js`** – Manages client-side logic.  
+- **`variables.js`** – Stores all necessary variables.  
+
+#### Parser
+
+The parser will be implemented in **JavaScript**. Its purpose is to **read the `.SDF` file** and extract relevant information about the structure of the FPGA project. This data will then be converted into a **`.JSON` file**, which can be easily used by the Frontend.  
+  
+The `.JSON` files will be structured in a way that allows users to **manually create them from scratch**. This avoids the need to write **Verilog or VHDL code** each time they want to prepare a new example for their students.  
+
+The parser will be able to handle:  
+- **Basic types of FPGA cells**, such as **LUTs and Flip-Flops**.  
+- **Delays** and **connections** between elements.  
+ 
+Below, you will find **examples of different cell types** and their counterparts in the parsed `.JSON` file. Additionally, an example of how they will be displayed on the **web page** is provided.  
+
+These examples are all taken from the **`5FF.sdf`** file, which was provided by the client.  
+
+
+##### Timescale
+```sdf
+(TIMESCALE 1 ps)
+```
+
+this **defines the time unit**.
+
+The main information we can extract from this element is:
+- The time unit for delays: **`ps` so picoseconds in our case**.
+
+> [!Note]
+> This element will not have a counterpart in JSON as the client said the time delay will always be in 1 ps, however, I mention it here in case we need to add it later.
+
+
+##### "fpga_interconnect"
+
+```sdf
+    (CELL
+        (CELLTYPE "fpga_interconnect")
+        (INSTANCE routing_segment_D_output_0_0_to_lut_\$auto\$rtlil\.cc\:2714\:MuxGate\$175_input_0_3)
+        (DELAY
+            (ABSOLUTE
+                (IOPATH datain dataout (235.697:235.697:235.697) (235.697:235.697:235.697))
+            )
+        )
+    )
+```
+
+This element represents a **connection**.
+
+the main information we can extract from these elements are:
+- **the starting point:** `D_output_0_0`
+- **the end point:** `lut_\$auto\$rtlil\.cc\:2714\:MuxGate\$175_input_0_3`
+- **the propagation delay:** `235.697`
+
+> [!Note]
+> The delay can be found on this line `(IOPATH datain dataout (235.697:235.697:235.697) (235.697:235.697:235.697))`, as you can see, there are six different values seperated into two groups of three value.
+>  The first value is mininimum delay, the second value is the typical delay and the third value is the maximum delay. These are all the same for our example but they can vary in more complex systems. 
+> However, for what we are trying to do, we were told to assume the values will always be the same, so we only care about the first one. This will be consistent for all examples where timing is mentionned.
+
+###### JSON Counterpart:
+```json
+    {
+      "Input": {
+        "type": "userInput",
+        "id": "0",
+        "io": "output",
+        "port": "0"
+      },
+      "Output": {
+        "type": "lut",
+        "id": "175",
+        "io": "input",
+        "port": "3"
+      },
+      "Delay": 235.697
+    },
+```
+
+In this format:
+- **`"Input"`** means this is where the **connection starts**,
+- **`"output"`** means this is where the **connection ends**, 
+- **`"Type"`** is the **type of element**.
+- **`"id"`** is a **number associated to the element** to help us recognize which one it is, for this element: **`lut_\$auto\$rtlil\.cc\:2714\:MuxGate\$175_input_0_3`**, it's 175. If there is no specified id, it will be set to 0.
+- **`"io"`** is wether the cable comes out (**`"output"`**) or goes into (**`"input"`**) the element.
+- **`"port"`** is which port the cable comes out or goes in, for this element: `lut_\$auto\$rtlil\.cc\:2714\:MuxGate\$175_input_0_3` it's 3.
+
+###### Example on the webpage: 
+
+![Example](./images/connection-example.png)
+this example corresponds to the connection used as an example.
+
+##### "LUT_K"
+
+```sdf
+    (CELL
+        (CELLTYPE "LUT_K")
+        (INSTANCE lut_\$auto\$rtlil\.cc\:2714\:MuxGate\$175)
+        (DELAY
+            (ABSOLUTE
+                (IOPATH in[1] out (152:152:152) (152:152:152))
+                (IOPATH in[3] out (150:150:150) (150:150:150))
+                (IOPATH in[4] out (118:118:118) (118:118:118))
+            )
+        )
+    )
+```
+
+this element defines an **instance of a LUT(Look Up Table) and it's ports** that will be used by the FPGA. 
+
+the main information we can extract from these elements are:
+- **the name and id of the LUT**: name:`lut_\$auto\$rtlil\.cc\:2714\:MuxGate\$175` id: `$175`
+- **the ports that are used**: `IOPATH in[1]`, `IOPATH in[3]`, `IOPATH in[4]`.
+- **the time it takes for the signal to go from the input to the output of the LUT**: `152` for this line: (IOPATH in[1] out (152:152:152) (152:152:152))
+
+###### JSON counterpart:
+```JSON
+    {
+      "id": 175,
+      "connections": [
+        {
+          "io": "input",
+          "port": "3"
+        },
+        {
+          "io": "input",
+          "port": "4"
+        },
+        {
+          "io": "input",
+          "port": "1"
+        },
+        {
+          "io": "output",
+          "port": "0"
+        }
+      ]
+    },
+```
+
+In this format:
+- **`"id"`** is a **number associated to the element** to help us recognize which one it is, for this element: `(INSTANCE lut_\$auto\$rtlil\.cc\:2714\:MuxGate\$175)`, it's 175. If there is no specified id, it will be set to 0.
+- **`"io"`** is wether the port is an input (`"input"`) or an output (`"output"`) of the LUT.
+- **`"port"`** is the number associated to the port, for this element: 
+         `(IOPATH in[1] out (152:152:152) (152:152:152))`
+         `(IOPATH in[3] out (150:150:150) (150:150:150))`
+         `(IOPATH in[4] out (118:118:118) (118:118:118))`
+the port will use the numbers 1, 3 and 4. 
+
+###### Example on the webpage: 
+
+![Example](./images/lut-example.png)
+this example corresponds to the LUT used as an example.
+  
+##### "DFF"
+
+```sdf
+    (CELL
+        (CELLTYPE "DFF")
+        (INSTANCE latch_\$sdff\~2\^Q\~0)
+        (DELAY
+            (ABSOLUTE
+                (IOPATH (posedge clock) Q (303:303:303) (303:303:303))
+            )
+        )
+        (TIMINGCHECK
+            (SETUP D (posedge clock) (-46:-46:-46))
+        )
+    )
+```
+
+this element defines an **instance of a Delay Flip FLop (DFF) and it's ports** that will be used by the FPGA. 
+
+the main information we can extract from these elements are:
+- **the name and id of the DFF**: name:`latch_\$sdff\~2\^Q\~0` id: `2`
+- **the propagation delay**: `(IOPATH (posedge clock) Q (303:303:303) (303:303:303))`. here it's 303
+- **The setup time constraint(meaning the value need to be stable for that long before the next clock posedge)**: `(SETUP D (posedge clock) (-46:-46:-46))` here it's -46 so 46 picoseconds before
+
+###### JSON counterpart:
+```JSON
+    {
+      "id": 2,
+      "connections": [
+        {
+          "type": "clock"
+        },
+        {
+          "type": "input"
+        },
+        {
+          "type": "output"
+        }
+      ]
+    },
+```
+
+In this format:
+- **`"id"`** is a **number associated to the element** to help us recognize which one it is, for this element: `latch_\$sdff\~2\^Q\~0`, it's 2. If there is no specified id, it will be set to 0.
+- **`"port"`** is the name associated to the port for this element. 
+
+> [!Note]
+> the ports are numbers for the LUT's because they are defined as such, here they are names as there will always be the three same ports, thus making it easier to read.
+
+###### Example on the webpage: 
+
+![Example](./images/dff-example.png)
+this example corresponds to the DFF used as an example.
+
+##### "IO"
+
+These elements are **not defined in the `.SDF` file**. However, the client told us **they would always exist** and would **always be the same**. Therefore we **defined them ourselves as they are important and need to be displayed for teaching purposes**.
+
+###### JSON counterpart:
+```JSON
+"IOs": [
+    {
+      "name": "userInput",
+      "io": "output"
+    },
+    {
+      "name": "Async_reset",
+      "io": "output"
+    },
+    {
+      "name": "Clock",
+      "io": "output"
+    },
+    {
+      "name": "userOutput",
+      "io": "input"
+    }
+  ],
+
+```
+
+In this format:
+- **`"name"`** is the **name of the element**.
+- **`"io"`** is wether the port takes in an input (`"input"`) or outputs (`"output"`).
+
+###### Example on the webpage: 
+
+![Example](./images/user-input-example.png)
+![Example](./images/async-reset-example.png)
+![Example](./images/clock-example.png)
+![Example](./images/user-output-example.png)
+
+#### Visualising the elements and signals
+
+After parsing the `.JSON` file, the backend needs to process the data before sending it back to the frontend to visualize it.
+
+> [!Note]
+> Will do after the final version is confirmed.
+
+##### elements
+
+##### signals
+
+### Testing
+
+> [!Note]
+> Will do later
+
+### Supported FPGA designs
+
+> [!Note]
+> Will do later
+
+### Risks and mitigation strategies
+
+As any project, this project will face issues during development, including **Technical issues, wrong interpretation of the `.SDF` files and deadline issues**. These risks need to be mitigated to **minimize the impact of unforeseen challenges** and ensure the **successful completion of the project**. To mitigate these risks, the team has identified the following strategies:
+
+1. **Technical issues**: The team may encounter difficulties when **visualising and simulating signals and elements and linking the frontend and backend code**. To mitigate these risks, the team will **leverage online resources and our lessons**.
+2. **Wrong interpretation of the `.SDF` files**: The team may **misinterpret the information contained in the `.SDF` files**. To mitigate these risks, the team will **collaborate with the customer, and conduct thorough research**.
+3. **Deadline issues**: The project may drag-on and experience delays due to **unforeseen circumstances**, such as **technical setbacks and scope changes**. To mitigate these risks, the team will **maintain regular communication, track progress, and adjust the project plan** as needed to ensure timely delivery.
 
 ## Glossary
 
