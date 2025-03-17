@@ -6,7 +6,7 @@ This week primarily focused on finalizing, reviewing, and submitting the **Funct
 
 ## **Week 3 Objectives**  
 
-- **Ensure visual elements function correctly and are fully responsive.**  
+- **Ensure visual elements are responsive according to the requirements specified in the functional specifications.**  
 - **Complete and submit the Functional Specifications document.**  
 - **Achieve at least 60% completion of the Technical Specifications document.**  
 - **Incorporate client feedback to refine the design prototype.**  
