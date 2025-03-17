@@ -218,21 +218,20 @@ function writeDeclarationsToJson(luts, flipFlops, ios, elementConnections) {
 		LUTs: luts.map(lut => ({
 			id: lut.id,
 			connections: lut.connections.map(conn => ({
-				type: conn.type,
+				io: conn.type,
 				id: conn.id
 			}))
 		})),
 		FlipFlops: flipFlops.map(flipflop => ({
 			id: flipflop.id,
 			connections: flipflop.connections.map(conn => ({
-				type: conn.type,
+				port: conn.type,
 				id: conn.id
 			}))
 		})),
 		IOs: ios.map(io => ({
 			name: io.name,
-			type: io.type,
-			id: io.id
+			io: io.type
 		})),
 		Connections: elementConnections.map(conn => ({
 			Input: {
