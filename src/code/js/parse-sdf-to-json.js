@@ -50,8 +50,8 @@ function getLUTFromString(luts, element) {
 
 	if (existingLut) {
 		// If the LUT exists, check if the connection already exists in its connections array
-		let connectionExists = existingLut.connections.some(conn => 
-			conn.type === newConnection.type && 
+		let connectionExists = existingLut.connections.some(conn =>
+			conn.type === newConnection.type &&
 			conn.id === newConnection.id
 		);
 
@@ -77,7 +77,7 @@ function getFlipFlopFromString(flipFlops, element) {
 
 	if (existingFlipFlop) {
 		// If the FlipFlop exists, check if the connection already exists in its connections array
-		let connectionExists = existingFlipFlop.connections.some(conn => 
+		let connectionExists = existingFlipFlop.connections.some(conn =>
 			conn.type === newConnection.type
 		);
 
@@ -97,9 +97,9 @@ function getIOFromString(ios, element) {
 	let newIO = new IO(element.type, element.io, element.id);
 
 	// Check if the IO already exists
-	let exists = ios.some(io => 
-		io.name === newIO.name && 
-		io.type === newIO.type && 
+	let exists = ios.some(io =>
+		io.name === newIO.name &&
+		io.type === newIO.type &&
 		io.id === newIO.id
 	);
 
@@ -260,52 +260,53 @@ openFolderInput.addEventListener('change', function (event) {
 		alert('Please upload a .sdf or a .json file');
 		return;
 	}
-	if (file.name.split('.').pop() === 'json') {
-		const reader = new FileReader();
-		reader.onload = function (e) {
-			jsonData = e.target.result;
-			parseJsonFile();
-		};
-		reader.readAsText(file);
-	}
 	if (file) {
-		const reader = new FileReader();
-		reader.onload = function (e) {
-			const fileContent = e.target.result;
-			const luts = [];
-			const flipFlops = [];
-			const ios = [];
-			const elementConnections = [];
+		if (file.name.split('.').pop() === 'json') {
+			const reader = new FileReader();
+			reader.onload = function (e) {
+				jsonData = e.target.result;
+				parseJsonFile();
+			};
+			reader.readAsText(file);
+		} else {
+			const reader = new FileReader();
+			reader.onload = function (e) {
+				const fileContent = e.target.result;
+				const luts = [];
+				const flipFlops = [];
+				const ios = [];
+				const elementConnections = [];
 
-			getDefinitions(fileContent, elementConnections);
+				getDefinitions(fileContent, elementConnections);
 
-			for (let elements of elementConnections) {
-				if (["userInput", "userOutput", "Clock", "Async_reset"].includes(elements.connectionTiming.first.type)) {
-					getIOFromString(ios, elements.connectionTiming.first);
-				} else if (elements.connectionTiming.first.type === "DFF") {
-					console.log(elements.connectionTiming.first)
-					getFlipFlopFromString(flipFlops, elements.connectionTiming.first);
-				} else if (["lut", "lut-gnd"].includes(elements.connectionTiming.first.type)) {
-					getLUTFromString(luts, elements.connectionTiming.first);
+				for (let elements of elementConnections) {
+					if (["userInput", "userOutput", "Clock", "Async_reset"].includes(elements.connectionTiming.first.type)) {
+						getIOFromString(ios, elements.connectionTiming.first);
+					} else if (elements.connectionTiming.first.type === "DFF") {
+						console.log(elements.connectionTiming.first)
+						getFlipFlopFromString(flipFlops, elements.connectionTiming.first);
+					} else if (["lut", "lut-gnd"].includes(elements.connectionTiming.first.type)) {
+						getLUTFromString(luts, elements.connectionTiming.first);
+					}
+
+					if (["userInput", "userOutput", "Clock", "Async_reset"].includes(elements.connectionTiming.second.type)) {
+						getIOFromString(ios, elements.connectionTiming.second);
+					} else if (elements.connectionTiming.second.type === "DFF") {
+						console.log(elements.connectionTiming.second);
+						getFlipFlopFromString(flipFlops, elements.connectionTiming.second);
+					} else if (["lut", "lut-gnd"].includes(elements.connectionTiming.second.type)) {
+						getLUTFromString(luts, elements.connectionTiming.second);
+					}
 				}
-
-				if (["userInput", "userOutput", "Clock", "Async_reset"].includes(elements.connectionTiming.second.type)) {
-					getIOFromString(ios, elements.connectionTiming.second);
-				} else if (elements.connectionTiming.second.type === "DFF") {
-					console.log(elements.connectionTiming.second);
-					getFlipFlopFromString(flipFlops, elements.connectionTiming.second);
-				} else if (["lut", "lut-gnd"].includes(elements.connectionTiming.second.type)) {
-					getLUTFromString(luts, elements.connectionTiming.second);
-				}
-			}
-			ios.sort((a, b) => a.name.localeCompare(b.name));
-			let temp = ios[1];
-			ios[1] = ios[2];
-			ios[2] = temp;
-			const jsonOutput = writeDeclarationsToJson(luts, flipFlops, ios, elementConnections);
-			jsonData = jsonOutput;
-			parseJsonFile();
-		};
-		reader.readAsText(file);
+				ios.sort((a, b) => a.name.localeCompare(b.name));
+				let temp = ios[1];
+				ios[1] = ios[2];
+				ios[2] = temp;
+				const jsonOutput = writeDeclarationsToJson(luts, flipFlops, ios, elementConnections);
+				jsonData = jsonOutput;
+				parseJsonFile();
+			};
+			reader.readAsText(file);
+		}
 	}
 });

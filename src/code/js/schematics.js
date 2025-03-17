@@ -12,6 +12,7 @@ function displayInput(name) {
 	switch (name) {
 		case 'Clock':
 			inputElement.className = 'input-element clock-element';
+			inputElement.style.position = 'fixed';
 			break;
 		case 'userInput':
 			inputElement.className = 'input-element data-element';

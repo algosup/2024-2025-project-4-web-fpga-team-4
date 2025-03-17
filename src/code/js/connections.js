@@ -19,7 +19,9 @@ function convertPxToVw(px) {
  * @param {number} left - The left position of the line in vw.
  */
 function drawLine(height, width, top, left, colorValue) {
-	let color
+	let color;
+	let position;
+	let zIndex = '0';
 	switch (colorValue.substring(0, 2)) {
 		case 'lu': // LUT
 			color = "var(--lut-color)";
@@ -35,11 +37,13 @@ function drawLine(height, width, top, left, colorValue) {
 			break;
 		case 'cl': // Clock
 			color = "var(--clock-color)";
+			position = colorValue === 'clock-above-sticky' ? 'fixed' : undefined;
+			zIndex = colorValue.startsWith('clock-above')  ? '12' : '0';
 			break;
 		default:
 			break;
 	}
-	connections.innerHTML += `<div class="line used ${colorValue}" style="height: ${height}vh; width: ${width}vw; margin-top: ${top}vh; margin-left: ${left}vw; background-color:${color}"></div>`
+	connections.innerHTML += `<div class="line used ${colorValue}" style="height: ${height}vh; width: ${width}vw; margin-top: ${top}vh; margin-left: ${left}vw; background-color:${color}; position: ${position}; z-index: ${zIndex}"></div>`
 }
 
 
@@ -148,17 +152,19 @@ function drawBasicConnection(obj1, obj2) {
 function drawClockBase(clock) {
 	let clockB = document.getElementById(clock).getBoundingClientRect();
 	let ffList = document.getElementsByClassName('ff-element');
+	const bodyB = document.body.getBoundingClientRect();
 
 	let ffB = ffList[0].childNodes[0].childNodes[3].getBoundingClientRect();
 	const clockBase = { top: convertPxToVh(clockB.top), left: convertPxToVw(clockB.left), bottom: convertPxToVh(clockB.bottom), right: convertPxToVw(clockB.right) };
 	const ffBase = { top: convertPxToVh(ffB.top), left: convertPxToVw(ffB.left), bottom: convertPxToVh(ffB.bottom), right: convertPxToVw(ffB.right) };
+	const bodyBase = { top: convertPxToVh(bodyB.top), left: convertPxToVw(bodyB.left), bottom: convertPxToVh(bodyB.bottom), right: convertPxToVw(bodyB.right) };
 	let clockCenterHeight = (clockBase.bottom - clockBase.top) / 2;
-	let clockCenter = clockBase.top + clockCenterHeight - .3;
+	let bodyCenterHeight = (bodyBase.bottom - bodyBase.top);
 	let ffBaseCenter = (ffBase.top + (ffBase.bottom - ffBase.top) / 2);
 	let distW = (ffBase.left - clockBase.right);
-	let distH = (ffBase.top + (ffBase.bottom - ffBase.top) / 2) - clockCenter - .3;
-	drawLine(.6, distW - .6, clockCenter, clockBase.right, `clock`);
-	drawLine(-distH, .3, ffBaseCenter - .3, ffBase.left - .9, `clock`);
+	let distH = (ffBase.top + (ffBase.bottom - ffBase.top) / 2) - (bodyCenterHeight - clockCenterHeight * 2 - 6);
+	drawLine(.6, distW, 100 - 8.2, clockBase.right - .6, `clock-above-sticky`);
+	drawLine(-distH, .3, ffBaseCenter - .3, ffBase.left - .9, `clock-above`);
 }
 
 
@@ -277,7 +283,7 @@ function drawAsyncBase() {
 /**
  * Generate the connections between the objects.
  * @param {string} obj1 - The first object to connect.
- * @returns {string} obj2 - The second object to connect.
+ * @param {string} obj2 - The second object to connect.
  */
 function drawConnectionSelect(obj1, obj2) {
 	let ob1 = obj1.split('-')[0];
