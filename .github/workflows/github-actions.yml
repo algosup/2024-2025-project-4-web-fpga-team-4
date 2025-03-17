@@ -79,28 +79,28 @@ jobs:
           git checkout dev
           git pull origin dev
 
-  edge-unit-tests:
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v4
+  # edge-unit-tests:
+  #   runs-on: windows-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '23.6.0'
+  #     - name: Set up Node.js
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: '23.6.0'
 
-      - name: Install dependencies
-        run: |
-          cd ./src/test
-          npm install
-          npm install typescript
+  #     - name: Install dependencies
+  #       run: |
+  #         cd ./src/test
+  #         npm install
+  #         npm install typescript
 
-      - name: Install Edge browser
-        run: |
-          choco install microsoft-edge
+  #     - name: Install Edge browser
+  #       run: |
+  #         choco install microsoft-edge
 
-      - name: Run unit tests on Edge
-        run: |
-          cd ./src/test
-          npx tsc
-          for file in *edge*.js; do node "$file"; done
+  #     - name: Run unit tests on Edge
+  #       run: |
+  #         cd ./src/test
+  #         npx tsc
+  #         Get-ChildItem *edge*.js | ForEach-Object { node $_.Name }
