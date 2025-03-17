@@ -13,7 +13,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
@@ -29,6 +28,12 @@ jobs:
           curl -v "$deploy_url"
           sleep 60
 
+  unit-tests:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
@@ -43,23 +48,15 @@ jobs:
       - name: Ensure logs folder exists
         run: mkdir -p ./src/test/logs
 
-      - name: Set up SafariDriver on macOS
-        if: runner.os == 'macOS'
-        run: sudo safaridriver --enable  # Enable SafariDriver on macOS
-
-      - name: Run Safari unit tests
-        if: runner.os == 'macOS'
+      - name: Run Unit Tests (Chrome, Firefox, Edge)
         run: |
           cd ./src/test
           npx tsc
-          node *safari*.js
-
-      - name: Run other tests (Edge/Chrome/Firefox)
-        if: runner.os == 'ubuntu-latest'
-        run: |
-          cd ./src/test
-          npx tsc
-          for file in *.js; do node "$file"; done
+          for file in *.js; do
+            if [[ "$file" != *"safari"* ]]; then
+              node "$file"
+            fi
+          done
 
       - name: Check generated JSON files
         run: ls -l ./src/test/logs
@@ -82,6 +79,65 @@ jobs:
           if [[ -n $(git status --porcelain src/test/logs/*.json) ]]; then
             git add -f src/test/logs/*.json
             git commit -m "Add generated JSON logs from tests"
+            git push origin QA
+          else
+            echo "No log changes to commit."
+          fi
+          git checkout dev
+          git pull origin dev
+
+  safari-tests:
+    runs-on: macos-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '23.6.0'
+
+      - name: Install dependencies
+        run: |
+          cd ./src/test
+          npm install
+          npm install typescript
+
+      - name: Ensure logs folder exists
+        run: mkdir -p ./src/test/logs
+
+      - name: Set up SafariDriver
+        run: sudo safaridriver --enable
+
+      - name: Run Safari Unit Tests
+        run: |
+          cd ./src/test
+          npx tsc
+          for file in *safari*.js; do
+            node "$file"
+          done
+
+      - name: Check generated JSON files
+        run: ls -l ./src/test/logs
+
+      - name: Commit and push Safari JSON logs to QA
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git stash --include-untracked
+          git fetch origin
+          if git ls-remote --exit-code --heads origin QA; then
+            git checkout QA
+            git pull --rebase origin QA
+          else
+            git checkout -b QA
+            git push -u origin QA
+          fi
+          git stash pop || echo "No stashed changes to restore."
+          mkdir -p ./src/test/logs
+          if [[ -n $(git status --porcelain src/test/logs/*.json) ]]; then
+            git add -f src/test/logs/*.json
+            git commit -m "Add generated Safari JSON logs from tests"
             git push origin QA
           else
             echo "No log changes to commit."
