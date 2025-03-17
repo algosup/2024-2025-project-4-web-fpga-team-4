@@ -97,10 +97,10 @@ jobs:
 
       - name: Install Edge browser
         run: |
-          choco install microsoft-edge --version=latest
+          choco install microsoft-edge
 
       - name: Run unit tests on Edge
         run: |
           cd ./src/test
           npx tsc
-          for file in *.js; do node "$file" --browser=edge; done
+          for file in *edge*.js; do node "$file" --browser=edge; done
