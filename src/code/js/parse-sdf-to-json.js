@@ -257,9 +257,17 @@ function writeDeclarationsToJson(luts, flipFlops, ios, elementConnections) {
 // Event listener for file input change
 openFolderInput.addEventListener('change', function (event) {
 	const file = event.target.files[0];
-	if (file.name.split('.').pop() !== 'sdf') {
-		alert('Please upload a .sdf file');
+	if (file.name.split('.').pop() !== 'sdf' && file.name.split('.').pop() !== 'json') {
+		alert('Please upload a .sdf or a .json file');
 		return;
+	}
+	if (file.name.split('.').pop() === 'json') {
+		const reader = new FileReader();
+		reader.onload = function (e) {
+			jsonData = e.target.result;
+			parseJsonFile();
+		};
+		reader.readAsText(file);
 	}
 	if (file) {
 		const reader = new FileReader();
