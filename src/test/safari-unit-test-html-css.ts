@@ -1,6 +1,6 @@
 import { By, WebDriver, Browser, Builder } from 'selenium-webdriver';
 import * as assert from 'assert';
-import { Options as ChromeOptions } from 'selenium-webdriver/chrome';
+import { Options as SafariOptions } from 'selenium-webdriver/safari';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -17,14 +17,13 @@ const results: {
   }
 }[] = [];
 
-const logFilePath = path.join(__dirname, 'logs', dateString + '-chrome-unit-test-html-css.json');
+const logFilePath = path.join(__dirname, 'logs', dateString + '-safari-unit-test-html-css.json');
 
-const chromeOptions = new ChromeOptions().addArguments('--headless');
-
+const safariOptions = new SafariOptions();
 
 async function runTests(browser: string, options: any) {
   let driver: WebDriver;
-    driver = await new Builder().forBrowser(browser).setChromeOptions(options).build();
+  driver = await new Builder().forBrowser(browser).setSafariOptions(options).build();
 
   try {
     await driver.get("https://two024-2025-project-4-web-fpga-team-4.onrender.com/client.html");
@@ -109,4 +108,4 @@ function rgbToHex(rgb: string): string {
   return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase()}`;
 }
 
-runTests(Browser.CHROME, chromeOptions);
+runTests(Browser.SAFARI, safariOptions);

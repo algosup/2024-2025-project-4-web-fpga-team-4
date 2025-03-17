@@ -1,9 +1,6 @@
 import { By, WebDriver, Browser, Builder } from 'selenium-webdriver';
 import * as assert from 'assert';
 import { Options as FirefoxOptions } from 'selenium-webdriver/firefox';
-import { Options as ChromeOptions } from 'selenium-webdriver/chrome';
-import { Options as EdgeOptions } from 'selenium-webdriver/edge';
-import { Options as SafariOptions } from 'selenium-webdriver/safari';
 import * as fs from 'fs';
 import * as path from 'path';
 
