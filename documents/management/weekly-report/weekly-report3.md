@@ -33,7 +33,7 @@ The team was asked to rate their experience for the week based on the following 
 
 ### **Survey Results**  
 
-
+![alt text](./images/kpis-week3.png)
 
 The team reported steady progress, but some difficulties arose in **staying focused**. The **delayed review of the Functional Specifications** led to a time crunch, impacting the design phase schedule. However, client feedback on the first prototype was **overall positive**, despite requesting for a few changes.  
 
