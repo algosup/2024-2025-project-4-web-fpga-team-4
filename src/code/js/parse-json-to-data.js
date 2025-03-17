@@ -3,15 +3,20 @@
  * 
  * @param {string} filePath - The path to the JSON file.
  */
-async function parseJsonFile() {
-	/* Function to read and parse JSON file */
-	// const response = await fetch(filePath);
+function parseJsonFile() {
+	// Remove existing elements from the schematics
+	resetSchematics();
+
+	// Parse the JSON data (assuming jsonData is defined elsewhere)
 	const json = JSON.parse(jsonData);
-	/* Access specific values from the JSON object */
+
+	// Extract specific values from the JSON object
 	const Luts = json.LUTs;
 	const FlipFlops = json.FlipFlops;
 	const IOs = json.IOs;
 	const Connections = json.Connections;
+
+	// Process LUTs
 	for (let i = 0; i < Luts.length; i++) {
 		let id = Luts[i].id;
 		let output = Luts[i].connections.some(item => item.id === '0' && item.type === 'output');
@@ -20,9 +25,13 @@ async function parseJsonFile() {
 		Luts[i].id === 0 ? displayLUT(id, null, null, null, output) :
 			displayLUT(Luts[i].id, inputs[0].id, inputs[1].id, inputs[2].id, output);
 	}
+
+	// Process FlipFlops
 	for (let i = 0; i < FlipFlops.length; i++) {
 		displayFlipFlop(FlipFlops[i].id, FlipFlops[i].connections.some(item => item.type === 'input'), FlipFlops[i].connections.some(item => item.type === 'clock'), FlipFlops[i].connections.some(item => item.type === 'output'));
 	}
+
+	// Process IOs
 	for (let i = 0; i < IOs.length; i++) {
 		if (IOs[i].type === 'input') {
 			displayOutput(IOs[i].name);
@@ -30,9 +39,13 @@ async function parseJsonFile() {
 			displayInput(IOs[i].name);
 		}
 	}
+
+	// Process Connections
 	for (let i = 0; i < Connections.length; i++) {
 		let start;
 		let end;
+
+		// Determine the start point of the connection
 		if (Connections[i].Input.type === 'lut') {
 			start = 'lut-' + Connections[i].Input.id + '-out';
 		} else if (Connections[i].Input.type === 'DFF') {
@@ -59,15 +72,10 @@ async function parseJsonFile() {
 			drawConnections ? drawConnectionSelect(start, end) : {};
 		}
 	}
-	endLoad();
-	drawGndVertical();
-	drawAsyncBase();
-	drawClockBase('Clock-out');
+	if (drawConnections) {
+		endLoad();
+		drawGndVertical();
+		drawAsyncBase();
+		drawClockBase('Clock-out');
+	}
 }
-
-/* Call the function to parse the JSON file */
-parseJsonFile().then(() => {
-}).then(() => {
-}).catch((error) => {
-	console.error('Error parsing JSON file:', error);
-});

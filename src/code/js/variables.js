@@ -77,3 +77,18 @@ const hideButton = document.getElementById('hide-button');
 
 
 const toolBarButtons = [openFolder, uploadFile, pause, play, back, forward, first, last, speedPlus, speedMinus, zoomIn, zoomOut, dataViewTrigger, theme, settings, hideButton];
+
+
+
+function resetSchematics() {
+	document.getElementById('input-container').innerHTML = '';
+	document.getElementById('lut-container').innerHTML = '';
+	document.getElementById('ff-container').innerHTML = '';
+	document.getElementById('output-container').innerHTML = '';
+	document.getElementById('connections').innerHTML = '';
+	firstLutId = null;
+	firstLutGnd = null;
+	lastLutId = null;
+	lastLutAsync = null;
+	scrollTo(0, 0);
+}
