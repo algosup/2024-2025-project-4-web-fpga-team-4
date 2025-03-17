@@ -20,7 +20,7 @@ const results: {
   }
 }[] = [];
 
-const logFilePath = path.join(__dirname, 'logs', dateString + '-unit-test-html-css.json');
+const logFilePath = path.join(__dirname, 'logs', dateString + '-chrome-unit-test-html-css.json');
 
 const chromeOptions = new ChromeOptions().addArguments('--headless');
 

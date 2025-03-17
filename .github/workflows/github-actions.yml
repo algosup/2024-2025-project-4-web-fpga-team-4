@@ -103,4 +103,4 @@ jobs:
         run: |
           cd ./src/test
           npx tsc
-          for file in *edge*.js; do node "$file" --browser=edge; done
+          for file in *edge*.js; do node "$file"; done
