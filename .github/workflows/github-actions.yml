@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Deploy Application
         env:
           deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
@@ -43,13 +43,23 @@ jobs:
       - name: Ensure logs folder exists
         run: mkdir -p ./src/test/logs
 
-      - name: Run tests
-        id: run-tests
+      - name: Set up SafariDriver on macOS
+        if: runner.os == 'macOS'
+        run: sudo safaridriver --enable  # Enable SafariDriver on macOS
+
+      - name: Run Safari unit tests
+        if: runner.os == 'macOS'
+        run: |
+          cd ./src/test
+          npx tsc
+          node *safari*.js
+
+      - name: Run other tests (Edge/Chrome/Firefox)
+        if: runner.os == 'ubuntu-latest'
         run: |
           cd ./src/test
           npx tsc
           for file in *.js; do node "$file"; done
-        continue-on-error: true
 
       - name: Check generated JSON files
         run: ls -l ./src/test/logs
@@ -78,29 +88,3 @@ jobs:
           fi
           git checkout dev
           git pull origin dev
-
-  # edge-unit-tests:
-  #   runs-on: windows-latest
-  #   steps:
-  #     - uses: actions/checkout@v4
-
-  #     - name: Set up Node.js
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: '23.6.0'
-
-  #     - name: Install dependencies
-  #       run: |
-  #         cd ./src/test
-  #         npm install
-  #         npm install typescript
-
-  #     - name: Install Edge browser
-  #       run: |
-  #         choco install microsoft-edge
-
-  #     - name: Run unit tests on Edge
-  #       run: |
-  #         cd ./src/test
-  #         npx tsc
-  #         Get-ChildItem *edge*.js | ForEach-Object { node $_.Name }
