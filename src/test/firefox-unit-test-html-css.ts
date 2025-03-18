@@ -21,16 +21,16 @@ const results: {
 
 const logFilePath = path.join(__dirname, 'logs', dateString + '-firefox-unit-test-html-css.json');
 
-// const versions = ['116.0', '117.0', '118.0', '119.0', '120.0', '121.0', '122.0', '123.0', '124.0', '125.0.1', '126.0', '127.0', '128.0', '129.0', '130.0', '131.0', '132.0', '133.0', '134.0', '135.0', '136.0'];
+const versions = ['116.0', '117.0', '118.0', '119.0', '120.0', '121.0', '122.0', '123.0', '124.0', '125.0.1', '126.0', '127.0', '128.0', '129.0', '130.0', '131.0', '132.0', '133.0', '134.0', '135.0', '136.0'];
 
-// (async () => {
-//   for (const version of versions) {
-//     let firefoxOptions = new FirefoxOptions().addArguments('--headless').setBrowserVersion(`${version}`);
-//     await runTests(Browser.FIREFOX, firefoxOptions);
-//   }
-// })();
+(async () => {
+  for (const version of versions) {
+    let firefoxOptions = new FirefoxOptions().addArguments('--headless').setBrowserVersion(`${version}`);
+    await runTests(Browser.FIREFOX, firefoxOptions);
+  }
+})();
 
-const firefoxOptions = new FirefoxOptions().addArguments('--headless');
+// const firefoxOptions = new FirefoxOptions().addArguments('--headless');
 
 
 async function runTests(browser: string, options: any) {
@@ -125,4 +125,4 @@ function rgbToHex(rgb: string): string {
   return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase()}`;
 }
 
-runTests(Browser.FIREFOX, firefoxOptions);
+// runTests(Browser.FIREFOX, firefoxOptions);
