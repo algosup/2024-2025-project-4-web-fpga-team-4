@@ -49,6 +49,33 @@ jobs:
           for file in *chrome*.js; do node "$file"; done
       - name: Upload Chrome Logs
         run: ls -l ./src/test/logs
+      - name: Commit and push JSON logs to QA
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Make sure we are on QA branch
+          git fetch origin
+          if git ls-remote --exit-code --heads origin QA; then
+            git checkout QA
+            git pull --rebase origin QA
+          else
+            git checkout -b QA
+            git push -u origin QA
+          fi
+
+          # Ensure logs directory exists
+          mkdir -p ./src/test/logs
+
+          # Check if there are changes to commit
+          if [[ -n $(git status --porcelain src/test/logs/*.json) ]]; then
+            git add -f src/test/logs/*.json
+            git commit -m "Add generated JSON logs from tests"
+            git push origin QA
+          else
+            echo "No log changes to commit."
+          fi
+
 
   firefox-tests:
     runs-on: ubuntu-latest
@@ -71,6 +98,32 @@ jobs:
           for file in *firefox*.js; do node "$file"; done
       - name: Upload Firefox Logs
         run: ls -l ./src/test/logs
+      - name: Commit and push JSON logs to QA
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Make sure we are on QA branch
+          git fetch origin
+          if git ls-remote --exit-code --heads origin QA; then
+            git checkout QA
+            git pull --rebase origin QA
+          else
+            git checkout -b QA
+            git push -u origin QA
+          fi
+
+          # Ensure logs directory exists
+          mkdir -p ./src/test/logs
+
+          # Check if there are changes to commit
+          if [[ -n $(git status --porcelain src/test/logs/*.json) ]]; then
+            git add -f src/test/logs/*.json
+            git commit -m "Add generated JSON logs from tests"
+            git push origin QA
+          else
+            echo "No log changes to commit."
+          fi        
 
   edge-tests:
     runs-on: windows-latest
@@ -96,6 +149,37 @@ jobs:
           Get-ChildItem *edge*.js | ForEach-Object { node $_.Name }
       - name: Upload Edge Logs
         run: ls -l ./src/test/logs
+      - name: Commit and push JSON logs to QA
+        shell: pwsh
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      
+          # Fetch latest branch info
+          git fetch origin
+      
+          # Check if QA branch exists
+          $branchExists = git ls-remote --exit-code --heads origin QA
+          if ($branchExists) {
+              git checkout QA
+              git pull --rebase origin QA
+          } else {
+              git checkout -b QA
+              git push -u origin QA
+          }
+      
+          # Ensure logs directory exists
+          New-Item -ItemType Directory -Force -Path ./src/test/logs
+      
+          # Check if there are changes to commit
+          $changes = git status --porcelain src/test/logs/*.json
+          if ($changes) {
+              git add -f src/test/logs/*.json
+              git commit -m "Add generated JSON logs from tests"
+              git push origin QA
+          } else {
+              Write-Output "No log changes to commit."
+          }
 
   safari-tests:
     runs-on: macos-latest
@@ -120,3 +204,29 @@ jobs:
           for file in *safari*.js; do node "$file"; done
       - name: Upload Safari Logs
         run: ls -l ./src/test/logs
+      - name: Commit and push JSON logs to QA
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Make sure we are on QA branch
+          git fetch origin
+          if git ls-remote --exit-code --heads origin QA; then
+            git checkout QA
+            git pull --rebase origin QA
+          else
+            git checkout -b QA
+            git push -u origin QA
+          fi
+
+          # Ensure logs directory exists
+          mkdir -p ./src/test/logs
+
+          # Check if there are changes to commit
+          if [[ -n $(git status --porcelain src/test/logs/*.json) ]]; then
+            git add -f src/test/logs/*.json
+            git commit -m "Add generated JSON logs from tests"
+            git push origin QA
+          else
+            echo "No log changes to commit."
+          fi
