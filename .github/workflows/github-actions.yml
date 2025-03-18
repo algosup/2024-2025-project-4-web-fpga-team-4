@@ -124,31 +124,47 @@ jobs:
           else
             echo "No log changes to commit."
           fi        
-
+          
   edge-tests:
     runs-on: windows-latest
     needs: build
+    strategy:
+      matrix:
+        edge_version: [112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134]
+
     steps:
       - uses: actions/checkout@v4
+      
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '23.6.0'
+
       - name: Install dependencies
         run: |
           cd ./src/test
           npm install
           npm install typescript
-      - name: Install Edge Browser
-        run: choco install microsoft-edge
-      - name: Run Edge Tests
+
+      - name: Download Edge Version ${{ matrix.edge_version }}
+        shell: pwsh
+        run: |
+          $edgeVersion = "${{ matrix.edge_version }}"
+          Invoke-WebRequest -Uri "https://msedgewebdriverstorage.z22.web.core.windows.net/$edgeVersion/edgedriver_win64.zip" -OutFile "edgedriver.zip"
+          Expand-Archive -Path "edgedriver.zip" -DestinationPath "C:\msedgedriver_$edgeVersion"
+          echo "C:\msedgedriver_$edgeVersion" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8
+
+      - name: Run Edge Tests on Version ${{ matrix.edge_version }}
         shell: pwsh
         run: |
           cd ./src/test
           npx tsc
+          $Env:EDGE_VERSION = "${{ matrix.edge_version }}"
           Get-ChildItem *edge*.js | ForEach-Object { node $_.Name }
+
       - name: Upload Edge Logs
         run: ls -l ./src/test/logs
+
       - name: Commit and push JSON logs to QA
         shell: pwsh
         run: |
@@ -175,7 +191,7 @@ jobs:
           $changes = git status --porcelain src/test/logs/*.json
           if ($changes) {
               git add -f src/test/logs/*.json
-              git commit -m "Add generated JSON logs from tests"
+              git commit -m "Add generated JSON logs from tests for Edge ${{ matrix.edge_version }}"
               git push origin QA
           } else {
               Write-Output "No log changes to commit."
