@@ -21,43 +21,52 @@ const results: {
 
 const logFilePath = path.join(__dirname, 'logs', dateString + '-firefox-unit-test-html-css.json');
 
-const firefoxOptions = new FirefoxOptions().addArguments('--headless');
+const versions = ['116.0', '117.0', '118.0', '119.0', '120.0', '121.0', '122.0', '123.0', '124.0', '125.0.1', '126.0', '127.0', '128.0', '129.0', '130.0', '131.0', '132.0', '133.0', '134.0', '135.0', '136.0'];
 
-const versions = ['116.0', '117.0', '118.0', '119.0', '120.0', '121.0', '122.0', '123.0', '124.0', '125.0', '126.0', '127.0', '128.0', '129.0', '130.0', '131.0', '132.0', '133.0', '134.0', '135.0', '136.0'];
+(async () => {
+  for (const version of versions) {
+    let firefoxOptions = new FirefoxOptions().addArguments('--headless').setBrowserVersion(`${version}`);
+    await runTests(Browser.FIREFOX, firefoxOptions);
+  }
+})();
 
-async function runTests(browser: string, options: any, version: string) {
+// const firefoxOptions = new FirefoxOptions().addArguments('--headless');
+
+
+async function runTests(browser: string, options: any) {
   let driver: WebDriver;
   driver = await new Builder().forBrowser(browser).setFirefoxOptions(options).build();
 
   try {
     await driver.get("https://two024-2025-project-4-web-fpga-team-4.onrender.com/client.html");
 
-    await runTest(driver, version, 'Title Test', 'Check if the title is correct', 'high', ["typo"], async () => {
+    await runTest(driver, browser, 'Title Test', 'Check if the title is correct', 'high', ["typo"], async () => {
       const title = await driver.getTitle();
       assert.strictEqual("Client Side", title);
     });
 
     await driver.manage().setTimeouts({ implicit: 10000 });
 
-    await runTest(driver, version, 'Background Color Test', 'Check if the background color is correct', 'medium', ["css", "html"], async () => {
+    await runTest(driver, browser, 'Background Color Test', 'Check if the background color is correct', 'medium', ["css", "html"], async () => {
       const description = await driver.findElement(By.id('description')).getCssValue('background-color');
       assert.strictEqual("rgb(27, 38, 59)", description);
     });
     
-    await runTest(driver, version, 'Background Color Test', 'Check if the background color is correct in hex', 'medium', ["css"],  async () => {
+    await runTest(driver, browser, 'Background Color Test', 'Check if the background color is correct in hex', 'medium', ["css"],  async () => {
       const description = await driver.findElement(By.id('description')).getCssValue('background-color');
       const hexColor = rgbToHex(description);
       assert.strictEqual("#1B263B", hexColor);
     });
 
-    await runTest(driver, version, 'Speed Value Test', 'Check if the speed value is correct', 'low', ["html", "js"], async () => {
+    await runTest(driver, browser, 'Speed Value Test', 'Check if the speed value is correct', 'low', ["html", "js"], async () => {
       const speed = await driver.findElement(By.id('speed')).getAttribute('value');
       const speedNumber = parseInt(speed);
       assert.strictEqual(1, speedNumber);
     });
+    console.log('Tests finished for ' + browser + ' version ' + (await driver.getCapabilities()).getBrowserVersion());
 
   } catch (e) {
-    console.error(`Error running tests on ${browser} version ${version}:`, e);
+    console.error(`Error running tests on ${browser} version ${(await driver.getCapabilities()).getBrowserVersion}:`, e);
   } 
   finally {
     if (driver) {
@@ -116,8 +125,4 @@ function rgbToHex(rgb: string): string {
   return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase()}`;
 }
 
-(async () => {
-  for (const version of versions) {
-    await runTests(Browser.FIREFOX, firefoxOptions, version);
-  }
-})();
+// runTests(Browser.FIREFOX, firefoxOptions);
