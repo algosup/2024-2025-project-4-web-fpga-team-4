@@ -1,6 +1,6 @@
 import { By, WebDriver, Browser, Builder } from 'selenium-webdriver';
-import { Options as EdgeOptions, ServiceBuilder } from 'selenium-webdriver/edge';
 import * as assert from 'assert';
+import { Options as EdgeOptions } from 'selenium-webdriver/edge';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -21,27 +21,21 @@ const results: {
 
 const logFilePath = path.join(__dirname, 'logs', dateString + '-edge-unit-test-html-css.json');
 
-const edgeVersion = process.env.EDGE_VERSION || 'latest';
-const driverPath = `C:/msedgedriver_${edgeVersion}/msedgedriver.exe`;
+// Versioning for Edge doesn't work the same way as Firefox/Chrome
+// const versions = ['113', '114', '115', '116', '117', '118', '119', '120', '121', '122', '123', '124', '125', '126', '127', '128', '129', '130', '131', '132', '133', '134'];
 
-(async () => {
-  let edgeOptions = new EdgeOptions();
-  edgeOptions.addArguments('--headless');
-  edgeOptions.setBrowserVersion(edgeVersion);
+// (async () => {
+//   for (const version of versions) {
+//     let edgeOptions = new EdgeOptions().addArguments('--headless').setBrowserVersion(`${version}`);
+//     await runTests(Browser.EDGE, edgeOptions);
+//   }
+// })();
 
-  const serviceBuilder = new ServiceBuilder(driverPath);
+const edgeOptions = new EdgeOptions().addArguments('--headless');
 
-  await runTests(Browser.EDGE, edgeOptions, serviceBuilder);
-})();
-
-async function runTests(browser: string, options: EdgeOptions, serviceBuilder: ServiceBuilder) {
+async function runTests(browser: string, options: any) {
   let driver: WebDriver;
-
-  driver = await new Builder()
-    .forBrowser(browser)
-    .setEdgeOptions(options)
-    .setEdgeService(serviceBuilder)
-    .build();
+  driver = await new Builder().forBrowser(browser).setEdgeOptions(options).build();
 
   try {
     await driver.get("https://two024-2025-project-4-web-fpga-team-4.onrender.com/client.html");
@@ -69,7 +63,6 @@ async function runTests(browser: string, options: EdgeOptions, serviceBuilder: S
       const speedNumber = parseInt(speed);
       assert.strictEqual(1, speedNumber);
     });
-
     console.log('Tests finished for ' + browser + ' version ' + (await driver.getCapabilities()).getBrowserVersion());
 
   } catch (e) {
@@ -130,3 +123,5 @@ function rgbToHex(rgb: string): string {
   const [r, g, b] = result.map(Number);
   return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase()}`;
 }
+
+runTests(Browser.EDGE, edgeOptions);
