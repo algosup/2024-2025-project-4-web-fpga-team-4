@@ -116,7 +116,16 @@ function rgbToHex(rgb: string): string {
 
 (async () => {
   for (const version of versions) {
-    let chromeOptions = new ChromeOptions().addArguments('--headless').setBrowserVersion(`${version}`);
+  let chromeOptions = new ChromeOptions()
+    .addArguments('--headless')
+    .addArguments('--no-sandbox')
+    .addArguments('--disable-gpu')
+    .addArguments('--remote-debugging-port=9222')
+    .addArguments('--disable-dev-shm-usage')
+    .addArguments('--user-data-dir=/tmp/chrome-profile')
+    .addArguments('--disk-cache-dir=/tmp/chrome-cache')
+    .addArguments('--disable-features=FileSystemAPI,IsolateOrigins,site-per-process')
+    .setBrowserVersion(`${version}`);
     await runTests(Browser.CHROME, chromeOptions);
   }
 })();
