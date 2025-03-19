@@ -17,7 +17,7 @@
           "generatedMessage": true,
           "code": "ERR_ASSERTION",
           "actual": "Client Side",
-          "expected": "",
+          "expected": "FPGA Web Visualizer",
           "operator": "strictEqual"
         }
       }
