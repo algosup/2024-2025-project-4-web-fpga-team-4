@@ -91,19 +91,13 @@ jobs:
           cd ./src/test
           npm install
           npm install typescript
-      - name: Install Firefox & GeckoDriver
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y firefox
-          wget -q https://github.com/mozilla/geckodriver/releases/latest/download/geckodriver-linux64.tar.gz
-          tar -xvzf geckodriver-linux64.tar.gz
-          chmod +x geckodriver
-          sudo mv geckodriver /usr/local/bin/
-      - name: Run Firefox Tests
+      - name:  Debug Firefox WebDriver
         run: |
           cd ./src/test
           npx tsc
-          for file in *firefox*.js; do node "$file"; done
+          for file in *firefox*.js; do node "$file" --log debug --log-path=firefox.log; done
+      - name: Show Firefox Logs
+        run: cat ./src/test/firefox.log
       - name: Upload Firefox Logs
         run: ls -l ./src/test/logs
       - name: Commit and push JSON logs to QA
