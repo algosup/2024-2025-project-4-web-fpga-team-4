@@ -114,10 +114,9 @@ function rgbToHex(rgb: string): string {
   const [r, g, b] = result.map(Number);
   return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase()}`;
 }
-
 (async () => {
   for (const version of versions) {
-    let firefoxOptions = new FirefoxOptions().addArguments('--headless').addArguments('--no-sandbox').setBrowserVersion(`${version}`)
-    await runTests(Browser.FIREFOX, firefoxOptions);
+    let firefoxOptions = new FirefoxOptions().addArguments('--headless').setBrowserVersion(`${version}`);
+    runTests(Browser.FIREFOX, firefoxOptions);
   }
 })();
