@@ -117,7 +117,7 @@ function rgbToHex(rgb: string): string {
 
 (async () => {
   for (const version of versions) {
-    let firefoxOptions = new FirefoxOptions().addArguments('--headless').setBrowserVersion(`${version}`)
+    let firefoxOptions = new FirefoxOptions().addArguments('--headless').addArguments('--no-sandbox').setBrowserVersion(`${version}`)
     await runTests(Browser.FIREFOX, firefoxOptions);
   }
 })();
