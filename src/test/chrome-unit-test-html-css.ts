@@ -23,14 +23,6 @@ const logFilePath = path.join(__dirname, 'logs', dateString + '-chrome-unit-test
 
 const versions = ['113', '114', '115', '116', '117', '118', '119', '120', '121', '122', '123', '124', '125', '126', '127', '128', '129', '130', '131', '132', '133'];
 
-(async () => {
-  for (const version of versions) {
-    let chromeOptions = new ChromeOptions().addArguments('--headless').setBrowserVersion(`${version}`);
-    await runTests(Browser.CHROME, chromeOptions);
-  }
-})();
-
-
 async function runTests(browser: string, options: any) {
   let driver: WebDriver;
   driver = await new Builder().forBrowser(browser).setChromeOptions(options).build();
@@ -121,3 +113,10 @@ function rgbToHex(rgb: string): string {
   const [r, g, b] = result.map(Number);
   return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase()}`;
 }
+
+(async () => {
+  for (const version of versions) {
+    let chromeOptions = new ChromeOptions().addArguments('--headless').setBrowserVersion(`${version}`);
+    await runTests(Browser.CHROME, chromeOptions);
+  }
+})();

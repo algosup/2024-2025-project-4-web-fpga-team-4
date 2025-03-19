@@ -25,7 +25,10 @@ const versions = ['116.0', '117.0', '118.0', '119.0', '120.0', '121.0', '122.0',
 
 (async () => {
   for (const version of versions) {
-    let firefoxOptions = new FirefoxOptions().addArguments('--headless').setBrowserVersion(`${version}`);
+    let firefoxOptions = new FirefoxOptions()
+      .addArguments('--headless')
+      .setBrowserVersion(`${version}`)
+      .setLoggingPrefs({ driver: 'ALL', server: 'ALL', browser: 'ALL' });
     await runTests(Browser.FIREFOX, firefoxOptions);
   }
 })();
