@@ -91,6 +91,14 @@ jobs:
           cd ./src/test
           npm install
           npm install typescript
+      - name: Install Firefox & GeckoDriver
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y firefox
+          wget -q https://github.com/mozilla/geckodriver/releases/latest/download/geckodriver-linux64.tar.gz
+          tar -xvzf geckodriver-linux64.tar.gz
+          chmod +x geckodriver
+          sudo mv geckodriver /usr/local/bin/
       - name: Run Firefox Tests
         run: |
           cd ./src/test

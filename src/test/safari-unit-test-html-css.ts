@@ -21,14 +21,17 @@ const results: {
 
 const logFilePath = path.join(__dirname, 'logs', dateString + '-safari-unit-test-html-css.json');
 
-const versions = ['15.0', '16.0', '17.0', '18.0'];
+// Versioning for Safari doesn't work the same way as Firefox/Chrome
+// const versions = ['15.0', '16.0', '17.0', '18.0'];
 
-(async () => {
-  for (const version of versions) {
-    let safariOptions = new SafariOptions().setBrowserVersion(`${version}`);
-    await runTests(Browser.SAFARI, safariOptions);
-  }
-})();
+// (async () => {
+//   for (const version of versions) {
+//     let safariOptions = new SafariOptions().setBrowserVersion(`${version}`);
+//     await runTests(Browser.SAFARI, safariOptions);
+//   }
+// })();
+
+let safariOptions = new SafariOptions();
 
 async function runTests(browser: string, options: any) {
   let driver: WebDriver;
@@ -120,3 +123,5 @@ function rgbToHex(rgb: string): string {
   const [r, g, b] = result.map(Number);
   return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase()}`;
 }
+
+runTests(Browser.SAFARI, safariOptions);
