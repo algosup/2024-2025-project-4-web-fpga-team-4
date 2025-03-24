@@ -19,6 +19,7 @@ This week had a significantly reduced project time, with only 3 hours and 30 min
 The team was asked to rate their experience for the week based on the following questions:
 
 - **How satisfied are you with this week? (Rate from 1 to 5)**
+
   - 1 - Very Unsatisfied
   - 2 - Unsatisfied
   - 3 - Neutral
