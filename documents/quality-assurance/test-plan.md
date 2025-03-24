@@ -4,33 +4,33 @@
 
 - [Test Plan - Web FPGA Team 4](#test-plan---web-fpga-team-4)
   - [Table of Contents](#table-of-contents)
-  - [1. **Introduction**](#1-introduction)
-  - [2. **Types**](#2-types)
-  - [3. **Testing**](#3-testing)
-    - [3.1. **Tools**](#31-tools)
-    - [3.2. **Environment**](#32-environment)
-      - [3.2.1. **Language**](#321-language)
-      - [3.2.2. **Browsers**](#322-browsers)
-  - [4. **Strategies**](#4-strategies)
-  - [5. **Timeline**](#5-timeline)
-    - [5.1. **Functional Testing**](#51-functional-testing)
-    - [5.2. **Unit Testing**](#52-unit-testing)
-    - [5.3. **Creation of logs**](#53-creation-of-logs)
-    - [5.4. **Test Execution Failing**](#54-test-execution-failing)
-  - [LAST. **Resources**](#last-resources)
+  - [1. Introduction](#1-introduction)
+  - [2. Types](#2-types)
+  - [3. Testing](#3-testing)
+    - [3.1. Tools](#31-tools)
+    - [3.2. Environment](#32-environment)
+      - [3.2.1. Language](#321-language)
+      - [3.2.2. Browsers](#322-browsers)
+  - [4. Strategies](#4-strategies)
+  - [5. Timeline](#5-timeline)
+    - [5.1. Functional Testing](#51-functional-testing)
+    - [5.2. Unit Testing](#52-unit-testing)
+    - [5.3. Creation of Logs](#53-creation-of-logs)
+    - [5.4. Test Execution Failing](#54-test-execution-failing)
+  - [6. Resources](#6-resources)
 
-## 1. **Introduction**
+## 1. Introduction
 
 This document is the test plan for the Web FPGA Team 4 project. It will provide all the necessary information about the tests that will be executed on the project.
 
 - **Project Name:** Web FPGA Team 4
 - **Version:** 0.5.0
-- **Date:** 02/28/2025
+- **Date:** 03/24/2025
 - **Prepared By:** [Guillaume DESPAUX](https://github.com/guillaumedespaux)
 
-## 2. **Types**
+## 2. Types
 
-The tests will be separated into 4 main categories:
+The tests will be separated into four main categories:
 
 - **HTML**
 
@@ -48,35 +48,35 @@ The tests will be separated into 4 main categories:
 
   The **parser** will be verified based on the technical specification provided by the technical leader Emilien Chinsy, ensuring that the right information coming from the `.sdf` file is converted into `.json` and is usable by the JavaScript.
 
-## 3. **Testing**
+## 3. Testing
 
-### 3.1. **Tools**
+### 3.1. Tools
 
-|Name|Description|Strengths|
-|---|---|---|
-|[Render](https://render.com)|Render is a tool that allows you to see the result of your code in [real time](https://two024-2025-project-4-web-fpga-team-4.onrender.com/client.html).|Each time the code is pushed on GitHub, the website will be automatically updated.|
-|[Figma](https://www.figma.com/)|Figma is a tool that allows creating [designs and prototypes](https://www.figma.com/design/A6rvzTJCZQQyznhdQbu753/FPGA-Web-App?node-id=0-1&t=d8dCzS37lNdcWJEG-1).|It will be used as a reference to create the current website.|
-|[Selenium](https://www.selenium.dev)|Selenium is a tool that allows automating the tests. It will be used to test the code in different environments.|Provides multiple browsers to apply tests on (Safari, Edge, Firefox, Chrome).|
-|[GitHub Actions](https://github.com/features/actions)|GitHub Actions is a tool that allows automating the tests.|Will be used to execute code, like reload render service and test directly on it.|
+| Name | Description | Strengths |
+| --- | --- | --- |
+| [Render](https://render.com) | Render is a tool that allows you to see the result of your code in [real time](https://two024-2025-project-4-web-fpga-team-4.onrender.com/client.html). | Each time the code is pushed on GitHub, the website will be automatically updated. |
+| [Figma](https://www.figma.com/) | Figma is a tool that allows creating [designs and prototypes](https://www.figma.com/design/A6rvzTJCZQQyznhdQbu753/FPGA-Web-App?node-id=0-1&t=d8dCzS37lNdcWJEG-1). | It will be used as a reference to create the current website. |
+| [Selenium](https://www.selenium.dev) | Selenium is a tool that allows automating the tests. It will be used to test the code in different environments. | Provides multiple browsers to apply tests on (Safari, Edge, Firefox, Chrome). |
+| [GitHub Actions](https://github.com/features/actions) | GitHub Actions is a tool that allows automating the tests. | Will be used to execute code, like reload render service and test directly on it. |
 
-### 3.2. **Environment**
+### 3.2. Environment
 
-#### 3.2.1. **Language**
+#### 3.2.1. Language
 
 All the tests will be executed using the TypeScript language, ensuring that the code returns the right information where some information has to be identified as `string` or `number`.
 
-#### 3.2.2. **Browsers**
+#### 3.2.2. Browsers
 
 The tests will be using different browsers on multiple versions to ensure that the code is responsive and usable on the majority of the browsers.
 
-|Browser|Oldest Version Tested|Last Version Tested|
-|---|:-:|:-:|
-|[Chrome](https://chromereleases.googleblog.com)|Version 111.0|Version 133.0|
-|[Firefox](https://www.mozilla.org/en-US/firefox/releases/)|Version 116.0|Version 136.0|
-|[Safari](https://developer.apple.com/documentation/safari-release-notes)|Version 15|Version 18|
-|[Edge](https://learn.microsoft.com/en-us/deployedge/microsoft-edge-release-schedule)|Version 112|Version 134|
+| Browser | Oldest Version Tested | Latest Version Tested |
+| --- | :-: | :-: |
+| [Chrome](https://chromereleases.googleblog.com) | Version 111.0 | Version 133.0 |
+| [Firefox](https://www.mozilla.org/en-US/firefox/releases/) | Version 116.0 | Version 136.0 |
+| [Safari](https://developer.apple.com/documentation/safari-release-notes) | Version 15 | Version 18 |
+| [Edge](https://learn.microsoft.com/en-us/deployedge/microsoft-edge-release-schedule) | Version 112 | Version 134 |
 
-## 4. **Strategies**
+## 4. Strategies
 
 The strategies for testing will include the following:
 
@@ -88,13 +88,13 @@ The strategies for testing will include the following:
 
   Test cases will be designed based on the requirements and specifications provided. Each test case will include the test steps, expected results, and actual results.
 
-  |Date|ID|Version|Category|Sub-Category|Name|Description|Passed|Expected|Actual|
-  |---|---|---|---|---|---|---|---|---|---|
-  |2025-03-14|1-Chrome-112-HTML|112|HTML|Text|Title Homepage|Check if the title is correct|False|FPGA Web Visualizer|Client Side|
-  |2025-03-14|2-Chrome-112-HTML|112|HTML|Size|Components' size|Check if the sizes are correct|True|||
+  | Date | ID | Version | Category | Sub-Category | Name | Description | Passed | Expected | Actual |
+  | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+  | 2025-03-14 | 1-Chrome-112-HTML | 112 | HTML | Text | Title Homepage | Check if the title is correct | False | FPGA Web Visualizer | Client Side |
+  | 2025-03-14 | 2-Chrome-112-HTML | 112 | HTML | Size | Components' size | Check if the sizes are correct | True | | |
 
 > [!NOTE]
-> The ID's are created based on the version of the browser and the category of the test.
+> The IDs are created based on the version of the browser and the category of the test.
 
 - **Test Data Management**
 
@@ -112,7 +112,7 @@ The strategies for testing will include the following:
 
   Defects found during testing will be logged, tracked, and managed using a defect tracking tool. Each defect will be assigned a priority and severity level.
 
-All the tests are stored in the `logs` folder and also reported in the [Google Sheet document](https://docs.google.com/spreadsheets/d/1xgYoYAgcqF_BHnA5TA75yskmWWzZK-nytPPwedQnjcw/edit?usp=sharing) to keep track of all the tests, they also have to be reported on [GitHub](https://github.com/algosup/2024-2025-project-4-web-fpga-team-4/issues) by issues when failed.
+All the tests are stored in the `logs` folder and also reported in the [Google Sheet document](https://docs.google.com/spreadsheets/d/1xgYoYAgcqF_BHnA5TA75yskmWWzZK-nytPPwedQnjcw/edit?usp=sharing) to keep track of all the tests. They also have to be reported on [GitHub](https://github.com/algosup/2024-2025-project-4-web-fpga-team-4/issues) as issues when failed.
 
 Here you can find all the tests that have been executed for:
 
@@ -121,13 +121,13 @@ Here you can find all the tests that have been executed for:
 - [Safari](https://docs.google.com/spreadsheets/d/1xgYoYAgcqF_BHnA5TA75yskmWWzZK-nytPPwedQnjcw/edit?gid=1276776256#gid=1276776256)
 - [Edge](https://docs.google.com/spreadsheets/d/1xgYoYAgcqF_BHnA5TA75yskmWWzZK-nytPPwedQnjcw/edit?gid=1878739529#gid=1878739529)
 
-## 5. **Timeline**
+## 5. Timeline
 
-### 5.1. **Functional Testing**
+### 5.1. Functional Testing
 
 The functional tests will be executed on the website to ensure that the `html` and `css` code is working as expected.
 
-The creation of the functional tests will be done in 3 steps:
+The creation of the functional tests will be done in three steps:
 
 1. Selection of the browser
    - Chrome
@@ -155,11 +155,11 @@ await runTest(driver, browser, Category.HTML, SubCategory.Text, 'Title Homepage'
 });
 ```
 
-### 5.2. **Unit Testing**
+### 5.2. Unit Testing
 
 The unit tests will be executed on the code to ensure that the `javascript` and `parser` code is working as expected.
 
-The creation of the unit tests will be done in 2 steps:
+The creation of the unit tests will be done in two steps:
 
 1. Creation of the test
     - Category
@@ -173,7 +173,7 @@ The creation of the unit tests will be done in 2 steps:
     - Passed
     - Error
 
-### 5.3. **Creation of logs**
+### 5.3. Creation of Logs
 
 - **When pushing**
   
@@ -182,7 +182,7 @@ The creation of the unit tests will be done in 2 steps:
   
   On the repository in the `dev` branch.
 
-The logs `.json` will be created and stored in the `logs` folder of the repository with this name convention:
+The logs `.json` will be created and stored in the `logs` folder of the repository with this naming convention:
 
 `date-of-the-test-browser-unit-test-html-css.json`
 
@@ -216,24 +216,24 @@ The logs will contain the following information:
   ]
   ```
 
-### 5.4. **Test Execution Failing**
+### 5.4. Test Execution Failing
 
 In case a test does not run properly, the software engineer and the quality assurance have access to commands to run the test on their computer.
 
-|OS|Terminal|Command|
-|---|---|---|
-|Windows|cmd|`npx tsc && for %i in (*.js) do node %i`|
-|Windows|powershell|`npx tsc; Get-ChildItem -Filter *.js; ForEach-Object { node $_.FullName }`|
-|Mac|Terminal|`npx tsc; for file in *.js; do node \"$file\"; done;`|
-|Linux|Terminal|`npx tsc; for file in *.js; do node \"$file\"; done;`|
+| OS | Terminal | Command |
+| --- | --- | --- |
+| Windows | cmd | `npx tsc && for %i in (*.js) do node %i` |
+| Windows | powershell | `npx tsc; Get-ChildItem -Filter *.js; ForEach-Object { node $_.FullName }` |
+| Mac | Terminal | `npx tsc; for file in *.js; do node \"$file\"; done;` |
+| Linux | Terminal | `npx tsc; for file in *.js; do node \"$file\"; done;` |
 
->[!NOTE]
+> [!NOTE]
 > If you use those commands make sure all the browsers are installed on your computer.
 
->[!WARNING]
+> [!WARNING]
 > You cannot test the `Safari` browser on a Windows computer.
 
-## LAST. **Resources**
+## 6. Resources
 
 - [Technical Specification](../technical-specifications/technical-specifications.md)
-- [SDF File](https://github.com/LeFl0w/ALGOSUP_POC/tree/update2)
+- [SDF Files](https://github.com/LeFl0w/ALGOSUP_POC/tree/update2)
