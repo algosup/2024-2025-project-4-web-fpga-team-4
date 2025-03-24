@@ -49,10 +49,12 @@
           - [JSON counterpart:](#json-counterpart-3)
           - [Example on the webpage:](#example-on-the-webpage-3)
       - [Visualising the elements and signals](#visualising-the-elements-and-signals)
-        - [elements](#elements)
-        - [signals](#signals)
+        - [Elements](#elements)
+        - [Connections](#connections)
+        - [Color Codes](#color-codes)
+      - [Tool-Bar buttons](#tool-bar-buttons)
     - [Testing](#testing)
-    - [Supported FPGA designs](#supported-fpga-designs)
+      - [Testing strategy](#testing-strategy)
     - [Risks and mitigation strategies](#risks-and-mitigation-strategies)
   - [Glossary](#glossary)
 
@@ -653,22 +655,178 @@ In this format:
 
 After parsing the `.JSON` file, the back-end needs to process the data before sending it back to the front-end to visualize it.
 
+The visualization will be made **using simple shapes for the elements and lines for the wires**. The team will focus on making the visualization **clear and easy to understand** before adding extra functionalities as the goal of this project is to teach students.
+
+The elements and signals will go **from left to right** as it is supposed to be used by a french organisation and European countries read from left to right. The page will be separated into four columns:
+
+##### Elements
+
+The elements will be created as **`<div>` html elements**. this element will contain **one `<div>` and a `<paragraph>` for each input or output socket** and **another `<parapraph>` that will contain it's name**.
+
+Here is a code example of how a LUT would be made.
+```HTML
+<div class="lut-element" id="lut175">
+ <div>
+  <p class="lut-id ">LUT 175</p>
+  <div class="lut-in-before used" id="lut-175-in1"></div>
+  <p class="lut-in">1</p>
+  <div class="lut-in-before used" id="lut-175-in3"></div>
+  <p class="lut-in">3</p>
+  <div class="lut-in-before used" id="lut-175-in4"></div>
+  <p class="lut-in">4</p><p class="lut-out used">0</p>
+  <div class="lut-out-after used" id="lut-175-out"></div>
+ </div>
+</div>
+```
+
+There will be four different columns containing the elements:
+
+- **Input**:
+  This will be the **leftmost column** and will contain in this order from top to bottom: **Async_Reset, userInput and clock**. The clock will be a fixed html element at the bottom of the screen in accordance with the request of our program manager. 
+
+- **LUT**:
+  This column will be the **second leftmost column**. It will contain all the **LUTs**.
+
+- **Flip-Flop**:
+  This column will be the **second rightmost** column. It will contain all the **Flip-Flops**.
+
+- **Output**:
+  This will be in the **rightmost column** and will contain the **user output**.
+
+All elements will be designed as so:
+![Example](./images/element-design.png)
+
+the **green circles represent inputs** and the **red circle represent outputs**. there will be **id's or text as needed to represent each input or output**. The text will be on the right of the inputs and on the left for the outputs.
+
 > [!Note]
-> Will do after the final version is confirmed.
+> the colors are not the colors we will use, they will be defined in the [Color Codes](#color-codes) section
 
-##### elements
+##### Connections
 
-##### signals
+The connections will be created using **`<div>` html elements** as using things like SVG paths make them immobile which causes issues.
+
+```HTML
+<div class="line used userInput-out" style="height: 0.6vh; width: 2.7400406504065034vw; margin-top: 36.69547786177106vh; margin-left: 10.661204268292684vw; background-color:var(--d-color); position: undefined; z-index: 0"></div>
+```
+it will mostly be defined by it's `style` parameters as such:
+
+- **height and width**:
+  These define, as their name implies, the height and width of the cable.
+
+- **margin-top and margin-left**:
+  As the cables are children of the main elements, they are placed using margins, so these elements place the cable correctly.
+
+- **background-color**:
+  This defines the cable's color.
+
+- **position**:
+  This defines the position of the cable. It will only be used for cables with special properties like the clock cable which is in a fixed position ot the bottom of the screen.
+
+- **z-index**:
+  This elements controls the z-index of the cables. It will also only be used for cables with special properties like the clock cable.
+  
+The cables will be straight lines connecting one element to the other.
+
+##### Color Codes
+
+Each element will be assigned a different color to help differentiate between them:
+
+| Element          | Default Color |
+| ---------------- | ------------- |
+| **Async_reset**  | Gray          |
+| **UserInput**    | Yellow        |
+| **Clock**        | Purple        |
+| **LUT**          | Green         |
+| **DFF**          | Red           |
+| **UserOutput**   | Blue          |
+
+The cable will be the same color as the element with the output to which it is connected.
+
+When an electrical signal is sent, a circle which will be the opposite color of the background (black if the background is white and vice-versa), will follow the cable to show where the electrical signal is currently.
+
+#### Tool-Bar buttons
+
+The tool-bar contains different buttons which are all defined in the Back-end, here are all the buttons and their functions.
+
+- **File Management**:
+  - `Import`: Imports a `.SDF` or a `.JSON` file into the web page for it to be displayed.
+  ![Import](./images/import-button.png)
+  - `Download`: Download the `.JSON` file created by the parser if the user uploaded a `.SDF` file.
+  ![Download](./images/download-button.png)
+
+- **Control**:
+  - `pause`: Pauses the electrical signal.
+  ![Pause](./images/pause-button.png)
+  - `play`: Resumes the electrical signal.
+  ![Play](./images/play-button.png)
+  - `back`: Moves to the previous frame.
+  ![Back](./images/previous-button.png)
+  - `forward`: Moves to the next frame.
+  ![Next](./images/next-button.png)
+  - `first`: Jumps to the first frame.
+  ![First](./images/first-button.png)
+  - `last`: Jumps to the last frame.
+  ![Last](./images/last-button.png)
+  
+
+- **Speed Controls**:
+  - `speed`: Displays the current speed setting.
+  ![Speed](./images/speed-display.png)
+  - `speedPlus`: Increases the speed.
+  ![SpeedUp](./images/speed-up-button.png)
+  - `speedMinus`: Decreases the speed.
+  ![SpeedDown](./images/speed-down-button.png)
+
+- **Zoom Controls**:
+  - `zoomIn`: Zooms in.
+  ![ZoomIn](./images/zoom-up-button.png)
+  - `zoomOut`: Zooms out.
+  ![ZoomOut](./images/zoom-down-button.png)
+  - `zoomLevel`: Displays the current zoom level.
+  ![ZoomDisplay](./images/zoom-display.png)
+
+- **Display Controls**:
+  - `hideButton`: Hides the sidebar.
+  ![Hide](./images/hide-button.png)
+  - `dataViewTrigger`: Toggles the visibility of the sidebar and adjusts the layout.
+  ![SideBarView](./images/dataview-trigger.png)
+  - `theme`: Switches between light and dark themes.
+  ![Theme](./images/theme-button.png)
+  - `settings`: Settings button (probably unused).
+  ![Settings](./images/settings-button.png)
 
 ### Testing
 
-> [!Note]
-> Will do later.
+The testing part of the project will be done using the following tools:
 
-### Supported FPGA designs
+|Name|Description|Strengths|
+|---|---|---|
+|[Render](https://render.com)|Render is a tool that allows you to see the result of your code in [real time](https://two024-2025-project-4-web-fpga-team-4.onrender.com/client.html).|Each times the code will be pushed on Github the website will be automatically updated.|
+|[Figma](https://www.figma.com/)|Figma is a tool that allows to create [designs and prototypes](https://www.figma.com/design/A6rvzTJCZQQyznhdQbu753/FPGA-Web-App?node-id=0-1&t=d8dCzS37lNdcWJEG-1).|It will be used as a reference to create the current website.|
+|[Selenium](https://www.selenium.dev)|Selenium is a tool that allows to automate the tests. It will be used to test the code in different environments.|Provides multiples browser to apply test on (Safari, Edge, Firefox, Chrome).|
+|[Github Actions](https://github.com/features/actions)|Github Actions is a tool that allows to automate the tests.|Will be used to execute code, like reload render service and test directly on it.|
 
-> [!Note]
-> Will do later.
+#### Testing strategy
+
+The strategies for testing will include the following:
+
+- **Hybrid Test Strategy**
+  An hybrid test strategy will be employed, combining both manual and automated testing. This ensures comprehensive coverage and early detection of issues for all parts of the project, including HTML, CSS, JavaScript, and the parser.
+
+- **Test Case Design**
+  Test cases will be designed based on the requirements and specifications provided. Each test case will include the test steps, expected results, and actual results.
+
+- **Test Data Management**
+  Test data will be created and managed to ensure that all possible scenarios are covered. This includes both positive and negative test cases.
+
+- **Test Automation**
+  Automation tools like Selenium and GitHub Actions will be used to automate repetitive test cases, ensuring faster and more reliable test execution.
+
+- **Continuous Integration**
+  Continuous integration practices will be followed to ensure that code changes are automatically tested and integrated into the main branch.
+
+- **Defect Management**
+  Defects found during testing will be logged, tracked, and managed using a defect tracking tool. Each defect will be assigned a priority and severity level.
 
 ### Risks and mitigation strategies
 
@@ -688,4 +846,3 @@ As any project, this project will face issues during development, including **te
 |<a id="4">[4]</a> Verilog|Verilog is a hardware description language (HDL)<sup><a href="#6">[6]</a></sup> used to model electronic systems.|[Wikipedia](https://en.wikipedia.org/wiki/Verilog)|
 |<a id="5">[5]</a> VHDL|VHDL (VHSIC Hardware Description Language) is a hardware description language that can model the behavior and structure of digital systems at multiple levels of abstraction, ranging from the system level down to that of logic gates, for design entry, documentation, and verification purposes.|[Wikipedia](https://en.wikipedia.org/wiki/VHDL)|
 |<a id="6">[6]</a> HDL|In computer engineering, a hardware description language (HDL) is a specialized computer language used to describe the structure and behavior of electronic circuits, usually to program field-programmable gate arrays (FPGAs).|[Wikipedia](https://en.wikipedia.org/wiki/Hardware_description_language)|
-
