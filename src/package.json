@@ -7,11 +7,7 @@
 	"type": "commonjs",
 	"main": "index.js",
 	"scripts": {
-		"client": "npm i && npx live-server --open=\"code/client/client.html\"",
-		"client-short": "npx live-server --open=\"code/client/client.html\"",
-		"server": "npm i && npx live-server --open=\"code/server/server.html\"",
-		"server-short": "npx live-server --open=\"code/server/server.html\"",
-		"convert-windows": "g++ file-converter/file-converter.cpp -o file-converter/file-converter -std=c++20 && .\\file-converter\\file-converter.exe"
+		"start": "npm i && npx live-server --open=\"code/client.html\""
 	},
 	"dependencies": {
 		"live-server": "^1.2.0"

@@ -1,21 +1,20 @@
 /* Applies Style to the Whole Page */
 
 :root {
-	--reset-color: #999997FF;
-	--d-color: #DDB72BFF;
-	--q-color: #2BB7DDFF;
-	--lut-color: #15BF9AFF;
-	--ff-color: #BF1518FF;
-	--clock-color: #AE15BFFF;
-	--connection-used: #00ff00ff;
+	--reset-color: #7D7D7DFF; 
+	--d-color: #C29000FF; 
+	--q-color: #007ACCFF; 
+	--lut-color: #009688FF; 
+	--ff-color: #D32F2FFF; 
+	--clock-color: #8E24AAFF;
+	--connection-used: #00C853FF; 
 	--connection-unused: var(--on-primary);
-	--element-width: 10svh;
-	--element-height: 18svh;
-	--in-element-height: 16svh;
-	--element-margin-top: 5svh;
-	--little-element-height: 12svh;
-	--in-little-element-height: 10svh;
-
+	--element-width: 10vh;
+	--element-height: 18vh;
+	--in-element-height: 16vh;
+	--element-margin-top: 5vh;
+	--little-element-height: 12vh;
+	--in-little-element-height: 10vh;
 }
 
 /* Applies Style to the Main Part of the Page */
@@ -28,9 +27,9 @@
 /* Applies Style to the Left Part of the Page */
 
 #main {
-	margin-top: 15svh;
+	margin-top: 15vh;
 	width: 80vw;
-	min-height: 85svh;
+	min-height: 85vh;
 
 	font-size: 1vh;
 }
@@ -72,6 +71,7 @@
 #input-container {
 	position: absolute;
 	margin-top: var(--element-margin-top);
+	z-index: 13;
 }
 
 .input-element{
@@ -139,6 +139,7 @@
 #output-container {
 	position: absolute;
 	margin-top: var(--element-margin-top);
+	z-index: 1;
 }
 
 .output-element{
@@ -204,6 +205,7 @@
 #lut-container {
 	position: absolute;
 	margin-top: var(--element-margin-top);
+	z-index: 1;
 }
 
 .lut-element{
@@ -240,17 +242,13 @@
 }
 
 .lut-in-before{
-	background-color: var(--connection-unused);
+	background-color: var(--connection-used);
 	align-self: center;
 	grid-column: 1;
 	width: 1.5vh;
 	aspect-ratio: 1/1;
 	border-radius: 50%;
 	margin-left: -.75vh;
-}
-
-.lut-in-before.used{
-	background-color: var(--connection-used);
 }
 
 
@@ -262,7 +260,7 @@
 }
 
 .lut-out-after{
-	background-color: var(--connection-unused);
+	background-color: var(--connection-used);
 	align-self: center;
 	grid-column: 4;
 	grid-row: 2;
@@ -272,14 +270,10 @@
 	margin-left: .9vh;
 }
 
-.lut-out-after.used{
-	background-color: var(--connection-used);
-}
-
 
 
 .lut-gnd-out-before{
-	background-color: var(--connection-unused);
+	background-color: var(--connection-used);
 	align-self: center;
 	grid-column: 1;
 	grid-row: 2;
@@ -287,10 +281,6 @@
 	aspect-ratio: 1/1;
 	border-radius: 50%;
 	margin-left: -.75vh;
-}
-
-.lut-gnd-out-before.used{
-	background-color: var(--connection-used);
 }
 
 
@@ -302,6 +292,7 @@
 #ff-container {
 	position: absolute;
 	margin-top: var(--element-margin-top);
+	z-index: 1;
 }
 
 .ff-element{
@@ -349,15 +340,10 @@
 	grid-column: 1;
 	width: 1.5vh;
 	aspect-ratio: 1/1;
-	background-color: var(--connection-unused);
+	background-color: var(--connection-used);
 	border-radius: 50%;
 	margin-left: -.75vh;
 }
-
-.ff-in-before.used{
-	background-color: var(--connection-used);
-}
-
 
 .ff-out {
 	text-align: end;
@@ -373,15 +359,10 @@
 	grid-row: 2;
 	width: 1.5vh;
 	aspect-ratio: 1/1;
-	background-color: var(--connection-unused);
+	background-color: var(--connection-used);
 	border-radius: 50%;
 	margin-left: .9vh;
 }
-
-.ff-out-after.used{
-	background-color: var(--connection-used);
-}
-
 
 /* Creates lines that connect the elements */
 
@@ -391,10 +372,19 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	z-index: -12000;
 }
 
-.line.used{
-	background-color: var(--connection-used);
+.line{
 	position: absolute;
+}
+
+
+#clock-back{
+	position: fixed;
+	width: 100vw;
+	height: 18vh;
+	top: 82vh;
+	left: 0;
+	z-index: 1;
+	background: linear-gradient(to top, rgb(from var(--tertiary) r g b / 1), rgb(from var(--primary) r g b / .1));
 }
