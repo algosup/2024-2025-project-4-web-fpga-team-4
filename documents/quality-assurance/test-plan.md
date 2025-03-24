@@ -5,13 +5,15 @@
 - [Test Plan - Web FPGA Team 4](#test-plan---web-fpga-team-4)
   - [Table of Contents](#table-of-contents)
   - [1. Introduction](#1-introduction)
-  - [2. Types](#2-types)
+  - [2. Functional Areas Covered](#2-functional-areas-covered)
   - [3. Testing](#3-testing)
     - [3.1. Tools](#31-tools)
     - [3.2. Environment](#32-environment)
       - [3.2.1. Language](#321-language)
       - [3.2.2. Browsers](#322-browsers)
   - [4. Strategies](#4-strategies)
+    - [4.1. Success/Failure Criteria](#41-successfailure-criteria)
+    - [4.2. Testing Strategies](#42-testing-strategies)
   - [5. Timeline](#5-timeline)
     - [5.1. Functional Testing](#51-functional-testing)
     - [5.2. Unit Testing](#52-unit-testing)
@@ -28,9 +30,9 @@ This document is the test plan for the Web FPGA Team 4 project. It will provide 
 - **Date:** 03/24/2025
 - **Prepared By:** [Guillaume DESPAUX](https://github.com/guillaumedespaux)
 
-## 2. Types
+## 2. Functional Areas Covered
 
-The tests will be separated into four main categories:
+Testing will be categorized into different types to ensure comprehensive coverage.
 
 - **HTML**
 
@@ -47,6 +49,20 @@ The tests will be separated into four main categories:
 - **Parser**
 
   The **parser** will be verified based on the technical specification provided by the technical leader Emilien Chinsy, ensuring that the right information coming from the `.sdf` file is converted into `.json` and is usable by the JavaScript.
+
+The following key functionalities will be tested:
+
+- **UI Rendering**: Ensuring `html` & `css` match the approved Figma design.
+
+- **Interactivity**: Testing user interactions such as clicks, form inputs, and dynamic content.
+
+- **Data Processing**: Verifying that .sdf files are correctly converted into `.json` for visualization.
+
+- **Responsiveness**: Ensuring UI adapts properly to different screen sizes.
+
+- **Error Handling**: Validating how the system behaves with invalid inputs.
+
+- **Cross-Browser Compatibility**: Testing in different browsers and versions.
 
 ## 3. Testing
 
@@ -78,6 +94,30 @@ The tests will be using different browsers on multiple versions to ensure that t
 
 ## 4. Strategies
 
+### 4.1. Success/Failure Criteria
+
+A test is considered passed if:
+
+- The expected and actual results match.
+- There are no UI rendering issues or broken layouts.
+- No console errors appear in the browser developer tools.
+- Automated tests execute without unexpected failures.
+
+A test is considered failed if:
+
+- The expected and actual results do not match.
+- There are missing elements or incorrect styles.
+- Errors appear in logs or UI crashes occur.
+- Automated scripts detect inconsistencies.
+
+Defect Severity Levels:
+
+- **High**: Major feature is broken or not working.
+- **Medium**: UI issues affecting usability.
+- **Low**: Minor visual defects with no functional impact.
+
+### 4.2. Testing Strategies
+
 The strategies for testing will include the following:
 
 - **Hybrid Test Strategy**
@@ -106,7 +146,7 @@ The strategies for testing will include the following:
 
 - **Continuous Integration**
 
-  Continuous integration practices will be followed to ensure that code changes are automatically tested and integrated into the main branch.
+  Continuous integration practices will be followed to ensure that code changes are automatically tested and integrated before being merge into the main branch.
 
 - **Defect Management**
 
@@ -149,7 +189,7 @@ The creation of the functional tests will be done in three steps:
 Example of a test:
 
 ```typescript
-await runTest(driver, browser, Category.HTML, SubCategory.Text, 'Title Homepage', 'Check if the title is correct', Priority.HIGH, async () => {
+await runTest(driver, browser, Category.HTML, SubCategory.Text, 'Title Homepage', 'Check if the title is correct', Priority.LOW, async () => {
   const title = await driver.getTitle();
   assert.strictEqual("Client Side", title);
 });
@@ -202,7 +242,7 @@ The logs will contain the following information:
         "sub-category": "Text",
         "name": "Home Page Title",
         "description": "Check if the title is correct",
-        "priority": "high",
+        "priority": "low",
         "passed": false,
         "error": {
           "generatedMessage": true,
@@ -235,5 +275,6 @@ In case a test does not run properly, the software engineer and the quality assu
 
 ## 6. Resources
 
+- [Figma Design](https://www.figma.com/design/A6rvzTJCZQQyznhdQbu753/FPGA-Web-App?node-id=0-1&t=d8dCzS37lNdcWJEG-1)
 - [Technical Specification](../technical-specifications/technical-specifications.md)
 - [SDF Files](https://github.com/LeFl0w/ALGOSUP_POC/tree/update2)
