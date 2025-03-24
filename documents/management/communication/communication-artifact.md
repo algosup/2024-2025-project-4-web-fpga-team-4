@@ -12,6 +12,9 @@
     - [**2nd Message**](#2nd-message)
     - [**2nd Response**](#2nd-response)
   - [**Summary of Key Information**](#summary-of-key-information)
+    - [**3rd Message**](#3rd-message)
+    - [**3rd Response**](#3rd-response)
+    - [**4th Message**](#4th-message)
 
 ## Introduction
 
@@ -150,3 +153,46 @@ I have added SDF information in the repository. Let me know if this is sufficien
 
 ---
 
+### **3rd Message**
+
+**Subject:** Open-Source 
+**Date:** 13/03/25  
+**Sender:** Thibaud Marlier  
+**Recipient:** Florent Manni
+
+**Message:**
+
+Hello Florent, \
+We have a question regarding the accessibility of the project's source code. \
+We are unsure whether the project should be open source or remain private. You mentioned that the project was for CNES, but should it be kept internal, or can it serve as a foundation for further contributions? \
+Should the project remain restricted to our team, ALGOSUP, and CNES, or is there potential for external collaboration? We want to clarify this to prevent any unintended leaks, noise, or unwanted contributions.
+Looking forward to your guidance. \
+Best regards.
+
+### **3rd Response**
+
+**Date:** 05/07/25 \
+**Sender:** Florent  
+**Recipient:** Thibaud Marlier
+
+**Message:** 
+
+Hi, this project is opensource and public. You can/may put it onlne
+
+--- 
+
+### **4th Message**
+
+**Subject:** Open-Source 
+**Date:** 13/03/25  
+**Sender:** Thibaud Marlier  
+**Recipient:** Florent Manni
+
+**Message:**
+
+Hello Florent, \
+Our development team had an interesting question technical wise. \
+Please, could you explain why some examples (1ff_VTR, 2ffs_VTR) have a "latch_Q_output" that goes to two different elements but in other examples (1ff_no_rst_VTR, 2ffs_no_rst_VTR, 5ffs_VTR), the "latch_Q_output" is only connected to one element. \
+This led to our team being a bit confused on how to tackle this possibility. \
+Thank you, \
+Best Regard.
