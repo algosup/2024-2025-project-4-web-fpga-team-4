@@ -35,8 +35,8 @@ body {
 }
 
 #logo{
-	margin-left: .5svw;
-	height: 6svh;
+	margin-left: .5vw;
+	height: 6vh;
 }
 
 
@@ -47,12 +47,12 @@ body {
 	position: fixed;
 	top: 0;
 	left: 0;
-	width: 100svw;
-	height: 15dvh;
+	width: 100vw;
+	height: 15vh;
 	z-index: 1000;
 
 
-	font-size: 3dvh;
+	font-size: 3vh;
 	font-weight: bold;
 	color: var(--icons);
 	margin: 0;
@@ -80,9 +80,9 @@ body {
 /* Applies Style to the Top Bar of the Page */
 
 .top-bar {
-	height: 5dvh;
+	height: 5vh;
 	aspect-ratio: 1;
-	font-size: 4dvh;
+	font-size: 4vh;
 	background-color: transparent;
 	border: .3vh solid var(--icons);
 	border-radius: 1vh;
@@ -123,7 +123,7 @@ input{
 	justify-content: start;
 
 	div {
-		margin-left: 1svw;
+		margin-left: 1vw;
 	}
 }
 
@@ -134,7 +134,7 @@ input{
 	justify-content: start;
 
 	div {
-		margin-left: .5svw;
+		margin-left: .5vw;
 	}
 
 }
@@ -190,10 +190,10 @@ input{
 	grid-column: 3;
 	grid-row: 2;
 	justify-content: start;
-	margin-top: 1svh;
+	margin-top: 1vh;
 
 	div {
-		margin-left: .5svw;
+		margin-left: .5vw;
 	}
 }
 
@@ -204,7 +204,7 @@ input{
 	justify-content: end;
 
 	div {
-		margin-right: 1svw;
+		margin-right: 1vw;
 	}
 }
 
@@ -230,7 +230,7 @@ input{
 		align-items: center;
 		justify-content: center;
 
-		border-radius: 1svh;
+		border-radius: 1vh;
 	}
 }
 
@@ -242,6 +242,6 @@ input{
 	justify-content: end;
 
 	div {
-		margin-right: 1svw;
+		margin-right: 1vw;
 	}
 }

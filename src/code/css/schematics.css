@@ -9,12 +9,12 @@
 	--clock-color: #8E24AAFF;
 	--connection-used: #00C853FF; 
 	--connection-unused: var(--on-primary);
-	--element-width: 10svh;
-	--element-height: 18svh;
-	--in-element-height: 16svh;
-	--element-margin-top: 5svh;
-	--little-element-height: 12svh;
-	--in-little-element-height: 10svh;
+	--element-width: 10vh;
+	--element-height: 18vh;
+	--in-element-height: 16vh;
+	--element-margin-top: 5vh;
+	--little-element-height: 12vh;
+	--in-little-element-height: 10vh;
 }
 
 /* Applies Style to the Main Part of the Page */
@@ -27,9 +27,9 @@
 /* Applies Style to the Left Part of the Page */
 
 #main {
-	margin-top: 15svh;
+	margin-top: 15vh;
 	width: 80vw;
-	min-height: 85svh;
+	min-height: 85vh;
 
 	font-size: 1vh;
 }
