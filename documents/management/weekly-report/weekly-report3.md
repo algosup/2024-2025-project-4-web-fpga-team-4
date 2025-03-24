@@ -37,6 +37,8 @@ The team was asked to rate their experience for the week based on the following 
 
 The team reported steady progress, but some difficulties arose in **staying focused**. The **delayed review of the Functional Specifications** led to a time crunch, impacting the design phase schedule. However, client feedback on the first prototype was **overall positive**, despite requesting for a few changes.  
 
+More details on the satisfaction survey can be found [here.](https://docs.google.com/spreadsheets/d/1EJIGbOufF86FP-Pb6Y5z0wuYymK0fEmoFKtg16JfIHg/edit?usp=sharing)
+
 ## **Project Progress**  
 
 - **Finalization and Submission of Functional Specifications**  
