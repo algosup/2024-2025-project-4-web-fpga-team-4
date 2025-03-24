@@ -35,7 +35,7 @@ function displayOutput(name) {
 	let outputContainer = document.getElementById('output-container');
 	let outputElement = document.createElement('div');
 	let outputInElement = document.createElement('div');
-	outputInElement.innerHTML = '<p class="output-name output-data">' + name + '</p><div class="output-in-before"  id="q-0-in"></div><p class="output-in used">In</p>';
+	outputInElement.innerHTML = '<p class="output-name output-data">' + name + '</p><div class="output-in-before"  id="q-0-in"></div><p class="output-in">In</p>';
 	outputElement.className = 'output-element q-element';
 	outputElement.appendChild(outputInElement);
 	outputContainer.appendChild(outputElement);
@@ -57,18 +57,16 @@ function displayLUT(id, in0, in1, in2, out) {
 	let lutInElement = document.createElement('div');
 	lutElement.className = 'lut-element';
 	lutElement.id = 'lut' + id.toString();
-	let outState = out ? 'used' : 'unused';
 	let id0Para = `<p class="lut-id ">LUT ${id.toString()}</p>`;
-	let in0Para = `<div class="lut-in-before used" id="lut-${id.toString()}-in${in0}"></div><p class="lut-in">${in0}</p>`;
-	let in1Para = `<div class="lut-in-before used" id="lut-${id.toString()}-in${in1}"></div><p class="lut-in">${in1}</p>`;
-	let in2Para = `<div class="lut-in-before used" id="lut-${id.toString()}-in${in2}"></div><p class="lut-in">${in2}</p>`;
-	// let in3Para = `<div class="lut-in-before ${in3State}" id="lut-${id.toString()}-in3"></div><p class="lut-in">3</p>`;
+	let in0Para = `<div class="lut-in-before" id="lut-${id.toString()}-in${in0}"></div><p class="lut-in">${in0}</p>`;
+	let in1Para = `<div class="lut-in-before" id="lut-${id.toString()}-in${in1}"></div><p class="lut-in">${in1}</p>`;
+	let in2Para = `<div class="lut-in-before" id="lut-${id.toString()}-in${in2}"></div><p class="lut-in">${in2}</p>`;
 	if (in0 === null && in1 === null && in2 === null) {
-		out0Para = `<p class="lut-gnd-out ${outState}">Out</p><div class="lut-gnd-out-before ${outState}" id="lut-${id.toString()}-out"></div>`;
+		out0Para = `<p class="lut-gnd-out">Out</p><div class="lut-gnd-out-before" id="lut-${id.toString()}-out"></div>`;
 		lutInElement.innerHTML = id0Para + out0Para;
 	} else {
-		let out0Para = `<p class="lut-out ${outState}">0</p><div class="lut-out-after ${outState}" id="lut-${id.toString()}-out"></div>`;
-		lutInElement.innerHTML = id0Para + in0Para + in1Para + in2Para /*+ in3Para */+ out0Para;
+		let out0Para = `<p class="lut-out">0</p><div class="lut-out-after" id="lut-${id.toString()}-out"></div>`;
+		lutInElement.innerHTML = id0Para + in0Para + in1Para + in2Para /*+ in3Para */ + out0Para;
 	}
 	lutElement.appendChild(lutInElement);
 	lutContainer.appendChild(lutElement);
@@ -87,15 +85,11 @@ function displayFlipFlop(id, dataIn, clockIn, out) {
 	let ffElement = document.createElement('div');
 	let ffInElement = document.createElement('div');
 	ffElement.className = 'ff-element';
-	let dataInState = dataIn ? 'used' : 'unused';
-	let clockInState = clockIn ? 'used' : 'unused';
-	let outState = out ? 'used' : 'unused';
 	let id0 = `<p class="ff-id ">Flip Flop ${id.toString()}</p>`;
-	let in0 = `<div class="ff-in-before ${dataInState}" id="ff-${id.toString()}-0"></div><p class="ff-in">Data</p>`;
-	let in1 = `<div class="ff-in-before ${clockInState}" id="ff-${id.toString()}-1"></div><p class="ff-in">Clock</p>`;
-	let out0 = `<p class="ff-out">Out</p><div class="ff-out-after ${outState}" id="ff-${id.toString()}-out"></div>`;
+	let in0 = `<div class="ff-in-before" id="ff-${id.toString()}-0"></div><p class="ff-in">Data</p>`;
+	let in1 = `<div class="ff-in-before" id="ff-${id.toString()}-1"></div><p class="ff-in">Clock</p>`;
+	let out0 = `<p class="ff-out">Out</p><div class="ff-out-after" id="ff-${id.toString()}-out"></div>`;
 	ffInElement.innerHTML = id0 + in0 + in1 + out0;
 	ffElement.appendChild(ffInElement);
 	ffContainer.appendChild(ffElement);
 }
-

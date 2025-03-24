@@ -62,7 +62,6 @@ function getLUTFromString(luts, element) {
 	} else {
 		// If the LUT doesn't exist, create a new one and add the connection
 		let newLut = { id: newLutId, connections: [newConnection] };
-		console.log(newLut)
 		luts.push(newLut);
 	}
 }
@@ -283,7 +282,6 @@ openFolderInput.addEventListener('change', function (event) {
 					if (["userInput", "userOutput", "Clock", "Async_reset"].includes(elements.connectionTiming.first.type)) {
 						getIOFromString(ios, elements.connectionTiming.first);
 					} else if (elements.connectionTiming.first.type === "DFF") {
-						console.log(elements.connectionTiming.first)
 						getFlipFlopFromString(flipFlops, elements.connectionTiming.first);
 					} else if (["lut", "lut-gnd"].includes(elements.connectionTiming.first.type)) {
 						getLUTFromString(luts, elements.connectionTiming.first);
@@ -292,7 +290,6 @@ openFolderInput.addEventListener('change', function (event) {
 					if (["userInput", "userOutput", "Clock", "Async_reset"].includes(elements.connectionTiming.second.type)) {
 						getIOFromString(ios, elements.connectionTiming.second);
 					} else if (elements.connectionTiming.second.type === "DFF") {
-						console.log(elements.connectionTiming.second);
 						getFlipFlopFromString(flipFlops, elements.connectionTiming.second);
 					} else if (["lut", "lut-gnd"].includes(elements.connectionTiming.second.type)) {
 						getLUTFromString(luts, elements.connectionTiming.second);

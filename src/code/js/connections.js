@@ -40,6 +40,8 @@ function drawLine(height, width, top, left, colorValue) {
 			position = colorValue === 'clock-above-sticky' ? 'fixed' : undefined;
 			zIndex = colorValue.startsWith('clock-above')  ? '12' : '0';
 			break;
+		case 'if': // FF Test
+			color = testColors[ffToLutIndex];
 		default:
 			break;
 	}
@@ -276,6 +278,57 @@ function drawAsyncBase() {
 }
 
 
+function drawFlipflopToLutConnection(obj1, obj2) {
+
+	console.log(obj1, obj2)
+	
+	// Get the bounding rectangles of the two objects
+	let outB = document.getElementById(obj1).getBoundingClientRect();
+	let inB = document.getElementById(obj2).getBoundingClientRect();
+
+	// Convert the pixel values to viewport units
+	const output = { top: convertPxToVh(outB.top), left: convertPxToVw(outB.left), bottom: convertPxToVh(outB.bottom), right: convertPxToVw(outB.right) };
+	const input = { top: convertPxToVh(inB.top), left: convertPxToVw(inB.left), bottom: convertPxToVh(inB.bottom), right: convertPxToVw(inB.right) };
+
+	// Calculate the center of the output and input objects
+	let outputCenterHeight = (output.bottom - output.top) / 2;
+	let inputCenterHeight = (input.bottom - input.top) / 2;
+
+	// Calculate the height difference between the two objects
+	let heightDiff = output.bottom > output.top ? output.bottom - output.top : output.top - output.bottom;
+
+	let sizeOut = output.right - output.left;
+	let sizeIn = input.right - input.left;
+
+	// Calculate the distance between the two objects
+	let distW = input.left > output.right ? (input.left - output.right) / 2 : (output.left - input.right) / 2;
+	let distH = output.top > input.top ? (output.top + (heightDiff * 1.4) - input.bottom) : input.top + heightDiff - output.bottom;
+
+	// Calculate the center of the output and input objects
+	let outputCenter = output.top + outputCenterHeight - .3;
+	let inputCenter = input.top + inputCenterHeight - .3;
+
+	let delayDistance = ffToLutIndex * 1 + 1
+
+	let dist = (output.left - input.left) + 4 + delayDistance;
+
+	let height;
+	if (output.top > input.top) {
+		height = (distH + 11);
+	} else {
+		height = distH - 11;
+	}
+
+	// Draw the connection
+	drawLine(.6, 4, outputCenter, output.left, 'ff');
+	drawLine(11.6, .3, outputCenter, output.left + 4, 'ff');
+	drawLine(.6, dist, outputCenter + 11, input.left - delayDistance, 'ff');
+	drawLine(height, .3, output.top > input.top ? inputCenter : outputCenter + 11.6, input.left - delayDistance, 'ff');
+	drawLine(.6, delayDistance, inputCenter, input.right - delayDistance - .5, 'ff');
+	ffToLutIndex++;
+}
+
+
 
 
 
@@ -300,5 +353,7 @@ function drawConnectionSelect(obj1, obj2) {
 		drawLutGnd(obj1);
 	} else if (ob1 === 'ff' && ob2 === 'q') {
 		drawBasicConnection(obj1, obj2);
+	} else if (ob1 === 'ff' && ob2 === 'lut') {
+		drawFlipflopToLutConnection(obj1, obj2);
 	}
 }

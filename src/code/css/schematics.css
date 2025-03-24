@@ -242,17 +242,13 @@
 }
 
 .lut-in-before{
-	background-color: var(--connection-unused);
+	background-color: var(--connection-used);
 	align-self: center;
 	grid-column: 1;
 	width: 1.5vh;
 	aspect-ratio: 1/1;
 	border-radius: 50%;
 	margin-left: -.75vh;
-}
-
-.lut-in-before.used{
-	background-color: var(--connection-used);
 }
 
 
@@ -264,7 +260,7 @@
 }
 
 .lut-out-after{
-	background-color: var(--connection-unused);
+	background-color: var(--connection-used);
 	align-self: center;
 	grid-column: 4;
 	grid-row: 2;
@@ -274,14 +270,10 @@
 	margin-left: .9vh;
 }
 
-.lut-out-after.used{
-	background-color: var(--connection-used);
-}
-
 
 
 .lut-gnd-out-before{
-	background-color: var(--connection-unused);
+	background-color: var(--connection-used);
 	align-self: center;
 	grid-column: 1;
 	grid-row: 2;
@@ -289,10 +281,6 @@
 	aspect-ratio: 1/1;
 	border-radius: 50%;
 	margin-left: -.75vh;
-}
-
-.lut-gnd-out-before.used{
-	background-color: var(--connection-used);
 }
 
 
@@ -352,15 +340,10 @@
 	grid-column: 1;
 	width: 1.5vh;
 	aspect-ratio: 1/1;
-	background-color: var(--connection-unused);
+	background-color: var(--connection-used);
 	border-radius: 50%;
 	margin-left: -.75vh;
 }
-
-.ff-in-before.used{
-	background-color: var(--connection-used);
-}
-
 
 .ff-out {
 	text-align: end;
@@ -376,15 +359,10 @@
 	grid-row: 2;
 	width: 1.5vh;
 	aspect-ratio: 1/1;
-	background-color: var(--connection-unused);
+	background-color: var(--connection-used);
 	border-radius: 50%;
 	margin-left: .9vh;
 }
-
-.ff-out-after.used{
-	background-color: var(--connection-used);
-}
-
 
 /* Creates lines that connect the elements */
 
@@ -396,8 +374,7 @@
 	left: 0;
 }
 
-.line.used{
-	background-color: var(--connection-used);
+.line{
 	position: absolute;
 }
 

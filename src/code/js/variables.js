@@ -92,3 +92,6 @@ function resetSchematics() {
 	lastLutAsync = null;
 	scrollTo(0, 0);
 }
+
+const testColors = [ '#FF0000', '#00FF00', '#0000FF', '#FFFF00'];
+let ffToLutIndex = 0;
