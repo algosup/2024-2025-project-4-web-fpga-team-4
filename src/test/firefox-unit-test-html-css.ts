@@ -4,16 +4,41 @@ import { Options as FirefoxOptions } from 'selenium-webdriver/firefox';
 import * as fs from 'fs';
 import * as path from 'path';
 
+enum Category {
+  HTML = 'HTML',
+  CSS = 'CSS',
+  JS = 'JavaScript',
+  PARSER = 'Parser'
+}
+enum SubCategory {
+  Colors = 'Colors',
+  Light = 'Light',
+  Dark = 'Dark',
+  Text = 'Text',
+  Size = 'Size',
+  Buttons = 'Buttons',
+  Value = 'Value',
+  Components = 'Components',
+  Wire = 'Wire',
+}
+
+enum Priority {
+  HIGH = 'high',
+  MEDIUM = 'medium',
+  LOW = 'low'
+}
+
 const date: Date = new Date();
 const dateString: string = date.toISOString().split(/T/)[0];
 const results: { 
   browser: string,
   version: string | undefined,
   test: {
+    category: Category,
+    subCategory: SubCategory | null,
     name: string,
     description: string,
-    priority: string,
-    type: string[],
+    priority: Priority,
     passed: boolean,
     error?: any
   }
@@ -30,25 +55,25 @@ async function runTests(browser: string, options: any) {
   try {
     await driver.get("https://two024-2025-project-4-web-fpga-team-4.onrender.com/client.html");
 
-    await runTest(driver, browser, 'Title Test', 'Check if the title is correct', 'high', ["typo"], async () => {
+    await runTest(driver, browser, Category.HTML, SubCategory.Text, 'Title Homepage', 'Check if the title is correct', Priority.HIGH, async () => {
       const title = await driver.getTitle();
       assert.strictEqual("Client Side", title);
     });
 
     await driver.manage().setTimeouts({ implicit: 10000 });
 
-    await runTest(driver, browser, 'Background Color Test', 'Check if the background color is correct', 'medium', ["css", "html"], async () => {
+    await runTest(driver, browser, Category.CSS, SubCategory.Colors, 'Background Color Test', 'Check if the background color is correct', Priority.MEDIUM, async () => {
       const description = await driver.findElement(By.id('description')).getCssValue('background-color');
       assert.strictEqual("rgb(27, 38, 59)", description);
     });
     
-    await runTest(driver, browser, 'Background Color Test', 'Check if the background color is correct in hex', 'medium', ["css"],  async () => {
+    await runTest(driver, browser, Category.CSS, SubCategory.Colors, 'Background Color Test', 'Check if the background color is correct in hex', Priority.MEDIUM, async () => {
       const description = await driver.findElement(By.id('description')).getCssValue('background-color');
       const hexColor = rgbToHex(description);
       assert.strictEqual("#1B263B", hexColor);
     });
 
-    await runTest(driver, browser, 'Speed Value Test', 'Check if the speed value is correct', 'low', ["html", "js"], async () => {
+    await runTest(driver, browser, Category.HTML, SubCategory.Value, 'Speed Value Test', 'Check if the speed value is correct', Priority.LOW, async () => {
       const speed = await driver.findElement(By.id('speed')).getAttribute('value');
       const speedNumber = parseInt(speed);
       assert.strictEqual(1, speedNumber);
@@ -66,17 +91,18 @@ async function runTests(browser: string, options: any) {
   }
 }
 
-async function runTest(driver: WebDriver, browserName: string, testName: string, testDescription: string, testPriority: string, testTypes: string[], testFn: () => Promise<void>) {
+async function runTest(driver: WebDriver, browserName: string, testCategory: Category, testSubCategory: SubCategory ,testName: string, testDescription: string, testPriority: Priority, testFn: () => Promise<void>) {
   try {
     await testFn();
     results.push({ 
       browser: browserName,
       version: (await driver.getCapabilities()).getBrowserVersion(),
       test: {
+        category: testCategory,
+        subCategory: testSubCategory,
         name: testName,
         description: testDescription,
         priority: testPriority,
-        type: testTypes,
         passed: true
       }
     });
@@ -85,10 +111,11 @@ async function runTest(driver: WebDriver, browserName: string, testName: string,
       browser: browserName,
       version: (await driver.getCapabilities()).getBrowserVersion(),
       test: {
+        category: testCategory,
+        subCategory: testSubCategory,
         name: testName,
         description: testDescription,
         priority: testPriority,
-        type: testTypes,
         passed: false,
         error: e
       }
