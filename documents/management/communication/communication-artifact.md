@@ -15,6 +15,7 @@
     - [**3rd Message**](#3rd-message)
     - [**3rd Response**](#3rd-response)
     - [**4th Message**](#4th-message)
+    - [**4th Response**](#4th-response)
 
 ## Introduction
 
@@ -129,7 +130,7 @@ Thank you very much for your help.
 
 ### **2nd Response**
 
-**Date:** 05/07/25 \
+**Date:** 05/03/25 \
 **Sender:** Florent  
 **Recipient:** Thibaud Marlier
 
@@ -196,3 +197,15 @@ Please, could you explain why some examples (1ff_VTR, 2ffs_VTR) have a "latch_Q_
 This led to our team being a bit confused on how to tackle this possibility. \
 Thank you, \
 Best Regard.
+
+### **4th Response**
+
+**Date:** 24/03/25 \
+**Sender:** Florent  
+**Recipient:** Thibaud Marlier
+
+**Message:** 
+
+Hi, this is related to the way the tool is handling reset ( to be true it doesn't handle flipflop with reset). \
+So instead of connecting the reset signal to the reset pin of the flipflop it tries to connect the reset on input signals. \
+You should only consider examples without reset in it. It is easier to understand.
