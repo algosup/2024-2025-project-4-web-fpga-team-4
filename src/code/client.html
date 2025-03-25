@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="./img/fpga-explorer.png" type="image/x-icon">
+	<script src="https://kit.fontawesome.com/d57f386eaf.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="./css/tool-bar.css">
+	<link rel="stylesheet" href="./css/data-display.css">
+	<link rel="stylesheet" href="./css/schematics.css">
+	<title>FPGA Web Visualizer</title>
+</head>
+
+<body>
+	<div id="description">
+		<div class="data-icon">
+			<img src="./img/fpga-explorer.png" id="logo" alt="logo">
+			<div id="open-folder"><i class="fa-solid top-bar fa-folder-open "></i>
+			<input type="file" id="open-folder-input"></div>
+			<div id="upload-file"><i class="fa-solid top-bar fa-upload "></i></div>
+		</div>
+		<div class="control-icon-up">
+			<div id="pause"><i class="fa-solid top-bar fa-circle-pause "></i></div>
+			<div id="play"><i class="fa-solid top-bar fa-circle-play "></i></div>
+			<div class="speed-control">
+				<div id="speed">x1</div>
+				<div id="speed-plus" class="speed"><i class="fa-solid fa-plus"></i></div>
+				<div id="speed-minus" class="speed"><i class="fa-solid fa-minus"></i></div>
+			</div>
+		</div>
+		<div class="control-icon-down">
+			<div id="first"><i class="fa-solid top-bar fa-rotate-left "></i></div>
+			<div id="back"><i class="fa-solid top-bar fa-reply "></i></div>
+			<div id="forward"><i class="fa-solid top-bar fa-share "></i></div>
+			<div id="last"><i class="fa-solid top-bar fa-rotate-right "></i></div>
+		</div>
+		<div class="zoom-icon">
+			<div id="zoom-out"><i class="fa-solid top-bar fa-magnifying-glass-minus "></i></div>
+			<div id="zoom-in"><i class="fa-solid top-bar fa-magnifying-glass-plus "></i></div>
+			<div class="zoom-control">
+				<div id="zoom" >100%</div>
+			</div>
+		</div>
+		<div class="display-icon">
+			<div id="data-view-trigger"><i class="fa-solid top-bar fa-bars"></i></div>
+			<div id="theme"><i class="fa-solid top-bar fa-sun "></i></div>
+			<div id="settings"><i class="fa-solid top-bar fa-gear "></i></div>
+		</div>
+
+
+
+		<!-- <i class="fa-solid fa-plus"></i>
+		<i class="fa-solid fa-minus"></i>
+		
+		-->
+	</div>
+	<div id="visualization-area">
+		<div id="main">
+			<div id="guidelines">
+				<div>
+					<p>Input</p>
+					<div class="back-lines"></div>
+					<div id="input-container">
+					</div>
+				</div>
+				<div>
+					<p>LUT</p>
+					<div class="back-lines"></div>
+					<div id="lut-container">
+					</div>
+				</div>
+				<div>
+					<p>Flip-flop</p>
+					<div class="back-lines"></div>
+					<div id="ff-container">
+					</div>
+				</div>
+				<!-- <div>
+					<p>LUT</p>
+					<div class="back-lines"></div>
+					<div id="lut-container">
+					</div>
+				</div>
+				<div>
+					<p>Flip-flop</p>
+					<div class="back-lines"></div>
+					<div id="ff-container">
+					</div>
+				</div> -->
+				<div>
+					<p>Output</p>
+					<div class="back-lines"></div>
+					<div id="output-container">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="clock-back"></div>
+		<div id="data-display">
+			<div id="data-display-arrowBox">
+				<div id="hide-button"><i class="fa-solid fa-angles-right" id="hnsArrow"></i></div>
+			</div>
+		</div>
+		<div id="connections"></div>
+	</div>
+
+	<script src="js/variables.js"></script>
+	<script type="module" src="js/parse-sdf-to-json.js"></script>
+	<script src="js/load.js"></script>
+	<script src="js/tool-bar.js" defer></script>
+	<script src="js/schematics.js"></script>
+	<script src="js/connections.js" defer></script>
+	<script src="js/parse-json-to-data.js"></script>
+</body>
+
+</html>
