@@ -32,6 +32,11 @@ let hasGnd = false;
 let hasAsync = false;
 let hasLut = false;
 
+const testColors = [ '#FF0000', '#00FF00', '#0000FF', '#FFFF00'];
+let ffToLutIndex = 0;
+
+let pathElements = [];
+
 /*
 Declare the elements that will be used in the client side code
 
@@ -94,13 +99,10 @@ function resetSchematics() {
 	firstLutGnd = null;
 	lastLutId = null;
 	lastLutAsync = null;
+	ffToLutIndex = 0;
+	pathElements = [];
 	hasLut = false;
 	hasGnd = false;
 	hasAsync = false;
 	scrollTo(0, 0);
 }
-
-const testColors = [ '#FF0000', '#00FF00', '#0000FF', '#FFFF00'];
-let ffToLutIndex = 0;
-
-let pathElements = [];
