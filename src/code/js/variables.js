@@ -28,6 +28,10 @@ const drawConnections = true;
 
 let jsonData;
 
+let hasGnd = false;
+let hasAsync = false;
+let hasLut = false;
+
 /*
 Declare the elements that will be used in the client side code
 
@@ -90,6 +94,9 @@ function resetSchematics() {
 	firstLutGnd = null;
 	lastLutId = null;
 	lastLutAsync = null;
+	hasLut = false;
+	hasGnd = false;
+	hasAsync = false;
 	scrollTo(0, 0);
 }
 

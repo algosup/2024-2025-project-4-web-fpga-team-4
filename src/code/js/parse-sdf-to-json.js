@@ -126,7 +126,7 @@ function getConnectionsFromString(element) {
 		elementFinal.id = "0";
 		elementFinal.io = "output";
 		elementFinal.port = "0";
-	} else if (element.startsWith("async")) {
+	} else if (element.startsWith("async") || element.startsWith("reset")) {
 		elementFinal.type = "Async_reset";
 		elementFinal.id = "0";
 		elementFinal.io = "output";
@@ -135,10 +135,11 @@ function getConnectionsFromString(element) {
 		elementFinal.type = "DFF";
 		elementFinal.port = "0";
 		if (element[7] === '$') {
-			elementFinal.id = element.substring(14, 15);
-			if (element[22] === 'i') {
+			console.log(element);
+			elementFinal.id = element.split('\\')[2].split('~')[1];
+			if (element.split("_")[2][0] === 'i') {
 				elementFinal.io = "input";
-			} else if (element[22] === 'o') {
+			} else if (element.split("_")[2][0] === 'o') {
 				elementFinal.io = "output";
 			} else {
 				elementFinal.io = "clock"
@@ -213,6 +214,12 @@ function getDefinitions(fileContent, elementConnections) {
 
 // Function to write declarations to JSON format
 function writeDeclarationsToJson(luts, flipFlops, ios, elementConnections) {
+	if (luts.length > 0 && luts.find(lut => lut.id === 0)) {
+		hasGnd = true;
+	}
+	if (ios.find(io => io.name === "Async_reset")) {
+		hasAsync = true;
+	}
 	let jsonOutput = {
 		LUTs: luts.map(lut => ({
 			id: lut.id,
@@ -260,6 +267,8 @@ openFolderInput.addEventListener('change', function (event) {
 		return;
 	}
 	if (file) {
+		// Remove existing elements from the schematics
+		resetSchematics();
 		if (file.name.split('.').pop() === 'json') {
 			const reader = new FileReader();
 			reader.onload = function (e) {
