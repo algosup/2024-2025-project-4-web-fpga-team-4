@@ -1,0 +1,1434 @@
+{
+  "summary": "Test Summary for file: firefox-unit-test-html-css.js",
+  "date": "2025-03-17",
+  "results": [
+    {
+      "browser": "116.0",
+      "version": "136.0",
+      "test": {
+        "name": "Title Test",
+        "description": "Check if the title is correct",
+        "priority": "high",
+        "type": [
+          "typo"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": "Client Side",
+          "expected": "FPGA Web Visualizer",
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "116.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct",
+        "priority": "medium",
+        "type": [
+          "css",
+          "html"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "116.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct in hex",
+        "priority": "medium",
+        "type": [
+          "css"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "116.0",
+      "version": "136.0",
+      "test": {
+        "name": "Speed Value Test",
+        "description": "Check if the speed value is correct",
+        "priority": "low",
+        "type": [
+          "html",
+          "js"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": 1,
+          "expected": null,
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "117.0",
+      "version": "136.0",
+      "test": {
+        "name": "Title Test",
+        "description": "Check if the title is correct",
+        "priority": "high",
+        "type": [
+          "typo"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": "Client Side",
+          "expected": "FPGA Web Visualizer",
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "117.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct",
+        "priority": "medium",
+        "type": [
+          "css",
+          "html"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "117.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct in hex",
+        "priority": "medium",
+        "type": [
+          "css"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "117.0",
+      "version": "136.0",
+      "test": {
+        "name": "Speed Value Test",
+        "description": "Check if the speed value is correct",
+        "priority": "low",
+        "type": [
+          "html",
+          "js"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": 1,
+          "expected": null,
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "118.0",
+      "version": "136.0",
+      "test": {
+        "name": "Title Test",
+        "description": "Check if the title is correct",
+        "priority": "high",
+        "type": [
+          "typo"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": "Client Side",
+          "expected": "FPGA Web Visualizer",
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "118.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct",
+        "priority": "medium",
+        "type": [
+          "css",
+          "html"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "118.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct in hex",
+        "priority": "medium",
+        "type": [
+          "css"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "118.0",
+      "version": "136.0",
+      "test": {
+        "name": "Speed Value Test",
+        "description": "Check if the speed value is correct",
+        "priority": "low",
+        "type": [
+          "html",
+          "js"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": 1,
+          "expected": null,
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "119.0",
+      "version": "136.0",
+      "test": {
+        "name": "Title Test",
+        "description": "Check if the title is correct",
+        "priority": "high",
+        "type": [
+          "typo"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": "Client Side",
+          "expected": "FPGA Web Visualizer",
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "119.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct",
+        "priority": "medium",
+        "type": [
+          "css",
+          "html"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "119.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct in hex",
+        "priority": "medium",
+        "type": [
+          "css"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "119.0",
+      "version": "136.0",
+      "test": {
+        "name": "Speed Value Test",
+        "description": "Check if the speed value is correct",
+        "priority": "low",
+        "type": [
+          "html",
+          "js"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": 1,
+          "expected": null,
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "120.0",
+      "version": "136.0",
+      "test": {
+        "name": "Title Test",
+        "description": "Check if the title is correct",
+        "priority": "high",
+        "type": [
+          "typo"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": "Client Side",
+          "expected": "FPGA Web Visualizer",
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "120.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct",
+        "priority": "medium",
+        "type": [
+          "css",
+          "html"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "120.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct in hex",
+        "priority": "medium",
+        "type": [
+          "css"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "120.0",
+      "version": "136.0",
+      "test": {
+        "name": "Speed Value Test",
+        "description": "Check if the speed value is correct",
+        "priority": "low",
+        "type": [
+          "html",
+          "js"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": 1,
+          "expected": null,
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "121.0",
+      "version": "136.0",
+      "test": {
+        "name": "Title Test",
+        "description": "Check if the title is correct",
+        "priority": "high",
+        "type": [
+          "typo"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": "Client Side",
+          "expected": "FPGA Web Visualizer",
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "121.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct",
+        "priority": "medium",
+        "type": [
+          "css",
+          "html"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "121.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct in hex",
+        "priority": "medium",
+        "type": [
+          "css"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "121.0",
+      "version": "136.0",
+      "test": {
+        "name": "Speed Value Test",
+        "description": "Check if the speed value is correct",
+        "priority": "low",
+        "type": [
+          "html",
+          "js"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": 1,
+          "expected": null,
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "122.0",
+      "version": "136.0",
+      "test": {
+        "name": "Title Test",
+        "description": "Check if the title is correct",
+        "priority": "high",
+        "type": [
+          "typo"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": "Client Side",
+          "expected": "FPGA Web Visualizer",
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "122.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct",
+        "priority": "medium",
+        "type": [
+          "css",
+          "html"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "122.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct in hex",
+        "priority": "medium",
+        "type": [
+          "css"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "122.0",
+      "version": "136.0",
+      "test": {
+        "name": "Speed Value Test",
+        "description": "Check if the speed value is correct",
+        "priority": "low",
+        "type": [
+          "html",
+          "js"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": 1,
+          "expected": null,
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "123.0",
+      "version": "136.0",
+      "test": {
+        "name": "Title Test",
+        "description": "Check if the title is correct",
+        "priority": "high",
+        "type": [
+          "typo"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": "Client Side",
+          "expected": "FPGA Web Visualizer",
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "123.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct",
+        "priority": "medium",
+        "type": [
+          "css",
+          "html"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "123.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct in hex",
+        "priority": "medium",
+        "type": [
+          "css"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "123.0",
+      "version": "136.0",
+      "test": {
+        "name": "Speed Value Test",
+        "description": "Check if the speed value is correct",
+        "priority": "low",
+        "type": [
+          "html",
+          "js"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": 1,
+          "expected": null,
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "124.0",
+      "version": "136.0",
+      "test": {
+        "name": "Title Test",
+        "description": "Check if the title is correct",
+        "priority": "high",
+        "type": [
+          "typo"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": "Client Side",
+          "expected": "FPGA Web Visualizer",
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "124.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct",
+        "priority": "medium",
+        "type": [
+          "css",
+          "html"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "124.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct in hex",
+        "priority": "medium",
+        "type": [
+          "css"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "124.0",
+      "version": "136.0",
+      "test": {
+        "name": "Speed Value Test",
+        "description": "Check if the speed value is correct",
+        "priority": "low",
+        "type": [
+          "html",
+          "js"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": 1,
+          "expected": null,
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "125.0",
+      "version": "136.0",
+      "test": {
+        "name": "Title Test",
+        "description": "Check if the title is correct",
+        "priority": "high",
+        "type": [
+          "typo"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": "Client Side",
+          "expected": "FPGA Web Visualizer",
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "125.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct",
+        "priority": "medium",
+        "type": [
+          "css",
+          "html"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "125.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct in hex",
+        "priority": "medium",
+        "type": [
+          "css"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "125.0",
+      "version": "136.0",
+      "test": {
+        "name": "Speed Value Test",
+        "description": "Check if the speed value is correct",
+        "priority": "low",
+        "type": [
+          "html",
+          "js"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": 1,
+          "expected": null,
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "126.0",
+      "version": "136.0",
+      "test": {
+        "name": "Title Test",
+        "description": "Check if the title is correct",
+        "priority": "high",
+        "type": [
+          "typo"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": "Client Side",
+          "expected": "FPGA Web Visualizer",
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "126.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct",
+        "priority": "medium",
+        "type": [
+          "css",
+          "html"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "126.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct in hex",
+        "priority": "medium",
+        "type": [
+          "css"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "126.0",
+      "version": "136.0",
+      "test": {
+        "name": "Speed Value Test",
+        "description": "Check if the speed value is correct",
+        "priority": "low",
+        "type": [
+          "html",
+          "js"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": 1,
+          "expected": null,
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "127.0",
+      "version": "136.0",
+      "test": {
+        "name": "Title Test",
+        "description": "Check if the title is correct",
+        "priority": "high",
+        "type": [
+          "typo"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": "Client Side",
+          "expected": "FPGA Web Visualizer",
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "127.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct",
+        "priority": "medium",
+        "type": [
+          "css",
+          "html"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "127.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct in hex",
+        "priority": "medium",
+        "type": [
+          "css"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "127.0",
+      "version": "136.0",
+      "test": {
+        "name": "Speed Value Test",
+        "description": "Check if the speed value is correct",
+        "priority": "low",
+        "type": [
+          "html",
+          "js"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": 1,
+          "expected": null,
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "128.0",
+      "version": "136.0",
+      "test": {
+        "name": "Title Test",
+        "description": "Check if the title is correct",
+        "priority": "high",
+        "type": [
+          "typo"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": "Client Side",
+          "expected": "FPGA Web Visualizer",
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "128.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct",
+        "priority": "medium",
+        "type": [
+          "css",
+          "html"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "128.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct in hex",
+        "priority": "medium",
+        "type": [
+          "css"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "128.0",
+      "version": "136.0",
+      "test": {
+        "name": "Speed Value Test",
+        "description": "Check if the speed value is correct",
+        "priority": "low",
+        "type": [
+          "html",
+          "js"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": 1,
+          "expected": null,
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "129.0",
+      "version": "136.0",
+      "test": {
+        "name": "Title Test",
+        "description": "Check if the title is correct",
+        "priority": "high",
+        "type": [
+          "typo"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": "Client Side",
+          "expected": "FPGA Web Visualizer",
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "129.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct",
+        "priority": "medium",
+        "type": [
+          "css",
+          "html"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "129.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct in hex",
+        "priority": "medium",
+        "type": [
+          "css"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "129.0",
+      "version": "136.0",
+      "test": {
+        "name": "Speed Value Test",
+        "description": "Check if the speed value is correct",
+        "priority": "low",
+        "type": [
+          "html",
+          "js"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": 1,
+          "expected": null,
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "130.0",
+      "version": "136.0",
+      "test": {
+        "name": "Title Test",
+        "description": "Check if the title is correct",
+        "priority": "high",
+        "type": [
+          "typo"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": "Client Side",
+          "expected": "FPGA Web Visualizer",
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "130.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct",
+        "priority": "medium",
+        "type": [
+          "css",
+          "html"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "130.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct in hex",
+        "priority": "medium",
+        "type": [
+          "css"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "130.0",
+      "version": "136.0",
+      "test": {
+        "name": "Speed Value Test",
+        "description": "Check if the speed value is correct",
+        "priority": "low",
+        "type": [
+          "html",
+          "js"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": 1,
+          "expected": null,
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "131.0",
+      "version": "136.0",
+      "test": {
+        "name": "Title Test",
+        "description": "Check if the title is correct",
+        "priority": "high",
+        "type": [
+          "typo"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": "Client Side",
+          "expected": "FPGA Web Visualizer",
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "131.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct",
+        "priority": "medium",
+        "type": [
+          "css",
+          "html"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "131.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct in hex",
+        "priority": "medium",
+        "type": [
+          "css"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "131.0",
+      "version": "136.0",
+      "test": {
+        "name": "Speed Value Test",
+        "description": "Check if the speed value is correct",
+        "priority": "low",
+        "type": [
+          "html",
+          "js"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": 1,
+          "expected": null,
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "132.0",
+      "version": "136.0",
+      "test": {
+        "name": "Title Test",
+        "description": "Check if the title is correct",
+        "priority": "high",
+        "type": [
+          "typo"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": "Client Side",
+          "expected": "FPGA Web Visualizer",
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "132.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct",
+        "priority": "medium",
+        "type": [
+          "css",
+          "html"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "132.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct in hex",
+        "priority": "medium",
+        "type": [
+          "css"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "132.0",
+      "version": "136.0",
+      "test": {
+        "name": "Speed Value Test",
+        "description": "Check if the speed value is correct",
+        "priority": "low",
+        "type": [
+          "html",
+          "js"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": 1,
+          "expected": null,
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "133.0",
+      "version": "136.0",
+      "test": {
+        "name": "Title Test",
+        "description": "Check if the title is correct",
+        "priority": "high",
+        "type": [
+          "typo"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": "Client Side",
+          "expected": "FPGA Web Visualizer",
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "133.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct",
+        "priority": "medium",
+        "type": [
+          "css",
+          "html"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "133.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct in hex",
+        "priority": "medium",
+        "type": [
+          "css"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "133.0",
+      "version": "136.0",
+      "test": {
+        "name": "Speed Value Test",
+        "description": "Check if the speed value is correct",
+        "priority": "low",
+        "type": [
+          "html",
+          "js"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": 1,
+          "expected": null,
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "134.0",
+      "version": "136.0",
+      "test": {
+        "name": "Title Test",
+        "description": "Check if the title is correct",
+        "priority": "high",
+        "type": [
+          "typo"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": "Client Side",
+          "expected": "FPGA Web Visualizer",
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "134.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct",
+        "priority": "medium",
+        "type": [
+          "css",
+          "html"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "134.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct in hex",
+        "priority": "medium",
+        "type": [
+          "css"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "134.0",
+      "version": "136.0",
+      "test": {
+        "name": "Speed Value Test",
+        "description": "Check if the speed value is correct",
+        "priority": "low",
+        "type": [
+          "html",
+          "js"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": 1,
+          "expected": null,
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "135.0",
+      "version": "136.0",
+      "test": {
+        "name": "Title Test",
+        "description": "Check if the title is correct",
+        "priority": "high",
+        "type": [
+          "typo"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": "Client Side",
+          "expected": "FPGA Web Visualizer",
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "135.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct",
+        "priority": "medium",
+        "type": [
+          "css",
+          "html"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "135.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct in hex",
+        "priority": "medium",
+        "type": [
+          "css"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "135.0",
+      "version": "136.0",
+      "test": {
+        "name": "Speed Value Test",
+        "description": "Check if the speed value is correct",
+        "priority": "low",
+        "type": [
+          "html",
+          "js"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": 1,
+          "expected": null,
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "136.0",
+      "version": "136.0",
+      "test": {
+        "name": "Title Test",
+        "description": "Check if the title is correct",
+        "priority": "high",
+        "type": [
+          "typo"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": "Client Side",
+          "expected": "FPGA Web Visualizer",
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "136.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct",
+        "priority": "medium",
+        "type": [
+          "css",
+          "html"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "136.0",
+      "version": "136.0",
+      "test": {
+        "name": "Background Color Test",
+        "description": "Check if the background color is correct in hex",
+        "priority": "medium",
+        "type": [
+          "css"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "browser": "136.0",
+      "version": "136.0",
+      "test": {
+        "name": "Speed Value Test",
+        "description": "Check if the speed value is correct",
+        "priority": "low",
+        "type": [
+          "html",
+          "js"
+        ],
+        "passed": false,
+        "error": {
+          "generatedMessage": true,
+          "code": "ERR_ASSERTION",
+          "actual": 1,
+          "expected": null,
+          "operator": "strictEqual"
+        }
+      }
+    }
+  ]
+}

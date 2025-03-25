@@ -18,34 +18,36 @@ function convertPxToVw(px) {
  * @param {number} top - The top position of the line in vh.
  * @param {number} left - The left position of the line in vw.
  */
-function drawLine(height, width, top, left, colorValue) {
+function drawLine(height, width, top, left, colorValue, id) {
 	let color;
 	let position;
 	let zIndex = '0';
 	switch (colorValue.substring(0, 2)) {
 		case 'lu': // LUT
 			color = "var(--lut-color)";
+			zIndex = '-2';
 			break;
 		case 'ff': // Flip-flop
 			color = "var(--ff-color)";
+			zIndex = '-2';
 			break;
 		case 'As': // Async reset
 			color = "var(--reset-color)";
+			zIndex = '-3';
 			break;
-		case 'us': // User input
+			case 'us': // User input
 			color = "var(--d-color)";
+			zIndex = '-2';
 			break;
-		case 'cl': // Clock
+			case 'cl': // Clock
 			color = "var(--clock-color)";
 			position = colorValue === 'clock-above-sticky' ? 'fixed' : undefined;
 			zIndex = colorValue.startsWith('clock-above')  ? '12' : '0';
 			break;
-		case 'if': // FF Test
-			color = testColors[ffToLutIndex];
 		default:
 			break;
 	}
-	connections.innerHTML += `<div class="line used ${colorValue}" style="height: ${height}vh; width: ${width}vw; margin-top: ${top}vh; margin-left: ${left}vw; background-color:${color}; position: ${position}; z-index: ${zIndex}"></div>`
+	connections.innerHTML += `<div id="${id}" class="line used ${colorValue}" style="height: ${height}vh; width: ${width}vw; margin-top: ${top}vh; margin-left: ${left}vw; background-color:${color}; position: ${position}; z-index: ${zIndex}"></div>`
 }
 
 
@@ -145,9 +147,9 @@ function drawBasicConnection(obj1, obj2) {
 
 
 	// Draw the connection
-	drawLine(.6, distW1 + sizeOut, outputCenter, output.left, obj1);
-	drawLine(distH, .3, (output.top < input.top ? outputCenter : inputCenter), output.right + distW1, obj1);
-	drawLine(.6, distW2 + sizeIn, inputCenter, input.right - distW2 - sizeIn, obj1);
+	drawLine(.6, distW1 + sizeOut, outputCenter, output.left, obj1, `lut-${obj1.split('-')[1]}-Wire1`);
+	drawLine(distH, .3, (output.top < input.top ? outputCenter : inputCenter), output.right + distW1, obj1, `lut-${obj1.split('-')[1]}-Wire2`);
+	drawLine(.6, distW2 + sizeIn, inputCenter, input.right - distW2 - sizeIn, obj1, `lut-${obj1.split('-')[1]}-Wire3`);
 }
 
 
@@ -165,8 +167,8 @@ function drawClockBase(clock) {
 	let ffBaseCenter = (ffBase.top + (ffBase.bottom - ffBase.top) / 2);
 	let distW = (ffBase.left - clockBase.right);
 	let distH = (ffBase.top + (ffBase.bottom - ffBase.top) / 2) - (bodyCenterHeight - clockCenterHeight * 2 - 6);
-	drawLine(.6, distW, 100 - 8.2, clockBase.right - .6, `clock-above-sticky`);
-	drawLine(-distH, .3, ffBaseCenter - .3, ffBase.left - .9, `clock-above`);
+	drawLine(.6, distW, 100 - 8.2, clockBase.right - .6, `clock-above-sticky`, `clock-above-Wire1`);
+	drawLine(-distH, .3, ffBaseCenter - .3, ffBase.left - .9, `clock-above`, `clock-above-Wire2`);
 }
 
 
@@ -187,7 +189,7 @@ function drawClockConnection(obj2) {
 
 
 	// Draw the connection
-	drawLine(.6, 3, inputCenter, input.left - .8, "clock");
+	drawLine(.6, 3, inputCenter, input.left - .8, "clock", `clock-${obj2.split('-')[1]}-Wire`);
 }
 
 
@@ -217,7 +219,7 @@ function drawLutGnd(obj) {
 
 
 	// Draw the connection
-	drawLine(.6, 6, inputCenter, input.left - 5.8, "lut-gnd");
+	drawLine(.6, 6, inputCenter, input.left - 5.8, "lut-gnd", `lut-gnd-${obj.split('-')[1]}-Wire`);
 }
 
 function drawGndVertical() {
@@ -230,7 +232,7 @@ function drawGndVertical() {
 	let clockCenter = gndBase.top + gndBaseHeight - .3;
 	let firstLutBaseCenter = (firstLutBase.top + (firstLutBase.bottom - firstLutBase.top) / 2);
 	let distH = (firstLutBase.top + (firstLutBase.bottom - firstLutBase.top) / 2) - clockCenter - .9;
-	drawLine(-distH, .3, firstLutBaseCenter - .3, firstLutBase.left - 6, `lut-gnd`);
+	drawLine(-distH, .3, firstLutBaseCenter - .3, firstLutBase.left - 6, `lut-gnd`, `lut-gnd-Wire`);
 
 }
 
@@ -254,7 +256,7 @@ function drawAsyncConnection(obj2) {
 
 
 	// Draw the connection
-	drawLine(.6, 12, inputCenter, input.left - 10.8, "Async_reset");
+	drawLine(.6, 12, inputCenter, input.left - 10.8, "Async_reset", `Async_reset-${obj2.split('-')[1]}-Wire`);
 }
 
 function drawAsyncBase() {
@@ -273,14 +275,12 @@ function drawAsyncBase() {
 
 
 
-	drawLine(.6, 5.6, asyncCenter, asyncBase.left, "Async_reset");
-	drawLine(height, .3, asyncBase.top + asyncCenterHeight - .3, 15.6, "Async_reset");
+	drawLine(.6, 5.6, asyncCenter, asyncBase.left, "Async_reset", "Async_reset-Wire1");
+	drawLine(height, .3, asyncBase.top + asyncCenterHeight - .3, 15.6, "Async_reset", "Async_reset-Wire2");
 }
 
 
 function drawFlipflopToLutConnection(obj1, obj2) {
-
-	console.log(obj1, obj2)
 	
 	// Get the bounding rectangles of the two objects
 	let outB = document.getElementById(obj1).getBoundingClientRect();
@@ -320,11 +320,11 @@ function drawFlipflopToLutConnection(obj1, obj2) {
 	}
 
 	// Draw the connection
-	drawLine(.6, 4, outputCenter, output.left, 'ff');
-	drawLine(11.6, .3, outputCenter, output.left + 4, 'ff');
-	drawLine(.6, dist, outputCenter + 11, input.left - delayDistance, 'ff');
-	drawLine(height, .3, output.top > input.top ? inputCenter : outputCenter + 11.6, input.left - delayDistance, 'ff');
-	drawLine(.6, delayDistance, inputCenter, input.right - delayDistance - .5, 'ff');
+	drawLine(.6, 4, outputCenter, output.left, 'ff', `ff-${obj1.split('-')[1]}-Wire1`);
+	drawLine(11.6, .3, outputCenter, output.left + 4, 'ff', `ff-${obj1.split('-')[1]}-Wire2`);
+	drawLine(.6, dist, outputCenter + 11, input.left - delayDistance, 'ff', `ff-${obj1.split('-')[1]}-Wire3`);
+	drawLine(height, .3, output.top > input.top ? inputCenter : outputCenter + 11.6, input.left - delayDistance, 'ff', `ff-${obj1.split('-')[1]}-Wire4`);
+	drawLine(.6, delayDistance, inputCenter, input.right - delayDistance - .5, 'ff', `ff-${obj1.split('-')[1]}-Wire5`);
 	ffToLutIndex++;
 }
 
@@ -358,12 +358,14 @@ function drawInputToFlipflop(obj1, obj2) {
 
 
 	// Draw the connection
-	drawLine(.6, distW + sizeOut, outputCenter, output.left, obj1);
-	drawLine(distH, .3, (output.top < input.top ? outputCenter : inputCenter), output.right + distW, obj1);
-	drawLine(.6, distW + sizeIn, inputCenter, input.right - distW - sizeIn, obj1);
+	drawLine(.6, distW + sizeOut, outputCenter, output.left, obj1, `in-${obj1.split('-')[1]}-Wire1`);
+	drawLine(distH, .3, (output.top < input.top ? outputCenter : inputCenter), output.right + distW, obj1, `in-${obj1.split('-')[1]}-Wire2`);
+	drawLine(.6, distW + sizeIn, inputCenter, input.right - distW - sizeIn, obj1, `in-${obj1.split('-')[1]}-Wire3`);
 }
 
 function drawFlipflopToFlipflopConnections(obj1, obj2) {
+
+
 	// Get the bounding rectangles of the two objects
 	let outB = document.getElementById(obj1).getBoundingClientRect();
 	let inB = document.getElementById(obj2).getBoundingClientRect();
@@ -379,11 +381,7 @@ function drawFlipflopToFlipflopConnections(obj1, obj2) {
 	// Calculate the height difference between the two objects
 	let heightDiff = output.bottom > output.top ? output.bottom - output.top : output.top - output.bottom;
 
-	let sizeOut = output.right - output.left;
-	let sizeIn = input.right - input.left;
-
 	// Calculate the distance between the two objects
-	let distW = input.left > output.right ? (input.left - output.right) / 2 : (output.left - input.right) / 2;
 	let distH = output.top > input.top ? (output.top + (heightDiff * 1.4) - input.bottom) : input.top + heightDiff - output.bottom;
 
 	// Calculate the center of the output and input objects
@@ -402,11 +400,11 @@ function drawFlipflopToFlipflopConnections(obj1, obj2) {
 	}
 
 	// Draw the connection
-	drawLine(.6, 4, outputCenter, output.left, 'ff');
-	drawLine(11.6, .3, outputCenter, output.left + 4, 'ff');
-	drawLine(.6, dist, outputCenter + 11, input.left - delayDistance, 'ff');
-	drawLine(height, .3, output.top > input.top ? inputCenter : outputCenter + 11.6, input.left - delayDistance, 'ff');
-	drawLine(.6, delayDistance, inputCenter, input.right - delayDistance - .5, 'ff');
+	drawLine(.6, 4, outputCenter, output.left, "ff", `ff-${obj1.split('-')[1]}-Wire1`);
+	drawLine(11.6, .3, outputCenter, output.left + 4, "ff", `ff-${obj1.split('-')[1]}-Wire2`);
+	drawLine(.6, dist, outputCenter + 11, input.left - delayDistance, "ff", `ff-${obj1.split('-')[1]}-Wire3`);
+	drawLine(height, .3, output.top > input.top ? inputCenter : outputCenter + 11.6, input.left - delayDistance, 'ff', `ff-${obj1.split('-')[1]}-Wire4`);
+	drawLine(.6, delayDistance, inputCenter, input.right - delayDistance - .5, "ff", `ff-${obj1.split('-')[1]}-Wire5`);
 }
 
 

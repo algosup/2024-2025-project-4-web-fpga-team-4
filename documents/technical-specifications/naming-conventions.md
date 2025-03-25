@@ -7,9 +7,10 @@
   - [Document Overview](#document-overview)
   - [Naming Conventions](#naming-conventions)
     - [Branches, Folders \& Files](#branches-folders--files)
-      - [Functions and Methods in TypeScript](#functions-and-methods-in-typescript)
-      - [Variables in TypeScript](#variables-in-typescript)
-      - [Element Names in HTML](#element-names-in-html)
+      - [Functions and Methods in JavaScript](#functions-and-methods-in-javascript)
+      - [Variables in JavaScript](#variables-in-javascript)
+      - [Element Names (HTML)](#element-names-html)
+      - [ID's and Classes (HTML)](#ids-and-classes-html)
       - [Close All HTML Elements](#close-all-html-elements)
       - [Always Quote Attribute Values](#always-quote-attribute-values)
       - [Comments](#comments)
@@ -42,7 +43,7 @@ This document guides individuals who wish to contribute to the project. It outli
 
 ---
 
-#### Functions and Methods in TypeScript
+#### Functions and Methods in JavaScript
 
 - **Naming Convention:** camelCase (lowercase the first word and capitalize all the others).
 - Do this:
@@ -52,38 +53,56 @@ This document guides individuals who wish to contribute to the project. It outli
   - `ConvertSDFToJSON()`
   - `Convert-V-To-JSON()`
 
-#### Variables in TypeScript
+#### Variables in JavaScript
 
-- **Naming Convention:** camelCase (first word lowercase, subsequent words capitalized).
+- **Naming Convention:** snake_case (lowercase, words seperated by underscores).
 - Do this:
-  - `inputFile`
+  - `input_File`
   - `temp`
 - Don't do this:
-  - `input_File`
+  - `inputfile`
   - `Temp`
 
 #### Element Names in HTML
 
 - **Naming Convention:** only use lowercase element names.
 - Do this:
-  - `<body></body>`
-  - `<p></p>`
+  ```html
+    <body></body>
+    <p></p>
+  ```
 - Don't do this:
-  - `<BODY></BODY>`
-  - `<P></P>`
+  ```html
+    <BODY></BODY>
+    <P></P>
+  ```
+
+#### ID's and Classes (HTML)
+
+- **Naming Convention:** kebab-case(only use lowercase letters and hyphens between words).
+- Do this:
+  ```html
+    <body class="top-box"></body>
+    <p id="important-text"></p>
+  ```
+- Don't do this:
+  ```html
+    <body class="topBox"></body>
+    <p id="important_text"></p>
+  ```
 
 #### Close All HTML Elements
 
 - In HTML, you technically do not have to close all elements, however, for this project you have to close all HTML elements to make it easier to read the code.
 - Do this:
-  ```
+  ```html
     <section>
       <p>this is a paragraph</p>
     </section>
   ```
 
 - Don't do this:
-  ```
+  ```html
     <section>
       <p>this is a paragraph
     </section>
@@ -91,11 +110,15 @@ This document guides individuals who wish to contribute to the project. It outli
 
 #### Always Quote Attribute Values
 
--HTML allows attribute values without quotes, however, for this project you have to quote all attribute values to make it easier to read the code.
+- HTML allows attribute values without quotes, however, for this project you have to quote all attribute values to make it easier to read the code.
 - Do this:
-  - `<h1 class="big title">`
+  ```html
+    <h1 class="big-title">
+  ```
 - Don't do this:
-  - `<h1 class=big title>`
+  ```html
+    <h1 class=big-title>
+  ```
 
 #### Comments
 
@@ -106,29 +129,30 @@ This document guides individuals who wish to contribute to the project. It outli
 - Ensure all functions and complex code segments are well-documented with comments explaining their purpose.
   - Example:
 
-```TypeScript
+```JavaScript
 /*
- * This function parses the data from the sdf file:
+ * Convert a JSON file to a Javascript object and display the parsed data on the webpage.
+ * 
+ * @param {string} filepath - The path to the JSON file
  */
-test.dataParseFunction();
+async function parseJsonFile();
 ```
 
 #### Indentation & Spacing
 
 - In HTML, add blank linkes to seperate large or logical code blocks also, use tab for indentation for everything.
   - Do this:
-  ```
+  ```html
   <body>
 
     <h1>Famous Cities</h1>
   
   </body>
   ```
-- Ensure consistent spacing around operators and after commas for better readability:
-
-```TypeScript
-c = a + b;
-```
+- Ensure consistent spacing around operators, classes and id's and after commas for better readability:
+  ```JavaScript
+    c = a + b;
+  ```
 
 ---
 
@@ -159,7 +183,7 @@ Commit messages should follow a consistent format to make it easier to understan
   - Optional Details: `The class was no longer relevant after refactoring.`
 
 - **DOC**: Use this for modification, creation, or deletion made to document(s).
-  - Example: `DOC: Creation of technicalSpecifications.md`
+  - Example: `DOC: Creation of technical-specifications.md`
   - Optional Details: `Added table of content`
 
 ### Format Guidelines
