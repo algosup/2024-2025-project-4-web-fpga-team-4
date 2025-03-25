@@ -81,7 +81,7 @@ Our primary audience is:
 Since the primary goal is education, **user experience (UX) and user interface (UI) design will be the focus** as they are crucial to the project's success.
 
 ### Document Purpose
-This document provides **detailed technical specifications for the development of the web page**, ensuring the correct implementation of the required features. These specifications will be based on the **functional specifications** (link to be added).
+This document provides **detailed technical specifications for the development of the web page**, ensuring the correct implementation of the required features. These specifications will be based on the **functional specifications** [link](../functional-specifications/functional-specifications.md).
 
 This tool is being developed at the CNES's request and will serve as an educational resource for teachers to explain the inner workings of FPGA's.
 
@@ -91,15 +91,10 @@ The project is divided into two main parts:
 1. **Front-end**: **The web-based interface that users will see and interact with**. This includes the visualization of the FPGA structure and signal propagation, as well as the user interface.
 2. **Back-end**: The code that **handles file uploads**, translates the `.SDF` file into HTML code and injects it back onto the page.
 
-| Part          | In Scope                                                                                                                                                                                          | Out of Scope                                                                                                                                                                                        |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Front-end** | - Representation of the FPGA structures and signal propagation of the provided file. <br> - User interface for uploading `.SDF` files. <br> - Manual simulation control (start, stop, pause, step). | - Advanced features like debugging, and waveform analysis. <br> - Support for complex FPGA architectures and designs. |
-| **Back-end**  | - Handling `.SDF` file uploads and parsing. <br> - Translating the `.SDF` file to HTML code and sending it to the front-end.          | - Full-scale FPGA synthesis or hardware implementation. <br> - Integration with proprietary FPGA vendor tools.                                                                       |
-
 The programming languages we will use for this project are as follows:
 
 - **Front-end**: HTML, CSS and JavaScript.
-- **Back-end**: Node.js(only for testing, development and debug) and JavaScript
+- **Back-end**: Node.js and JavaScript
 
 ## Dependencies  
 
@@ -151,7 +146,7 @@ Here are the tasks we will need to accomplish in order to finish the project:
 The first step is to **design the web interface and write graphical charters** to allow the development team to start working on the UI as soon as possible. **The mockups will be made using Figma** and are available [here](https://www.figma.com/design/A6rvzTJCZQQyznhdQbu753/FPGA-Web-App?node-id=0-1&m=dev&t=lkPKlLFY9KAmra26-1), and the graphical charter is available [here](../functional-specifications/graphical-charter.md)
 
 ### Parsing from SDF to JSON
-While designing the web interface, **we need to develop a data parser** to **convert the `.SDF` file provided by the teacher into a more readable `.JSON` format**. Doing this is not necessary for the project, however, it **allows the teacher to write a `.JSON` file themselves** in our format so they do not have to write code in verilog<sup><a href="#4">[4]</a></sup> or VHDL<sup><a href="#5">[5]</a></sup> and make it into an `.SDF` file every time they want to show their students other examples.
+While designing the web interface, **we need to create a data parser** to **convert the `.SDF` file from the teacher into a more readable `.JSON` format**. This step is optional, but it **lets the teacher write a `.JSON` file directly in our format**. This way, they won’t have to write code in Verilog<sup><a href="#4">[4]</a></sup> or VHDL<sup><a href="#5">[5]</a></sup> and convert it into an `.SDF` file every time they want to show different examples to their students.
 
 ### Coding the web interface and the user interface
 After the designs have been decided on and mockups have been made, the coding team needs to start implementing them on the web page. **These will be made using HTML, CSS and Javascript**.
@@ -431,9 +426,9 @@ The front-end for this project is **the part we will focus on the most**. As the
 
 #### Web page
 
-The web page is the **main element of this project**, it's goal is first and formeost to show the **visualization of the FPGA structure** contained in the `.SDF` file. It should also provide an **intuitive and interactive user interface** for uploading Verilog applications and controlling signal propagation.
+The web page is the **main element of this project**, it's goal is first and foremost to show the **visualization of the FPGA structure** contained in the `.SDF` file. It should also provide an **intuitive and interactive user interface** for uploading Verilog applications and controlling signal propagation.
 The webpage will consist of these components:
-- **Main content**: The main content area where the FPGA structure visualization will be displayed. This will include the FPGA elements and cables.
+- **Main content**: The main content area where the FPGA structure visualization will be displayed. This will include the FPGA elements and wires.
 - **Sidebar**: The sidebar area where clock signals will be displayed.
 - **Header**: The header area with the project name and a button for uploading files. It will also contain the interactive components for controlling simulations such as arrows to move backward and forward in time.
 
@@ -445,7 +440,7 @@ The back-end consists of the **`sdf-to-json-parser.js`** file, which processes `
 
 This `.JSON` file will then be used by **`json-to-data-parser.js`**, which interacts with:  
 - **`schematics.js`** – Responsible for displaying FPGA elements.  
-- **`connections.js`** – Used to draw the cables between FPGA elements.  
+- **`connections.js`** – Used to draw the wires between FPGA elements.  
 - **`tool-bar.js`** – Controls the buttons on the toolbar.  
 - **`load.js`** – Manages client-side logic.  
 - **`variables.js`** – Stores all necessary variables.  
@@ -462,7 +457,7 @@ The parser will be able to handle:
  
 Below, you will find **examples of different cell types** and their counterparts in the parsed `.JSON` file. Additionally, an example of how they will be displayed on the **web page** is provided.  
 
-These examples are all taken from the **`5FF.sdf`** file, which was provided by the client.  
+These examples are all taken from the [5FF.sdf](https://github.com/LeFl0w/ALGOSUP_POC/tree/main/Examples/5ffs_VTR) file, which was provided by the client.  
 
 
 ##### Timescale
@@ -625,7 +620,7 @@ This element defines an **instance of a Delay Flip FLop (DFF) and it's ports** t
 
 The main information we can extract from these elements are:
 - **the name and id of the DFF**: name:`latch_\$sdff\~2\^Q\~0` id: `2`.
-- **the propagation delay**: `(IOPATH (posedge clock) Q (303:303:303) (303:303:303))`. here it's 303.
+- **the propagation delay**: `(IOPATH (posedge clock) Q (303:303:303) (303:303:303))`. Here it's 303.
 - **The setup time constraint**: this corresponds to the time `(SETUP D (posedge clock) (-46:-46:-46))` here it's -46 so 46 picoseconds before.
 
 ###### JSON counterpart:
@@ -707,7 +702,7 @@ The elements and signals will go **from left to right** as it is supposed to be 
 
 ##### Elements
 
-The elements will be created as **`<div>` html elements**. this element will contain **one `<div>` and a `<paragraph>` for each input or output socket** and **another `<parapraph>` that will contain it's name**.
+The elements will be created as **`<div>` html elements**. This element will contain **one `<div>` and a `<paragraph>` for each input or output socket** and **another `<parapraph>` that will contain it's name**.
 
 Here is a code example of how a LUT would be made.
 ```HTML
@@ -740,12 +735,13 @@ There will be four different columns containing the elements:
   This will be in the **rightmost column** and will contain the **user output**.
 
 All elements will be designed as so:
+
 ![Example](./images/element-design.png)
 
-the **green circles represent inputs** and the **red circle represent outputs**. there will be **id's or text as needed to represent each input or output**. The text will be on the right of the inputs and on the left for the outputs.
+The **green circles represent inputs** and the **red circle represent outputs**. there will be **id's or text as needed to represent each input or output**. The text will be on the right of the inputs and on the left for the outputs.
 
 > [!Note]
-> the colors are not the colors we will use, they will be defined in the [Color Codes](#color-codes) section
+> The colors are not the colors we will use, they will be defined in the [Color Codes](#color-codes) section
 
 ##### Connections
 
@@ -754,24 +750,24 @@ The connections will be created using **`<div>` html elements** as using things 
 ```HTML
 <div class="line used userInput-out" style="height: 0.6vh; width: 2.7400406504065034vw; margin-top: 36.69547786177106vh; margin-left: 10.661204268292684vw; background-color:var(--d-color); position: undefined; z-index: 0"></div>
 ```
-it will mostly be defined by it's `style` parameters as such:
+It will mostly be defined by it's `style` parameters as such:
 
 - **height and width**:
   These define, as their name implies, the height and width of the cable.
 
 - **margin-top and margin-left**:
-  As the cables are children of the main elements, they are placed using margins, so these elements place the cable correctly.
+  As the wires are children of the main elements, they are placed using margins, so these elements place the cable correctly.
 
 - **background-color**:
   This defines the cable's color.
 
 - **position**:
-  This defines the position of the cable. It will only be used for cables with special properties like the clock cable which is in a fixed position ot the bottom of the screen.
+  This defines the position of the cable. It will only be used for wires with special properties like the clock cable which is in a fixed position ot the bottom of the screen.
 
 - **z-index**:
-  This elements controls the z-index of the cables. It will also only be used for cables with special properties like the clock cable.
+  This elements controls the z-index of the wires. It will also only be used for wires with special properties like the clock cable.
   
-The cables will be straight lines connecting one element to the other.
+The wires will be straight lines connecting one element to the other.
 
 ##### Color codes
 
