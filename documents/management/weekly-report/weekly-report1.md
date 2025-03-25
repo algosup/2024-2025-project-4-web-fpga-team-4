@@ -1,124 +1,129 @@
-# Weekly Report 1
+# **Weekly Report 1**
 
-## Overview
+## **Overview**
 
-This week marked the first steps of the project. The primary focus was on understanding the project's requirements, identifying the client's needs, initializing the project structure, and starting the design phase. This report will cover the week's objectives, the team's feedback, progress on the objectives, additional contributions, challenges encountered, and plans for the upcoming week.
+This week marked the project's first steps. The primary focus was on understanding the project's requirements, identifying the client’s needs, initializing the project structure, and starting the design phase. Additionally, discussions took place regarding the technology stack and technical specifications.
 
-## Week 1 Objectives
+## **Week 1 Objectives**
 
-- Understand Project Requirements
+- **Understand Project Requirements**
 
-  - Conduct a meeting with the client to gather detailed information
-  - Clarify the scope, expectations, and technical specifications
+  - Conduct a meeting with the client to gather detailed information.
+  - Clarify the project scope, expectations, and technical specifications.
 
-- Identify Client's Needs
+- **Identify Client’s Needs**
 
-  - Analyze the client's vision for the project
-  - Define the purpose and intended outcomes
-  - Create a Project Charter to formalize understanding
-
-- Project Initialization
-  - Set up version control and branch securities
-  - Initiate Work Breakdown Structure (WBS) and Gantt Chart
-  - Establish project management tools and frameworks
-
-## Team Feedback
-
-Here are the two main questions asked to the team:
-
-How satisfied are you with this week? (Rate from 1 to 5)
-1 - Very Unsatisfied
-2 - Unsatisfied
-3 - Neutral
-4 - Satisfied
-5 - Very Satisfied
-
-How would you rate the team's collaboration this week? (1-5)
-1 - Very Poor
-2 - Poor
-3 - Average
-4 - Good
-5 - Excellent
-
-This is what came out of this survey:
-
-![alt text](images/kpis-week1.png)
-
-The team mentioned being happy with how the communication was flowing amongst the team, and no issues arose from the feedback the team members gave.
-
-Except for the fact that the team is not focused enough and too noisy at times.
-
-You can find [here](https://docs.google.com/spreadsheets/d/1EJIGbOufF86FP-Pb6Y5z0wuYymK0fEmoFKtg16JfIHg/edit?resourcekey=&gid=322050487#gid=322050487) more details about the satisfaction form.
-
-## Project Progress
-
-- **Understanding Project Requirements**
-
-  - On Tuesday, February 25th, a meeting was held with the client to discuss the project’s requirements and specificities.
-  - The client provided context on the project's purpose: to create a web interface for an FPGA simulator to help students understand FPGA functionality.
-  - The client clarified expectations regarding the project's functionalities and technical constraints.
-
-- **Identifying Client's Needs**
-
-  - The team held a brainstorming session after the meeting on February 28th to align on the client's vision.
-  - A [Project Charter](../project-charter.md) was drafted and sent to the client to confirm the understanding of the project's needs.
-  - A MoSCoW prioritization chart was created as part of the Project Charter to classify features by importance.
+  - Analyze the client’s vision for the project.
+  - Define the project’s purpose and intended outcomes.
+  - Draft and validate a Project Charter.
 
 - **Project Initialization**
 
-  - **Branch Securities**: Set up by Emilien Chinsy to ensure version control consistency.
-  - **WBS & Gantt Chart**: Initiated by Thibaud Marlier to break down tasks and schedule the project timeline.
-  - **Satisfaction Form**: Created by Thibaud Marlier to gather continuous client feedback.
-  - **Weekly Report Framework**: Designed by Thibaud Marlier to maintain consistent project reporting.
-  - **[Naming conventions](../../technical-specifications/naming-conventions.md)** document was created, outlining files, folders and code naming conventions.
+  - Set up version control and branch security.
+  - Initiate the Work Breakdown Structure (WBS) and Gantt Chart.
+  - Establish project management tools and frameworks.
 
-- **First Design Prototyping**
+- **Start the Design Phase**
+  - Develop the first design prototype.
+  - Create initial UI components and logotypes.
 
-  - **Design**: Maxime Caron and Clémentine Curel started working on the first design prototype of the web interface.
-  - **Logotyping**: Clémentine Curel began creating logos, banners, and UI components for the web interface.
+## **Team Feedback**
 
-## Extras
+### **Survey Questions**
 
-- **Technology Stack Discussions**
+The team was asked to rate their experience for the week based on the following questions:
 
-  - Laurent Bouquin, Jason Grosso, and Emilien Chinsy discussed which technologies they plan on using for the project.
-  - They decided to work using HTML, CSS, TypeScript, and Node.js.
+**1. How satisfied are you with this week?** _(Rate from 1 to 5)_
 
-- **Started Working on Technical Specifications**
-  - Previous discussions led to the initialization and mention of technologies used in the technical specifications document.
+- 1 - Very Unsatisfied
+- 2 - Unsatisfied
+- 3 - Neutral
+- 4 - Satisfied
+- 5 - Very Satisfied
 
-## Challenges
+**2. How would you rate the team's collaboration this week?** _(Rate from 1 to 5)_
 
-- **Complex Requirements**
+- 1 - Very Poor
+- 2 - Poor
+- 3 - Average
+- 4 - Good
+- 5 - Excellent
 
-  - FPGA technologies are inherently complex, making it challenging to fully grasp the project requirements in the initial stages.
+### **Survey Results**
+
+![alt text](images/kpis-week1.png)
+
+The team reported good communication, and no major concerns were raised. However, focus levels could be improved, as discussions sometimes became too noisy.
+
+More details on the satisfaction survey can be found **[here](https://docs.google.com/spreadsheets/d/1EJIGbOufF86FP-Pb6Y5z0wuYymK0fEmoFKtg16JfIHg/edit?resourcekey=&gid=322050487#gid=322050487)**.
+
+## **Project Progress**
+
+- **Project Requirements & Client Meeting**
+
+  - A meeting was held on **Tuesday, February 25th**, to clarify project requirements.  
+    The client outlined the goal of developing a web interface for an FPGA simulator to help students understand FPGA functionality.
+  - Expectations regarding project functionalities and technical constraints were discussed.
+
+- **Client Needs & Documentation**
+
+  - A brainstorming session was conducted on **February 28th** to align with the client’s vision.
+  - A **Project Charter** was drafted and sent to the client for validation.
+  - A **MoSCoW prioritization chart** was created to categorize features based on importance.
+
+- **Project Initialization**
+
+  - **Version Control & Branch Security**: Set up by **Emilien Chinsy** to ensure workflow consistency.
+  - **WBS & Gantt Chart**: Initialized by **Thibaud Marlier** to structure and schedule project tasks.
+  - **Satisfaction Form**: Created by **Thibaud Marlier** for continuous feedback.
+  - **Weekly Report Framework**: Designed by **Thibaud Marlier** to maintain reporting consistency.
+  - **Naming Conventions Document**: Established and documented **[here](../../technical-specifications/naming-conventions.md)**.
+
+- **Design Phase**
+  - **Prototype Development**: **Maxime Caron** and **Clémentine Curel** began working on the first UI prototype.
+  - **Logotyping & UI Components**: **Clémentine Curel** started creating logos, banners, and interface elements.
+
+## **Extras**
+
+- **Technology Stack Selection**
+
+  - **Laurent Bouquin, Jason Grosso, and Emilien Chinsy** discussed and selected **HTML, CSS, TypeScript, and Node.js** as the project’s core technologies.
+
+- **Technical Specifications**
+  - Initial discussions led to the **first draft of the technical specifications document**.
+
+## **Challenges**
+
+- **Complexity of FPGA Technologies**
+
+  - Fully grasping the technical requirements posed initial challenges.
 
 - **Lack of Information**
 
-  - The team is still awaiting answers to some critical questions from the client, which are necessary for moving forward.
+  - Some critical details are still missing from the client, causing minor delays.
 
-- **Efficient Design Process**
-  - The design phase is expected to be time-consuming, requiring meticulous attention to detail and regular feedback loops.
+- **Design Process Efficiency**
+  - The iterative nature of design development requires structured feedback and refinements.
 
-## Next Week Plans
+## **Next Week Plans**
 
-- **Finish First Prototype**
+- **Finalize the First Design Prototype**
 
-  - Finalize the creation of the design prototype and send it to the client for feedback.
+  - Complete and submit the initial UI prototype to the client.
 
-- **Iterate Upon Client's Feedback**
+- **Iterate Based on Client Feedback**
 
-  - Review and implement changes to the project charter and the prototype based on client feedback.
+  - Adjust the Project Charter and prototype as needed.
 
-- **Start Working on Design Prototype Number 2**
+- **Begin Second Prototype Development**
 
-- **Begin Work on the Functional Specifications Document**
+- **Start Functional Specifications Document**
 
-  - Maxime Caron will start drafting the functional specifications regarding the web interface.
+  - **Maxime Caron** will begin drafting the web interface’s functional specifications.
 
-- **Finish KPIs Initialization**
+- **Complete KPI Initialization**
 
-- **Plan and Break Down Tasks**
+- **Plan & Break Down Tasks Further**
 
-- **Initialize Code Environment**
-  - Laurent Bouquin and Jason Grosso will collaborate with Emilien Chinsy to set up the basic coding environment for the project.
+- **Initialize the Code Environment**
+  - **Laurent Bouquin, Jason Grosso, and Emilien Chinsy** will collaborate on setting up the coding environment.
