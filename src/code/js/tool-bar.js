@@ -7,6 +7,17 @@ openFolder.addEventListener('click', function () {
 });
 
 uploadFile.addEventListener('click', function () {
+	console.log('upload file button clicked');
+	// Create a function to download JSON data as a file
+	const dataBlob = new Blob([jsonData], { type: 'application/json' });
+	const url = URL.createObjectURL(dataBlob);
+	const link = document.createElement('a');
+	link.href = url;
+	link.download = 'data.json';
+	document.body.appendChild(link);
+	link.click();
+	document.body.removeChild(link);
+	URL.revokeObjectURL(url);
 });
 
 /*
