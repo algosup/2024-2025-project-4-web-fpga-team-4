@@ -2,35 +2,58 @@
 
 ## Table of Contents
 
+<details close>
+<summary>Click to expand</summary>
+
 - [Test Plan - Web FPGA Team 4](#test-plan---web-fpga-team-4)
   - [Table of Contents](#table-of-contents)
-  - [1. Introduction](#1-introduction)
-  - [2. Functional Areas Covered](#2-functional-areas-covered)
-  - [3. Testing](#3-testing)
-    - [3.1. Tools](#31-tools)
-    - [3.2. Environment](#32-environment)
-      - [3.2.1. Language](#321-language)
-      - [3.2.2. Browsers](#322-browsers)
-  - [4. Strategies](#4-strategies)
-    - [4.1. Success/Failure Criteria](#41-successfailure-criteria)
-    - [4.2. Testing Strategies](#42-testing-strategies)
-  - [5. Timeline](#5-timeline)
-    - [5.1. Functional Testing](#51-functional-testing)
-    - [5.2. Unit Testing](#52-unit-testing)
-    - [5.3. Creation of Logs](#53-creation-of-logs)
-    - [5.4. Test Execution Failing](#54-test-execution-failing)
-  - [6. Resources](#6-resources)
+  - [Introduction](#introduction)
+    - [Scope](#scope)
+    - [Out of Scope](#out-of-scope)
+  - [Functional Areas Covered](#functional-areas-covered)
+  - [Testing](#testing)
+    - [Tools](#tools)
+    - [Environment](#environment)
+      - [Language](#language)
+      - [Browsers](#browsers)
+  - [Strategies](#strategies)
+    - [Success/Failure Criteria](#successfailure-criteria)
+    - [Testing Strategies](#testing-strategies)
+  - [Timeline](#timeline)
+    - [Functional Testing](#functional-testing)
+    - [Unit Testing](#unit-testing)
+    - [Creation of Logs](#creation-of-logs)
+    - [Test Execution Failing](#test-execution-failing)
+  - [Resources](#resources)
 
-## 1. Introduction
+</details>
+
+## Introduction
 
 This document is the test plan for the Web FPGA Team 4 project. It will provide all the necessary information about the tests that will be executed on the project.
 
-- **Project Name:** Web FPGA Team 4
-- **Version:** 0.5.0
-- **Date:** 03/24/2025
-- **Prepared By:** [Guillaume DESPAUX](https://github.com/guillaumedespaux)
+### Scope
 
-## 2. Functional Areas Covered
+- Cover all functionalities of the project:
+  - HTML
+  - CSS
+  - JavaScript
+  - Parser code
+- Execute tests on different browsers and versions
+- Ensure compatibility with the majority of browsers
+- Ensure the website responsiveness
+- Verify the data processing from `.sdf` or `.json`
+- Ensure the website is error-free
+- Ensure the website is user-friendly and accessible
+- Ensure the that schematics are displayed correctly and quickly
+
+### Out of Scope
+
+- No database connection handling
+- No SQL injection tests
+- No security tests for the website
+
+## Functional Areas Covered
 
 Testing will be categorized into different types to ensure comprehensive coverage.
 
@@ -64,9 +87,11 @@ The following key functionalities will be tested:
 
 - **Cross-Browser Compatibility**: Testing in different browsers and versions.
 
-## 3. Testing
+## Testing
 
-### 3.1. Tools
+All the test cases will be stored in this [Google Sheet document](https://docs.google.com/spreadsheets/d/1xgYoYAgcqF_BHnA5TA75yskmWWzZK-nytPPwedQnjcw/edit?gid=1733092474#gid=1733092474) to keep track of what they are for, what they are testing, and how to test them.
+
+### Tools
 
 | Name | Description | Strengths |
 | --- | --- | --- |
@@ -75,26 +100,26 @@ The following key functionalities will be tested:
 | [Selenium](https://www.selenium.dev) | Selenium is a tool that allows automating the tests. It will be used to test the code in different environments. | Provides multiple browsers to apply tests on (Safari, Edge, Firefox, Chrome). |
 | [GitHub Actions](https://github.com/features/actions) | GitHub Actions is a tool that allows automating the tests. | Will be used to execute code, like reload render service and test directly on it. |
 
-### 3.2. Environment
+### Environment
 
-#### 3.2.1. Language
+#### Language
 
 All the tests will be executed using the TypeScript language, ensuring that the code returns the right information where some information has to be identified as `string` or `number`.
 
-#### 3.2.2. Browsers
+#### Browsers
 
-The tests will be using different browsers on multiple versions to ensure that the code is responsive and usable on the majority of the browsers.
+The tests will be conducted across a range of browser versions to ensure compatibility and responsiveness. The table below specifies the oldest and latest versions included in testing:
 
 | Browser | Oldest Version Tested | Latest Version Tested |
 | --- | :-: | :-: |
-| [Chrome](https://chromereleases.googleblog.com) | Version 111.0 | Version 133.0 |
-| [Firefox](https://www.mozilla.org/en-US/firefox/releases/) | Version 116.0 | Version 136.0 |
-| [Safari](https://developer.apple.com/documentation/safari-release-notes) | Version 15 | Version 18 |
-| [Edge](https://learn.microsoft.com/en-us/deployedge/microsoft-edge-release-schedule) | Version 112 | Version 134 |
+| [Chrome](https://chromereleases.googleblog.com) | 111.0 | 133.0 |
+| [Firefox](https://www.mozilla.org/en-US/firefox/releases/) | 116.0 | 136.0 |
+| [Safari](https://developer.apple.com/documentation/safari-release-notes) | 15 | 18 |
+| [Edge](https://learn.microsoft.com/en-us/deployedge/microsoft-edge-release-schedule) | 112 | 134 |
 
-## 4. Strategies
+## Strategies
 
-### 4.1. Success/Failure Criteria
+### Success/Failure Criteria
 
 A test is considered passed if:
 
@@ -116,7 +141,7 @@ Defect Severity Levels:
 - **Medium**: UI issues affecting usability.
 - **Low**: Minor visual defects with no functional impact.
 
-### 4.2. Testing Strategies
+### Testing Strategies
 
 The strategies for testing will include the following:
 
@@ -126,15 +151,15 @@ The strategies for testing will include the following:
 
 - **Test Case Design**
 
-  Test cases will be designed based on the requirements and specifications provided. Each test case will include the test steps, expected results, and actual results.
+Test cases will be designed based on the provided requirements and specifications. Each test case will be created in this [Google Sheet document](https://docs.google.com/spreadsheets/d/1xgYoYAgcqF_BHnA5TA75yskmWWzZK-nytPPwedQnjcw/edit?gid=1733092474#gid=1733092474) and have to include the next information:
 
-  | Date | ID | Version | Category | Sub-Category | Name | Description | Passed | Expected | Actual |
-  | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-  | 2025-03-14 | 1-Chrome-112-HTML | 112 | HTML | Text | Title Homepage | Check if the title is correct | False | FPGA Web Visualizer | Client Side |
-  | 2025-03-14 | 2-Chrome-112-HTML | 112 | HTML | Size | Components' size | Check if the sizes are correct | True | | |
+  | Date | ID | Version | Category | Sub-Category | Name | Description | Passed | Expected | Actual | Priority |
+  | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+  | 2025-03-14 | 1-Chrome-112-HTML | 112 | HTML | Text | Title Homepage | Verify that the homepage title is correct | False | FPGA Web Visualizer | Client Side | Low |
+  | 2025-03-14 | 2-Chrome-112-HTML | 112 | HTML | Size | Components' size | Ensure that component sizes are correct | True | | | High |
 
 > [!NOTE]
-> The IDs are created based on the version of the browser and the category of the test.
+> Test case IDs are structured based on the browser version and test category.
 
 - **Test Data Management**
 
@@ -161,9 +186,9 @@ Here you can find all the tests that have been executed for:
 - [Safari](https://docs.google.com/spreadsheets/d/1xgYoYAgcqF_BHnA5TA75yskmWWzZK-nytPPwedQnjcw/edit?gid=1276776256#gid=1276776256)
 - [Edge](https://docs.google.com/spreadsheets/d/1xgYoYAgcqF_BHnA5TA75yskmWWzZK-nytPPwedQnjcw/edit?gid=1878739529#gid=1878739529)
 
-## 5. Timeline
+## Timeline
 
-### 5.1. Functional Testing
+### Functional Testing
 
 The functional tests will be executed on the website to ensure that the `html` and `css` code is working as expected.
 
@@ -195,7 +220,7 @@ await runTest(driver, browser, Category.HTML, SubCategory.Text, 'Title Homepage'
 });
 ```
 
-### 5.2. Unit Testing
+### Unit Testing
 
 The unit tests will be executed on the code to ensure that the `javascript` and `parser` code is working as expected.
 
@@ -213,7 +238,7 @@ The creation of the unit tests will be done in two steps:
     - Passed
     - Error
 
-### 5.3. Creation of Logs
+### Creation of Logs
 
 - **When pushing**
   
@@ -256,7 +281,7 @@ The logs will contain the following information:
   ]
   ```
 
-### 5.4. Test Execution Failing
+### Test Execution Failing
 
 In case a test does not run properly, the software engineer and the quality assurance have access to commands to run the test on their computer.
 
@@ -273,7 +298,7 @@ In case a test does not run properly, the software engineer and the quality assu
 > [!WARNING]
 > You cannot test the `Safari` browser on a Windows computer.
 
-## 6. Resources
+## Resources
 
 - [Figma Design](https://www.figma.com/design/A6rvzTJCZQQyznhdQbu753/FPGA-Web-App?node-id=0-1&t=d8dCzS37lNdcWJEG-1)
 - [Technical Specification](../technical-specifications/technical-specifications.md)
