@@ -1,0 +1,79 @@
+:root{
+	/* --grid-border: #E1FF00; */
+	--grid-border: rgba(225, 255, 0, .6);
+	--clock-graph: #00FFF7FF;
+}
+
+/* Applies Style to the Right Part of the Page */
+
+#data-display {
+	position: fixed;
+	top: 15vh;
+	left: 80vw;
+	background-color: var(--secondary);
+	width: 100%;
+	height: 81vh;
+	border-radius: 2vh 0 0 2vh;
+	z-index: 3;
+
+	margin-top: 2vh;
+
+	border-top: .4vh solid var(--on-primary);
+	border-left: .4vh solid var(--on-primary);
+	border-bottom: .4vh solid var(--on-primary);
+	box-sizing: border-box;
+
+	box-shadow: .1vh .5vh 1vh var(--shadow-color);
+
+	#data-display-arrowBox {
+		border-bottom: .4vh solid var(--on-primary);
+	}
+}
+
+/* Applies Style to the Button that Closes the Menu */
+
+#hide-button {
+	font-size: 3vh;
+	font-weight: bold;
+	margin: .8vh 0 .8vh 1.5vh;
+	padding: 0;
+	align-self: center;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	color: var(--icons);
+}
+
+
+
+.clock-name{
+	width: 18%;
+	margin-left: 1%;
+	margin-bottom: 0;
+	text-align: center;
+	font-size: 1.5em;
+	color: var(--tool-data-text);
+    inline-size: fit-content;
+}
+
+
+.data-display-clock{
+	margin-top: 1vh;
+	margin-left: 1%;
+	height: 15vh;
+	width: 18%;
+
+	display: grid;
+	grid-template-columns: repeat(14, 1fr);
+	grid-template-rows: repeat(6, 1fr);
+
+
+
+	background-color: #000000FF;
+}
+
+.grid-item{
+	background-color: transparent;
+	border-left: .1vh solid var(--grid-border);
+	border-bottom: .1vh solid var(--grid-border);
+}

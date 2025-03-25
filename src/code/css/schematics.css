@@ -1,0 +1,390 @@
+/* Applies Style to the Whole Page */
+
+:root {
+	--reset-color: #7D7D7DFF; 
+	--d-color: #C29000FF; 
+	--q-color: #007ACCFF; 
+	--lut-color: #009688FF; 
+	--ff-color: #D32F2FFF; 
+	--clock-color: #8E24AAFF;
+	--connection-used: #00C853FF; 
+	--connection-unused: var(--on-primary);
+	--element-width: 10vh;
+	--element-height: 18vh;
+	--in-element-height: 16vh;
+	--element-margin-top: 5vh;
+	--little-element-height: 12vh;
+	--in-little-element-height: 10vh;
+}
+
+/* Applies Style to the Main Part of the Page */
+
+#visualization-area {
+	display: grid;
+	grid-template-columns: 8fr 2fr;
+}
+
+/* Applies Style to the Left Part of the Page */
+
+#main {
+	margin-top: 15vh;
+	width: 80vw;
+	min-height: 85vh;
+
+	font-size: 1vh;
+}
+
+
+
+#guidelines {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	height: 100%;
+}
+
+#guidelines > div {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	width: 16vw;
+	height: 100%;
+}
+
+#guidelines > div > p {
+	margin-top: 1vh;
+	color: var(--on-primary);
+	align-items: center;
+	font-size: 1.5vh;
+}
+
+.back-lines {
+	margin-top: .5vh;
+	height: 100%;
+	width: 0;
+	border-width: 0;
+	border-left-width: .3vh;
+	border-color: #808080FF;
+	border-style: dashed;
+}
+
+#input-container {
+	position: absolute;
+	margin-top: var(--element-margin-top);
+	z-index: 13;
+}
+
+.input-element{
+	height: var(--little-element-height);
+	width: var(--element-width);
+}
+
+.input-element > div {
+	height: var(--in-little-element-height);
+	width: var(--element-width);
+	border-radius: 1vh;
+	border: .1vh solid var(--on-primary);
+
+	box-sizing: border-box;
+
+	display: grid !important;
+	grid-template-columns:  minmax(0, 1fr)  minmax(0, 3fr)  minmax(0, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+
+	color: var(--on-primary);
+}
+
+.input-data{
+	text-align: center;
+	grid-column: 1/4;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.input-out {
+	text-align: end;
+	align-self: center;
+	justify-content: end;
+	grid-column: 2;
+	display: flex;
+}
+
+.input-out-after{
+	align-self: center;
+	grid-column: 3;
+	margin-left: 1.25vh;
+	display: block;
+	width: 1.5vh;
+	aspect-ratio: 1/1;
+	background-color: var(--connection-used);
+	border-radius: 50%;
+}
+
+
+.clock-element > div {
+	background-color: var(--clock-color);
+}
+
+.reset-element > div{
+	background-color: var(--reset-color);
+}
+
+.data-element > div{
+	background-color: var(--d-color);
+}
+
+
+#output-container {
+	position: absolute;
+	margin-top: var(--element-margin-top);
+	z-index: 1;
+}
+
+.output-element{
+	height: var(--little-element-height);
+	width: var(--element-width);
+}
+
+
+.output-element >div{
+	height: var(--in-little-element-height);
+	width: var(--element-width);
+	border-radius: 1vh;
+	border: .1vh solid var(--on-primary);
+
+	box-sizing: border-box;
+
+	display: grid !important;
+	grid-template-columns: minmax(0, 1fr)  minmax(0, 3fr)  minmax(0, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+
+	color: var(--on-primary);
+
+
+}
+
+.q-element > div{
+	background-color: var(--q-color);
+}
+
+.output-data{
+	text-align: center;
+	grid-column: 1/-1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.output-in {
+	grid-column: 2;
+}
+.output-in-before{
+	background-color: var(--connection-used);
+	align-self: center;
+	grid-column: 1;
+	display: block;
+	width: 1.5vh;
+	aspect-ratio: 1/1;
+	border-radius: 50%;
+	margin-left: -.75vh;
+}
+
+
+
+
+
+
+.element-state{
+	font-weight: bold;
+}
+
+
+#lut-container {
+	position: absolute;
+	margin-top: var(--element-margin-top);
+	z-index: 1;
+}
+
+.lut-element{
+	height: var(--element-height);
+}
+
+.lut-element > div {
+
+	height: var(--in-element-height);
+	width: var(--element-width);
+	border-radius: 1vh;
+	border: .1vh solid var(--on-primary);
+
+	box-sizing: border-box;
+
+	color: var(--on-primary);
+
+	display: grid !important;
+	grid-template-columns: minmax(0, 1fr)  minmax(0, 2fr)  minmax(0, 2fr)  minmax(0, 1fr);
+	grid-template-rows: repeat(6, 1fr);
+
+	background-color: var(--lut-color);
+}
+
+
+.lut-id {
+	text-align: center;
+	grid-column: 1/-1;
+	grid-row: 1;
+}
+
+.lut-in {
+	grid-column: 2;
+}
+
+.lut-in-before{
+	background-color: var(--connection-used);
+	align-self: center;
+	grid-column: 1;
+	width: 1.5vh;
+	aspect-ratio: 1/1;
+	border-radius: 50%;
+	margin-left: -.75vh;
+}
+
+
+.lut-out {
+	text-align: end;
+	align-self: center;
+	grid-column: 3;
+	grid-row: 2;
+}
+
+.lut-out-after{
+	background-color: var(--connection-used);
+	align-self: center;
+	grid-column: 4;
+	grid-row: 2;
+	width: 1.5vh;
+	aspect-ratio: 1/1;
+	border-radius: 50%;
+	margin-left: .9vh;
+}
+
+
+
+.lut-gnd-out-before{
+	background-color: var(--connection-used);
+	align-self: center;
+	grid-column: 1;
+	grid-row: 2;
+	width: 1.5vh;
+	aspect-ratio: 1/1;
+	border-radius: 50%;
+	margin-left: -.75vh;
+}
+
+
+.lut-gnd-out {
+	grid-column: 2;
+}
+
+
+#ff-container {
+	position: absolute;
+	margin-top: var(--element-margin-top);
+	z-index: 1;
+}
+
+.ff-element{
+	height: var(--element-height);
+	width: var(--element-width);
+}
+
+
+.ff-element > div {
+	
+	height: var(--in-element-height);
+	width: 100%;
+	border-radius: 1vh;
+	
+	background-color: var(--ff-color);
+	border: .1vh solid var(--on-primary);
+	box-sizing: border-box;
+
+	box-sizing: border-box;
+
+	color: var(--on-primary);
+
+	display: grid !important;
+	grid-template-columns: minmax(0, 1fr)  minmax(0, 2fr)  minmax(0, 2fr)  minmax(0, 1fr);
+	grid-template-rows: repeat(4, 1fr);
+
+
+
+}
+
+.ff-id {
+	margin-top: .8vh;
+	text-align: center;
+	grid-column: 1/-1;
+	grid-row: 1;
+}
+
+.ff-in {
+	align-self: center;
+	grid-column: 2;
+}
+
+.ff-in-before{
+	align-self: center;
+	grid-column: 1;
+	width: 1.5vh;
+	aspect-ratio: 1/1;
+	background-color: var(--connection-used);
+	border-radius: 50%;
+	margin-left: -.75vh;
+}
+
+.ff-out {
+	text-align: end;
+	align-self: center;
+	grid-column: 3;
+	grid-row: 2;
+}
+
+
+.ff-out-after{
+	align-self: center;
+	grid-column: 4;
+	grid-row: 2;
+	width: 1.5vh;
+	aspect-ratio: 1/1;
+	background-color: var(--connection-used);
+	border-radius: 50%;
+	margin-left: .9vh;
+}
+
+/* Creates lines that connect the elements */
+
+#connections{
+	width: 80vw;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.line{
+	position: absolute;
+}
+
+
+#clock-back{
+	position: fixed;
+	width: 100vw;
+	height: 18vh;
+	top: 82vh;
+	left: 0;
+	z-index: 1;
+	background: linear-gradient(to top, rgb(from var(--tertiary) r g b / 1), rgb(from var(--primary) r g b / .1));
+}
