@@ -12,14 +12,22 @@ enum Category {
 }
 enum SubCategory {
   Colors = 'Colors',
-  Light = 'Light',
-  Dark = 'Dark',
+  LightTheme  = 'LightTheme',
+  DarkTheme = 'DarkTheme',
   Text = 'Text',
   Size = 'Size',
-  Buttons = 'Buttons',
+  Button = 'Button',
+  Border = 'Border',
   Value = 'Value',
-  Components = 'Components',
-  Wire = 'Wire',
+  CompoInput = 'CompoInput',
+  CompoClock = 'CompoClock',
+  Radius = 'Radius',
+  Footer = 'Footer',
+  Nav = 'Nav',
+  CompoOutput = 'CompoOutput',
+  CompoLUT = 'CompoLUT',
+  CompoFlipFlop = 'CompoFlip-Flop',
+  Background = 'Background',
 }
 
 enum Priority {
@@ -35,7 +43,7 @@ const results: {
   version: string | undefined,
   test: {
     category: Category,
-    subCategory: SubCategory | null,
+    subCategory: SubCategory [] | null,
     name: string,
     description: string,
     priority: Priority,
@@ -48,32 +56,40 @@ const logFilePath = path.join(__dirname, 'logs', dateString + '-firefox-unit-tes
 
 const versions = ['116.0', '117.0', '118.0', '119.0', '120.0', '121.0', '122.0', '123.0', '124.0', '125.0.1', '126.0', '127.0', '128.0', '129.0', '130.0', '131.0', '132.0', '133.0', '134.0', '135.0', '136.0'];
 
+(async () => {
+  for (const version of versions) {
+    let firefoxOptions = new FirefoxOptions().addArguments('--headless').setBrowserVersion(`${version}`);
+    await runTests(Browser.FIREFOX, firefoxOptions);
+  }
+  logResults();
+})();
+
 async function runTests(browser: string, options: any) {
   let driver: WebDriver;
   driver = await new Builder().forBrowser(browser).setFirefoxOptions(options).build();
 
   try {
     await driver.get("https://two024-2025-project-4-web-fpga-team-4.onrender.com/client.html");
-
-    await runTest(driver, browser, Category.HTML, SubCategory.Text, 'Title Homepage', 'Check if the title is correct', Priority.HIGH, async () => {
+  
+    await runTest(driver, browser, Category.HTML, [SubCategory.Text], 'Title Homepage', 'Check if the title is correct', Priority.HIGH, async () => {
       const title = await driver.getTitle();
       assert.strictEqual("Client Side", title);
     });
 
     await driver.manage().setTimeouts({ implicit: 10000 });
 
-    await runTest(driver, browser, Category.CSS, SubCategory.Colors, 'Background Color Test', 'Check if the background color is correct', Priority.MEDIUM, async () => {
+    await runTest(driver, browser, Category.CSS, [SubCategory.Colors], 'Background Color Test', 'Check if the background color is correct', Priority.MEDIUM, async () => {
       const description = await driver.findElement(By.id('description')).getCssValue('background-color');
       assert.strictEqual("rgb(27, 38, 59)", description);
     });
     
-    await runTest(driver, browser, Category.CSS, SubCategory.Colors, 'Background Color Test', 'Check if the background color is correct in hex', Priority.MEDIUM, async () => {
+    await runTest(driver, browser, Category.CSS, [SubCategory.Colors] , 'Background Color Test', 'Check if the background color is correct in hex', Priority.MEDIUM, async () => {
       const description = await driver.findElement(By.id('description')).getCssValue('background-color');
       const hexColor = rgbToHex(description);
       assert.strictEqual("#1B263B", hexColor);
     });
 
-    await runTest(driver, browser, Category.HTML, SubCategory.Value, 'Speed Value Test', 'Check if the speed value is correct', Priority.LOW, async () => {
+    await runTest(driver, browser, Category.HTML, [SubCategory.Value, SubCategory.Text], 'Speed Value Test', 'Check if the speed value is correct', Priority.LOW, async () => {
       const speed = await driver.findElement(By.id('speed')).getAttribute('value');
       const speedNumber = parseInt(speed);
       assert.strictEqual(1, speedNumber);
@@ -87,11 +103,10 @@ async function runTests(browser: string, options: any) {
     if (driver) {
       await driver.quit();
     }
-    logResults();
   }
 }
 
-async function runTest(driver: WebDriver, browserName: string, testCategory: Category, testSubCategory: SubCategory ,testName: string, testDescription: string, testPriority: Priority, testFn: () => Promise<void>) {
+async function runTest(driver: WebDriver, browserName: string, testCategory: Category, testSubCategory: SubCategory [],testName: string, testDescription: string, testPriority: Priority, testFn: () => Promise<void>) {
   try {
     await testFn();
     results.push({ 
@@ -123,7 +138,6 @@ async function runTest(driver: WebDriver, browserName: string, testCategory: Cat
   }
 }
 
-
 function logResults() {
   const logData = {
     summary: `Test Summary for file: ${path.basename(__filename)}`,
@@ -141,9 +155,3 @@ function rgbToHex(rgb: string): string {
   const [r, g, b] = result.map(Number);
   return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase()}`;
 }
-(async () => {
-  for (const version of versions) {
-    let firefoxOptions = new FirefoxOptions().addArguments('--headless').setBrowserVersion(`${version}`);
-    runTests(Browser.FIREFOX, firefoxOptions);
-  }
-})();
