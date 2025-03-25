@@ -63,7 +63,7 @@ This document guides individuals who wish to contribute to the project. It outli
   - `inputfile`
   - `Temp`
 
-#### Element Names (HTML)
+#### Element Names in HTML
 
 - **Naming Convention:** only use lowercase element names.
 - Do this:

@@ -27,14 +27,14 @@ The web interface will focus on the following elements:
 #### Must-Have Features
 
 - Web interface for FPGA visualization
-- Accept input files (Verilog netlist and SDF)
+- Accept input files (Verilog netlist and Standard Delay Format files (SDF))
 - Display visual representation of FPGA floorplan
 - User-friendly interactive design
 - Step-by-step signal propagation display
 - Play, pause, and slow-motion controls
 - File pivotation (rotation or re-orientation of visual elements)
 - Client-server interaction
-- Display 2D floorplan with BELs and routing
+- Display 2D floorplan with Basic Element of Logics and routing
 - Interactive controls (zoom, pan, select signals)
 - Display signal issues (e.g., speed differences, clock desynchronization)
 - Animations to enhance understanding
@@ -67,7 +67,7 @@ The web interface will focus on the following elements:
 The following elements are outside the scope of this project:
 
 - **Writing Verilog code from scratch**
-- **Automatic conversion of Verilog to another HDL (e.g., VHDL)**
+- **Automatic conversion of Verilog to another Hardware Description Language (e.g., VHDL)**
 - **Full FPGA synthesis in-browser**
 - **Bitstream modification**
 - **Pre-processing interactions**
@@ -150,3 +150,4 @@ A final 15-minute presentation summarizing the project and its outcomes will als
 - Performance optimization challenges
 - API integration issues
 - Time constraints due to academic deadlines
+
