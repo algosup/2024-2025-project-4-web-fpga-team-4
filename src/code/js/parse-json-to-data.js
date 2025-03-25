@@ -2,6 +2,8 @@ function sortElements(luts, flipFlops, ios, connections) {
 	let UI = connections.find(connection => { return connection.Input.type === 'userInput' });
 	let UIIndex = connections.indexOf(UI);
 
+	pathElements.push(UI.Input);
+
 	displayInput(UI.Input.type);
 	let currentElement = connections[UIIndex].Output;
 	console.log('current = ', currentElement.id);
@@ -24,7 +26,8 @@ function sortElements(luts, flipFlops, ios, connections) {
 		let ff = flipFlops.find(ff => { return ff.id.toString() === currentElement.id });
 		displayFlipFlop(ff.id, ff.connections[0].id, ff.connections[1].id, ff.connections[2].id);
 	}
-
+	
+	pathElements.push(currentElement);
 	if (connections.find(connection => connection.Output.type === 'userOutput')) {
 		while (currentElement.type != 'userOutput') {
 			let nextElement = connections.find(connection => {
@@ -46,6 +49,7 @@ function sortElements(luts, flipFlops, ios, connections) {
 			}
 
 			currentElement = nextElement;
+			pathElements.push(currentElement);
 		}
 	}
 
@@ -140,4 +144,6 @@ function parseJsonFile() {
 		}
 		drawClockBase('Clock-out');
 	}
+
+	console.log('pathElements = ', pathElements);
 }

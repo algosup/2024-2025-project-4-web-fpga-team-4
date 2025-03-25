@@ -102,3 +102,5 @@ function resetSchematics() {
 
 const testColors = [ '#FF0000', '#00FF00', '#0000FF', '#FFFF00'];
 let ffToLutIndex = 0;
+
+let pathElements = [];
