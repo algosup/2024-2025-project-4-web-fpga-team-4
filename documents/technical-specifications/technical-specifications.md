@@ -10,10 +10,17 @@
     - [Project Introduction](#project-introduction)
     - [Document Purpose](#document-purpose)
   - [Scope](#scope)
+  - [Dependencies](#dependencies)
+    - [**1. Git \& GitHub**](#1-git--github)
+      - [**Installation:**](#installation)
+    - [**2. Node.js and npm**\*](#2-nodejs-and-npm)
+      - [**Installation:**](#installation-1)
+    - [**3.Project Dependencies**](#3project-dependencies)
+    - [**4. Running the project**](#4-running-the-project)
   - [Tasks](#tasks)
-    - [Designing the web interface and the User Interface](#designing-the-web-interface-and-the-user-interface)
+    - [Designing the web interface and the user interface](#designing-the-web-interface-and-the-user-interface)
     - [Parsing from SDF to JSON](#parsing-from-sdf-to-json)
-    - [Coding the web interface and the User Interface](#coding-the-web-interface-and-the-user-interface)
+    - [Coding the web interface and the user interface](#coding-the-web-interface-and-the-user-interface)
     - [Parsing from JSON to HTML](#parsing-from-json-to-html)
     - [Back-End development](#back-end-development)
     - [Animations](#animations)
@@ -22,10 +29,10 @@
     - [Task handling](#task-handling)
     - [Task distribution](#task-distribution)
   - [Schedule](#schedule)
-  - [System Overview](#system-overview)
-    - [System Architecture](#system-architecture)
-    - [Software Architecture Diagram](#software-architecture-diagram)
-      - [Project Structure](#project-structure)
+  - [System overview](#system-overview)
+    - [System architecture](#system-architecture)
+    - [Software architecture diagram](#software-architecture-diagram)
+      - [Project structure](#project-structure)
         - [Front-end](#front-end)
         - [Back-end](#back-end)
           - [Back-end Workflow:](#back-end-workflow)
@@ -51,11 +58,12 @@
       - [Visualising the elements and signals](#visualising-the-elements-and-signals)
         - [Elements](#elements)
         - [Connections](#connections)
-        - [Color Codes](#color-codes)
+        - [Color codes](#color-codes)
       - [Tool-Bar buttons](#tool-bar-buttons)
-    - [Testing](#testing)
-      - [Testing strategy](#testing-strategy)
-    - [Risks and mitigation strategies](#risks-and-mitigation-strategies)
+    - [Animations](#animations-1)
+  - [Testing](#testing)
+    - [Testing strategy](#testing-strategy)
+  - [Risks and mitigation strategies](#risks-and-mitigation-strategies)
   - [Glossary](#glossary)
 
 ## Project Overview
@@ -93,27 +101,69 @@ The programming languages we will use for this project are as follows:
 - **Front-end**: HTML, CSS and JavaScript.
 - **Back-end**: Node.js(only for testing, development and debug) and JavaScript
 
+## Dependencies  
+
+This project requires several dependencies to function properly. Below is a list of the essential tools and libraries needed to set up and run the project.  
+
+### **1. Git & GitHub**  
+The project is hosted on GitHub. Ensure you have Git installed to clone the repository and manage version control.  
+
+#### **Installation:**  
+- Download and install Git from [git-scm.com](https://git-scm.com/) if not already installed.  
+- Clone the repository using:  
+
+```sh
+git clone https://github.com/algosup/2024-2025-project-4-web-fpga-team-4.git
+cd 2024-2025-project-4-web-fpga-team-4/src
+```
+
+### **2. Node.js and npm***
+The project requires Node.js and npm (Node Package Manager) to manage dependencies and run scripts.
+
+#### **Installation:**
+- Download and install Node.js from [nodejs.org](https://nodejs.org) (npm is included with Node.js).
+- Verify installation:
+```sh
+node -v  # Check Node.js version  
+npm -v   # Check npm version  
+```
+
+### **3.Project Dependencies**
+After cloning the repository, install all required dependencies using npm:
+
+```sh
+npm install
+```
+This command reads the `package.json` file and installs all necessary packages.
+
+### **4. Running the project**
+To start the project, use the following command:
+```sh
+npm start
+```
+This will launch the application in a development environment.
+
 ## Tasks
 
 Here are the tasks we will need to accomplish in order to finish the project:
 
-### Designing the web interface and the User Interface
-The first step is to **design the web interface and write graphical charters** to allow the development team to start working on the UI as soon as possible. **the mockups will be made using Figma** and are available [here](https://www.figma.com/design/A6rvzTJCZQQyznhdQbu753/FPGA-Web-App?node-id=0-1&m=dev&t=lkPKlLFY9KAmra26-1), and the graphical charter is available [here](../functional-specifications/graphical-charter.md)
+### Designing the web interface and the user interface
+The first step is to **design the web interface and write graphical charters** to allow the development team to start working on the UI as soon as possible. **The mockups will be made using Figma** and are available [here](https://www.figma.com/design/A6rvzTJCZQQyznhdQbu753/FPGA-Web-App?node-id=0-1&m=dev&t=lkPKlLFY9KAmra26-1), and the graphical charter is available [here](../functional-specifications/graphical-charter.md)
 
 ### Parsing from SDF to JSON
-While designing the web interface, **we need to work on writing a data parser**, which will allow us to **parse the data from the `.SDF` file that the teacher will give our program, into a .JSON file that will be a lot easier to read**. Doing this is not necessary for the project, however, it **allows the teacher to write a `.JSON` file themselves** in our format so they do not have to write code in verilog<sup><a href="#4">[5]</a></sup> or VHDL<sup><a href="#6">[6]</a></sup> and make it into an `.SDF` file every time they want to show their students other examples.
+While designing the web interface, **we need to develop a data parser** to **convert the `.SDF` file provided by the teacher into a more readable `.JSON` format**. Doing this is not necessary for the project, however, it **allows the teacher to write a `.JSON` file themselves** in our format so they do not have to write code in verilog<sup><a href="#4">[4]</a></sup> or VHDL<sup><a href="#5">[5]</a></sup> and make it into an `.SDF` file every time they want to show their students other examples.
 
-### Coding the web interface and the User Interface
-After the designs have been decided on and mockups have been made, the coding team needs to start implementing them on the web page. **These will be made using HTML, CSS and Javascript**, they need to be made first to allow the HTML code returned from transforming the parsed data to be implemented.
+### Coding the web interface and the user interface
+After the designs have been decided on and mockups have been made, the coding team needs to start implementing them on the web page. **These will be made using HTML, CSS and Javascript**.
 
 ### Parsing from JSON to HTML
 Once we have the web interface, **we need to transform the JSON file** that contains the information from the `.SDF` file **into HTML code** that can be injected into the web-page. 
 
 ### Back-End development
-We don't only need HTML elements, **we need JavaScript and CSS code as well to make our web-page look good and responsive**. The back-end code will contain elements like **the tool-bar** on the top of our page, which **controls the signal flow and the import button**, or the colors and placements of the FPGA elements. 
+We don't only need HTML elements, **we need JavaScript and CSS code as well to make our web-page responsive** and for animations. The back-end code will contain elements like **the tool-bar** on the top of our page, which **controls the signal flow and the import button**, or the colors and placements of the FPGA elements. 
 
 ### Animations
-After the elements show correctly **we need to add animations for electrical signals**, to show **delay the paths and clock signals**. the animations will be made **using CSS key-frames**.
+After the elements show correctly **we need to add animations for electrical signals**, to show the time it takes for the electrical signal to go from one end of the cable to the other. The animations will be made **using CSS key-frames**.
 
 ### Documentation
 While the web-page is being made, **the rest of the team needs to work on the documentation**. They need to write **technical documentation, user guides test cases and all other relevant documentation**.
@@ -139,7 +189,7 @@ The tasks will be distributed among the team members as follows:
 
 By doing so, each team member **will work on multiple tasks**, ensuring that everyone has a well-rounded understanding of the project and can contribute effectively to its success.
 
-The team will follow an **agile development approach**, with **regular sprints, stand-up meetings, and retrospectives** to track progress, address issues, and make adjustments as needed. The team will also use **version control and issue-tracking tools** to manage the project and collaborate effectively.
+The team will follow an **agile development<sup><a href="#7">[7]</a></sup> approach**, with **regular sprints, stand-up meetings, and retrospectives** to track progress, address issues, and make adjustments as needed. The team will also use **version control and issue-tracking tools** to manage the project and collaborate effectively.
 
 ## Schedule
 
@@ -154,9 +204,9 @@ The project will be developed over a period of 6 weeks, with the following miles
 
 The documentation will also be worked on during this 6 week period.
 
-## System Overview
+## System overview
 
-### System Architecture
+### System architecture
 
 Our GitHub repository will be created following the architecture hereunder:
 
@@ -283,12 +333,8 @@ Root
                 routed_POC_worst.sdf
 ```
 
-The project will be structured into these main folders:
-> [!NOTE]
-> TODO
-
-### Software Architecture Diagram
-Our software communicates following the diagram hereunder
+### Software architecture diagram
+Our software communicates following the diagram hereunder (if the diagram does not show fully, click the expand button).
 ```mermaid
 graph TB
 
@@ -343,7 +389,7 @@ graph TB
     Client -->|Display Output| Browser
 ```
 
-#### Project Structure
+#### Project structure
 
 This project is structured into two main components: the **Front-end** and the **Back-end**.
 
@@ -389,7 +435,7 @@ The web page is the **main element of this project**, it's goal is first and for
 The webpage will consist of these components:
 - **Main content**: The main content area where the FPGA structure visualization will be displayed. This will include the FPGA elements and cables.
 - **Sidebar**: The sidebar area where clock signals will be displayed.
-- **Header**: The header area with the project name and a button for uploading files. It will aslo contain the interactive components for controlling simulations such as arrows to move backward and forward in time.
+- **Header**: The header area with the project name and a button for uploading files. It will also contain the interactive components for controlling simulations such as arrows to move backward and forward in time.
 
 ### Back-end
 
@@ -411,7 +457,7 @@ The parser will be implemented in **JavaScript**. Its purpose is to **read the `
 The `.JSON` files will be structured in a way that allows users to **manually create them from scratch**. This avoids the need to write **Verilog or VHDL code** each time they want to prepare a new example for their students.  
 
 The parser will be able to handle:  
-- **Basic types of FPGA cells**, such as **LUTs and Flip-Flops**.  
+- **Basic types of FPGA cells**, such as **LUTs<sup><a href="#8">[8]</a></sup> and Flip-Flops<sup><a href="#9">[9]</a></sup>**.  
 - **Delays** and **connections** between elements.  
  
 Below, you will find **examples of different cell types** and their counterparts in the parsed `.JSON` file. Additionally, an example of how they will be displayed on the **web page** is provided.  
@@ -727,18 +773,18 @@ it will mostly be defined by it's `style` parameters as such:
   
 The cables will be straight lines connecting one element to the other.
 
-##### Color Codes
+##### Color codes
 
 Each element will be assigned a different color to help differentiate between them:
 
-| Element          | Default Color |
-| ---------------- | ------------- |
-| **Async_reset**  | Gray          |
-| **UserInput**    | Yellow        |
-| **Clock**        | Purple        |
-| **LUT**          | Green         |
-| **DFF**          | Red           |
-| **UserOutput**   | Blue          |
+| Element          | Default Color | Hexadecimal |
+| ---------------- | ------------- | ----------- |
+| **Async_reset**  | Gray          | #7D7D7DFF |
+| **UserInput**    | Yellow        | #C29000FF |
+| **Clock**        | Purple        | #8E24AAFF |
+| **LUT**          | Green         | #009688FF |
+| **DFF**          | Red           | #D32F2FFF |
+| **UserOutput**   | Blue          | #007ACCFF |
 
 The cable will be the same color as the element with the output to which it is connected.
 
@@ -749,53 +795,110 @@ When an electrical signal is sent, a circle which will be the opposite color of 
 The tool-bar contains different buttons which are all defined in the Back-end, here are all the buttons and their functions.
 
 - **File Management**:
-  - `Import`: Imports a `.SDF` or a `.JSON` file into the web page for it to be displayed.
-  ![Import](./images/import-button.png)
-  - `Download`: Download the `.JSON` file created by the parser if the user uploaded a `.SDF` file.
+  - `Import`:
+   ![import](./images/import-button.png)
+    - **Functionality:**: Allows users to upload an `.SDF` or `.JSON` file, which will then be displayed on the web page.  
+    - **Implementation:** 
+      - Use an `<input type="file">` element to let users select a file.  
+      - Implement a JavaScript event listener to handle file selection. 
+      - If the file is an `.SDF`, process it through the parser to convert it into `.JSON`.
+      - If the file is a `.JSON`, directly display its contents.  
+
+  - `Download`:
   ![Download](./images/download-button.png)
+  - **Functionality**: Allows users to download the `.JSON` file generated from an imported `.SDF` file.
+  - **Implementation:**
+    - Convert the parsed JSON data into a downloadable `.JSON` file.
+    - Create a temporary `<a>` element and trigger a download when the user clicks the download button.
 
 - **Control**:
-  - `pause`: Pauses the electrical signal.
+  - `pause/play`: 
   ![Pause](./images/pause-button.png)
-  - `play`: Resumes the electrical signal.
   ![Play](./images/play-button.png)
-  - `back`: Moves to the previous frame.
+    - **Functionality**: Pauses/resumes the movement of the electrical signal.
+    - **Implementation**:   
+      - Use a boolean variable to track whether the animation is running
+      - Toggle the state when the button is clicked.
+  - `previous/next/first/last`: 
   ![Back](./images/previous-button.png)
-  - `forward`: Moves to the next frame.
   ![Next](./images/next-button.png)
-  - `first`: Jumps to the first frame.
   ![First](./images/first-button.png)
-  - `last`: Jumps to the last frame.
   ![Last](./images/last-button.png)
+    - **Functionality:** Moves to the previous/next/first/last frame of the animation.
+    - **Implementation:**
+      - Store animation frames in an array. 
+      - Navigate through the frames based on button clicks.
   
 
 - **Speed Controls**:
-  - `speed`: Displays the current speed setting.
-  ![Speed](./images/speed-display.png)
-  - `speedPlus`: Increases the speed.
+  - `speedPlus/speedMinus`
   ![SpeedUp](./images/speed-up-button.png)
-  - `speedMinus`: Decreases the speed.
   ![SpeedDown](./images/speed-down-button.png)
-
+    - **Functionality:**: Controls the playback speed of the animation.
+    - **Implementation:**: 
+      - Adjust the animation interval dynamically. 
+  - `speed`
+  ![Speed](./images/speed-display.png)
+    - **Functionality:** Displays the current speed setting.
+    - **Implementation:** 
+      - Get the animation interval level.
+      - Display it.
 - **Zoom Controls**:
-  - `zoomIn`: Zooms in.
+  - `zoomIn/zoomOut`
   ![ZoomIn](./images/zoom-up-button.png)
-  - `zoomOut`: Zooms out.
   ![ZoomOut](./images/zoom-down-button.png)
-  - `zoomLevel`: Displays the current zoom level.
+    - **Funtionality:** Controls the zoom level of the visualization.
+    - **Implementation**
+    - Modify the `transform: scale()` property of the display area.
+  - `zoomLevel` 
   ![ZoomDisplay](./images/zoom-display.png)
+    - **Functionality:** Displays the current zoom level.
+    - **Implementation**
+      - Get the `scale()` value.
+      - Display it.
 
 - **Display Controls**:
-  - `hideButton`: Hides the sidebar.
+  - `hideButton/dataViewTrigger`
   ![Hide](./images/hide-button.png)
-  - `dataViewTrigger`: Toggles the visibility of the sidebar and adjusts the layout.
-  ![SideBarView](./images/dataview-trigger.png)
-  - `theme`: Switches between light and dark themes.
+  ![dataViewTrigger](./images/dataview-trigger.png)
+    - **Functionality:** Shows/hides the sidebar.
+    - **Implementation:**
+      - Use `classList.toggle()` to show or hide the sidebar.
+  - `theme`
   ![Theme](./images/theme-button.png)
-  - `settings`: Settings button (probably unused).
+    - **Functionality:**  Switches between light and dark themes.
+    - **Implementation:** 
+      - Use `classList.toggle()` to switch themes:
+  - `settings`
   ![Settings](./images/settings-button.png)
+    - **Functionality:** Currently unused but reserved for future configurations
+    - **Implementation:** 
+      - Can be linked to a settings modal.
 
-### Testing
+### Animations  
+
+The final part of the project involves animations.  
+
+We will use the connection from *userInput* to *LUT 175* as an example:  
+
+![start](./images/animations/animations-example.png)  
+
+As explained in the [Connections](#connections) section, each segment of a wire is assigned a unique ID, as shown below:  
+
+![id](./images/animations/animations-example-ids.png)  
+
+Since we have a function that sorts connections in the order in which the signal travels, we can use basic CSS animations to visually represent this flow. A white or black ball, which will be a `<div>` html element, will move along the wire, starting at the segment with ID 1:  
+
+![path1](./images/animations/animations-example-path-1.png)  
+
+The ball will then continue along the next segments in sequence, such as IDs 2 and 3:  
+
+![path2](./images/animations/animations-example-path-2.png)  
+![path3](./images/animations/animations-example-path-3.png)  
+
+Once the ball reaches the end of the last wire, it will disappear, and a new one will be generated for the next connection. The ball’s color will also change dynamically to match the selected theme.  
+
+## Testing
 
 The testing part of the project will be done using the following tools:
 
@@ -806,7 +909,7 @@ The testing part of the project will be done using the following tools:
 |[Selenium](https://www.selenium.dev)|Selenium is a tool that allows to automate the tests. It will be used to test the code in different environments.|Provides multiples browser to apply test on (Safari, Edge, Firefox, Chrome).|
 |[Github Actions](https://github.com/features/actions)|Github Actions is a tool that allows to automate the tests.|Will be used to execute code, like reload render service and test directly on it.|
 
-#### Testing strategy
+### Testing strategy
 
 The strategies for testing will include the following:
 
@@ -828,7 +931,7 @@ The strategies for testing will include the following:
 - **Defect Management**
   Defects found during testing will be logged, tracked, and managed using a defect tracking tool. Each defect will be assigned a priority and severity level.
 
-### Risks and mitigation strategies
+## Risks and mitigation strategies
 
 As any project, this project will face issues during development, including **technical issues, wrong interpretation of the `.SDF` files and deadline issues**. These risks need to be mitigated to **minimize the impact of unforeseen challenges** and ensure the **successful completion of the project**. To mitigate these risks, the team has identified the following strategies:
 
@@ -846,3 +949,6 @@ As any project, this project will face issues during development, including **te
 |<a id="4">[4]</a> Verilog|Verilog is a hardware description language (HDL)<sup><a href="#6">[6]</a></sup> used to model electronic systems.|[Wikipedia](https://en.wikipedia.org/wiki/Verilog)|
 |<a id="5">[5]</a> VHDL|VHDL (VHSIC Hardware Description Language) is a hardware description language that can model the behavior and structure of digital systems at multiple levels of abstraction, ranging from the system level down to that of logic gates, for design entry, documentation, and verification purposes.|[Wikipedia](https://en.wikipedia.org/wiki/VHDL)|
 |<a id="6">[6]</a> HDL|In computer engineering, a hardware description language (HDL) is a specialized computer language used to describe the structure and behavior of electronic circuits, usually to program field-programmable gate arrays (FPGAs).|[Wikipedia](https://en.wikipedia.org/wiki/Hardware_description_language)|
+|<a id="7">[7]</a> Agile Development|Agile software development is an umbrella term for approaches to developing software it focuses on: Individuals and interactions over processes and tools, working software over comprehensive documentation, customer collaboration over contract negotiation, responding to change over following a plan.|[Wikipedia](https://en.wikipedia.org/wiki/Agile_software_development)|
+|<a id="8">[8]</a> LUT|A lookup table (LUT) is a digital circuit that can be used to implement any Boolean function in FPGA design|[hardwarebee](https://hardwarebee.com/overview-of-lookup-tables-in-fpga-design)|
+|<a id="9">[9]</a> Flip-Flop|Flip-flops are the main component in an FPGA that is used to keep the state inside of the chip.|[Nandland](https://nandland.com/lesson-5-what-is-a-flip-flop)|
