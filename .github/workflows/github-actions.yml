@@ -13,11 +13,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
-      
-      # Deploy Render app
+
       - name: Deploy Application
         env:
           deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
@@ -30,50 +28,34 @@ jobs:
           curl -v "$deploy_url"
           sleep 60
 
-      # Set up Node.js environment
+  chrome-tests:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '23.6.0'
-
-      # Install dependencies
       - name: Install dependencies
         run: |
           cd ./src/test
           npm install
           npm install typescript
-
-      # Ensure the logs folder exists
-      - name: Ensure logs folder exists
-        run: |
-          mkdir -p ./src/test/logs
-
-      # Run tests
-      - name: Run tests
-        id: run-tests
+      - name: Run Chrome Tests
         run: |
           cd ./src/test
           npx tsc
-          for file in *.js; do node "$file"; done
-        continue-on-error: true
-
-      # Verify JSON files
-      - name: Check generated JSON files
+          for file in *chrome*.js; do node "$file"; done
+      - name: Upload Chrome Logs
         run: ls -l ./src/test/logs
-
-      # Commit and push logs to QA
       - name: Commit and push JSON logs to QA
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Stash changes before switching branches
-          git stash --include-untracked
-
-          # Fetch latest branches
+          # Make sure we are on QA branch
           git fetch origin
-
-          # Ensure QA branch exists
           if git ls-remote --exit-code --heads origin QA; then
             git checkout QA
             git pull --rebase origin QA
@@ -82,13 +64,10 @@ jobs:
             git push -u origin QA
           fi
 
-          # Restore only logs (prevent conflicts with other files)
-          git stash pop || echo "No stashed changes to restore."
-
-          # Ensure logs folder exists (again, just in case)
+          # Ensure logs directory exists
           mkdir -p ./src/test/logs
 
-          # Commit only logs if changed
+          # Check if there are changes to commit
           if [[ -n $(git status --porcelain src/test/logs/*.json) ]]; then
             git add -f src/test/logs/*.json
             git commit -m "Add generated JSON logs from tests"
@@ -97,6 +76,158 @@ jobs:
             echo "No log changes to commit."
           fi
 
-          # Checkout back to dev
-          git checkout dev
-          git pull origin dev
+
+  firefox-tests:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '23.6.0'
+      - name: Install dependencies
+        run: |
+          cd ./src/test
+          npm install
+          npm install typescript
+      - name: Run Firefox Tests
+        run: |
+          firefox --version
+          cd ./src/test
+          npx tsc
+          for file in *firefox*.js; do node "$file"; done
+      - name: Upload Firefox Logs
+        run: ls -l ./src/test/logs
+      - name: Commit and push JSON logs to QA
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Make sure we are on QA branch
+          git fetch origin
+          if git ls-remote --exit-code --heads origin QA; then
+            git checkout QA
+            git pull --rebase origin QA
+          else
+            git checkout -b QA
+            git push -u origin QA
+          fi
+
+          # Ensure logs directory exists
+          mkdir -p ./src/test/logs
+
+          # Check if there are changes to commit
+          if [[ -n $(git status --porcelain src/test/logs/*.json) ]]; then
+            git add -f src/test/logs/*.json
+            git commit -m "Add generated JSON logs from tests"
+            git push origin QA
+          else
+            echo "No log changes to commit."
+          fi        
+
+  edge-tests:
+    runs-on: windows-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '23.6.0'
+      - name: Install dependencies
+        run: |
+          cd ./src/test
+          npm install
+          npm install typescript
+      - name: Install Edge Browser
+        run: choco install microsoft-edge
+      - name: Run Edge Tests
+        shell: pwsh
+        run: |
+          cd ./src/test
+          npx tsc
+          Get-ChildItem *edge*.js | ForEach-Object { node $_.Name }
+      - name: Upload Edge Logs
+        run: ls -l ./src/test/logs
+      - name: Commit and push JSON logs to QA
+        shell: pwsh
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      
+          # Fetch latest branch info
+          git fetch origin
+      
+          # Check if QA branch exists
+          $branchExists = git ls-remote --exit-code --heads origin QA
+          if ($branchExists) {
+              git checkout QA
+              git pull --rebase origin QA
+          } else {
+              git checkout -b QA
+              git push -u origin QA
+          }
+      
+          # Ensure logs directory exists
+          New-Item -ItemType Directory -Force -Path ./src/test/logs
+      
+          # Check if there are changes to commit
+          $changes = git status --porcelain src/test/logs/*.json
+          if ($changes) {
+              git add -f src/test/logs/*.json
+              git commit -m "Add generated JSON logs from tests"
+              git push origin QA
+          } else {
+              Write-Output "No log changes to commit."
+          }
+
+  safari-tests:
+    runs-on: macos-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '23.6.0'
+      - name: Install dependencies
+        run: |
+          cd ./src/test
+          npm install
+          npm install typescript
+      - name: Set up SafariDriver
+        run: sudo safaridriver --enable
+      - name: Run Safari Tests
+        run: |
+          cd ./src/test
+          npx tsc
+          for file in *safari*.js; do node "$file"; done
+      - name: Upload Safari Logs
+        run: ls -l ./src/test/logs
+      - name: Commit and push JSON logs to QA
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Make sure we are on QA branch
+          git fetch origin
+          if git ls-remote --exit-code --heads origin QA; then
+            git checkout QA
+            git pull --rebase origin QA
+          else
+            git checkout -b QA
+            git push -u origin QA
+          fi
+
+          # Ensure logs directory exists
+          mkdir -p ./src/test/logs
+
+          # Check if there are changes to commit
+          if [[ -n $(git status --porcelain src/test/logs/*.json) ]]; then
+            git add -f src/test/logs/*.json
+            git commit -m "Add generated JSON logs from tests"
+            git push origin QA
+          else
+            echo "No log changes to commit."
+          fi
