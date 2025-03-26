@@ -386,5 +386,11 @@
 	top: 82vh;
 	left: 0;
 	z-index: 1;
-	background: linear-gradient(to top, rgb(from var(--tertiary) r g b / 1), rgb(from var(--primary) r g b / .1));
+	background: linear-gradient(to top, 
+	rgb(from var(--primary) r g b / 1),
+	rgb(from var(--primary) r g b / 1),
+	rgb(from var(--primary) r g b / 1),
+	rgb(from var(--primary) r g b / 1),
+	rgb(from var(--primary) r g b / 0.7),
+	rgb(from var(--primary) r g b / 0));
 }

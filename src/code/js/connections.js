@@ -147,9 +147,9 @@ function drawBasicConnection(obj1, obj2) {
 
 
 	// Draw the connection
-	drawLine(.6, distW1 + sizeOut, outputCenter, output.left, obj1, `lut-${obj1.split('-')[1]}-Wire1`);
-	drawLine(distH, .3, (output.top < input.top ? outputCenter : inputCenter), output.right + distW1, obj1, `lut-${obj1.split('-')[1]}-Wire2`);
-	drawLine(.6, distW2 + sizeIn, inputCenter, input.right - distW2 - sizeIn, obj1, `lut-${obj1.split('-')[1]}-Wire3`);
+	drawLine(.6, distW1 + sizeOut, outputCenter, output.left, obj1, `${obj1.split('-')[0]}-${obj1.split('-')[1]}-Wire1`);
+	drawLine(distH, .3, (output.top < input.top ? outputCenter : inputCenter), output.right + distW1, obj1, `${obj1.split('-')[0]}-${obj1.split('-')[1]}-Wire2`);
+	drawLine(.6, distW2 + sizeIn, inputCenter, input.right - distW2 - sizeIn, obj1, `${obj1.split('-')[0]}-${obj1.split('-')[1]}-Wire3`);
 }
 
 
