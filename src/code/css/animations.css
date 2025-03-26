@@ -1,0 +1,8 @@
+.animation {
+    width: 1.5vh;
+    height: 1.5vh;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    background-color: white;
+    z-index: 1;
+}

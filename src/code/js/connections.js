@@ -42,7 +42,7 @@ function drawLine(height, width, top, left, colorValue, id) {
 			case 'cl': // Clock
 			color = "var(--clock-color)";
 			position = colorValue === 'clock-above-sticky' ? 'fixed' : undefined;
-			zIndex = colorValue.startsWith('clock-above')  ? '12' : '0';
+			zIndex = colorValue.startsWith('clock-above')  ? '3' : '0';
 			break;
 		default:
 			break;

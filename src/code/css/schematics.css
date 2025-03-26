@@ -71,7 +71,6 @@
 #input-container {
 	position: absolute;
 	margin-top: var(--element-margin-top);
-	z-index: 13;
 }
 
 .input-element{
@@ -120,6 +119,10 @@
 	aspect-ratio: 1/1;
 	background-color: var(--connection-used);
 	border-radius: 50%;
+}
+
+.clock-element {
+	z-index: 4;
 }
 
 
@@ -385,7 +388,7 @@
 	height: 18vh;
 	top: 82vh;
 	left: 0;
-	z-index: 1;
+	z-index: 2;
 	background: linear-gradient(to top, 
 	rgb(from var(--primary) r g b / 1),
 	rgb(from var(--primary) r g b / 1),
