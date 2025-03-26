@@ -369,8 +369,8 @@ The back-end will be **developed using JavaScript** and **tested with Node.js**.
 1. The uploaded `.SDF` file is sent to **`sdf-to-json-parser.js`**, which processes the file.
 2. The parsed data is returned as a **`.JSON`** file, which will be explained in more detail in the parser section. It is processed as a variable and sent to the **`json-to-data-parser.js`**.
 3. The **`json-to-data-parser.js`** file then calls these two files:
-   - **`schematics.js`** – To display the FPGA elements.
-   - **`connections.js`** – To draws wires between elements.
+   - **`schematics.js`**: To display the FPGA elements.
+   - **`connections.js`**: To draws wires between elements.
 
 ###### Additional Back-end Files:
 - **`load.js`**: Manages client-side logic.
