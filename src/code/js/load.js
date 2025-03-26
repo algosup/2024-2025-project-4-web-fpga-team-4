@@ -27,8 +27,8 @@ function endLoad(){
 	let inputs = document.getElementById('input-container').children;
 	let clock = document.getElementsByClassName('clock-element');
 
-	clock[0].style.marginTop = (100 - (inputs.length * 18) - 3) + 'vh';
-
+	clock[0].style.position = 'fixed';
+	clock[0].style.bottom = '1vh';
 	console.log('end load');
 
 }
