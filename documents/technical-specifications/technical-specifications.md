@@ -462,21 +462,21 @@ The main information we can extract from these elements are:
 
 ###### JSON Counterpart:
 ```JSON
- {
-      "Input": {
-        "type": "userInput",
-        "id": "0",
-        "io": "output",
-        "port": "0"
- },
-      "Output": {
-        "type": "lut",
-        "id": "175",
-        "io": "input",
-        "port": "3"
- },
-      "Delay": 235.697
- },
+{
+      "Input": {
+        "type": "userInput",
+        "id": "0",
+        "io": "output",
+        "port": "0"
+},
+      "Output": {
+        "type": "lut",
+        "id": "175",
+        "io": "input",
+        "port": "3"
+},
+      "Delay": 235.697
+},
 ```
 
 In this format:
@@ -520,27 +520,27 @@ The main information we can extract from these elements are:
 
 ###### JSON counterpart:
 ```JSON
- {
-      "id": 175,
-      "connections": [
- {
-          "io": "input",
-          "port": "3"
- },
- {
-          "io": "input",
-          "port": "4"
- },
- {
-          "io": "input",
-          "port": "1"
- },
- {
-          "io": "output",
-          "port": "0"
- }
- ]
- },
+{
+      "id": 175,
+      "connections": [
+{
+          "io": "input",
+          "port": "3"
+},
+{
+          "io": "input",
+          "port": "4"
+},
+{
+          "io": "input",
+          "port": "1"
+},
+{
+          "io": "output",
+          "port": "0"
+}
+]
+},
 ```
 
 In this format:
@@ -585,20 +585,20 @@ The main information we can extract from these elements are:
 
 ###### JSON counterpart:
 ```JSON
- {
-      "id": 2,
-      "connections": [
- {
-          "port": "clock"
- },
- {
-          "port": "input"
- },
- {
-          "port": "output"
- }
- ]
- },
+{
+      "id": 2,
+      "connections": [
+{
+          "port": "clock"
+},
+{
+          "port": "input"
+},
+{
+          "port": "output"
+}
+]
+},
 ```
 
 In this format:
@@ -622,23 +622,23 @@ These elements are **not defined in the `.SDF` file**. However, the client told 
 ###### JSON counterpart:
 ```JSON
 "IOs": [
- {
-      "name": "userInput",
-      "io": "output"
- },
- {
-      "name": "Async_reset",
-      "io": "output"
- },
- {
-      "name": "Clock",
-      "io": "output"
- },
- {
-      "name": "userOutput",
-      "io": "input"
- }
- ],
+{
+      "name": "userInput",
+      "io": "output"
+},
+{
+      "name": "Async_reset",
+      "io": "output"
+},
+{
+      "name": "Clock",
+      "io": "output"
+},
+{
+      "name": "userOutput",
+      "io": "input"
+}
+],
 ```
 
 In this format:
@@ -751,85 +751,85 @@ When an electrical signal is sent, a circle which will be the opposite color of 
 The tool-bar contains different buttons which are all defined in the Back-end, here are all the buttons and their functions.
 
 - **File Management**:
-  - `Import`:
+  - `Import`:
  ![import](./images/import-button.png)
-    - **Functionality:**: Allows users to upload an `.SDF` or `.JSON` file, which will then be displayed on the web page.  
-    - **Implementation:** 
-      - Use an `<input type="file">` element to let users select a file.  
-      - Implement a JavaScript event listener to handle file selection. 
-      - If the file is an `.SDF`, process it through the parser to convert it into `.JSON`.
-      - If the file is a `.JSON`, directly display its contents.  
+    - **Functionality:** Allows users to upload an `.SDF` or `.JSON` file, which will then be displayed on the web page.  
+    - **Implementation:** 
+      - Use an `<input type="file">` element to let users select a file.  
+      - Implement a JavaScript event listener to handle file selection. 
+      - If the file is an `.SDF`, process it through the parser to convert it into `.JSON`.
+      - If the file is a `.JSON`, directly display its contents.  
 
-  - `Download`:
+  - `Download`:
  ![Download](./images/download-button.png)
-  - **Functionality**: Allows users to download the `.JSON` file generated from an imported `.SDF` file.
-  - **Implementation:**
-    - Convert the parsed JSON data into a downloadable `.JSON` file.
-    - Create a temporary `<a>` element and trigger a download when the user clicks the download button.
+    - **Functionality:** Allows users to download the `.JSON` file generated from an imported `.SDF` file.
+    - **Implementation:**
+      - Convert the parsed JSON data into a downloadable `.JSON` file.
+      - Create a temporary `<a>` element and trigger a download when the user clicks the download button.
 
 - **Control**:
-  - `pause/play`: 
+  - `pause/play`: 
  ![Pause](./images/pause-button.png)
  ![Play](./images/play-button.png)
-    - **Functionality**: Pauses/resumes the movement of the electrical signal.
-    - **Implementation**:   
-      - Use a boolean variable to track whether the animation is running
-      - Toggle the state when the button is clicked.
-  - `previous/next/first/last`: 
+    - **Functionality:** Pauses/resumes the movement of the electrical signal.
+    - **Implementation:**   
+      - Use a boolean variable to track whether the animation is running
+      - Toggle the state when the button is clicked.
+  - `previous/next/first/last`: 
  ![Back](./images/previous-button.png)
  ![Next](./images/next-button.png)
  ![First](./images/first-button.png)
  ![Last](./images/last-button.png)
-    - **Functionality:** Moves to the previous/next/first/last frame of the animation.
-    - **Implementation:**
-      - Store animation frames in an array. 
-      - Navigate through the frames based on button clicks.
+    - **Functionality:** Moves to the previous/next/first/last frame of the animation.
+    - **Implementation:**
+      - Store animation frames in an array. 
+      - Navigate through the frames based on button clicks.
   
 
 - **Speed Controls**:
-  - `speedPlus/speedMinus`
+  - `speedPlus/speedMinus`:
  ![SpeedUp](./images/speed-up-button.png)
  ![SpeedDown](./images/speed-down-button.png)
-    - **Functionality:**: Controls the playback speed of the animation.
-    - **Implementation:**: 
-      - Adjust the animation interval dynamically. 
-  - `speed`
+    - **Functionality:** Controls the playback speed of the animation.
+    - **Implementation:** 
+      - Adjust the animation interval dynamically. 
+  - `speed`:
  ![Speed](./images/speed-display.png)
-    - **Functionality:** Displays the current speed setting.
-    - **Implementation:** 
-      - Get the animation interval level.
-      - Display it.
+    - **Functionality:** Displays the current speed setting.
+    - **Implementation:** 
+      - Get the animation interval level.
+      - Display it.
 - **Zoom Controls**:
-  - `zoomIn/zoomOut`
+  - `zoomIn/zoomOut`:
  ![ZoomIn](./images/zoom-up-button.png)
  ![ZoomOut](./images/zoom-down-button.png)
-    - **Functionality:** Controls the zoom level of the visualization.
-    - **Implementation**
-    - Modify the `transform: scale()` property of the display area.
-  - `zoomLevel` 
+    - **Functionality:** Controls the zoom level of the visualization.
+    - **Implementation:**
+      - Modify the `transform: scale()` property of the display area.
+  - `zoomLevel`: 
  ![ZoomDisplay](./images/zoom-display.png)
-    - **Functionality:** Displays the current zoom level.
-    - **Implementation**
-      - Get the `scale()` value.
-      - Display it.
+    - **Functionality:** Displays the current zoom level.
+    - **Implementation:**
+      - Get the `scale()` value.
+      - Display it.
 
 - **Display Controls**:
-  - `hideButton/dataViewTrigger`
+  - `hideButton/dataViewTrigger`:
  ![Hide](./images/hide-button.png)
  ![dataViewTrigger](./images/dataview-trigger.png)
-    - **Functionality:** Shows/hides the sidebar.
-    - **Implementation:**
-      - Use `classList.toggle()` to show or hide the sidebar.
-  - `theme`
+    - **Functionality:** Shows/hides the sidebar.
+    - **Implementation:**
+      - Use `classList.toggle()` to show or hide the sidebar.
+  - `theme`:
  ![Theme](./images/theme-button.png)
-    - **Functionality:** Switches between light and dark themes.
-    - **Implementation:** 
-      - Use `classList.toggle()` to switch themes:
-  - `settings`
+    - **Functionality:** Switches between light and dark themes.
+    - **Implementation:** 
+      - Use `classList.toggle()` to switch themes:
+  - `settings`:
  ![Settings](./images/settings-button.png)
-    - **Functionality:** Currently unused but reserved for future configurations
-    - **Implementation:** 
-      - Can be linked to a settings modal.
+    - **Functionality:** Currently unused but reserved for future configurations
+    - **Implementation:** 
+      - Can be linked to a settings modal.
 
 ### Animations  
 
