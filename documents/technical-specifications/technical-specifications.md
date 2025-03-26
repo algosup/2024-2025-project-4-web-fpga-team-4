@@ -352,9 +352,12 @@ This project is structured into two main components: the **Front-end** and the *
 
 Several files will manage different aspects of the front-end:
 
-- **`client.html`** – Serves as the main structure of the web page.
-- **`tool-bar.css`** & **`data-display.css`** – Handle the interface styling.
-- **`schematics.css`** – Defines the color and shape of the wires and FPGA elements.
+- **`client.html`**:
+  - Serves as the main structure of the web page.
+- **`tool-bar.css`** & **`data-display.css`**:
+  - Handle the interface styling.
+- **`schematics.css`**: 
+  - Defines the color and shape of the wires and FPGA elements.
 
 When a user uploads an `.SDF` file, it will be sent to the **`sdf-to-json` parser** in the back-end for processing.
 
@@ -366,12 +369,12 @@ The back-end will be **developed using JavaScript** and **tested with Node.js**.
 1. The uploaded `.SDF` file is sent to **`sdf-to-json-parser.js`**, which processes the file.
 2. The parsed data is returned as a **`.JSON`** file, which will be explained in more detail in the parser section. It is processed as a variable and sent to the **`json-to-data-parser.js`**.
 3. The **`json-to-data-parser.js`** file then calls these two files:
-   - **`schematics.js`** – To display the FPGA elements.
-   - **`connections.js`** – To draws wires between elements.
+   - **`schematics.js`** – To display the FPGA elements.
+   - **`connections.js`** – To draws wires between elements.
 
 ###### Additional Back-end Files:
-- **`load.js`** – Manages client-side logic.
-- **`tool-bar.js`** – Handles the toolbar buttons.
+- **`load.js`**: Manages client-side logic.
+- **`tool-bar.js`**: Handles the toolbar buttons.
 
 Finally, the back-end sends all processed information to **`client.html`**, which renders the web page in the user's browser.
 
@@ -399,11 +402,11 @@ The back-end will handle **file uploads, and signal propagation buttons and will
 The back-end consists of the **`sdf-to-json-parser.js`** file, which processes `.SDF` files and outputs **parsed data in `.JSON` format**.  
 
 This `.JSON` file will then be used by **`json-to-data-parser.js`**, which interacts with:  
-- **`schematics.js`** – Responsible for displaying FPGA elements.  
-- **`connections.js`** – Used to draw the wires between FPGA elements.  
-- **`tool-bar.js`** – Controls the buttons on the toolbar.  
-- **`load.js`** – Manages client-side logic.  
-- **`variables.js`** – Stores all necessary variables.  
+- **`schematics.js`**: Responsible for displaying FPGA elements.  
+- **`connections.js`**: Used to draw the wires between FPGA elements.  
+- **`tool-bar.js`**: Controls the buttons on the toolbar.  
+- **`load.js`**: Manages client-side logic.  
+- **`variables.js`**: Stores all necessary variables.  
 
 #### Parser
 
@@ -437,15 +440,15 @@ The main information we can extract from this element is:
 ##### "fpga_interconnect"
 
 ```sdf
- (CELL
- (CELLTYPE "fpga_interconnect")
- (INSTANCE routing_segment_D_output_0_0_to_lut_\$auto\$rtlil\.cc\:2714\:MuxGate\$175_input_0_3)
- (DELAY
- (ABSOLUTE
- (IOPATH datain dataout (235.697:235.697:235.697) (235.697:235.697:235.697))
- )
- )
- )
+(CELL
+        (CELLTYPE "fpga_interconnect")
+        (INSTANCE routing_segment_D_output_0_0_to_lut_\$auto\$rtlil\.cc\:2714\:MuxGate\$175_input_0_3)
+        (DELAY
+            (ABSOLUTE
+                (IOPATH datain dataout (235.697:235.697:235.697) (235.697:235.697:235.697))
+            )
+        )
+    )
 ```
 
 This element represents a **connection**.
@@ -498,17 +501,17 @@ This example corresponds to the connection used as an example.
 ##### "LUT_K"
 
 ```sdf
- (CELL
- (CELLTYPE "LUT_K")
- (INSTANCE lut_\$auto\$rtlil\.cc\:2714\:MuxGate\$175)
- (DELAY
- (ABSOLUTE
- (IOPATH in[1] out (152:152:152) (152:152:152))
- (IOPATH in[3] out (150:150:150) (150:150:150))
- (IOPATH in[4] out (118:118:118) (118:118:118))
- )
- )
- )
+(CELL
+        (CELLTYPE "LUT_K")
+        (INSTANCE lut_\$auto\$rtlil\.cc\:2714\:MuxGate\$175)
+        (DELAY
+            (ABSOLUTE
+                (IOPATH in[1] out (152:152:152) (152:152:152))
+                (IOPATH in[3] out (150:150:150) (150:150:150))
+                (IOPATH in[4] out (118:118:118) (118:118:118))
+            )
+        )
+    )
 ```
 
 This element defines an **instance of a LUT(Look Up Table) and its ports** that will be used by the FPGA. 
@@ -562,18 +565,18 @@ This example corresponds to the LUT used as an example.
 ##### "DFF"
 
 ```sdf
- (CELL
- (CELLTYPE "DFF")
- (INSTANCE latch_\$sdff\~2\^Q\~0)
- (DELAY
- (ABSOLUTE
- (IOPATH (posedge clock) Q (303:303:303) (303:303:303))
- )
- )
- (TIMINGCHECK
- (SETUP D (posedge clock) (-46:-46:-46))
- )
- )
+(CELL
+        (CELLTYPE "DFF")
+        (INSTANCE latch_\$sdff\~2\^Q\~0)
+        (DELAY
+            (ABSOLUTE
+                (IOPATH (posedge clock) Q (303:303:303) (303:303:303))
+            )
+        )
+        (TIMINGCHECK
+            (SETUP D (posedge clock) (-46:-46:-46))
+        )
+    )
 ```
 
 This element defines an **instance of a Delay Flip Flop (DFF) and its ports** that will be used by the FPGA. 
