@@ -352,9 +352,12 @@ This project is structured into two main components: the **Front-end** and the *
 
 Several files will manage different aspects of the front-end:
 
-- **`client.html`** – Serves as the main structure of the web page.
-- **`tool-bar.css`** & **`data-display.css`** – Handle the interface styling.
-- **`schematics.css`** – Defines the color and shape of the wires and FPGA elements.
+- **`client.html`**:
+  - Serves as the main structure of the web page.
+- **`tool-bar.css`** & **`data-display.css`**:
+  - Handle the interface styling.
+- **`schematics.css`**: 
+  - Defines the color and shape of the wires and FPGA elements.
 
 When a user uploads an `.SDF` file, it will be sent to the **`sdf-to-json` parser** in the back-end for processing.
 
@@ -366,12 +369,12 @@ The back-end will be **developed using JavaScript** and **tested with Node.js**.
 1. The uploaded `.SDF` file is sent to **`sdf-to-json-parser.js`**, which processes the file.
 2. The parsed data is returned as a **`.JSON`** file, which will be explained in more detail in the parser section. It is processed as a variable and sent to the **`json-to-data-parser.js`**.
 3. The **`json-to-data-parser.js`** file then calls these two files:
-   - **`schematics.js`** – To display the FPGA elements.
-   - **`connections.js`** – To draws wires between elements.
+   - **`schematics.js`**: To display the FPGA elements.
+   - **`connections.js`**: To draws wires between elements.
 
 ###### Additional Back-end Files:
-- **`load.js`** – Manages client-side logic.
-- **`tool-bar.js`** – Handles the toolbar buttons.
+- **`load.js`**: Manages client-side logic.
+- **`tool-bar.js`**: Handles the toolbar buttons.
 
 Finally, the back-end sends all processed information to **`client.html`**, which renders the web page in the user's browser.
 
@@ -399,11 +402,11 @@ The back-end will handle **file uploads, and signal propagation buttons and will
 The back-end consists of the **`sdf-to-json-parser.js`** file, which processes `.SDF` files and outputs **parsed data in `.JSON` format**.  
 
 This `.JSON` file will then be used by **`json-to-data-parser.js`**, which interacts with:  
-- **`schematics.js`** – Responsible for displaying FPGA elements.  
-- **`connections.js`** – Used to draw the wires between FPGA elements.  
-- **`tool-bar.js`** – Controls the buttons on the toolbar.  
-- **`load.js`** – Manages client-side logic.  
-- **`variables.js`** – Stores all necessary variables.  
+- **`schematics.js`**: Responsible for displaying FPGA elements.  
+- **`connections.js`**: Used to draw the wires between FPGA elements.  
+- **`tool-bar.js`**: Controls the buttons on the toolbar.  
+- **`load.js`**: Manages client-side logic.  
+- **`variables.js`**: Stores all necessary variables.  
 
 #### Parser
 
@@ -437,15 +440,15 @@ The main information we can extract from this element is:
 ##### "fpga_interconnect"
 
 ```sdf
- (CELL
- (CELLTYPE "fpga_interconnect")
- (INSTANCE routing_segment_D_output_0_0_to_lut_\$auto\$rtlil\.cc\:2714\:MuxGate\$175_input_0_3)
- (DELAY
- (ABSOLUTE
- (IOPATH datain dataout (235.697:235.697:235.697) (235.697:235.697:235.697))
- )
- )
- )
+(CELL
+        (CELLTYPE "fpga_interconnect")
+        (INSTANCE routing_segment_D_output_0_0_to_lut_\$auto\$rtlil\.cc\:2714\:MuxGate\$175_input_0_3)
+        (DELAY
+            (ABSOLUTE
+                (IOPATH datain dataout (235.697:235.697:235.697) (235.697:235.697:235.697))
+            )
+        )
+    )
 ```
 
 This element represents a **connection**.
@@ -462,21 +465,21 @@ The main information we can extract from these elements are:
 
 ###### JSON Counterpart:
 ```JSON
- {
-      "Input": {
-        "type": "userInput",
-        "id": "0",
-        "io": "output",
-        "port": "0"
- },
-      "Output": {
-        "type": "lut",
-        "id": "175",
-        "io": "input",
-        "port": "3"
- },
-      "Delay": 235.697
- },
+{
+      "Input": {
+        "type": "userInput",
+        "id": "0",
+        "io": "output",
+        "port": "0"
+},
+      "Output": {
+        "type": "lut",
+        "id": "175",
+        "io": "input",
+        "port": "3"
+},
+      "Delay": 235.697
+},
 ```
 
 In this format:
@@ -498,17 +501,17 @@ This example corresponds to the connection used as an example.
 ##### "LUT_K"
 
 ```sdf
- (CELL
- (CELLTYPE "LUT_K")
- (INSTANCE lut_\$auto\$rtlil\.cc\:2714\:MuxGate\$175)
- (DELAY
- (ABSOLUTE
- (IOPATH in[1] out (152:152:152) (152:152:152))
- (IOPATH in[3] out (150:150:150) (150:150:150))
- (IOPATH in[4] out (118:118:118) (118:118:118))
- )
- )
- )
+(CELL
+        (CELLTYPE "LUT_K")
+        (INSTANCE lut_\$auto\$rtlil\.cc\:2714\:MuxGate\$175)
+        (DELAY
+            (ABSOLUTE
+                (IOPATH in[1] out (152:152:152) (152:152:152))
+                (IOPATH in[3] out (150:150:150) (150:150:150))
+                (IOPATH in[4] out (118:118:118) (118:118:118))
+            )
+        )
+    )
 ```
 
 This element defines an **instance of a LUT(Look Up Table) and its ports** that will be used by the FPGA. 
@@ -520,27 +523,27 @@ The main information we can extract from these elements are:
 
 ###### JSON counterpart:
 ```JSON
- {
-      "id": 175,
-      "connections": [
- {
-          "io": "input",
-          "port": "3"
- },
- {
-          "io": "input",
-          "port": "4"
- },
- {
-          "io": "input",
-          "port": "1"
- },
- {
-          "io": "output",
-          "port": "0"
- }
- ]
- },
+{
+      "id": 175,
+      "connections": [
+{
+          "io": "input",
+          "port": "3"
+},
+{
+          "io": "input",
+          "port": "4"
+},
+{
+          "io": "input",
+          "port": "1"
+},
+{
+          "io": "output",
+          "port": "0"
+}
+]
+},
 ```
 
 In this format:
@@ -562,18 +565,18 @@ This example corresponds to the LUT used as an example.
 ##### "DFF"
 
 ```sdf
- (CELL
- (CELLTYPE "DFF")
- (INSTANCE latch_\$sdff\~2\^Q\~0)
- (DELAY
- (ABSOLUTE
- (IOPATH (posedge clock) Q (303:303:303) (303:303:303))
- )
- )
- (TIMINGCHECK
- (SETUP D (posedge clock) (-46:-46:-46))
- )
- )
+(CELL
+        (CELLTYPE "DFF")
+        (INSTANCE latch_\$sdff\~2\^Q\~0)
+        (DELAY
+            (ABSOLUTE
+                (IOPATH (posedge clock) Q (303:303:303) (303:303:303))
+            )
+        )
+        (TIMINGCHECK
+            (SETUP D (posedge clock) (-46:-46:-46))
+        )
+    )
 ```
 
 This element defines an **instance of a Delay Flip Flop (DFF) and its ports** that will be used by the FPGA. 
@@ -585,20 +588,20 @@ The main information we can extract from these elements are:
 
 ###### JSON counterpart:
 ```JSON
- {
-      "id": 2,
-      "connections": [
- {
-          "port": "clock"
- },
- {
-          "port": "input"
- },
- {
-          "port": "output"
- }
- ]
- },
+{
+      "id": 2,
+      "connections": [
+{
+          "port": "clock"
+},
+{
+          "port": "input"
+},
+{
+          "port": "output"
+}
+]
+},
 ```
 
 In this format:
@@ -622,23 +625,23 @@ These elements are **not defined in the `.SDF` file**. However, the client told 
 ###### JSON counterpart:
 ```JSON
 "IOs": [
- {
-      "name": "userInput",
-      "io": "output"
- },
- {
-      "name": "Async_reset",
-      "io": "output"
- },
- {
-      "name": "Clock",
-      "io": "output"
- },
- {
-      "name": "userOutput",
-      "io": "input"
- }
- ],
+{
+      "name": "userInput",
+      "io": "output"
+},
+{
+      "name": "Async_reset",
+      "io": "output"
+},
+{
+      "name": "Clock",
+      "io": "output"
+},
+{
+      "name": "userOutput",
+      "io": "input"
+}
+],
 ```
 
 In this format:
@@ -751,85 +754,85 @@ When an electrical signal is sent, a circle which will be the opposite color of 
 The tool-bar contains different buttons which are all defined in the Back-end, here are all the buttons and their functions.
 
 - **File Management**:
-  - `Import`:
+  - `Import`:
  ![import](./images/import-button.png)
-    - **Functionality:**: Allows users to upload an `.SDF` or `.JSON` file, which will then be displayed on the web page.  
-    - **Implementation:** 
-      - Use an `<input type="file">` element to let users select a file.  
-      - Implement a JavaScript event listener to handle file selection. 
-      - If the file is an `.SDF`, process it through the parser to convert it into `.JSON`.
-      - If the file is a `.JSON`, directly display its contents.  
+    - **Functionality:** Allows users to upload an `.SDF` or `.JSON` file, which will then be displayed on the web page.  
+    - **Implementation:** 
+      - Use an `<input type="file">` element to let users select a file.  
+      - Implement a JavaScript event listener to handle file selection. 
+      - If the file is an `.SDF`, process it through the parser to convert it into `.JSON`.
+      - If the file is a `.JSON`, directly display its contents.  
 
-  - `Download`:
+  - `Download`:
  ![Download](./images/download-button.png)
-  - **Functionality**: Allows users to download the `.JSON` file generated from an imported `.SDF` file.
-  - **Implementation:**
-    - Convert the parsed JSON data into a downloadable `.JSON` file.
-    - Create a temporary `<a>` element and trigger a download when the user clicks the download button.
+    - **Functionality:** Allows users to download the `.JSON` file generated from an imported `.SDF` file.
+    - **Implementation:**
+      - Convert the parsed JSON data into a downloadable `.JSON` file.
+      - Create a temporary `<a>` element and trigger a download when the user clicks the download button.
 
 - **Control**:
-  - `pause/play`: 
+  - `pause/play`: 
  ![Pause](./images/pause-button.png)
  ![Play](./images/play-button.png)
-    - **Functionality**: Pauses/resumes the movement of the electrical signal.
-    - **Implementation**:   
-      - Use a boolean variable to track whether the animation is running
-      - Toggle the state when the button is clicked.
-  - `previous/next/first/last`: 
+    - **Functionality:** Pauses/resumes the movement of the electrical signal.
+    - **Implementation:**   
+      - Use a boolean variable to track whether the animation is running
+      - Toggle the state when the button is clicked.
+  - `previous/next/first/last`: 
  ![Back](./images/previous-button.png)
  ![Next](./images/next-button.png)
  ![First](./images/first-button.png)
  ![Last](./images/last-button.png)
-    - **Functionality:** Moves to the previous/next/first/last frame of the animation.
-    - **Implementation:**
-      - Store animation frames in an array. 
-      - Navigate through the frames based on button clicks.
+    - **Functionality:** Moves to the previous/next/first/last frame of the animation.
+    - **Implementation:**
+      - Store animation frames in an array. 
+      - Navigate through the frames based on button clicks.
   
 
 - **Speed Controls**:
-  - `speedPlus/speedMinus`
+  - `speedPlus/speedMinus`:
  ![SpeedUp](./images/speed-up-button.png)
  ![SpeedDown](./images/speed-down-button.png)
-    - **Functionality:**: Controls the playback speed of the animation.
-    - **Implementation:**: 
-      - Adjust the animation interval dynamically. 
-  - `speed`
+    - **Functionality:** Controls the playback speed of the animation.
+    - **Implementation:** 
+      - Adjust the animation interval dynamically. 
+  - `speed`:
  ![Speed](./images/speed-display.png)
-    - **Functionality:** Displays the current speed setting.
-    - **Implementation:** 
-      - Get the animation interval level.
-      - Display it.
+    - **Functionality:** Displays the current speed setting.
+    - **Implementation:** 
+      - Get the animation interval level.
+      - Display it.
 - **Zoom Controls**:
-  - `zoomIn/zoomOut`
+  - `zoomIn/zoomOut`:
  ![ZoomIn](./images/zoom-up-button.png)
  ![ZoomOut](./images/zoom-down-button.png)
-    - **Functionality:** Controls the zoom level of the visualization.
-    - **Implementation**
-    - Modify the `transform: scale()` property of the display area.
-  - `zoomLevel` 
+    - **Functionality:** Controls the zoom level of the visualization.
+    - **Implementation:**
+      - Modify the `transform: scale()` property of the display area.
+  - `zoomLevel`: 
  ![ZoomDisplay](./images/zoom-display.png)
-    - **Functionality:** Displays the current zoom level.
-    - **Implementation**
-      - Get the `scale()` value.
-      - Display it.
+    - **Functionality:** Displays the current zoom level.
+    - **Implementation:**
+      - Get the `scale()` value.
+      - Display it.
 
 - **Display Controls**:
-  - `hideButton/dataViewTrigger`
+  - `hideButton/dataViewTrigger`:
  ![Hide](./images/hide-button.png)
  ![dataViewTrigger](./images/dataview-trigger.png)
-    - **Functionality:** Shows/hides the sidebar.
-    - **Implementation:**
-      - Use `classList.toggle()` to show or hide the sidebar.
-  - `theme`
+    - **Functionality:** Shows/hides the sidebar.
+    - **Implementation:**
+      - Use `classList.toggle()` to show or hide the sidebar.
+  - `theme`:
  ![Theme](./images/theme-button.png)
-    - **Functionality:** Switches between light and dark themes.
-    - **Implementation:** 
-      - Use `classList.toggle()` to switch themes:
-  - `settings`
+    - **Functionality:** Switches between light and dark themes.
+    - **Implementation:** 
+      - Use `classList.toggle()` to switch themes:
+  - `settings`:
  ![Settings](./images/settings-button.png)
-    - **Functionality:** Currently unused but reserved for future configurations
-    - **Implementation:** 
-      - Can be linked to a settings modal.
+    - **Functionality:** Currently unused but reserved for future configurations
+    - **Implementation:** 
+      - Can be linked to a settings modal.
 
 ### Animations  
 
