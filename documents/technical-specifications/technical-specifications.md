@@ -463,19 +463,19 @@ The main information we can extract from these elements are:
 ###### JSON Counterpart:
 ```JSON
 {
-      "Input": {
-        "type": "userInput",
-        "id": "0",
-        "io": "output",
-        "port": "0"
+    "Input": {
+      "type": "userInput",
+      "id": "0",
+      "io": "output",
+      "port": "0"
 },
-      "Output": {
-        "type": "lut",
-        "id": "175",
-        "io": "input",
-        "port": "3"
+  "Output": {
+    "type": "lut",
+    "id": "175",
+    "io": "input",
+    "port": "3"
 },
-      "Delay": 235.697
+    "Delay": 235.697
 },
 ```
 
