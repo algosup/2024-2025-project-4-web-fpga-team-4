@@ -6,11 +6,9 @@ function sortElements(luts, flipFlops, ios, connections) {
 
 	displayInput(UI.Input.type);
 	let currentElement = connections[UIIndex].Output;
-	console.log('current = ', currentElement.id);
 	if (currentElement.type === 'lut') {
 		hasLut = true;
 		let lut = luts.find(lut => {
-			console.log('lut.id = ', lut);
 			return lut.id.toString() === currentElement.id
 		});
 		let output = lut.connections.some(item => item.id === '0' && item.io === 'output');
@@ -22,7 +20,6 @@ function sortElements(luts, flipFlops, ios, connections) {
 			displayLUT(lut.id, inputs[0].id, inputs[1].id, inputs[2].id, output);
 		}
 	} else if (currentElement.type === 'DFF') {
-		console.log('ffs = ', flipFlops);
 		let ff = flipFlops.find(ff => { return ff.id.toString() === currentElement.id });
 		displayFlipFlop(ff.id, ff.connections[0].id, ff.connections[1].id, ff.connections[2].id);
 	}
@@ -36,7 +33,6 @@ function sortElements(luts, flipFlops, ios, connections) {
 
 			if (nextElement.type === 'lut') {
 				let lut = luts.find(lut => { return lut.id.toString() === nextElement.id });
-				lut.id === 167 ? console.log('lut = ', lut) : {};
 				let output = lut.connections.some(item => item.id === '0' && item.io === 'output');
 				let inputs = lut.connections.filter(item => item.io === 'input');
 				inputs.sort((a, b) => a.id - b.id);
@@ -145,5 +141,4 @@ function parseJsonFile() {
 		drawClockBase('Clock-out');
 	}
 
-	console.log('pathElements = ', pathElements);
 }

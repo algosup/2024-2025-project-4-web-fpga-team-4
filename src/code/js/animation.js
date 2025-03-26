@@ -1,50 +1,134 @@
 function animate() {
 
-    for (let elem of pathElements) {
-        switch (elem.type) {
-            case 'userInput':
-                animateUserInput(elem);
-                break;
-            case 'lut':
-                animateLUT(elem);
-                break;
-            case 'DFF':
-                animateDFF(elem);
-                break;
+	for (let elem of pathElements) {
+		// console.log('animate', elem);
+		switch (elem.type) {
+			case 'userInput':
+				animateUserInput(elem);
+				break;
+			case 'lut':
+				animateLUT(elem);
+				break;
+			case 'DFF':
+				animateDFF(elem);
+				break;
 
-            default:
-                break;
-        }
-    }
+			default:
+				break;
+		}
+	}
 }
 
 function animateUserInput(elem) {
-    let elemPos = document.querySelector(`#userInput-out`).getBoundingClientRect();
-    let elemTop = elemPos.top;
-    let elemLeft = elemPos.left;
-    connections.innerHTML += `<div class="animation" id="animation-${elem.type}" style="position: absolute; top: ${convertPxToVh(elemTop)}vh; left: ${convertPxToVw(elemLeft)}vw;"></div>`;
-
-    document.getElementById(`animation-${elem.type}`).animate([
-        { transform: `translateX(0vw)` },
-        { transform: `translateX(${convertPxToVw(document.querySelector(`#userInput-out-Wire1`).getBoundingClientRect().right)}vw)` },
-        { transform: `translateY(${convertPxToVh(document.querySelector(`#userInput-out-Wire2`).getBoundingClientRect().top)}vh)` },
-        { transform: `translateX(${convertPxToVw(document.querySelector(`#userInput-out-Wire3`).getBoundingClientRect().right)}vw)` }
-    ], {
-        duration: 1000,
-        iterations: 1
-    });
+	let elemPos = document.querySelector(`#userInput-out`).getBoundingClientRect();
+	let elemTop = elemPos.top;
+	let elemLeft = elemPos.left;
+	connections.innerHTML += `<div class="animation" id="animation-${elem.type}" style="position: absolute; top: ${convertPxToVh(elemTop)}vh; left: ${convertPxToVw(elemLeft)}vw;"></div>`;
 }
 
 function animateLUT(elem) {
-    let elemPos = document.querySelector(`#lut-${elem.id}-out`).getBoundingClientRect();
-    let elemTop = elemPos.top;
-    let elemLeft = elemPos.left;
-    connections.innerHTML += `<div class="animation" id="animation-${elem.type}" style="position: absolute; top: ${convertPxToVh(elemTop)}vh; left: ${convertPxToVw(elemLeft)}vw;"></div>`;
+	let elemPos = document.querySelector(`#lut-${elem.id}-out`).getBoundingClientRect();
+	let elemTop = elemPos.top;
+	let elemLeft = elemPos.left;
+	connections.innerHTML += `<div class="animation" id="animation-${elem.type}-${elem.id}" style="position: absolute; top: ${convertPxToVh(elemTop)}vh; left: ${convertPxToVw(elemLeft)}vw;"></div>`;
 }
 
 function animateDFF(elem) {
-    let elemPos = document.querySelector(`#ff-${elem.id}-out`).getBoundingClientRect();
-    let elemTop = elemPos.top;
-    let elemLeft = elemPos.left;
-    connections.innerHTML += `<div class="animation" id="animation-${elem.type}" style="position: absolute; top: ${convertPxToVh(elemTop)}vh; left: ${convertPxToVw(elemLeft)}vw;"></div>`;
+	let elemPos = document.querySelector(`#ff-${elem.id}-out`).getBoundingClientRect();
+	let elemTop = elemPos.top;
+	let elemLeft = elemPos.left;
+	connections.innerHTML += `<div class="animation" id="animation-ff-${elem.id}" style="position: absolute; top: ${convertPxToVh(elemTop)}vh; left: ${convertPxToVw(elemLeft)}vw;"></div>`;
 }
+
+
+function move(element, distances) {
+
+	console.log("Type of distances:", typeof distances[0].split('-')[0]);
+	// Create an array of animation steps
+	const steps = [
+		distances[0].split('-')[0] === 'right' || distances[0].split('-')[0] === 'left'
+			? { left: distances[0].split('-')[1] }
+			: { top: distances[0].split('-')[1] },
+		distances[1].split('-')[0] === 'right' || distances[1].split('-')[0] === 'left'
+			? { left: distances[1].split('-')[1] }
+			: { top: distances[1].split('-')[1] },
+		distances[2].split('-')[0] === 'right' || distances[2].split('-')[0] === 'left'
+			? { left: distances[2].split('-')[1] }
+			: { top: distances[2].split('-')[1] }
+	];
+
+	// Add optional steps if they exist
+	if (distances[3]) {
+		steps.push(
+			distances[3].split('-')[0] === 'right' || distances[0].split('-')[0] === 'left'
+				? { left: distances[3].split('-')[1] }
+				: { top: distances[3].split('-')[1] }
+		);
+	}
+
+	if (distances[4]) {
+		steps.push(
+			distances[4].split('-')[0] === 'right' || distances[0].split('-')[0] === 'left'
+				? { left: distances[4].split('-')[1] }
+				: { top: distances[4].split('-')[1] }
+		);
+	}
+
+	// Animate each step with timeout between them
+	function animateStep(index) {
+		if (index >= steps.length) return;
+
+		element.animate([steps[index]], {
+			duration: 200,
+			fill: 'forwards'
+		}).onfinish = () => {
+			// Apply styles to maintain position
+			Object.assign(element.style, steps[index]);
+
+			// Wait before starting next animation
+			setTimeout(() => animateStep(index + 1), 200);
+		};
+	}
+
+	// Start the animation sequence
+	animateStep(0);
+}
+
+function strToInt(value) {
+	if (value.substring(value.length - 2) === 'vh') {
+		return Number(value.replace('vh', ''));
+	} else {
+		return Number(value.replace('vw', ''));
+	}
+}
+
+
+forward.addEventListener('click', function () {
+	// let element = 'userInput-out';
+	let element = 'ff--1';
+	let elem = document.getElementById(`animation-${element}`);
+	let wire1 = document.getElementById(`${element}-Wire1`)
+	let wire2 = document.getElementById(`${element}-Wire2`)
+	let wire3 = document.getElementById(`${element}-Wire3`)
+	let wire4 = document.getElementById(`${element}-Wire4`) ?? null;
+	let wire5 = document.getElementById(`${element}-Wire5`) ?? null;
+	animateElement(elem, [wire1, wire2, wire3, wire4, wire5]);
+});
+
+function animateElement(elem, wires) {
+	let value1 = strToInt(wires[0].style.marginLeft) + strToInt(wires[0].style.width) - .3 + 'vw';
+	let value2 = elem.style.top > wires[1].style.marginTop
+		? strToInt(wires[1].style.marginTop) - .5 + 'vh'
+		: strToInt(wires[1].style.marginTop) + strToInt(wires[1].style.height) - 1 + 'vh';
+	let value3 = elem.style.left > wires[2].style.marginLeft
+		? strToInt(wires[2].style.marginLeft) - .25 + 'vw'
+		: strToInt(wires[2].style.marginLeft) + strToInt(wires[2].style.width) - .25 + 'vw';
+	let value4 = wires[3] != null ? elem.style.top > wires[3].style.marginTop
+		? strToInt(wires[3].style.marginTop) - .5 + 'vh'
+		: strToInt(wires[3].style.marginTop) + strToInt(wires[3].style.height) - 1.25 + 'vh' : null;
+	let value5 = wires[4] != null ? strToInt(wires[4].style.marginLeft) + strToInt(wires[4].style.width) - .25 + 'vw' : null;
+	let distances = [`right-${value1}`, `up-${value2}`, `right-${value3}`];
+	if (wires[3] != null) distances.push(`down-${value4}`);
+	if (wires[4] != null) distances.push(`right-${value5}`);
+	move(elem, distances);
+};

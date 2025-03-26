@@ -6,3 +6,17 @@
     background-color: white;
     z-index: 1;
 }
+
+
+.move-left {
+	animation: move-left 1s forwards;
+}
+
+@keyframes move-left {
+	0% {
+		left: 0;
+	}
+	100% {
+		left: 80vw;
+	}
+}
