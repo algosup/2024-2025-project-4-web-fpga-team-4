@@ -3,7 +3,7 @@
 File management buttons
 */
 openFolder.addEventListener('click', function () {
-	console.log('open folder button clicked');
+	document.getElementById('open-folder-input').click();
 });
 
 uploadFile.addEventListener('click', function () {
@@ -143,7 +143,7 @@ theme.addEventListener('click', function () {
 });
 
 settings.addEventListener('click', function () {
-	console.log('settings button clicked');
+	document.getElementById('settings-menu').style.display = 'block';
 });
 
 

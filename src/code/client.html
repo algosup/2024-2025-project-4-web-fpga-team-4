@@ -7,6 +7,7 @@
 	<link rel="icon" href="./img/fpga-explorer.png" type="image/x-icon">
 	<script src="https://kit.fontawesome.com/d57f386eaf.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="./css/tool-bar.css">
+	<link rel="stylesheet" href="./css/settings.css">
 	<link rel="stylesheet" href="./css/data-display.css">
 	<link rel="stylesheet" href="./css/schematics.css">
 	<title>FPGA Web Visualizer</title>
@@ -104,11 +105,42 @@
 		</div>
 		<div id="connections"></div>
 	</div>
+	<div id="settings-menu">
+		<div id="settings-page-content">
+			<div id="settings-page-header">
+				<div id="settings-page-title">Settings</div>
+				<div id="settings-page-close"><i class="fa-solid fa-times"></i></div>
+			</div>
+			<div id="settings-page-body">
+				<div class="settings-list">
+					<h3 class="settings-title">Application Settings</h3>
+					<div class="setting">
+						<p class="setting-name">Clock cycle per step:</p>
+						<input type="text" name="" class="setting-value">
+					</div>
+					<div class="setting">
+						<p class="setting-name">Number of LUT columns:</p>
+						<input type="text" name="" class="setting-value">
+					</div>
+					<div class="setting">
+						<p class="setting-name">Number of Flip Flop columns:</p>
+						<input type="text" name="" class="setting-value">
+					</div>
+					<div class="separator"></div>
+					<h3 class="settings-title">Application Information:</h3>
+					<p class="setting-name">Application version: V0.01</p>
+					<div class="separator"></div>
+					<div id="settings-save">Save and exit</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<script src="js/variables.js"></script>
 	<script type="module" src="js/parse-sdf-to-json.js"></script>
 	<script src="js/load.js"></script>
 	<script src="js/tool-bar.js" defer></script>
+	<script src="js/settings.js" defer></script>
 	<script src="js/schematics.js"></script>
 	<script src="js/connections.js" defer></script>
 	<script src="js/parse-json-to-data.js"></script>

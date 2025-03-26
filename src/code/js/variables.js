@@ -88,6 +88,9 @@ const hideButton = document.getElementById('hide-button');
 const toolBarButtons = [openFolder, uploadFile, pause, play, back, forward, first, last, speedPlus, speedMinus, zoomIn, zoomOut, dataViewTrigger, theme, settings, hideButton];
 
 
+const settingsClose = document.getElementById('settings-page-close');
+
+
 
 function resetSchematics() {
 	document.getElementById('input-container').innerHTML = '';

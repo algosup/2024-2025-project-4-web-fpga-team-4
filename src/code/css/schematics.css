@@ -8,7 +8,6 @@
 	--ff-color: #D32F2FFF; 
 	--clock-color: #8E24AAFF;
 	--connection-used: #00C853FF; 
-	--connection-unused: var(--on-primary);
 	--element-width: 10vh;
 	--element-height: 18vh;
 	--in-element-height: 16vh;
@@ -66,6 +65,7 @@
 	border-left-width: .3vh;
 	border-color: #808080FF;
 	border-style: dashed;
+	z-index: -20;
 }
 
 #input-container {

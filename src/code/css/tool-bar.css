@@ -3,6 +3,7 @@
 	--secondary: #1B263BFF;
 	--tertiary: #415A77FF;
 	--on-primary: #E0E1DDFF;
+	--on-tertiary: #E0E1DDFF;
 	--icons: #E0E1DDFF;
 	--tool-data-back: #0D1B2AFF;
 	--tool-data-text: #E0E1DDFF;
@@ -12,7 +13,6 @@
 [data-theme="light"] {
 	--primary: #E0E1DDFF;
 	--secondary: #415A77FF;
-	--tertiary: #1B263BFF;
 	--on-primary: #0D1B2AFF;
 	--shadow-color: rgba(0, 0, 0, 0.9);
 }
@@ -23,6 +23,7 @@ body {
 	background-color: var(--primary);
 	font-family: 'ibm-plex-mono', sans-serif;
 	font-weight: bold;
+	font-size: 1vh;
 }
 
 ::-webkit-scrollbar {
@@ -105,13 +106,15 @@ body {
 	align-items: center;
 }
 
-input{
+#open-folder-input{
 	opacity: 0.0;
 	position: absolute;
 	top:0;
 	left: 0;
 	bottom: 0;
 	right:0;
+	width: 0;
+	height: 0;
 }
 
 
