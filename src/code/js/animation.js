@@ -1,20 +1,42 @@
-function generateAnimations() {
+function generateAnimations({ element }) {
 
-	for (let elem of pathElements) {
-		// console.log('animate', elem);
+	if (element != null) {
+		let elem = {'id': element.id.split('-')[2], 'type': element.id.split('-')[1]};
+		if (elem.id === '') elem.id = '-1';
+		// console.log('animate', elem.type);
 		switch (elem.type) {
 			case 'userInput':
+				console.log('userInput');
 				generateUserInputAnimation(elem);
 				break;
-			case 'lut':
+				case 'lut':
+				console.log('lut');
 				generateLUTAnimation(elem);
 				break;
-			case 'DFF':
+				case 'ff':
+				console.log('ff');
 				generateDFFAnimation(elem);
 				break;
-
 			default:
 				break;
+		}
+	} else {
+		for (let elem of pathElements) {
+			// console.log('animate', elem);
+			switch (elem.type) {
+				case 'userInput':
+					generateUserInputAnimation(elem);
+					break;
+				case 'lut':
+					generateLUTAnimation(elem);
+					break;
+				case 'DFF':
+					generateDFFAnimation(elem);
+					break;
+
+				default:
+					break;
+			}
 		}
 	}
 }
@@ -141,18 +163,20 @@ async function animatePath(i) {
 	let wire4 = document.getElementById(`${type}-${id}-Wire4`) ?? null;
 	let wire5 = document.getElementById(`${type}-${id}-Wire5`) ?? null;
 	elem.style.display = 'block';
-	let wiresLength = wire4 != null 
-						? wire5 != null 
-							? 5 
-							: 4
-						: 3; 
+	let wiresLength = wire4 != null
+		? wire5 != null
+			? 5
+			: 4
+		: 3;
 	animateElement(elem, [wire1, wire2, wire3, wire4, wire5]);
 	setTimeout(() => {
 		if (i < pathElements.length - 2) {
-			elem.style.display = 'none';
+			elem.remove();
+			generateAnimations({ element: elem });
 			animatePath(i + 1);
 		} else {
-			elem.style.display = 'none';
+			elem.remove();
+			generateAnimations({ element: elem });
 		}
 	}, wiresLength * 400);
 }
