@@ -1,0 +1,573 @@
+{
+  "summary": "TestSummary for file: safari-unit-test-html-css.js",
+  "date": "2025-03-27",
+  "results": [
+    {
+      "browser": "safari",
+      "version": "18.3.1",
+      "test": {
+        "category": "JavaScript",
+        "subCategory": [
+          "Button"
+        ],
+        "name": "Verify the event trigger for the light/dark button",
+        "description": "Check if theme switch button works correctly.",
+        "priority": "medium",
+        "passed": true
+      }
+    },
+    {
+      "browser": "safari",
+      "version": "18.3.1",
+      "test": {
+        "category": "JavaScript",
+        "subCategory": [
+          "Button"
+        ],
+        "name": "Verify the event trigger for the upload button (.json)",
+        "description": "Ensure the upload button correctly processes JSON files.",
+        "priority": "high",
+        "passed": true
+      }
+    },
+    {
+      "browser": "safari",
+      "version": "18.3.1",
+      "test": {
+        "category": "JavaScript",
+        "subCategory": [
+          "Button"
+        ],
+        "name": "Verify the event trigger for the upload button (.random)",
+        "description": "Ensure the upload button correctly processes random files.",
+        "priority": "high",
+        "passed": true
+      }
+    },
+    {
+      "browser": "safari",
+      "version": "18.3.1",
+      "test": {
+        "category": "JavaScript",
+        "subCategory": [
+          "Button"
+        ],
+        "name": "Verify the event trigger for the upload button (.sdf)",
+        "description": "Ensure the upload button correctly processes SDF files.",
+        "priority": "high",
+        "passed": true
+      }
+    },
+    {
+      "browser": "safari",
+      "version": "18.3.1",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "Button",
+          "Radius"
+        ],
+        "name": "Verify the radius of the buttons",
+        "description": "Ensure the toolbar's buttons match the design.",
+        "priority": "low",
+        "passed": false,
+        "error": {
+          "name": "NoSuchElementError",
+          "remoteStacktrace": ""
+        }
+      }
+    },
+    {
+      "browser": "safari",
+      "version": "18.3.1",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "Colors",
+          "DarkTheme"
+        ],
+        "name": "Verify the color of the electricity flow",
+        "description": "Ensure the electric flow's color is correct in dark theme.",
+        "priority": "medium",
+        "passed": false,
+        "error": {
+          "name": "NoSuchElementError",
+          "remoteStacktrace": ""
+        }
+      }
+    },
+    {
+      "browser": "safari",
+      "version": "18.3.1",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "Colors",
+          "LightTheme"
+        ],
+        "name": "Verify the color of the electricity flow",
+        "description": "Ensure the electric flow's color is correct in light theme.",
+        "priority": "medium",
+        "passed": false,
+        "error": {
+          "name": "NoSuchElementError",
+          "remoteStacktrace": ""
+        }
+      }
+    },
+    {
+      "browser": "safari",
+      "version": "18.3.1",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "CompoClock"
+        ],
+        "name": "Verify the color of the clock component",
+        "description": "Check that the clock component is correctly colored.",
+        "priority": "low",
+        "passed": false,
+        "error": {
+          "name": "NoSuchElementError",
+          "remoteStacktrace": ""
+        }
+      }
+    },
+    {
+      "browser": "safari",
+      "version": "18.3.1",
+      "test": {
+        "category": "HTML",
+        "subCategory": [
+          "CompoClock"
+        ],
+        "name": "Verify the number of inputs and outputs for the clock component",
+        "description": "Ensure correct inputs/outputs for the clock component.",
+        "priority": "medium",
+        "passed": false,
+        "error": {
+          "name": "NoSuchElementError",
+          "remoteStacktrace": ""
+        }
+      }
+    },
+    {
+      "browser": "safari",
+      "version": "18.3.1",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "CompoClock"
+        ],
+        "name": "Verify the width of the clock component",
+        "description": "Validate the dimensions of the clock component.",
+        "priority": "medium",
+        "passed": false,
+        "error": {
+          "name": "NoSuchElementError",
+          "remoteStacktrace": ""
+        }
+      }
+    },
+    {
+      "browser": "safari",
+      "version": "18.3.1",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "CompoClock"
+        ],
+        "name": "Verify the height of the clock component",
+        "description": "Validate the dimensions of the clock component.",
+        "priority": "medium",
+        "passed": false,
+        "error": {
+          "name": "NoSuchElementError",
+          "remoteStacktrace": ""
+        }
+      }
+    },
+    {
+      "browser": "safari",
+      "version": "18.3.1",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "CompoFlip-Flop"
+        ],
+        "name": "Verify the color of the flip-flop component",
+        "description": "Check that the flip-flop component is correctly colored.",
+        "priority": "low",
+        "passed": false,
+        "error": {
+          "name": "NoSuchElementError",
+          "remoteStacktrace": ""
+        }
+      }
+    },
+    {
+      "browser": "safari",
+      "version": "18.3.1",
+      "test": {
+        "category": "HTML",
+        "subCategory": [
+          "CompoFlip-Flop"
+        ],
+        "name": "Verify the number of inputs and outputs for the flip-flop component",
+        "description": "Ensure correct inputs/outputs for the flip-flop component.",
+        "priority": "medium",
+        "passed": false,
+        "error": {
+          "name": "NoSuchElementError",
+          "remoteStacktrace": ""
+        }
+      }
+    },
+    {
+      "browser": "safari",
+      "version": "18.3.1",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "CompoFlip-Flop"
+        ],
+        "name": "Verify the width of the flip-flop component",
+        "description": "Validate the dimensions of the flip-flop component.",
+        "priority": "medium",
+        "passed": false,
+        "error": {
+          "name": "NoSuchElementError",
+          "remoteStacktrace": ""
+        }
+      }
+    },
+    {
+      "browser": "safari",
+      "version": "18.3.1",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "CompoFlip-Flop"
+        ],
+        "name": "Verify the height of the flip-flop component",
+        "description": "Validate the dimensions of the flip-flop component.",
+        "priority": "medium",
+        "passed": false,
+        "error": {
+          "name": "NoSuchElementError",
+          "remoteStacktrace": ""
+        }
+      }
+    },
+    {
+      "browser": "safari",
+      "version": "18.3.1",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "CompoInput"
+        ],
+        "name": "Verify the color of the input component",
+        "description": "Check that the input component is correctly colored.",
+        "priority": "low",
+        "passed": false,
+        "error": {
+          "name": "NoSuchElementError",
+          "remoteStacktrace": ""
+        }
+      }
+    },
+    {
+      "browser": "safari",
+      "version": "18.3.1",
+      "test": {
+        "category": "HTML",
+        "subCategory": [
+          "CompoInput"
+        ],
+        "name": "Verify the number of inputs and outputs for the input component",
+        "description": "Ensure correct inputs/outputs for the input component.",
+        "priority": "high",
+        "passed": false,
+        "error": {
+          "name": "NoSuchElementError",
+          "remoteStacktrace": ""
+        }
+      }
+    },
+    {
+      "browser": "safari",
+      "version": "18.3.1",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "CompoInput"
+        ],
+        "name": "Verify the width of the input component",
+        "description": "Validate the dimensions of the input component.",
+        "priority": "medium",
+        "passed": false,
+        "error": {
+          "name": "NoSuchElementError",
+          "remoteStacktrace": ""
+        }
+      }
+    },
+    {
+      "browser": "safari",
+      "version": "18.3.1",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "CompoInput"
+        ],
+        "name": "Verify the height of the input component",
+        "description": "Validate the dimensions of the input component.",
+        "priority": "medium",
+        "passed": false,
+        "error": {
+          "name": "NoSuchElementError",
+          "remoteStacktrace": ""
+        }
+      }
+    },
+    {
+      "browser": "safari",
+      "version": "18.3.1",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "CompoLUT"
+        ],
+        "name": "Verify the color of the LUT component",
+        "description": "Check that the LUT component is correctly colored.",
+        "priority": "low",
+        "passed": false,
+        "error": {
+          "name": "NoSuchElementError",
+          "remoteStacktrace": ""
+        }
+      }
+    },
+    {
+      "browser": "safari",
+      "version": "18.3.1",
+      "test": {
+        "category": "HTML",
+        "subCategory": [
+          "CompoLUT"
+        ],
+        "name": "Verify the number of inputs and outputs for the LUT component",
+        "description": "Ensure correct inputs/outputs for the LUT component.",
+        "priority": "high",
+        "passed": false,
+        "error": {
+          "name": "NoSuchElementError",
+          "remoteStacktrace": ""
+        }
+      }
+    },
+    {
+      "browser": "safari",
+      "version": "18.3.1",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "CompoLUT"
+        ],
+        "name": "Verify the width of the LUT component",
+        "description": "Validate the dimensions of the LUT component.",
+        "priority": "medium",
+        "passed": false,
+        "error": {
+          "name": "NoSuchElementError",
+          "remoteStacktrace": ""
+        }
+      }
+    },
+    {
+      "browser": "safari",
+      "version": "18.3.1",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "CompoLUT"
+        ],
+        "name": "Verify the height of the LUT component",
+        "description": "Validate the dimensions of the LUT component.",
+        "priority": "medium",
+        "passed": false,
+        "error": {
+          "name": "NoSuchElementError",
+          "remoteStacktrace": ""
+        }
+      }
+    },
+    {
+      "browser": "safari",
+      "version": "18.3.1",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "CompoOutput"
+        ],
+        "name": "Verify the color of the output component",
+        "description": "Check that the output component is correctly colored.",
+        "priority": "low",
+        "passed": false,
+        "error": {
+          "name": "NoSuchElementError",
+          "remoteStacktrace": ""
+        }
+      }
+    },
+    {
+      "browser": "safari",
+      "version": "18.3.1",
+      "test": {
+        "category": "HTML",
+        "subCategory": [
+          "CompoOutput"
+        ],
+        "name": "Verify the number of inputs and outputs for the output component",
+        "description": "Ensure correct inputs/outputs for the output component.",
+        "priority": "high",
+        "passed": false,
+        "error": {
+          "name": "NoSuchElementError",
+          "remoteStacktrace": ""
+        }
+      }
+    },
+    {
+      "browser": "safari",
+      "version": "18.3.1",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "CompoOutput"
+        ],
+        "name": "Verify the width of the output component",
+        "description": "Validate the dimensions of the output component.",
+        "priority": "medium",
+        "passed": false,
+        "error": {
+          "name": "NoSuchElementError",
+          "remoteStacktrace": ""
+        }
+      }
+    },
+    {
+      "browser": "safari",
+      "version": "18.3.1",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "CompoOutput"
+        ],
+        "name": "Verify the height of the output component",
+        "description": "Validate the dimensions of the output component.",
+        "priority": "medium",
+        "passed": false,
+        "error": {
+          "name": "NoSuchElementError",
+          "remoteStacktrace": ""
+        }
+      }
+    },
+    {
+      "browser": "safari",
+      "version": "18.3.1",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "DarkTheme",
+          "Background"
+        ],
+        "name": "Verify the color of the background",
+        "description": "Ensure background color complies with the dark theme design guidelines.",
+        "priority": "low",
+        "passed": false,
+        "error": {
+          "generatedMessage": false,
+          "code": "ERR_ASSERTION",
+          "actual": "#000000",
+          "expected": "#0D1B2A",
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "safari",
+      "version": "18.3.1",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "Image"
+        ],
+        "name": "Verify the icon (Dark Theme)",
+        "description": "Ensure the correct icon is displayed in dark theme.",
+        "priority": "low",
+        "passed": true
+      }
+    },
+    {
+      "browser": "safari",
+      "version": "18.3.1",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "Nav",
+          "Radius"
+        ],
+        "name": "Verify the radius of the toolbar",
+        "description": "Ensure the toolbar's corners match the design.",
+        "priority": "low",
+        "passed": false,
+        "error": {
+          "generatedMessage": false,
+          "code": "ERR_ASSERTION",
+          "actual": "0px 0px 19.360001px 19.360001px",
+          "expected": "0px 0px 20px 20px",
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "safari",
+      "version": "18.3.1",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "Size"
+        ],
+        "name": "Verify the size of the columns for the components",
+        "description": "Ensure columns are correctly sized for components.",
+        "priority": "medium",
+        "passed": false,
+        "error": {
+          "name": "TimeoutError",
+          "remoteStacktrace": ""
+        }
+      }
+    },
+    {
+      "browser": "safari",
+      "version": "18.3.1",
+      "test": {
+        "category": "JavaScript",
+        "subCategory": [
+          "Size"
+        ],
+        "name": "Verify the size of the electricity flow",
+        "description": "Ensure the electricity flow's size is appropriate.",
+        "priority": "medium",
+        "passed": false,
+        "error": {
+          "name": "NoSuchElementError",
+          "remoteStacktrace": ""
+        }
+      }
+    }
+  ]
+}
