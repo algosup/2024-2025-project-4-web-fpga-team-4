@@ -124,10 +124,10 @@ function strToInt(value) {
 
 
 async function animateElement(elem, wires) {
-	let value1 = strToInt(wires[0].style.marginLeft) + strToInt(wires[0].style.width) - .3 + 'vw';
+	let value1 = strToInt(wires[0].style.marginLeft) + strToInt(wires[0].style.width) - .25 + 'vw';
 	let value2 = elem.style.top > wires[1].style.marginTop
 		? strToInt(wires[1].style.marginTop) - .5 + 'vh'
-		: strToInt(wires[1].style.marginTop) + strToInt(wires[1].style.height) - 1 + 'vh';
+		: strToInt(wires[1].style.marginTop) + strToInt(wires[1].style.height) - .75 + 'vh';
 	let value3 = elem.style.left > wires[2].style.marginLeft
 		? strToInt(wires[2].style.marginLeft) - .25 + 'vw'
 		: strToInt(wires[2].style.marginLeft) + strToInt(wires[2].style.width) - .25 + 'vw';
