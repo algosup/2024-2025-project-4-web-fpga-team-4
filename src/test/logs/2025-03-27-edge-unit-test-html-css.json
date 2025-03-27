@@ -1,0 +1,590 @@
+{
+  "summary": "TestSummary for file: edge-unit-test-html-css.js",
+  "date": "2025-03-27",
+  "results": [
+    {
+      "browser": "MicrosoftEdge",
+      "version": "134.0.3124.83",
+      "test": {
+        "category": "JavaScript",
+        "subCategory": [
+          "Button"
+        ],
+        "name": "Verify the event trigger for the light/dark button",
+        "description": "Check if theme switch button works correctly.",
+        "priority": "medium",
+        "passed": true
+      }
+    },
+    {
+      "browser": "MicrosoftEdge",
+      "version": "134.0.3124.83",
+      "test": {
+        "category": "JavaScript",
+        "subCategory": [
+          "Button"
+        ],
+        "name": "Verify the event trigger for the upload button (.json)",
+        "description": "Ensure the upload button correctly processes JSON files.",
+        "priority": "high",
+        "passed": true
+      }
+    },
+    {
+      "browser": "MicrosoftEdge",
+      "version": "134.0.3124.83",
+      "test": {
+        "category": "JavaScript",
+        "subCategory": [
+          "Button"
+        ],
+        "name": "Verify the event trigger for the upload button (.random)",
+        "description": "Ensure the upload button correctly processes random files.",
+        "priority": "high",
+        "passed": true
+      }
+    },
+    {
+      "browser": "MicrosoftEdge",
+      "version": "134.0.3124.83",
+      "test": {
+        "category": "JavaScript",
+        "subCategory": [
+          "Button"
+        ],
+        "name": "Verify the event trigger for the upload button (.sdf)",
+        "description": "Ensure the upload button correctly processes SDF files.",
+        "priority": "high",
+        "passed": true
+      }
+    },
+    {
+      "browser": "MicrosoftEdge",
+      "version": "134.0.3124.83",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "Button",
+          "Radius"
+        ],
+        "name": "Verify the radius of the buttons",
+        "description": "Ensure the toolbar's buttons match the design.",
+        "priority": "low",
+        "passed": false,
+        "error": {
+          "name": "NoSuchElementError",
+          "remoteStacktrace": "\tGetHandleVerifier [0x00007FF6513EA7D5+20677]\n\tsimdutf::get_active_implementation [0x00007FF651346F80+492656]\n\tMicrosoft::Applications::Events::EventProperty::to_string [0x00007FF65163DC8A+1807418]\n\t(No symbol) [0x00007FF6511872AC]\n\t(No symbol) [0x00007FF65118758B]\n\t(No symbol) [0x00007FF6511C85A7]\n\t(No symbol) [0x00007FF6511A849F]\n\t(No symbol) [0x00007FF65117D6ED]\n\t(No symbol) [0x00007FF6511C5D61]\n\t(No symbol) [0x00007FF6511A81C3]\n\t(No symbol) [0x00007FF65117CC36]\n\t(No symbol) [0x00007FF65117C0C4]\n\t(No symbol) [0x00007FF65117CA63]\n\t(No symbol) [0x00007FF6512658DD]\n\t(No symbol) [0x00007FF651271D42]\n\t(No symbol) [0x00007FF65126A703]\n\tMicrosoft::Applications::Events::EventProperty::to_string [0x00007FF6514C47DA+262026]\n\tsimdutf::get_active_implementation [0x00007FF6513546B1+547745]\n\tsimdutf::get_active_implementation [0x00007FF65134D964+519764]\n\tsimdutf::get_active_implementation [0x00007FF65134DAA9+520089]\n\tsimdutf::get_active_implementation [0x00007FF65133F656+461638]\n\tBaseThreadInitThunk [0x00007FFD154D4CB0+16]\n\tRtlUserThreadStart [0x00007FFD1665EDCB+43]\n"
+        }
+      }
+    },
+    {
+      "browser": "MicrosoftEdge",
+      "version": "134.0.3124.83",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "Colors",
+          "DarkTheme"
+        ],
+        "name": "Verify the color of the electricity flow",
+        "description": "Ensure the electric flow's color is correct in dark theme.",
+        "priority": "medium",
+        "passed": false,
+        "error": {
+          "name": "StaleElementReferenceError",
+          "remoteStacktrace": "\tGetHandleVerifier [0x00007FF6513EA7D5+20677]\n\tsimdutf::get_active_implementation [0x00007FF651346F80+492656]\n\tMicrosoft::Applications::Events::EventProperty::to_string [0x00007FF65163DC8A+1807418]\n\t(No symbol) [0x00007FF65114255F]\n\t(No symbol) [0x00007FF651144DFC]\n\t(No symbol) [0x00007FF651144ECF]\n\t(No symbol) [0x00007FF65118A3F5]\n\t(No symbol) [0x00007FF65118A25B]\n\t(No symbol) [0x00007FF651185161]\n\t(No symbol) [0x00007FF6511A845A]\n\t(No symbol) [0x00007FF65117D6ED]\n\t(No symbol) [0x00007FF65117D5AD]\n\t(No symbol) [0x00007FF6511A8720]\n\t(No symbol) [0x00007FF65117D6ED]\n\t(No symbol) [0x00007FF6511C5D61]\n\t(No symbol) [0x00007FF6511A81C3]\n\t(No symbol) [0x00007FF65117CC36]\n\t(No symbol) [0x00007FF65117C0C4]\n\t(No symbol) [0x00007FF65117CA63]\n\t(No symbol) [0x00007FF6512658DD]\n\t(No symbol) [0x00007FF651271D42]\n\t(No symbol) [0x00007FF65126A703]\n\tMicrosoft::Applications::Events::EventProperty::to_string [0x00007FF6514C47DA+262026]\n\tsimdutf::get_active_implementation [0x00007FF6513546B1+547745]\n\tsimdutf::get_active_implementation [0x00007FF65134D964+519764]\n\tsimdutf::get_active_implementation [0x00007FF65134DAA9+520089]\n\tsimdutf::get_active_implementation [0x00007FF65133F656+461638]\n\tBaseThreadInitThunk [0x00007FFD154D4CB0+16]\n\tRtlUserThreadStart [0x00007FFD1665EDCB+43]\n"
+        }
+      }
+    },
+    {
+      "browser": "MicrosoftEdge",
+      "version": "134.0.3124.83",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "Colors",
+          "LightTheme"
+        ],
+        "name": "Verify the color of the electricity flow",
+        "description": "Ensure the electric flow's color is correct in light theme.",
+        "priority": "medium",
+        "passed": false,
+        "error": {
+          "generatedMessage": false,
+          "code": "ERR_ASSERTION",
+          "actual": "#FFFFFF",
+          "expected": "#000000",
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "MicrosoftEdge",
+      "version": "134.0.3124.83",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "CompoClock"
+        ],
+        "name": "Verify the color of the clock component",
+        "description": "Check that the clock component is correctly colored.",
+        "priority": "low",
+        "passed": false,
+        "error": {
+          "generatedMessage": false,
+          "code": "ERR_ASSERTION",
+          "actual": "#8E24AA",
+          "expected": "#AE15BF",
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "MicrosoftEdge",
+      "version": "134.0.3124.83",
+      "test": {
+        "category": "HTML",
+        "subCategory": [
+          "CompoClock"
+        ],
+        "name": "Verify the number of inputs and outputs for the clock component",
+        "description": "Ensure correct inputs/outputs for the clock component.",
+        "priority": "medium",
+        "passed": true
+      }
+    },
+    {
+      "browser": "MicrosoftEdge",
+      "version": "134.0.3124.83",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "CompoClock"
+        ],
+        "name": "Verify the width of the clock component",
+        "description": "Validate the dimensions of the clock component.",
+        "priority": "medium",
+        "passed": false,
+        "error": {
+          "generatedMessage": false,
+          "code": "ERR_ASSERTION",
+          "actual": 57,
+          "expected": 98,
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "MicrosoftEdge",
+      "version": "134.0.3124.83",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "CompoClock"
+        ],
+        "name": "Verify the height of the clock component",
+        "description": "Validate the dimensions of the clock component.",
+        "priority": "medium",
+        "passed": false,
+        "error": {
+          "generatedMessage": false,
+          "code": "ERR_ASSERTION",
+          "actual": 68.3906,
+          "expected": 68.4,
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "MicrosoftEdge",
+      "version": "134.0.3124.83",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "CompoFlip-Flop"
+        ],
+        "name": "Verify the color of the flip-flop component",
+        "description": "Check that the flip-flop component is correctly colored.",
+        "priority": "low",
+        "passed": false,
+        "error": {
+          "generatedMessage": false,
+          "code": "ERR_ASSERTION",
+          "actual": "#D32F2F",
+          "expected": "#BF1518",
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "MicrosoftEdge",
+      "version": "134.0.3124.83",
+      "test": {
+        "category": "HTML",
+        "subCategory": [
+          "CompoFlip-Flop"
+        ],
+        "name": "Verify the number of inputs and outputs for the flip-flop component",
+        "description": "Ensure correct inputs/outputs for the flip-flop component.",
+        "priority": "medium",
+        "passed": true
+      }
+    },
+    {
+      "browser": "MicrosoftEdge",
+      "version": "134.0.3124.83",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "CompoFlip-Flop"
+        ],
+        "name": "Verify the width of the flip-flop component",
+        "description": "Validate the dimensions of the flip-flop component.",
+        "priority": "medium",
+        "passed": false,
+        "error": {
+          "generatedMessage": false,
+          "code": "ERR_ASSERTION",
+          "actual": 57,
+          "expected": 98,
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "MicrosoftEdge",
+      "version": "134.0.3124.83",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "CompoFlip-Flop"
+        ],
+        "name": "Verify the height of the flip-flop component",
+        "description": "Validate the dimensions of the flip-flop component.",
+        "priority": "medium",
+        "passed": false,
+        "error": {
+          "generatedMessage": false,
+          "code": "ERR_ASSERTION",
+          "actual": 102.594,
+          "expected": 102.6,
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "MicrosoftEdge",
+      "version": "134.0.3124.83",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "CompoInput"
+        ],
+        "name": "Verify the color of the input component",
+        "description": "Check that the input component is correctly colored.",
+        "priority": "low",
+        "passed": false,
+        "error": {
+          "generatedMessage": false,
+          "code": "ERR_ASSERTION",
+          "actual": "#7D7D7D",
+          "expected": "#999997",
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "MicrosoftEdge",
+      "version": "134.0.3124.83",
+      "test": {
+        "category": "HTML",
+        "subCategory": [
+          "CompoInput"
+        ],
+        "name": "Verify the number of inputs and outputs for the input component",
+        "description": "Ensure correct inputs/outputs for the input component.",
+        "priority": "high",
+        "passed": true
+      }
+    },
+    {
+      "browser": "MicrosoftEdge",
+      "version": "134.0.3124.83",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "CompoInput"
+        ],
+        "name": "Verify the width of the input component",
+        "description": "Validate the dimensions of the input component.",
+        "priority": "medium",
+        "passed": false,
+        "error": {
+          "generatedMessage": false,
+          "code": "ERR_ASSERTION",
+          "actual": 57,
+          "expected": 98,
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "MicrosoftEdge",
+      "version": "134.0.3124.83",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "CompoInput"
+        ],
+        "name": "Verify the height of the input component",
+        "description": "Validate the dimensions of the input component.",
+        "priority": "medium",
+        "passed": false,
+        "error": {
+          "generatedMessage": false,
+          "code": "ERR_ASSERTION",
+          "actual": 68.3906,
+          "expected": 68.4,
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "MicrosoftEdge",
+      "version": "134.0.3124.83",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "CompoLUT"
+        ],
+        "name": "Verify the color of the LUT component",
+        "description": "Check that the LUT component is correctly colored.",
+        "priority": "low",
+        "passed": false,
+        "error": {
+          "generatedMessage": false,
+          "code": "ERR_ASSERTION",
+          "actual": "#009688",
+          "expected": "#15BF9A",
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "MicrosoftEdge",
+      "version": "134.0.3124.83",
+      "test": {
+        "category": "HTML",
+        "subCategory": [
+          "CompoLUT"
+        ],
+        "name": "Verify the number of inputs and outputs for the LUT component",
+        "description": "Ensure correct inputs/outputs for the LUT component.",
+        "priority": "high",
+        "passed": true
+      }
+    },
+    {
+      "browser": "MicrosoftEdge",
+      "version": "134.0.3124.83",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "CompoLUT"
+        ],
+        "name": "Verify the width of the LUT component",
+        "description": "Validate the dimensions of the LUT component.",
+        "priority": "medium",
+        "passed": false,
+        "error": {
+          "generatedMessage": false,
+          "code": "ERR_ASSERTION",
+          "actual": 57,
+          "expected": 98,
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "MicrosoftEdge",
+      "version": "134.0.3124.83",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "CompoLUT"
+        ],
+        "name": "Verify the height of the LUT component",
+        "description": "Validate the dimensions of the LUT component.",
+        "priority": "medium",
+        "passed": false,
+        "error": {
+          "generatedMessage": false,
+          "code": "ERR_ASSERTION",
+          "actual": 102.594,
+          "expected": 91.2,
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "MicrosoftEdge",
+      "version": "134.0.3124.83",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "CompoOutput"
+        ],
+        "name": "Verify the color of the output component",
+        "description": "Check that the output component is correctly colored.",
+        "priority": "low",
+        "passed": true
+      }
+    },
+    {
+      "browser": "MicrosoftEdge",
+      "version": "134.0.3124.83",
+      "test": {
+        "category": "HTML",
+        "subCategory": [
+          "CompoOutput"
+        ],
+        "name": "Verify the number of inputs and outputs for the output component",
+        "description": "Ensure correct inputs/outputs for the output component.",
+        "priority": "high",
+        "passed": true
+      }
+    },
+    {
+      "browser": "MicrosoftEdge",
+      "version": "134.0.3124.83",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "CompoOutput"
+        ],
+        "name": "Verify the width of the output component",
+        "description": "Validate the dimensions of the output component.",
+        "priority": "medium",
+        "passed": false,
+        "error": {
+          "generatedMessage": false,
+          "code": "ERR_ASSERTION",
+          "actual": 57,
+          "expected": 98,
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "MicrosoftEdge",
+      "version": "134.0.3124.83",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "CompoOutput"
+        ],
+        "name": "Verify the height of the output component",
+        "description": "Validate the dimensions of the output component.",
+        "priority": "medium",
+        "passed": false,
+        "error": {
+          "generatedMessage": false,
+          "code": "ERR_ASSERTION",
+          "actual": 68.3906,
+          "expected": 68.4,
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "MicrosoftEdge",
+      "version": "134.0.3124.83",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "DarkTheme",
+          "Background"
+        ],
+        "name": "Verify the color of the background",
+        "description": "Ensure background color complies with the dark theme design guidelines.",
+        "priority": "low",
+        "passed": false,
+        "error": {
+          "generatedMessage": false,
+          "code": "ERR_ASSERTION",
+          "actual": "#000000",
+          "expected": "#0D1B2A",
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "MicrosoftEdge",
+      "version": "134.0.3124.83",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "Image"
+        ],
+        "name": "Verify the icon (Dark Theme)",
+        "description": "Ensure the correct icon is displayed in dark theme.",
+        "priority": "low",
+        "passed": true
+      }
+    },
+    {
+      "browser": "MicrosoftEdge",
+      "version": "134.0.3124.83",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "Nav",
+          "Radius"
+        ],
+        "name": "Verify the radius of the toolbar",
+        "description": "Ensure the toolbar's corners match the design.",
+        "priority": "low",
+        "passed": false,
+        "error": {
+          "generatedMessage": false,
+          "code": "ERR_ASSERTION",
+          "actual": "0px 0px 11.4px 11.4px",
+          "expected": "0px 0px 20px 20px",
+          "operator": "strictEqual"
+        }
+      }
+    },
+    {
+      "browser": "MicrosoftEdge",
+      "version": "134.0.3124.83",
+      "test": {
+        "category": "CSS",
+        "subCategory": [
+          "Size"
+        ],
+        "name": "Verify the size of the columns for the components",
+        "description": "Ensure columns are correctly sized for components.",
+        "priority": "medium",
+        "passed": false,
+        "error": {
+          "name": "InvalidSelectorError",
+          "remoteStacktrace": "\tGetHandleVerifier [0x00007FF6513EA7D5+20677]\n\tsimdutf::get_active_implementation [0x00007FF651346F80+492656]\n\tMicrosoft::Applications::Events::EventProperty::to_string [0x00007FF65163DC8A+1807418]\n\t(No symbol) [0x00007FF65114255F]\n\t(No symbol) [0x00007FF651144DFC]\n\t(No symbol) [0x00007FF651144ECF]\n\t(No symbol) [0x00007FF651186E64]\n\t(No symbol) [0x00007FF65118758B]\n\t(No symbol) [0x00007FF65117DC2C]\n\t(No symbol) [0x00007FF6511A849F]\n\t(No symbol) [0x00007FF65117D6ED]\n\t(No symbol) [0x00007FF65117D5AD]\n\t(No symbol) [0x00007FF6511A8720]\n\t(No symbol) [0x00007FF65117D6ED]\n\t(No symbol) [0x00007FF6511C5D61]\n\t(No symbol) [0x00007FF6511A81C3]\n\t(No symbol) [0x00007FF65117CC36]\n\t(No symbol) [0x00007FF65117C0C4]\n\t(No symbol) [0x00007FF65117CA63]\n\t(No symbol) [0x00007FF6512658DD]\n\t(No symbol) [0x00007FF651271D42]\n\t(No symbol) [0x00007FF65126A703]\n\tMicrosoft::Applications::Events::EventProperty::to_string [0x00007FF6514C47DA+262026]\n\tsimdutf::get_active_implementation [0x00007FF6513546B1+547745]\n\tsimdutf::get_active_implementation [0x00007FF65134D964+519764]\n\tsimdutf::get_active_implementation [0x00007FF65134DAA9+520089]\n\tsimdutf::get_active_implementation [0x00007FF65133F656+461638]\n\tBaseThreadInitThunk [0x00007FFD154D4CB0+16]\n\tRtlUserThreadStart [0x00007FFD1665EDCB+43]\n"
+        }
+      }
+    },
+    {
+      "browser": "MicrosoftEdge",
+      "version": "134.0.3124.83",
+      "test": {
+        "category": "JavaScript",
+        "subCategory": [
+          "Size"
+        ],
+        "name": "Verify the size of the electricity flow",
+        "description": "Ensure the electricity flow's size is appropriate.",
+        "priority": "medium",
+        "passed": true
+      }
+    }
+  ]
+}
