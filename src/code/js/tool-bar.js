@@ -29,7 +29,7 @@ pause.addEventListener('click', function () {
 
 play.addEventListener('click', function () {
 	console.log('play button clicked');
-	animate();
+	animatePath(0);
 });
 
 back.addEventListener('click', function () {

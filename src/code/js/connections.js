@@ -146,6 +146,7 @@ function drawBasicConnection(obj1, obj2) {
 	let distW2 = dists[1];
 
 	let elemId = obj1.split('-')[1] == '' ? "-1" : obj1.split('-')[1];
+	if (elemId == "out") elemId = "0";  
 
 	// Draw the connection
 	drawLine(.6, distW1 + sizeOut, outputCenter, output.left, obj1, `${obj1.split('-')[0]}-${elemId}-Wire1`);

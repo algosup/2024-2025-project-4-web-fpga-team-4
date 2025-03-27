@@ -1,16 +1,16 @@
-function animate() {
+function generateAnimations() {
 
 	for (let elem of pathElements) {
 		// console.log('animate', elem);
 		switch (elem.type) {
 			case 'userInput':
-				animateUserInput(elem);
+				generateUserInputAnimation(elem);
 				break;
 			case 'lut':
-				animateLUT(elem);
+				generateLUTAnimation(elem);
 				break;
 			case 'DFF':
-				animateDFF(elem);
+				generateDFFAnimation(elem);
 				break;
 
 			default:
@@ -19,31 +19,29 @@ function animate() {
 	}
 }
 
-function animateUserInput(elem) {
+function generateUserInputAnimation(elem) {
 	let elemPos = document.querySelector(`#userInput-out`).getBoundingClientRect();
 	let elemTop = elemPos.top;
 	let elemLeft = elemPos.left;
-	connections.innerHTML += `<div class="animation" id="animation-${elem.type}" style="position: absolute; top: ${convertPxToVh(elemTop)}vh; left: ${convertPxToVw(elemLeft)}vw;"></div>`;
+	connections.innerHTML += `<div class="animation" id="animation-${elem.type}-${elem.id}" style="position: absolute; top: ${convertPxToVh(elemTop)}vh; left: ${convertPxToVw(elemLeft)}vw; display:none"></div>`;
 }
 
-function animateLUT(elem) {
+function generateLUTAnimation(elem) {
 	let elemPos = document.querySelector(`#lut-${elem.id}-out`).getBoundingClientRect();
 	let elemTop = elemPos.top;
 	let elemLeft = elemPos.left;
-	connections.innerHTML += `<div class="animation" id="animation-${elem.type}-${elem.id}" style="position: absolute; top: ${convertPxToVh(elemTop)}vh; left: ${convertPxToVw(elemLeft)}vw;"></div>`;
+	connections.innerHTML += `<div class="animation" id="animation-${elem.type}-${elem.id}" style="position: absolute; top: ${convertPxToVh(elemTop)}vh; left: ${convertPxToVw(elemLeft)}vw; display:none"></div>`;
 }
 
-function animateDFF(elem) {
+function generateDFFAnimation(elem) {
 	let elemPos = document.querySelector(`#ff-${elem.id}-out`).getBoundingClientRect();
 	let elemTop = elemPos.top;
 	let elemLeft = elemPos.left;
-	connections.innerHTML += `<div class="animation" id="animation-ff-${elem.id}" style="position: absolute; top: ${convertPxToVh(elemTop)}vh; left: ${convertPxToVw(elemLeft)}vw;"></div>`;
+	connections.innerHTML += `<div class="animation" id="animation-ff-${elem.id}" style="position: absolute; top: ${convertPxToVh(elemTop)}vh; left: ${convertPxToVw(elemLeft)}vw; display:none"></div>`;
 }
 
 
-function move(element, distances) {
-
-	console.log("Type of distances:", typeof distances[0].split('-')[0]);
+async function move(element, distances) {
 	// Create an array of animation steps
 	const steps = [
 		distances[0].split('-')[0] === 'right' || distances[0].split('-')[0] === 'left'
@@ -103,19 +101,18 @@ function strToInt(value) {
 }
 
 
-forward.addEventListener('click', function () {
-	// let element = 'userInput-out';
-	let element = 'ff--1';
-	let elem = document.getElementById(`animation-${element}`);
-	let wire1 = document.getElementById(`${element}-Wire1`)
-	let wire2 = document.getElementById(`${element}-Wire2`)
-	let wire3 = document.getElementById(`${element}-Wire3`)
-	let wire4 = document.getElementById(`${element}-Wire4`) ?? null;
-	let wire5 = document.getElementById(`${element}-Wire5`) ?? null;
-	animateElement(elem, [wire1, wire2, wire3, wire4, wire5]);
-});
+// forward.addEventListener('click', function () {
+// 	let element = 'userInput-out';
+// 	let elem = document.getElementById(`animation-${element}`);
+// 	let wire1 = document.getElementById(`${element}-Wire1`)
+// 	let wire2 = document.getElementById(`${element}-Wire2`)
+// 	let wire3 = document.getElementById(`${element}-Wire3`)
+// 	let wire4 = document.getElementById(`${element}-Wire4`) ?? null;
+// 	let wire5 = document.getElementById(`${element}-Wire5`) ?? null;
+// 	animateElement(elem, [wire1, wire2, wire3, wire4, wire5]);
+// });
 
-function animateElement(elem, wires) {
+async function animateElement(elem, wires) {
 	let value1 = strToInt(wires[0].style.marginLeft) + strToInt(wires[0].style.width) - .3 + 'vw';
 	let value2 = elem.style.top > wires[1].style.marginTop
 		? strToInt(wires[1].style.marginTop) - .5 + 'vh'
@@ -130,5 +127,32 @@ function animateElement(elem, wires) {
 	let distances = [`right-${value1}`, `up-${value2}`, `right-${value3}`];
 	if (wires[3] != null) distances.push(`down-${value4}`);
 	if (wires[4] != null) distances.push(`right-${value5}`);
-	move(elem, distances);
+	await move(elem, distances);
 };
+
+async function animatePath(i) {
+	let type = pathElements[i].type;
+	let id = pathElements[i].id;
+	if (type == "DFF") type = "ff";
+	let elem = document.getElementById(`animation-${type}-${id}`);
+	let wire1 = document.getElementById(`${type}-${id}-Wire1`)
+	let wire2 = document.getElementById(`${type}-${id}-Wire2`)
+	let wire3 = document.getElementById(`${type}-${id}-Wire3`)
+	let wire4 = document.getElementById(`${type}-${id}-Wire4`) ?? null;
+	let wire5 = document.getElementById(`${type}-${id}-Wire5`) ?? null;
+	elem.style.display = 'block';
+	let wiresLength = wire4 != null 
+						? wire5 != null 
+							? 5 
+							: 4
+						: 3; 
+	animateElement(elem, [wire1, wire2, wire3, wire4, wire5]);
+	setTimeout(() => {
+		if (i < pathElements.length - 2) {
+			elem.style.display = 'none';
+			animatePath(i + 1);
+		} else {
+			elem.style.display = 'none';
+		}
+	}, wiresLength * 400);
+}

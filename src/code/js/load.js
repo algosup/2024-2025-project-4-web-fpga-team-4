@@ -30,4 +30,7 @@ function endLoad(){
 	clock[0].style.position = 'fixed';
 	clock[0].style.bottom = '1vh';
 
+	
+	generateAnimations();
+
 }
