@@ -619,3 +619,4 @@ build/
 dist/
 
 test/*.js
+*.py

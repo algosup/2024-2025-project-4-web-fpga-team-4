@@ -1,0 +1,4 @@
+Type,ID,IO,Port,ConnectionType,ConnectionID,ConnectionIO,ConnectionPort,Timing
+Input,0,output,0,userInput,-1,input,0,1022.2
+Input,0,output,0,Clock,-1,clock,0,10
+Output,-1,output,0,DFF,0,input,0,1079.77

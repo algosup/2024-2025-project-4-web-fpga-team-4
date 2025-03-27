@@ -1,0 +1,80 @@
+{
+  "LUTs": [],
+  "FlipFlops": [
+    {
+      "id": -1,
+      "connections": [
+        {
+          "port": "input"
+        },
+        {
+          "port": "clock"
+        },
+        {
+          "port": "output"
+        }
+      ]
+    }
+  ],
+  "IOs": [
+    {
+      "name": "Clock",
+      "io": "output"
+    },
+    {
+      "name": "userOutput",
+      "io": "input"
+    },
+    {
+      "name": "userInput",
+      "io": "output"
+    }
+  ],
+  "Connections": [
+    {
+      "Input": {
+        "type": "userInput",
+        "id": "0",
+        "io": "output",
+        "port": "0"
+      },
+      "Output": {
+        "type": "DFF",
+        "id": "-1",
+        "io": "input",
+        "port": "0"
+      },
+      "Timing": 1022.2
+    },
+    {
+      "Input": {
+        "type": "Clock",
+        "id": "0",
+        "io": "output",
+        "port": "0"
+      },
+      "Output": {
+        "type": "DFF",
+        "id": "-1",
+        "io": "clock",
+        "port": "0"
+      },
+      "Timing": 10
+    },
+    {
+      "Input": {
+        "type": "DFF",
+        "id": "-1",
+        "io": "output",
+        "port": "0"
+      },
+      "Output": {
+        "type": "userOutput",
+        "id": "0",
+        "io": "input",
+        "port": "0"
+      },
+      "Timing": 1079.77
+    }
+  ]
+}
