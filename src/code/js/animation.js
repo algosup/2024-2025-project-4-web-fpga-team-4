@@ -1,7 +1,7 @@
 function generateAnimations({ element }) {
 
 	if (element != null) {
-		let elem = {'id': element.id.split('-')[2], 'type': element.id.split('-')[1]};
+		let elem = { 'id': element.id.split('-')[2], 'type': element.id.split('-')[1] };
 		if (elem.id === '') elem.id = '-1';
 		// console.log('animate', elem.type);
 		switch (elem.type) {
@@ -9,11 +9,11 @@ function generateAnimations({ element }) {
 				console.log('userInput');
 				generateUserInputAnimation(elem);
 				break;
-				case 'lut':
+			case 'lut':
 				console.log('lut');
 				generateLUTAnimation(elem);
 				break;
-				case 'ff':
+			case 'ff':
 				console.log('ff');
 				generateDFFAnimation(elem);
 				break;
@@ -99,14 +99,14 @@ async function move(element, distances) {
 		if (index >= steps.length) return;
 
 		element.animate([steps[index]], {
-			duration: 200,
+			duration: speedValue,
 			fill: 'forwards'
 		}).onfinish = () => {
 			// Apply styles to maintain position
 			Object.assign(element.style, steps[index]);
 
 			// Wait before starting next animation
-			setTimeout(() => animateStep(index + 1), 200);
+			setTimeout(() => animateStep(index + 1), 0);
 		};
 	}
 
@@ -122,17 +122,6 @@ function strToInt(value) {
 	}
 }
 
-
-// forward.addEventListener('click', function () {
-// 	let element = 'userInput-out';
-// 	let elem = document.getElementById(`animation-${element}`);
-// 	let wire1 = document.getElementById(`${element}-Wire1`)
-// 	let wire2 = document.getElementById(`${element}-Wire2`)
-// 	let wire3 = document.getElementById(`${element}-Wire3`)
-// 	let wire4 = document.getElementById(`${element}-Wire4`) ?? null;
-// 	let wire5 = document.getElementById(`${element}-Wire5`) ?? null;
-// 	animateElement(elem, [wire1, wire2, wire3, wire4, wire5]);
-// });
 
 async function animateElement(elem, wires) {
 	let value1 = strToInt(wires[0].style.marginLeft) + strToInt(wires[0].style.width) - .3 + 'vw';
@@ -153,6 +142,7 @@ async function animateElement(elem, wires) {
 };
 
 async function animatePath(i) {
+	if (isPaused) return;
 	let type = pathElements[i].type;
 	let id = pathElements[i].id;
 	if (type == "DFF") type = "ff";
@@ -177,6 +167,8 @@ async function animatePath(i) {
 		} else {
 			elem.remove();
 			generateAnimations({ element: elem });
+			play.firstChild.className = 'fa-solid top-bar fa-circle-play';
+			isPaused = true;
 		}
-	}, wiresLength * 400);
+	}, wiresLength * speedValue);
 }

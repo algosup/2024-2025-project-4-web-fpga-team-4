@@ -34,3 +34,12 @@ function endLoad(){
 	generateAnimations({element: null});
 
 }
+
+
+function reloadAnimations() {
+	let elements = document.querySelectorAll('.animation');
+	for (let i = 0; i < elements.length; i++) {
+		elements[i].remove();
+	}
+	generateAnimations({element: null});
+}

@@ -12,6 +12,8 @@ let currentZoomIndex= 3;
 const speedLevels = ["x0.5", "x1", "x2", "x4", "x8", "x16", "x32"];
 let currentSpeedIndex= 1;
 
+const speedValue = 200;
+
 let currentTheme = "dark";
 
 let inToLutColumns = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -32,6 +34,10 @@ let hasGnd = false;
 let hasAsync = false;
 let hasLut = false;
 
+let isPaused = true;
+
+let currentPathIndex = 0;
+
 const testColors = [ '#FF0000', '#00FF00', '#0000FF', '#FFFF00'];
 let ffToLutIndex = 0;
 
@@ -48,8 +54,8 @@ const uploadFile = document.getElementById('upload-file');
 /*
 Control elements
 */
-const pause = document.getElementById('pause');
-const play = document.getElementById('play');
+const reset = document.getElementById('stop');
+const play = document.getElementById('play-pause');
 const back = document.getElementById('back');
 const forward = document.getElementById('forward');
 const first = document.getElementById('first');
@@ -85,7 +91,7 @@ const liveData = document.getElementById('data-display');
 const hideButton = document.getElementById('hide-button');
 
 
-const toolBarButtons = [openFolder, uploadFile, pause, play, back, forward, first, last, speedPlus, speedMinus, zoomIn, zoomOut, dataViewTrigger, theme, settings, hideButton];
+const toolBarButtons = [openFolder, uploadFile, reset, play, back, forward, first, last, speedPlus, speedMinus, zoomIn, zoomOut, dataViewTrigger, theme, settings, hideButton];
 
 
 const settingsClose = document.getElementById('settings-page-close');

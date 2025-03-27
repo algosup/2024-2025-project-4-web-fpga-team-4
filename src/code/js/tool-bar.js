@@ -23,13 +23,24 @@ uploadFile.addEventListener('click', function () {
 /*
 Control buttons
 */
-pause.addEventListener('click', function () {
-	console.log('pause button clicked');
+reset.addEventListener('click', function () {
+	console.log('stop button clicked');
+	reloadAnimations();
+	isPaused = true;
+	currentPathIndex = 0;
+	play.firstChild.className = 'fa-solid top-bar fa-circle-play';
 });
 
 play.addEventListener('click', function () {
-	console.log('play button clicked');
-	animatePath(0);
+	console.log('play/pause button clicked');
+	console.log(isPaused);
+	if (isPaused) {
+		isPaused = false;
+		animatePath(currentPathIndex);
+	} else {
+		isPaused = true;
+	}
+	this.firstChild.className = isPaused ? 'fa-solid top-bar fa-circle-play' : 'fa-solid top-bar fa-circle-pause';
 });
 
 back.addEventListener('click', function () {
@@ -42,10 +53,27 @@ forward.addEventListener('click', function () {
 
 first.addEventListener('click', function () {
 	console.log('first button clicked');
+	reloadAnimations();
+	isPaused = true;
+	setTimeout(() => {
+		isPaused = false;
+		currentPathIndex = 0;
+		play.firstChild.className = 'fa-solid top-bar fa-circle-pause';
+		animatePath(currentPathIndex);
+	}, speedValue * 5);
 });
 
 last.addEventListener('click', function () {
 	console.log('last button clicked');
+	reloadAnimations();
+	isPaused = true;
+	window.scrollTo(0, document.body.scrollHeight);
+	setTimeout(() => {
+		isPaused = false;
+		currentPathIndex = pathElements.length - 2;
+		play.firstChild.className = 'fa-solid top-bar fa-circle-pause';
+		animatePath(currentPathIndex);
+	}, speedValue * 5);
 });
 
 
