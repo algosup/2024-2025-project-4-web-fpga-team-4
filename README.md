@@ -14,8 +14,9 @@
 
 **FPGA Explorer** is an interactive platform designed to simplify the exploration and learning of Field-Programmable Gate Arrays (FPGAs). Whether you're a student, teacher, or hobbyist, this tool helps you understand, develop, and simulate FPGA logic in a visual and intuitive way.
 
-👉 [**Try it online**  ](https://two024-2025-project-4-web-fpga-team-4.onrender.com/client.html)
-
+👉 [**Try it online**](https://two024-2025-project-4-web-fpga-team-4.onrender.com/client.html)
+you can use the file example.sdf to test the application.
+You can also upload your own `.sdf` files to visualize and simulate them.
 
 # Features
 
@@ -29,8 +30,6 @@
   Upload `.sdf` files and watch them automatically parsed into a structured JSON format designed for clarity and modularity.  
   You can download the generated JSON, tweak it, and re-upload it to create your own examples effortlessly.
 
-  command line tool genrate a json file en onction de ce que le use met, je json peuc etre importer dans fpga explorer
-
 
 # Manifest
 
@@ -40,6 +39,7 @@
 - [User Manual](./documents/user-manual/user-manual.pdf)
 - [Management Artifacts](./documents/management/management-artifact.md)
 - [Source Code](./src/)
+- [SDF Example](./documents/user-manual/example.sdf)
 - [JSON Creator](./src/json_creator/json-creator.py)
 
 # Prerequisites
