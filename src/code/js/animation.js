@@ -3,18 +3,14 @@ function generateAnimations({ element }) {
 	if (element != null) {
 		let elem = { 'id': element.id.split('-')[2], 'type': element.id.split('-')[1] };
 		if (elem.id === '') elem.id = '-1';
-		// console.log('animate', elem.type);
 		switch (elem.type) {
 			case 'userInput':
-				console.log('userInput');
 				generateUserInputAnimation(elem);
 				break;
 			case 'lut':
-				console.log('lut');
 				generateLUTAnimation(elem);
 				break;
 			case 'ff':
-				console.log('ff');
 				generateDFFAnimation(elem);
 				break;
 			default:
@@ -22,7 +18,6 @@ function generateAnimations({ element }) {
 		}
 	} else {
 		for (let elem of pathElements) {
-			// console.log('animate', elem);
 			switch (elem.element.type) {
 				case 'userInput':
 					generateUserInputAnimation(elem.element);
@@ -152,7 +147,6 @@ async function animatePath(i) {
     if (isPaused) return;
     let type = pathElements[i].element.type;
     let id = pathElements[i].element.id;
-	console.log('type :', type, 'id :', id);
     if (type == "DFF") type = "ff";
     
     let elem = document.getElementById(`animation-${type}-${id}`);
@@ -173,7 +167,6 @@ async function animatePath(i) {
     animateElement(elem, [wire1, wire2, wire3, wire4, wire5]);
     
     setTimeout(() => {
-		console.log('element', pathElements[i]);
         if (i < pathElements.length - 2) {
             elem.remove();
             generateAnimations({ element: elem });

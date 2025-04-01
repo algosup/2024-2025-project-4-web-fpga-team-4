@@ -4,7 +4,6 @@ settingsClose.addEventListener('click', function () {
 
 document.querySelectorAll('.setting-value').forEach(item => {
 	item.addEventListener('click', event => {
-		console.log('setting value clicked');
 	});
 
 	// Add validation to ensure only integers are accepted
