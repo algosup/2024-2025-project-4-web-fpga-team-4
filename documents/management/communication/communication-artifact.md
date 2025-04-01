@@ -16,6 +16,10 @@
     - [**3rd Response**](#3rd-response)
     - [**4th Message**](#4th-message)
     - [**4th Response**](#4th-response)
+    - [**Functional Specifications Review**](#functional-specifications-review)
+      - [**Response**](#response)
+    - [**Technical Specifications Review**](#technical-specifications-review)
+    - [**User Manual Review**](#user-manual-review)
 
 ## Introduction
 
@@ -209,3 +213,43 @@ Best Regard.
 Hi, this is related to the way the tool is handling reset ( to be true it doesn't handle flipflop with reset). \
 So instead of connecting the reset signal to the reset pin of the flipflop it tries to connect the reset on input signals. \
 You should only consider examples without reset in it. It is easier to understand.
+
+---
+
+### **Functional Specifications Review**
+
+![alt text](./images/review-functional1.png)
+
+- there is a lite free version of xilinx vivado also
+
+- 2.2. User Personas => you should remove this chapter (these are not real cnes people and can confuse) .Your if you want to keep your profile remove CNES name eveyrwhere
+
+- The sdf can be uplodaed but there won't be any prerequisite about it. Your server should come with a preloaded sdf file so simulation can be run without any extra file
+
+![alt text](./images/review-functional2.png)
+
+- the clock component is an input and should be on the left (probably below the I/O)
+
+![alt text](./images/review-functional3.png)
+
+- You cannot render the example strucutre wiht sdf file . this is just a timing format, you need verilog file to create the structure
+
+Otherwise no other remark
+
+Link to the whole discussion: [Click Here](https://github.com/LeFl0w/ALGOSUP_POC/issues/12)
+
+#### **Response**
+
+Hello Florent,
+
+Thank you for your feedbacks, I'll correct the document to fit with them during the week.
+
+Kindly.
+
+Caron Maxime \
+Program Manager \
+Team 4
+
+### **Technical Specifications Review**
+
+### **User Manual Review**

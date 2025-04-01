@@ -2,7 +2,7 @@
 
 ## **Overview**
 
-## **Week 4 Objectives**
+## **Week 6 Objectives**
 
 ## **Team Feedback**
 
