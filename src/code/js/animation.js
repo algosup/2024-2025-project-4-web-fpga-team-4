@@ -142,33 +142,44 @@ async function animateElement(elem, wires) {
 };
 
 async function animatePath(i) {
-	if (isPaused) return;
-	let type = pathElements[i].type;
-	let id = pathElements[i].id;
-	if (type == "DFF") type = "ff";
-	let elem = document.getElementById(`animation-${type}-${id}`);
-	let wire1 = document.getElementById(`${type}-${id}-Wire1`)
-	let wire2 = document.getElementById(`${type}-${id}-Wire2`)
-	let wire3 = document.getElementById(`${type}-${id}-Wire3`)
-	let wire4 = document.getElementById(`${type}-${id}-Wire4`) ?? null;
-	let wire5 = document.getElementById(`${type}-${id}-Wire5`) ?? null;
-	elem.style.display = 'block';
-	let wiresLength = wire4 != null
-		? wire5 != null
-			? 5
-			: 4
-		: 3;
-	animateElement(elem, [wire1, wire2, wire3, wire4, wire5]);
-	setTimeout(() => {
-		if (i < pathElements.length - 2) {
-			elem.remove();
-			generateAnimations({ element: elem });
-			animatePath(i + 1);
-		} else {
-			elem.remove();
-			generateAnimations({ element: elem });
-			play.firstChild.className = 'fa-solid top-bar fa-circle-play';
-			isPaused = true;
-		}
-	}, wiresLength * speedValue);
+    // Stop	
+    if (i >= 5000) {
+        play.firstChild.className = 'fa-solid top-bar fa-circle-play';
+        isPaused = true;
+        return;
+    }
+    
+    if (isPaused) return;
+    
+    let type = pathElements[i].type;
+    let id = pathElements[i].id;
+    if (type == "DFF") type = "ff";
+    
+    let elem = document.getElementById(`animation-${type}-${id}`);
+    let wire1 = document.getElementById(`${type}-${id}-Wire1`);
+    let wire2 = document.getElementById(`${type}-${id}-Wire2`);
+    let wire3 = document.getElementById(`${type}-${id}-Wire3`);
+    let wire4 = document.getElementById(`${type}-${id}-Wire4`) ?? null;
+    let wire5 = document.getElementById(`${type}-${id}-Wire5`) ?? null;
+    
+    elem.style.display = 'block';
+    
+    let wiresLength = wire4 != null 
+        ? (wire5 != null ? 5 : 4)
+        : 3;
+    
+    animateElement(elem, [wire1, wire2, wire3, wire4, wire5]);
+    
+    setTimeout(() => {
+        if (i < pathElements.length - 2) {
+            elem.remove();
+            generateAnimations({ element: elem });
+            animatePath(i + 1);
+        } else {
+            elem.remove();
+            generateAnimations({ element: elem });
+            play.firstChild.className = 'fa-solid top-bar fa-circle-play';
+            isPaused = true;
+        }
+    }, wiresLength * speedValue);
 }
