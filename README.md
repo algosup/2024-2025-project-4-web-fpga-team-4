@@ -15,7 +15,9 @@
 **FPGA Explorer** is an interactive platform designed to simplify the exploration and learning of Field-Programmable Gate Arrays (FPGAs). Whether you're a student, teacher, or hobbyist, this tool helps you understand, develop, and simulate FPGA logic in a visual and intuitive way.
 
 👉 [**Try it online**](https://two024-2025-project-4-web-fpga-team-4.onrender.com/client.html)
-you can use the file example.sdf to test the application.
+
+You can use the file example.sdf to test the application.
+
 You can also upload your own `.sdf` files to visualize and simulate them.
 
 # Features
@@ -66,7 +68,7 @@ npm start
 
 The interface will open in your browser at http://localhost:8080/code/client.html.
 
-# JSON Creator (Helper Tool)
+# JSON Creator
 
 FPGA Explorer includes a **command-line script** to help users generate custom `.json` files without writing them from scratch. This is ideal for testing small examples or building circuits manually.
 
