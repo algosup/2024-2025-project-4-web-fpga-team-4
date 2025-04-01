@@ -1,8 +1,12 @@
 function sortElements(luts, flipFlops, ios, connections) {
-	let UI = connections.find(connection => { return connection.Input.type === 'userInput' });
+	let timing;
+	let UI = connections.find(connection => {
+		timing = connection.Timing;
+		return connection.Input.type === 'userInput'
+	});
 	let UIIndex = connections.indexOf(UI);
 
-	pathElements.push(UI.Input);
+	pathElements.push({ element: UI.Input, Timing: timing });
 
 	displayInput(UI.Input.type);
 	let currentElement = connections[UIIndex].Output;
@@ -23,11 +27,12 @@ function sortElements(luts, flipFlops, ios, connections) {
 		let ff = flipFlops.find(ff => { return ff.id.toString() === currentElement.id });
 		displayFlipFlop(ff.id, ff.connections[0].id, ff.connections[1].id, ff.connections[2].id);
 	}
-	
-	pathElements.push(currentElement);
+
+	pathElements.push({ element: currentElement, Timing: timing });
 	if (connections.find(connection => connection.Output.type === 'userOutput')) {
 		while (currentElement.type != 'userOutput') {
 			let nextElement = connections.find(connection => {
+				timing = connection.Timing;
 				return (connection.Input.type === currentElement.type && connection.Input.id === currentElement.id)
 			}).Output;
 
@@ -45,7 +50,7 @@ function sortElements(luts, flipFlops, ios, connections) {
 			}
 
 			currentElement = nextElement;
-			pathElements.push(currentElement);
+			pathElements.push({ element: currentElement, Timing: timing });
 		}
 	}
 

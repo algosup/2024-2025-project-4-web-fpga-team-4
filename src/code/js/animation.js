@@ -23,15 +23,15 @@ function generateAnimations({ element }) {
 	} else {
 		for (let elem of pathElements) {
 			// console.log('animate', elem);
-			switch (elem.type) {
+			switch (elem.element.type) {
 				case 'userInput':
-					generateUserInputAnimation(elem);
+					generateUserInputAnimation(elem.element);
 					break;
 				case 'lut':
-					generateLUTAnimation(elem);
+					generateLUTAnimation(elem.element);
 					break;
 				case 'DFF':
-					generateDFFAnimation(elem);
+					generateDFFAnimation(elem.element);
 					break;
 
 				default:
@@ -99,7 +99,7 @@ async function move(element, distances) {
 		if (index >= steps.length) return;
 
 		element.animate([steps[index]], {
-			duration: speedValue,
+			duration: speedValue / speedLevelsInt[currentSpeedIndex],
 			fill: 'forwards'
 		}).onfinish = () => {
 			// Apply styles to maintain position
@@ -150,9 +150,9 @@ async function animatePath(i) {
     }
     
     if (isPaused) return;
-    
-    let type = pathElements[i].type;
-    let id = pathElements[i].id;
+    let type = pathElements[i].element.type;
+    let id = pathElements[i].element.id;
+	console.log('type :', type, 'id :', id);
     if (type == "DFF") type = "ff";
     
     let elem = document.getElementById(`animation-${type}-${id}`);
@@ -167,10 +167,13 @@ async function animatePath(i) {
     let wiresLength = wire4 != null 
         ? (wire5 != null ? 5 : 4)
         : 3;
+
+	speedValue = pathElements[i].Timing != null ? pathElements[i].Timing * 5 / wiresLength: 2000;
     
     animateElement(elem, [wire1, wire2, wire3, wire4, wire5]);
     
     setTimeout(() => {
+		console.log('element', pathElements[i]);
         if (i < pathElements.length - 2) {
             elem.remove();
             generateAnimations({ element: elem });
@@ -181,5 +184,5 @@ async function animatePath(i) {
             play.firstChild.className = 'fa-solid top-bar fa-circle-play';
             isPaused = true;
         }
-    }, wiresLength * speedValue);
+    }, speedValue * wiresLength / speedLevelsInt[currentSpeedIndex]);
 }

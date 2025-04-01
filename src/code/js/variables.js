@@ -10,9 +10,10 @@ const zoomLevels = ["25%", "50%", "75%", "100%", "125%", "150%", "175%", "200%"]
 let currentZoomIndex= 3;
 
 const speedLevels = ["x0.5", "x1", "x2", "x4", "x8", "x16", "x32"];
+const speedLevelsInt = [.5, 1, 2, 4, 8, 16, 32];
 let currentSpeedIndex= 1;
 
-const speedValue = 200;
+let speedValue;
 
 let currentTheme = "dark";
 
