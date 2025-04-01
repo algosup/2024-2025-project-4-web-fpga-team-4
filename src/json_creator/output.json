@@ -1,0 +1,132 @@
+{
+    "LUTs": [
+        {
+            "id": "140",
+            "connections": [
+                {
+                    "io": "input",
+                    "id": "1"
+                },
+                {
+                    "io": "input",
+                    "id": "2"
+                },
+                {
+                    "io": "output",
+                    "id": "0"
+                }
+            ]
+        }
+    ],
+    "FlipFlops": [
+        {
+            "id": "1",
+            "connections": [
+                {
+                    "port": "clock"
+                },
+                {
+                    "port": "output"
+                },
+                {
+                    "port": "input"
+                }
+            ]
+        }
+    ],
+    "IOs": [
+        {
+            "name": "Async_reset",
+            "io": "output"
+        },
+        {
+            "name": "userInput",
+            "io": "output"
+        },
+        {
+            "name": "userOutput",
+            "io": "input"
+        },
+        {
+            "name": "Clock",
+            "io": "output"
+        }
+    ],
+    "Connections": [
+        {
+            "Input": {
+                "type": "userInput",
+                "id": "0",
+                "io": "output",
+                "port": "0"
+            },
+            "Output": {
+                "type": "lut",
+                "id": "140",
+                "io": "input",
+                "port": "2"
+            },
+            "Timing": 235.697
+        },
+        {
+            "Input": {
+                "type": "Async_reset",
+                "id": "0",
+                "io": "output",
+                "port": "0"
+            },
+            "Output": {
+                "type": "lut",
+                "id": "140",
+                "io": "input",
+                "port": "1"
+            },
+            "Timing": 617.438
+        },
+        {
+            "Input": {
+                "type": "Clock",
+                "id": "0",
+                "io": "output",
+                "port": "0"
+            },
+            "Output": {
+                "type": "DFF",
+                "id": "1",
+                "io": "clock",
+                "port": "0"
+            },
+            "Timing": 10.0
+        },
+        {
+            "Input": {
+                "type": "DFF",
+                "id": "1",
+                "io": "output",
+                "port": "0"
+            },
+            "Output": {
+                "type": "userOutput",
+                "id": "0",
+                "io": "input",
+                "port": "0"
+            },
+            "Timing": 1079.77
+        },
+        {
+            "Input": {
+                "type": "lut",
+                "id": "140",
+                "io": "output",
+                "port": "0"
+            },
+            "Output": {
+                "type": "DFF",
+                "id": "1",
+                "io": "input",
+                "port": "0"
+            },
+            "Timing": 96.0
+        }
+    ]
+}

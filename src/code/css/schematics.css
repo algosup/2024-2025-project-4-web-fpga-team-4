@@ -8,7 +8,6 @@
 	--ff-color: #D32F2FFF; 
 	--clock-color: #8E24AAFF;
 	--connection-used: #00C853FF; 
-	--connection-unused: var(--on-primary);
 	--element-width: 10vh;
 	--element-height: 18vh;
 	--in-element-height: 16vh;
@@ -66,12 +65,12 @@
 	border-left-width: .3vh;
 	border-color: #808080FF;
 	border-style: dashed;
+	z-index: -20;
 }
 
 #input-container {
 	position: absolute;
 	margin-top: var(--element-margin-top);
-	z-index: 13;
 }
 
 .input-element{
@@ -120,6 +119,10 @@
 	aspect-ratio: 1/1;
 	background-color: var(--connection-used);
 	border-radius: 50%;
+}
+
+.clock-element {
+	z-index: 4;
 }
 
 
@@ -385,6 +388,12 @@
 	height: 18vh;
 	top: 82vh;
 	left: 0;
-	z-index: 1;
-	background: linear-gradient(to top, rgb(from var(--tertiary) r g b / 1), rgb(from var(--primary) r g b / .1));
+	z-index: 2;
+	background: linear-gradient(to top, 
+	rgb(from var(--primary) r g b / 1),
+	rgb(from var(--primary) r g b / 1),
+	rgb(from var(--primary) r g b / 1),
+	rgb(from var(--primary) r g b / 1),
+	rgb(from var(--primary) r g b / 0.7),
+	rgb(from var(--primary) r g b / 0));
 }

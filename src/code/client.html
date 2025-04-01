@@ -6,9 +6,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="./img/fpga-explorer.png" type="image/x-icon">
 	<script src="https://kit.fontawesome.com/d57f386eaf.js" crossorigin="anonymous"></script>
+	<script src="js/load.js"></script>
 	<link rel="stylesheet" href="./css/tool-bar.css">
+	<link rel="stylesheet" href="./css/settings.css">
 	<link rel="stylesheet" href="./css/data-display.css">
 	<link rel="stylesheet" href="./css/schematics.css">
+	<link rel="stylesheet" href="./css/animations.css">
 	<title>FPGA Web Visualizer</title>
 </head>
 
@@ -21,8 +24,8 @@
 			<div id="upload-file"><i class="fa-solid top-bar fa-upload "></i></div>
 		</div>
 		<div class="control-icon-up">
-			<div id="pause"><i class="fa-solid top-bar fa-circle-pause "></i></div>
-			<div id="play"><i class="fa-solid top-bar fa-circle-play "></i></div>
+			<div id="stop"><i class="fa-solid top-bar fa-circle-stop "></i></div>
+			<div id="play-pause"><i class="fa-solid top-bar fa-circle-play "></i></div>
 			<div class="speed-control">
 				<div id="speed">x1</div>
 				<div id="speed-plus" class="speed"><i class="fa-solid fa-plus"></i></div>
@@ -76,18 +79,6 @@
 					<div id="ff-container">
 					</div>
 				</div>
-				<!-- <div>
-					<p>LUT</p>
-					<div class="back-lines"></div>
-					<div id="lut-container">
-					</div>
-				</div>
-				<div>
-					<p>Flip-flop</p>
-					<div class="back-lines"></div>
-					<div id="ff-container">
-					</div>
-				</div> -->
 				<div>
 					<p>Output</p>
 					<div class="back-lines"></div>
@@ -104,11 +95,42 @@
 		</div>
 		<div id="connections"></div>
 	</div>
+	<div id="settings-menu">
+		<div id="settings-page-content">
+			<div id="settings-page-header">
+				<div id="settings-page-title">Settings</div>
+				<div id="settings-page-close"><i class="fa-solid fa-times"></i></div>
+			</div>
+			<div id="settings-page-body">
+				<div class="settings-list">
+					<h3 class="settings-title">Application Settings</h3>
+					<div class="setting">
+						<p class="setting-name">Clock cycle per step:</p>
+						<input type="text" name="" class="setting-value">
+					</div>
+					<div class="setting">
+						<p class="setting-name">Number of LUT columns:</p>
+						<input type="text" name="" class="setting-value">
+					</div>
+					<div class="setting">
+						<p class="setting-name">Number of Flip Flop columns:</p>
+						<input type="text" name="" class="setting-value">
+					</div>
+					<div class="separator"></div>
+					<h3 class="settings-title">Application Information:</h3>
+					<p class="setting-name">Application version: V0.01</p>
+					<div class="separator"></div>
+					<div id="settings-save">Save and exit</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<script src="js/variables.js"></script>
 	<script type="module" src="js/parse-sdf-to-json.js"></script>
-	<script src="js/load.js"></script>
 	<script src="js/tool-bar.js" defer></script>
+	<script src="js/animation.js"></script>
+	<script src="js/settings.js" defer></script>
 	<script src="js/schematics.js"></script>
 	<script src="js/connections.js" defer></script>
 	<script src="js/parse-json-to-data.js"></script>
