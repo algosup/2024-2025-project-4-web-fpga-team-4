@@ -256,7 +256,7 @@ Team 4
 
 Hi, I did not forget you but I've not got much time to perform the review these days , I'm sorry. \
 I'll give a try. \
-The only thing I saw quickly wads the mention of SDF file for architecture. \
+The only thing I saw quickly was the mention of SDF file for architecture. \
 be careful, SDF if your timing associated to an architecture defined in the verilog file.
 
 ### **User Manual Review**
