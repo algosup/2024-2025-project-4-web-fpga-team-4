@@ -1,6 +1,6 @@
 <p align="center"><em>What if you could visualize, simulate, and master FPGA development all in one place with...</em></p>
 <p align="center">
-  <img style="height:200px" src="./documents/functional-specifications/images/logo-light.png" />
+  <picture><source media="(prefers-color-scheme: dark)" srcset="./documents/functional-specifications/images/logo-light.png"><source media="(prefers-color-scheme: light)" srcset="./documents/functional-specifications/images/logo-dark.png"><img alt="FPGA Explorer Logo"  style="width:100px">    </picture>
 </p>
 <p align="center">
 <a href="#features">Features</a> • 

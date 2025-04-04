@@ -27,8 +27,19 @@ function endLoad(){
 	let inputs = document.getElementById('input-container').children;
 	let clock = document.getElementsByClassName('clock-element');
 
-	clock[0].style.marginTop = (100 - (inputs.length * 18) - 3) + 'vh';
+	clock[0].style.position = 'fixed';
+	clock[0].style.bottom = '1vh';
 
-	console.log('end load');
 
+	generateAnimations({element: null});
+
+}
+
+
+function reloadAnimations() {
+	let elements = document.querySelectorAll('.animation');
+	for (let i = 0; i < elements.length; i++) {
+		elements[i].remove();
+	}
+	generateAnimations({element: null});
 }

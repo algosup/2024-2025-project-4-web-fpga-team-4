@@ -42,7 +42,7 @@ function drawLine(height, width, top, left, colorValue, id) {
 			case 'cl': // Clock
 			color = "var(--clock-color)";
 			position = colorValue === 'clock-above-sticky' ? 'fixed' : undefined;
-			zIndex = colorValue.startsWith('clock-above')  ? '12' : '0';
+			zIndex = colorValue.startsWith('clock-above')  ? '3' : '0';
 			break;
 		default:
 			break;
@@ -145,11 +145,13 @@ function drawBasicConnection(obj1, obj2) {
 	let distW1 = dists[0];
 	let distW2 = dists[1];
 
+	let elemId = obj1.split('-')[1] == '' ? "-1" : obj1.split('-')[1];
+	if (elemId == "out") elemId = "0";  
 
 	// Draw the connection
-	drawLine(.6, distW1 + sizeOut, outputCenter, output.left, obj1, `lut-${obj1.split('-')[1]}-Wire1`);
-	drawLine(distH, .3, (output.top < input.top ? outputCenter : inputCenter), output.right + distW1, obj1, `lut-${obj1.split('-')[1]}-Wire2`);
-	drawLine(.6, distW2 + sizeIn, inputCenter, input.right - distW2 - sizeIn, obj1, `lut-${obj1.split('-')[1]}-Wire3`);
+	drawLine(.6, distW1 + sizeOut, outputCenter, output.left, obj1, `${obj1.split('-')[0]}-${elemId}-Wire1`);
+	drawLine(distH, .3, (output.top < input.top ? outputCenter : inputCenter), output.right + distW1, obj1, `${obj1.split('-')[0]}-${elemId}-Wire2`);
+	drawLine(.6, distW2 + sizeIn, inputCenter, input.right - distW2 - sizeIn, obj1, `${obj1.split('-')[0]}-${elemId}-Wire3`);
 }
 
 
@@ -357,6 +359,7 @@ function drawInputToFlipflop(obj1, obj2) {
 	let inputCenter = input.top + inputCenterHeight - .3;
 
 
+
 	// Draw the connection
 	drawLine(.6, distW + sizeOut, outputCenter, output.left, obj1, `in-${obj1.split('-')[1]}-Wire1`);
 	drawLine(distH, .3, (output.top < input.top ? outputCenter : inputCenter), output.right + distW, obj1, `in-${obj1.split('-')[1]}-Wire2`);
@@ -420,7 +423,6 @@ function drawFlipflopToFlipflopConnections(obj1, obj2) {
 function drawConnectionSelect(obj1, obj2) {
 	let ob1 = obj1.split('-')[0];
 	let ob2 = obj2.split('-')[0];
-	console.log(ob1, ',', ob2);
 	if ((ob1 === 'lut' && ob2 === 'ff' ||
 		(ob1 === 'userInput' || ob1 === 'Clock') && ob2 === 'lut') && obj2 !== 'lut-gnd') {
 		drawBasicConnection(obj1, obj2);

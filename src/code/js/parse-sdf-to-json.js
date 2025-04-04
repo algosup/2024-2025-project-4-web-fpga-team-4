@@ -135,7 +135,6 @@ function getConnectionsFromString(element) {
 		elementFinal.type = "DFF";
 		elementFinal.port = "0";
 		if (element[7] === '$') {
-			console.log(element);
 			elementFinal.id = element.split('\\')[2].split('~')[1];
 			if (element.split("_")[2][0] === 'i') {
 				elementFinal.io = "input";
