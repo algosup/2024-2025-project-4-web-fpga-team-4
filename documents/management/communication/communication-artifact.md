@@ -11,7 +11,7 @@
       - [Feedback:](#feedback)
     - [**2nd Message**](#2nd-message)
     - [**2nd Response**](#2nd-response)
-  - [**Summary of Key Information**](#summary-of-key-information)
+        - [**Summary of Key Information**](#summary-of-key-information)
     - [**3rd Message**](#3rd-message)
     - [**3rd Response**](#3rd-response)
     - [**4th Message**](#4th-message)
@@ -20,6 +20,8 @@
       - [**Response**](#response)
     - [**Technical Specifications Review**](#technical-specifications-review)
     - [**User Manual Review**](#user-manual-review)
+    - [**Client Satisfaction Form**](#client-satisfaction-form)
+      - [Response](#response-1)
 
 ## Introduction
 
@@ -135,7 +137,7 @@ Thank you very much for your help.
 ### **2nd Response**
 
 **Date:** 05/03/25 \
-**Sender:** Florent  
+**Sender:** Florent Manni  
 **Recipient:** Thibaud Marlier
 
 **Message:**  
@@ -146,7 +148,7 @@ I have added SDF information in the repository. Let me know if this is sufficien
 
 ---
 
-## **Summary of Key Information**
+##### **Summary of Key Information**
 
 - CNES is the only intended user of the project for now.
 - The team may create a logo but is not required to do so.
@@ -160,7 +162,7 @@ I have added SDF information in the repository. Let me know if this is sufficien
 
 ### **3rd Message**
 
-**Subject:** Open-Source 
+**Subject:** Open-Source
 **Date:** 13/03/25  
 **Sender:** Thibaud Marlier  
 **Recipient:** Florent Manni
@@ -177,18 +179,18 @@ Best regards.
 ### **3rd Response**
 
 **Date:** 05/07/25 \
-**Sender:** Florent  
+**Sender:** Florent Manni
 **Recipient:** Thibaud Marlier
 
-**Message:** 
+**Message:**
 
 Hi, this project is opensource and public. You can/may put it onlne
 
---- 
+---
 
 ### **4th Message**
 
-**Subject:** Open-Source 
+**Subject:** Open-Source
 **Date:** 13/03/25  
 **Sender:** Thibaud Marlier  
 **Recipient:** Florent Manni
@@ -205,10 +207,10 @@ Best Regard.
 ### **4th Response**
 
 **Date:** 24/03/25 \
-**Sender:** Florent  
+**Sender:** Florent Manni  
 **Recipient:** Thibaud Marlier
 
-**Message:** 
+**Message:**
 
 Hi, this is related to the way the tool is handling reset ( to be true it doesn't handle flipflop with reset). \
 So instead of connecting the reset signal to the reset pin of the flipflop it tries to connect the reset on input signals. \
@@ -252,4 +254,37 @@ Team 4
 
 ### **Technical Specifications Review**
 
+Hi, I did not forget you but I've not got much time to perform the review these days , I'm sorry. \
+I'll give a try. \
+The only thing I saw quickly was the mention of SDF file for architecture. \
+be careful, SDF if your timing associated to an architecture defined in the verilog file.
+
 ### **User Manual Review**
+
+This was asked at the same time as the Technical Specifications document. Though, no review could have been done by the client.
+
+### **Client Satisfaction Form**
+
+**Date:** 04/04/25 \
+**Sender:** Thibaud Marlier  
+**Recipient:** Florent Manni
+
+Hello Florent,
+
+For you for this project. Before closing it, we would have one last thing to ask you. I have created a Google form to evaluate your overall satisfaction of the project, gather your feedback and identify room for improvement.
+
+You'll find the link below to the form.
+
+https://forms.gle/9SkLRXJNtooX1C559
+
+Thank you for your time throughout the project. Please be as sincere as possible in the form. It'll greatly help us for our future.
+
+We hoped you enjoyed our version of the web interface.
+
+Thibaud Marlier \
+Project Manager + All team members \
+Team 4
+
+#### Response
+
+Response can be found in the [Post Mortem](../post-mortem.md) document.
